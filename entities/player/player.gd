@@ -8,7 +8,7 @@ var allience = "player"
 signal healthZERO
 
 var direction = Vector2.ZERO
-@onready var current_weapon = load("res://assets/resourses/projectiles/shoe.tres") as ProjectileType
+@onready var current_weapon = load("res://assets/resources/projectiles/shoe.tres") as ProjectileType
 @onready var PROJECTILE = preload("res://entities/projectile/projectile.tscn")
 @onready var shooting_cooldown: Timer = $shooting_cooldown
 @onready var dummy = %dummy
