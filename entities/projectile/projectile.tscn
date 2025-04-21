@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb2c7xoavhg8h"]
+
+[ext_resource type="Script" uid="uid://bwkx1akff4odr" path="res://entities/projectile/projectile.gd" id="1_n5n3x"]
+[ext_resource type="Texture2D" uid="uid://ca7ml58op52y6" path="res://assets/textures/player/shoe.png" id="2_i4fle"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfshl"]
+size = Vector2(5, 13)
+
+[node name="projectile" type="Area2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_n5n3x")
+
+[node name="projectile_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_i4fle")
+
+[node name="projectile_collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_jfshl")
+
+[node name="lifetime" type="Timer" parent="."]
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]
