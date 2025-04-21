@@ -45,7 +45,7 @@ text = "Options"
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 text = "Credits"
 
