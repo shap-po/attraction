@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://k4x3j85xvjfh"]
+
+[ext_resource type="Script" uid="uid://qi268pka2ile" path="res://entities/plant/plant_type.gd" id="1_h32ds"]
+
+[resource]
+script = ExtResource("1_h32ds")
+name = "Chem Root"
