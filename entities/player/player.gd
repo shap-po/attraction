@@ -2,12 +2,10 @@ extends CharacterBody2D
 
 const speed = 50
 const weight = 0.4
-var health = 3
 var allience = "player"
-
-signal healthZERO
-
 var direction = Vector2.ZERO
+var health: Health = Health.new(5)
+
 @onready var current_weapon = load("res://assets/resources/projectiles/shoe.tres") as ProjectileType
 @onready var PROJECTILE = preload("res://entities/projectile/projectile.tscn")
 @onready var shooting_cooldown: Timer = $shooting_cooldown
@@ -25,7 +23,7 @@ func _physics_process(_delta):
 	velocity = direction * speed
 	if velocity != Vector2.ZERO:
 		player_sprite.rotation = lerp_angle(player_sprite.rotation, velocity.angle(), weight)
-	
+
 	if (Input.is_action_pressed("lcm")) and (shoot_r == true):
 		shoot_r = false
 		shooting_cooldown.start()
@@ -42,11 +40,7 @@ func shoot(shoot_ang):
 	new_projectile.allience = "player"
 	new_projectile.res = current_weapon
 	dummy.add_child(new_projectile)
-	
-func take_damage(damage):
-	health -= damage
-	if health <= 0:
-		healthZERO.emit()
+
 
 func _on_shooting_cooldown_timeout() -> void:
 	shoot_r = true
