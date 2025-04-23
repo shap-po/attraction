@@ -1,6 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmcyvctbpc0qx"]
+[gd_scene load_steps=4 format=3 uid="uid://dmcyvctbpc0qx"]
 
 [ext_resource type="Script" uid="uid://hbdlwhxwwvgy" path="res://entities/plant/plant.gd" id="1_s1anw"]
 
-[node name="Plant" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_s1anw"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mx1je"]
+radius = 8.0
+
+[node name="Plant" type="Area2D"]
 script = ExtResource("1_s1anw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s1anw")
+
+[node name="EnemyCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mx1je")
+
+[node name="GrowthTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="GrowthTimer" to="." method="_on_growth_timer_timeout"]

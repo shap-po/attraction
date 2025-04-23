@@ -13,7 +13,6 @@ var rotation_speed
 var keep_rotating : bool
 
 func _ready():
-	print("bazinga")
 	projectile_sprite.texture = res.texture
 	projectile_collision.shape = res.collision_shape
 	speed = res.speed
