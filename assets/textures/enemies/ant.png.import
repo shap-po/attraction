@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cla7txer8f04y"
-path="res://.godot/imported/carrot_ripe.png-d74e38d6116f65166bfc1125e9a2d309.ctex"
+uid="uid://bsh1vlaogqkx3"
+path="res://.godot/imported/ant.png-48a1ecb71196989f2f09efc47f3c5a99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/misc/carrot_ripe.png"
-dest_files=["res://.godot/imported/carrot_ripe.png-d74e38d6116f65166bfc1125e9a2d309.ctex"]
+source_file="res://assets/textures/enemies/ant.png"
+dest_files=["res://.godot/imported/ant.png-48a1ecb71196989f2f09efc47f3c5a99.ctex"]
 
 [params]
 
