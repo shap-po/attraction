@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Attraction"
-run/main_scene="uid://dawbq3k8145p2"
+run/main_scene="uid://01mbau86j0cn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

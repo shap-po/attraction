@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsh1vlaogqkx3"
-path="res://.godot/imported/ant.png-48a1ecb71196989f2f09efc47f3c5a99.ctex"
+uid="uid://uek1e6hcw2rv"
+path="res://.godot/imported/ant_warriror.png-a4a5f353aa2d2f0179229438f4d74963.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/ant.png"
-dest_files=["res://.godot/imported/ant.png-48a1ecb71196989f2f09efc47f3c5a99.ctex"]
+source_file="res://assets/textures/enemies/ants/ant_warriror.png"
+dest_files=["res://.godot/imported/ant_warriror.png-a4a5f353aa2d2f0179229438f4d74963.ctex"]
 
 [params]
 

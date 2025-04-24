@@ -11,6 +11,8 @@ var deseleration: float
 var direction
 var rotation_speed
 var keep_rotating : bool
+var destroy_on_collision : bool
+var damage: int
 
 func _ready():
 	projectile_sprite.texture = res.texture
@@ -23,6 +25,8 @@ func _ready():
 	keep_rotating = res.keep_rotating
 	lifetime.wait_time = res.lifetime
 	lifetime.start()
+	destroy_on_collision = res.destroy_on_collision
+	damage = res.damage
 	
 
 func _process(delta: float) -> void:
@@ -35,10 +39,15 @@ func _process(delta: float) -> void:
 		self.rotation += rotation_speed
 	
 
+func destroy():
+	queue_free()
 
 func _on_lifetime_timeout() -> void:
-	queue_free()
+	destroy()
 
 
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if (body.allience != allience): body.take_damage
+	if (body.allience != allience): 
+		body.take_damage(damage)
+		if destroy_on_collision:
+			destroy()

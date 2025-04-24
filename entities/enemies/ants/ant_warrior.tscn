@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://ruu8kpyuaiel"]
+
+[ext_resource type="Script" uid="uid://b5stq4xgvvdtk" path="res://entities/enemies/ants/ant_warrior.gd" id="1_0o3ao"]
+[ext_resource type="Texture2D" uid="uid://cgk6kjl2046js" path="res://assets/textures/enemies/ants/ant_worker.png" id="1_ow5th"]
+[ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_5kpdv"]
+[ext_resource type="Script" uid="uid://cem5exb0g15g0" path="res://entities/enemies/state_machine/behaviours/ants/warrior_defend_base.gd" id="4_5kpdv"]
+[ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_mwupc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_teqsf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hih1t"]
+radius = 35.0
+height = 103.333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0o3ao"]
+radius = 11.7851
+
+[node name="ant_warrior" type="CharacterBody2D"]
+script = ExtResource("1_0o3ao")
+
+[node name="ant_warrior_collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_teqsf")
+
+[node name="rotation_marker" type="Marker2D" parent="."]
+
+[node name="ant_warrior_sprite" type="Sprite2D" parent="rotation_marker"]
+texture = ExtResource("1_ow5th")
+
+[node name="area_sight" type="Area2D" parent="rotation_marker"]
+
+[node name="vision_area_sight_shape" type="CollisionShape2D" parent="rotation_marker/area_sight"]
+position = Vector2(16.6667, 3.78956e-14)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hih1t")
+
+[node name="area_touch" type="Area2D" parent="rotation_marker"]
+
+[node name="vision_area_touch_shape" type="CollisionShape2D" parent="rotation_marker/area_touch"]
+shape = SubResource("CircleShape2D_0o3ao")
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="brain" type="Node" parent="." node_paths=PackedStringArray("initial_state", "puppet")]
+script = ExtResource("3_5kpdv")
+initial_state = NodePath("no_ai")
+puppet = NodePath("..")
+metadata/_custom_type_script = "uid://trfpmwnmpqmm"
+
+[node name="warrior_defend_base" type="Node" parent="brain"]
+script = ExtResource("4_5kpdv")
+metadata/_custom_type_script = "uid://cem5exb0g15g0"
+
+[node name="no_ai" type="Node" parent="brain"]
+script = ExtResource("4_mwupc")
+metadata/_custom_type_script = "uid://cg1q7s1urt42s"

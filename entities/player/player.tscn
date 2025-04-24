@@ -18,6 +18,7 @@ texture = ExtResource("1_symyc")
 shape = SubResource("CircleShape2D_abrql")
 
 [node name="shooting_cooldown" type="Timer" parent="."]
+one_shot = true
 
 [node name="interaction_area" type="Area2D" parent="."]
 collision_layer = 0
