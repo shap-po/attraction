@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://caetmb0g3vc4x"]
 
-[ext_resource type="Script" uid="uid://dowmo67p7ggy1" path="res://scenes/menu/menu.gd" id="1_klgdb"]
+[ext_resource type="Script" uid="uid://dowmo67p7ggy1" path="res://scenes/menus/mainMenu/menu.gd" id="1_klgdb"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -29,30 +29,35 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Planet Ship Game Or Whatever"
+theme_override_font_sizes/font_size = 38
+text = "Bug attractor"
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../OptionsButton")
+theme_override_font_sizes/font_size = 19
 text = "Start"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../CreditsButton")
+theme_override_font_sizes/font_size = 19
 text = "Options"
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
+theme_override_font_sizes/font_size = 19
 text = "Credits"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../CreditsButton")
 focus_neighbor_bottom = NodePath("../StartButton")
+theme_override_font_sizes/font_size = 19
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

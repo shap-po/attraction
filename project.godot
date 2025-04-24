@@ -22,6 +22,11 @@ window/size/viewport_height=720
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[gui]
+
+theme/custom_font="uid://gynxvkuiv044"
+theme/default_font_subpixel_positioning=0
+
 [input]
 
 up={

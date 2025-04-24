@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dawbq3k8145p2"]
 
-[ext_resource type="PackedScene" uid="uid://b7i01y1k4ilen" path="res://scenes/shop/itemTile.tscn" id="1_100s2"]
+[ext_resource type="PackedScene" uid="uid://b7i01y1k4ilen" path="res://scenes/menus/shopMenu/itemTile.tscn" id="1_100s2"]
 
 [node name="shop" type="Control"]
 layout_mode = 3
@@ -44,7 +44,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
-split_offset = 200
+split_offset = 250
 drag_area_highlight_in_editor = true
 
 [node name="info" type="PanelContainer" parent="MarginContainer/MarginContainer/HSplitContainer"]
@@ -66,6 +66,7 @@ color = Color(0.0232, 0.18328, 0.29, 1)
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer/MarginContainer/HSplitContainer/items"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 38
 tab_alignment = 1
 current_tab = 0
 
@@ -85,7 +86,8 @@ layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/MarginContainer/HSplitContainer/items/TabContainer/Shop/MarginContainer/ScrollContainer"]
 layout_mode = 2
-columns = 6
+size_flags_vertical = 4
+columns = 5
 
 [node name="itemTile" parent="MarginContainer/MarginContainer/HSplitContainer/items/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("1_100s2")]
 layout_mode = 2

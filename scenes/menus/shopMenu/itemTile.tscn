@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b7i01y1k4ilen"]
 
 [node name="PanelContainer" type="PanelContainer"]
-custom_minimum_size = Vector2(100, 160)
+custom_minimum_size = Vector2(140, 240)
 offset_right = 50.0
 offset_bottom = 80.0
 
@@ -14,11 +14,11 @@ theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-alignment = 1
 
 [node name="imageBox" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/imageBox"]
 layout_mode = 2
@@ -28,9 +28,11 @@ layout_mode = 2
 
 [node name="infoBox" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/infoBox"]
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 38
 text = "you have:
 price:"
 fit_content = true
