@@ -2,10 +2,10 @@ extends Area2D
 class_name Interactible
 
 enum InteractionResult {
-	PASS,
-	SUCCESS,
-	FAIL
+	PASS, ## Interaction did not happen, will be ignored
+	SUCCESS, ## Interaction was successful
+	FAIL ## Interaction failed
 }
 
-func interact(item) -> InteractionResult:
+func interact(item: Item) -> InteractionResult:
 	return InteractionResult.PASS

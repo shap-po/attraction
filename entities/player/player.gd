@@ -45,14 +45,25 @@ func shoot(shoot_ang):
 	new_projectile.res = current_weapon
 	dummy.add_child(new_projectile)
 
-func interact():
+func interact() -> Interactible.InteractionResult:
 	var areas: Array[Area2D] = interaction_area.get_overlapping_areas()
+	# sort areas by distance to player
+	# note: squared distance is faster to calculate and is sufficient for comparison
 	areas.sort_custom(func(a: Area2D, b: Area2D): return global_position.distance_squared_to(a.global_position) <= global_position.distance_squared_to(b.global_position))
-	var area: Area2D = areas.pop_front()
-	if area == null:
-		return
-	if area is Interactible:
-		var res: Interactible.InteractionResult = area.interact(current_plant)
+
+	# filter out interactibles
+	var interactibles: Array[Interactible] = []
+	for area in areas:
+		if area is Interactible:
+			interactibles.append(area)
+
+	# try to interact with the closest interactible, if passed, try the next one
+	for interactible in interactibles:
+		var res: Interactible.InteractionResult = interactible.interact(current_plant)
+		if res != Interactible.InteractionResult.PASS:
+			return res
+
+	return Interactible.InteractionResult.PASS
 
 func _on_shooting_cooldown_timeout() -> void:
 	shoot_r = true

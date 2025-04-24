@@ -11,9 +11,12 @@ func create_plant(plant_type: PlantType):
 	plant = plant_type.create()
 	plant_node.add_child(plant)
 
-func interact(item) -> InteractionResult:
+func interact(item: Item) -> InteractionResult:
 	if plant != null:
-		return InteractionResult.FAIL
+		return InteractionResult.PASS
 
-	create_plant(load("res://assets/resources/plant_types/chem_root.tres") as PlantType)
-	return InteractionResult.SUCCESS
+	if item is PlantType:
+		create_plant(item as PlantType)
+		return InteractionResult.SUCCESS
+
+	return InteractionResult.PASS
