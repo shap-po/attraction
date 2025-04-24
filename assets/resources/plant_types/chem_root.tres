@@ -1,18 +1,20 @@
 [gd_resource type="Resource" script_class="PlantType" load_steps=6 format=3 uid="uid://k4x3j85xvjfh"]
 
+[ext_resource type="Texture2D" uid="uid://b1n6sm3rtnbos" path="res://assets/textures/item/carrot_seeds.png" id="1_04x0a"]
 [ext_resource type="Texture2D" uid="uid://xh72hx23lud1" path="res://assets/textures/plants/thing_planted.png" id="1_jod0d"]
 [ext_resource type="Texture2D" uid="uid://dueacno8wyefd" path="res://assets/textures/plants/carrot/carrot_growing.png" id="2_ftonx"]
 [ext_resource type="Texture2D" uid="uid://cla7txer8f04y" path="res://assets/textures/plants/carrot/carrot_ripe.png" id="3_1c0gv"]
 [ext_resource type="Script" uid="uid://qi268pka2ile" path="res://entities/plant/plant_type.gd" id="4_yw5fy"]
-[ext_resource type="Texture2D" uid="uid://b1n6sm3rtnbos" path="res://assets/textures/item/carrot_seeds.png" id="5_ftonx"]
 
 [resource]
 script = ExtResource("4_yw5fy")
+crop_name = "Chem Root"
+crop_type = 0
+grow_time = 10
 grow_stages = Array[Texture2D]([ExtResource("1_jod0d"), ExtResource("2_ftonx"), ExtResource("3_1c0gv")])
-growTime = 10
-name = "Chem Root Seeds"
-description = ""
-texture = ExtResource("5_ftonx")
-item_type = -1
+grown_sell_price = 0
+fruit_item_texture = ExtResource("3_1c0gv")
+item_texture = ExtResource("1_04x0a")
+item_description = ""
 buy_price = 0
 sell_price = 0
