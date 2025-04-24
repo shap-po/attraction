@@ -13,10 +13,21 @@ func on_creation():
 	if !(puppet is ant_mound): 
 		push_error("something initiated braincell of ant_mound without it actually being ant_mound.")
 		return
+	puppet.brain_ant_killed.connect(on_ant_killed)
 	
 
 func enter():
 	pass
 	
 func procces():
+	puppet.summon_ant(0)
 	pass
+
+
+func on_ant_killed(type: int):
+	for child in puppet.ants.get_children():
+		if child.type == 0:
+			child.brain.force_transition("flea")
+		if child.type == 1:
+			child.brain.force_transition("flea")
+	puppet.brain.force_transition("no_ai")

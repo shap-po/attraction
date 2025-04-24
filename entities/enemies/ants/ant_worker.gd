@@ -3,14 +3,16 @@ class_name ant_worker
 
 const jitter = 0.05
 
-var type = 1
+var type = 0
 var allience = "bug"
 const weight: float = 0.4
 var health: Health = Health.new(1)
 @export var speed = 20
+@onready var brain: StateMachine = $brain
 
 signal ant_damaged
 signal ant_killed
+signal enter_home(type)
 
 @onready var collision_area_shape: CollisionShape2D = $collision_area_shape
 @onready var rotation_marker: Marker2D = $rotation_marker
@@ -31,9 +33,9 @@ func  _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func take_damage(dmg):
-	ant_damaged.emit(self)
+	ant_damaged.emit(type)
 	health.damage(dmg)
 	
 func on_zero_health():
-	ant_killed.emit(self)
+	ant_killed.emit(type)
 	queue_free()

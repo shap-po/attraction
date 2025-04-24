@@ -43,3 +43,4 @@ func force_transition(new_state_name: String)-> void:
 	if current_state:
 		current_state.exit()
 	new_state.enter()
+	current_state = new_state

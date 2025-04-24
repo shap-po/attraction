@@ -31,12 +31,14 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_wyvdy")
 
 [node name="add_ant_points" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
 
 [node name="timer" type="Timer" parent="."]
 
 [node name="brain" type="Node" parent="." node_paths=PackedStringArray("initial_state", "puppet")]
 script = ExtResource("3_nv1hj")
-initial_state = NodePath("no_ai")
+initial_state = NodePath("mound_scout")
 puppet = NodePath("..")
 metadata/_custom_type_script = "uid://trfpmwnmpqmm"
 
@@ -49,3 +51,5 @@ script = ExtResource("4_bgytr")
 metadata/_custom_type_script = "uid://cg1q7s1urt42s"
 
 [node name="ants" type="Node2D" parent="."]
+
+[connection signal="timeout" from="add_ant_points" to="." method="_on_add_ant_points_timeout"]

@@ -37,6 +37,9 @@ func choose_new_point():
 func enter():
 	choose_new_point()
 	
+func exit():
+	puppet.timer.timeout.disconnect(clock)
+	
 func procces():
 	if puppet:
 		if wait >= 0.0:

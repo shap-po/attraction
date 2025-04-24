@@ -8,9 +8,11 @@ var allience = "bug"
 const weight: float = 0.4
 var health: Health = Health.new(5)
 @export var speed = 15
+@onready var brain: StateMachine = $brain
 
 signal ant_damaged
 signal ant_killed
+signal enter_home(type)
 
 @onready var collision_area_shape: CollisionShape2D = $collision_area_shape
 @onready var rotation_marker: Marker2D = $rotation_marker
