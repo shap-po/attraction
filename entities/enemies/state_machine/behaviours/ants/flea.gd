@@ -1,19 +1,19 @@
 extends State
-class_name flea
+class_name Flea
 
 # OVERVIEW
 # worker will hide in the mound, if it has one
 
 @export var SPEED_MULTIPLIER: float = 1.5
 @export var CHECKOUT_PRECISION: float = 1
-@export var STUN_TIME: float = 2
+@export var STUN_TIME: float = 0.5
 
 var speed: float
 var stunned: bool = true
 var target_point: Vector2
 
 func on_creation():
-	if !(puppet is ant_worker): 
+	if !(puppet is AntWorker): 
 		push_warning("something initiated braincell of ant_worker without it actually being ant_worker.")
 	puppet.timer.wait_time = STUN_TIME
 	puppet.timer.timeout.connect(stunned_timeout)
@@ -24,7 +24,7 @@ func on_creation():
 	
 
 func enter():
-	create_emote(EmoteType.ALERT)
+	create_emote(Emote.EmoteType.ALERT)
 	
 
 func procces():

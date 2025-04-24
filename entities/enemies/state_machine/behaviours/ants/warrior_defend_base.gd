@@ -25,8 +25,8 @@ var orbit_angle
 
 
 func on_creation():
-	if !(puppet is ant_warrior): 
-		push_error("something initiated braincell of ant_warrior without it actually being ant_warrior.")
+	if !(puppet is AntWarrior): 
+		push_warning("something initiated braincell of ant_warrior without it actually being ant_warrior.")
 		return
 	ORBIT_SPEED *= pow(-1, randi_range(1, 2))
 	speed = puppet.speed * SPEED_MULTIPLIER
@@ -40,7 +40,7 @@ func choose_new_point():
 	if !puppet:
 		return
 	if !puppet.home:
-		puppet.brain.force_transition("no_ai")
+		puppet.brain.force_transition("NoAi")
 		print("NOT FINISHED BEHAVIOUR")
 	orbit_angle += ORBIT_SPEED
 	target_point = puppet.home.global_position + Vector2(DISTANCE_BASE, 0).rotated(orbit_angle) + Vector2(randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER), randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER))

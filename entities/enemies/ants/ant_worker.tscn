@@ -49,21 +49,21 @@ autostart = true
 
 [node name="brain" type="Node" parent="." node_paths=PackedStringArray("initial_state", "puppet")]
 script = ExtResource("3_30rtc")
-initial_state = NodePath("worker_scout")
+initial_state = NodePath("WorkerScout")
 puppet = NodePath("..")
 metadata/_custom_type_script = "uid://trfpmwnmpqmm"
 
-[node name="flea" type="Node" parent="brain"]
+[node name="Flea" type="Node" parent="brain"]
 script = ExtResource("4_td255")
 metadata/_custom_type_script = "uid://ceufrq8h7fk5q"
 
-[node name="worker_scout" type="Node" parent="brain"]
+[node name="WorkerScout" type="Node" parent="brain"]
 script = ExtResource("4_0cq0n")
 DISTANCE_BASE = 20.0
 DISTANCE_SCATTER = 5.0
 CHECKOUT_PRECISION = 5.0
 metadata/_custom_type_script = "uid://p3mnhvxh17jl"
 
-[node name="no_ai" type="Node" parent="brain"]
+[node name="NoAi" type="Node" parent="brain"]
 script = ExtResource("6_asxgm")
 metadata/_custom_type_script = "uid://cg1q7s1urt42s"

@@ -1,7 +1,7 @@
 extends CharacterBody2D
-class_name ant_worker
+class_name AntWorker
 
-const jitter = 0.05
+var jitter : float = 0.05 + randf_range(-0.01, 0.05)
 
 var type = 0
 var allience = "bug"
@@ -25,7 +25,7 @@ func _ready() -> void:
 	health.on_zero.connect(on_zero_health)
 
 
-func  _physics_process(delta: float) -> void:
+func  _physics_process(_delta: float) -> void:
 	
 	if velocity != Vector2.ZERO:
 		rotation_marker.rotation = lerp_angle(rotation_marker.rotation, velocity.angle(), weight) + pow(-1, randi_range(1,2)) * jitter * randf()

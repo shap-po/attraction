@@ -1,5 +1,5 @@
 extends State
-class_name worker_scout
+class_name WorkerScout
 
 # OVERVIEW
 # worker will try to wander towards food, if it finds it
@@ -21,7 +21,7 @@ var speed: float
 var target_point: Vector2
 
 func on_creation():
-	if !(puppet is ant_worker): 
+	if !(puppet is AntWorker): 
 		push_error("something initiated braincell of ant_worker without it actually being ant_worker.")
 		return
 	speed = puppet.speed * SPEED_MULTIPLIER

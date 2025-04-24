@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name ant_mound
+class_name AntMound
 
 @export var size: int = 1
 

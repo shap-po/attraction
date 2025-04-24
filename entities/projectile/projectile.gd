@@ -46,7 +46,7 @@ func _on_lifetime_timeout() -> void:
 	destroy()
 
 
-func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if (body.allience != allience): 
 		body.take_damage(damage)
 		if destroy_on_collision:

@@ -38,15 +38,15 @@ autostart = true
 
 [node name="brain" type="Node" parent="." node_paths=PackedStringArray("initial_state", "puppet")]
 script = ExtResource("3_nv1hj")
-initial_state = NodePath("mound_scout")
+initial_state = NodePath("MoundScout")
 puppet = NodePath("..")
 metadata/_custom_type_script = "uid://trfpmwnmpqmm"
 
-[node name="mound_scout" type="Node" parent="brain"]
+[node name="MoundScout" type="Node" parent="brain"]
 script = ExtResource("4_a5aqs")
 metadata/_custom_type_script = "uid://dpx7s4t6yxnwn"
 
-[node name="no_ai" type="Node" parent="brain"]
+[node name="NoAi" type="Node" parent="brain"]
 script = ExtResource("4_bgytr")
 metadata/_custom_type_script = "uid://cg1q7s1urt42s"
 

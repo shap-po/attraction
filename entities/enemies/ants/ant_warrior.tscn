@@ -48,18 +48,18 @@ autostart = true
 
 [node name="brain" type="Node" parent="." node_paths=PackedStringArray("initial_state", "puppet")]
 script = ExtResource("3_5kpdv")
-initial_state = NodePath("warrior_defend_base")
+initial_state = NodePath("WarriorDefendBase")
 puppet = NodePath("..")
 metadata/_custom_type_script = "uid://trfpmwnmpqmm"
 
-[node name="warrior_defend_base" type="Node" parent="brain"]
+[node name="WarriorDefendBase" type="Node" parent="brain"]
 script = ExtResource("4_5kpdv")
 metadata/_custom_type_script = "uid://cem5exb0g15g0"
 
-[node name="no_ai" type="Node" parent="brain"]
+[node name="NoAi" type="Node" parent="brain"]
 script = ExtResource("4_mwupc")
 metadata/_custom_type_script = "uid://cg1q7s1urt42s"
 
-[node name="flea" type="Node" parent="brain"]
+[node name="Flea" type="Node" parent="brain"]
 script = ExtResource("6_mwupc")
 metadata/_custom_type_script = "uid://ceufrq8h7fk5q"

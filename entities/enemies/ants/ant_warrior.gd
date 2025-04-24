@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name ant_warrior
+class_name AntWarrior
 
 const jitter = 0.05
 
@@ -33,9 +33,9 @@ func  _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func take_damage(dmg):
-	ant_damaged.emit(self)
+	ant_damaged.emit(type)
 	health.damage(dmg)
 	
 func on_zero_health():
-	ant_killed.emit(self)
+	ant_killed.emit(type)
 	queue_free()
