@@ -1,5 +1,5 @@
 @tool
-extends Item
+extends CountableItem
 class_name PlantType
 
 enum CropType {
