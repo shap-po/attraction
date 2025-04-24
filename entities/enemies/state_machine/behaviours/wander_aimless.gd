@@ -1,5 +1,5 @@
 extends State
-class_name wander_aimless
+class_name WanderAimless
 
 # OVERVIEW
 # this behaviour will choose random point around entity
@@ -13,42 +13,39 @@ class_name wander_aimless
 @export var WAIT_BASE: float = 3.0
 @export var WAIT_SCATTER: float = 4.0
 @export var TIMER_CYCLE: float = 0.25
-
 var wait: float = -1.0
 
 var speed: float
 var target_point: Vector2
 
-func on_creation():
+func on_creation() -> void:
 	speed = puppet.speed * SPEED_MULTIPLIER
 	puppet.timer.wait_time = TIMER_CYCLE
 	puppet.timer.timeout.connect(clock)
 
-func choose_new_point():
-	if !puppet:
+func choose_new_point() -> void:
+	if puppet == null:
 		return
-	target_point = puppet.global_position + Vector2(randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER), randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER)) + Vector2(pow(-1, randi_range(1,2)) * DISTANCE_BASE, pow(-1, randi_range(1,2)) * DISTANCE_BASE) 
-	var roll = randf()
-	if roll < 0.1:
+	target_point = puppet.global_position + Vector2(randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER), randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER)) + Vector2(pow(-1, randi_range(1, 2)) * DISTANCE_BASE, pow(-1, randi_range(1, 2)) * DISTANCE_BASE)
+	if randf() < 0.1:
 		wait = (WAIT_BASE + randf_range(0, WAIT_SCATTER))
-	
-	
-	
-func enter():
+
+
+func enter() -> void:
 	choose_new_point()
-	
-func exit():
+
+func exit() -> void:
 	puppet.timer.timeout.disconnect(clock)
-	
-func procces():
-	if puppet:
-		if wait >= 0.0:
-			puppet.velocity = Vector2.ZERO
-			return
-		if puppet.global_position.distance_to(target_point) < CHECKOUT_PRECISION:
-			choose_new_point()
-		puppet.velocity = speed * puppet.global_position.direction_to(target_point)
-	pass
+
+func procces() -> void:
+	if puppet == null:
+		return
+	if wait >= 0.0:
+		puppet.velocity = Vector2.ZERO
+		return
+	if puppet.global_position.distance_to(target_point) < CHECKOUT_PRECISION:
+		choose_new_point()
+	puppet.velocity = speed * puppet.global_position.direction_to(target_point)
 
 func clock():
 	if wait >= 0:

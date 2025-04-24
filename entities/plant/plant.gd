@@ -19,6 +19,7 @@ func _ready() -> void:
 	assert(plant_type != null, "Plant '" + self.to_string() + "' initialised with plant_type = null")
 	_update_texture()
 	last_growth_stage = plant_type.grow_stages.size() - 1
+	@warning_ignore("integer_division")
 	growth_ticks_per_stage = plant_type.grow_time / last_growth_stage
 
 
@@ -57,8 +58,8 @@ func harvest() -> Item:
 	var crop: Item = create_crop()
 	times_harvested += 1
 	if plant_type.crop_type == PlantType.CropType.BUSH and (plant_type.bush_harvest_limit == 0 or times_harvested < plant_type.bush_harvest_limit):
-
 		# remove growth stages
+		@warning_ignore("narrowing_conversion")
 		growth_ticks -= plant_type.bush_stages_per_harvest * growth_ticks_per_stage
 		current_growth_stage = max(current_growth_stage - plant_type.bush_stages_per_harvest, 0)
 		_update_texture()

@@ -1,17 +1,17 @@
 extends Area2D
+class_name Projectile
 
 @onready var projectile_sprite: Sprite2D = $projectile_sprite
 @onready var projectile_collision: CollisionShape2D = $projectile_collision
 @onready var lifetime: Timer = $lifetime
-
 var allience: String
 var res
-var speed : float
+var speed: float
 var deseleration: float
 var direction
 var rotation_speed
-var keep_rotating : bool
-var destroy_on_collision : bool
+var keep_rotating: bool
+var destroy_on_collision: bool
 var damage: int
 
 func _ready():
@@ -27,9 +27,8 @@ func _ready():
 	lifetime.start()
 	destroy_on_collision = res.destroy_on_collision
 	damage = res.damage
-	
 
-func _process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	global_position += speed * direction
 	if speed > deseleration:
 		speed -= deseleration
@@ -37,7 +36,7 @@ func _process(delta: float) -> void:
 		speed = 0
 	if (rotation_speed != 0) && ((speed != 0)||(keep_rotating)):
 		self.rotation += rotation_speed
-	
+
 
 func destroy():
 	queue_free()
@@ -47,7 +46,7 @@ func _on_lifetime_timeout() -> void:
 
 
 func _on_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
-	if (body.allience != allience): 
+	if body.allience != allience and body.has_method("take_damage"):
 		body.take_damage(damage)
 		if destroy_on_collision:
 			destroy()

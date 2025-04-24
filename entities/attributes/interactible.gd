@@ -7,5 +7,5 @@ enum InteractionResult {
 	FAIL ## Interaction failed
 }
 
-func interact(item: Item) -> InteractionResult:
+func interact(_item: Item) -> InteractionResult:
 	return InteractionResult.PASS

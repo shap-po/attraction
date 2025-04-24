@@ -7,36 +7,39 @@ class_name Flea
 @export var SPEED_MULTIPLIER: float = 1.5
 @export var CHECKOUT_PRECISION: float = 1
 @export var STUN_TIME: float = 0.5
-
 var speed: float
 var stunned: bool = true
 var target_point: Vector2
 
-func on_creation():
-	if !(puppet is AntWorker): 
+func get_puppet() -> Ant:
+	return puppet as Ant
+
+func on_creation() -> void:
+	if !(puppet is AntWorker):
 		push_warning("something initiated braincell of ant_worker without it actually being ant_worker.")
-	puppet.timer.wait_time = STUN_TIME
-	puppet.timer.timeout.connect(stunned_timeout)
-	puppet.timer.start()
+	get_puppet().timer.wait_time = STUN_TIME
+	get_puppet().timer.timeout.connect(stunned_timeout)
+	get_puppet().timer.start()
 	speed = puppet.speed * SPEED_MULTIPLIER
-	if puppet.home:
-		target_point = puppet.home.global_position
-	
+	if get_puppet().home:
+		target_point = get_puppet().home.global_position
 
-func enter():
+
+func enter() -> void:
 	create_emote(Emote.EmoteType.ALERT)
-	
 
-func procces():
+
+func procces() -> void:
 	if puppet:
 		if (stunned):
 			puppet.velocity = Vector2.ZERO
 			return
 		if puppet.global_position.distance_to(target_point) < CHECKOUT_PRECISION:
-			puppet.enter_home.emit(puppet.type)
+			get_puppet().enter_home.emit(get_puppet().type)
 			puppet.queue_free()
 		puppet.velocity = speed * puppet.global_position.direction_to(target_point)
 	pass
 
-func stunned_timeout():
+func stunned_timeout() -> void:
 	stunned = false
+	get_puppet().timer.timeout.disconnect(stunned_timeout)
