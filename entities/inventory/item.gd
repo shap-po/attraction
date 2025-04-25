@@ -14,3 +14,18 @@ enum ItemType {
 @export var item_type: ItemType = ItemType.DEFAULT
 @export_range(0, 99999999) var buy_price: int = 0
 @export_range(0, 99999999) var sell_price: int = 0
+
+func equals(other: Item) -> bool:
+	if other == null:
+		return false
+
+	for property in get_property_list():
+		if property.name == "count":
+			continue
+		var value = self.get(property.name)
+		var other_value = other.get(property.name)
+
+		if value != other_value:
+			return false
+
+	return true

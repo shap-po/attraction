@@ -1,42 +1,54 @@
+## Base class for everything that can hold multiple items
 extends Node
 class_name Inventory
 
-signal on_inventory_changed(slot: int)
+signal on_content_changed(slot: int)
 
-@export var inventory_size: int = 9 * 4
-var inventory: Array[Item] = []
+@export var size: int = 9 * 4
+var _content: Array[Item] = []
+
 
 func _ready() -> void:
-	for i in range(inventory_size):
-		inventory.append(null)
+	_init_content()
+
+func _init_content() -> void:
+	_content = []
+	for i in range(size):
+		_content.append(null)
 
 func is_in_bounds(slot: int) -> bool:
-	return slot >= 0 and slot < inventory_size
+	return slot >= 0 and slot < size
 
 func get_item(slot: int) -> Item:
 	if not is_in_bounds(slot):
 		return null
 
-	return inventory[slot]
+	return _content[slot]
 
 func add_item(item: Item, slot: int = -1) -> bool:
+	if item == null:
+		return false
+
 	if slot == -1:
-		slot = find_empty_slot()
+		if item is CountableItem:
+			slot = find_item(item)
+		else:
+			slot = find_empty_slot()
 
 	if not is_in_bounds(slot):
 		return false
 
-	var existing_item: Item = get_item(slot)
+	var existing_item: Item = _content[slot]
 	if existing_item != null:
-		if existing_item is CountableItem and item is CountableItem and existing_item.item_name == item.item_name:
-			existing_item.count += (item as CountableItem).count
-			on_inventory_changed.emit(slot)
+		if item is CountableItem and existing_item.equals(item):
+			(existing_item as CountableItem).count += (item as CountableItem).count
+			on_content_changed.emit(slot)
 			return true
 		else:
 			return false
 
-	inventory[slot] = item
-	on_inventory_changed.emit(slot)
+	_content[slot] = item
+	on_content_changed.emit(slot)
 	return true
 
 func remove_item(slot: int, count: int = -1) -> Item:
@@ -45,7 +57,7 @@ func remove_item(slot: int, count: int = -1) -> Item:
 	if not is_in_bounds(slot):
 		return null
 
-	var item: Item = get_item(slot)
+	var item: Item = _content[slot]
 	if item == null:
 		return null
 
@@ -54,16 +66,23 @@ func remove_item(slot: int, count: int = -1) -> Item:
 		item.count -= count
 		var item_copy: CountableItem = item.duplicate()
 		item_copy.count = count
-		on_inventory_changed.emit(slot)
+		on_content_changed.emit(slot)
 		return item_copy
 
-	inventory[slot] = null
-	on_inventory_changed.emit(slot)
+	_content[slot] = null
+	on_content_changed.emit(slot)
 	return item
 
 func find_empty_slot() -> int:
-	for i in range(inventory_size):
-		if inventory[i] == null:
+	for i in range(size):
+		if _content[i] == null:
+			return i
+
+	return -1
+
+func find_item(item: Item) -> int:
+	for i in range(size):
+		if _content[i] != null and _content[i].equals(item):
 			return i
 
 	return -1
