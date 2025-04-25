@@ -103,4 +103,6 @@ position = Vector2(-87, -25)
 [node name="ant_worker" parent="dummy" instance=ExtResource("4_tbgi4")]
 position = Vector2(-60, 2)
 
+[node name="items" type="Node2D" parent="."]
+
 [node name="player" parent="." instance=ExtResource("1_o5qli")]

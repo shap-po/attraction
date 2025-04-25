@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://5k443efggkn1"]
+
+[ext_resource type="Script" uid="uid://cdoit0rq65d8e" path="res://entities/inventory/world_item/world_item.gd" id="1_uc1w4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ailfw"]
+
+[node name="WorldItem" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_uc1w4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ailfw")

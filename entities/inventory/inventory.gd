@@ -4,9 +4,8 @@ class_name Inventory
 
 signal on_content_changed(slot: int)
 
-@export var size: int = 9 * 4
+@export_range(1, 81) var size: int
 var _content: Array[Item] = []
-
 
 func _ready() -> void:
 	_init_content()
@@ -29,11 +28,10 @@ func add_item(item: Item, slot: int = -1) -> bool:
 	if item == null:
 		return false
 
+	if slot == -1 and item is CountableItem:
+		slot = find_item(item)
 	if slot == -1:
-		if item is CountableItem:
-			slot = find_item(item)
-		else:
-			slot = find_empty_slot()
+		slot = find_empty_slot()
 
 	if not is_in_bounds(slot):
 		return false
@@ -86,3 +84,6 @@ func find_item(item: Item) -> int:
 			return i
 
 	return -1
+
+func _to_string() -> String:
+	return "Inventory " + self.name + ": {size: " + str(size) + ", content: " + str(_content) + "}"

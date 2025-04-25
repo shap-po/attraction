@@ -16,11 +16,14 @@ func harvest() -> Item:
 
 	return null
 
-func interact(item: Item) -> InteractionResult:
+func interact(player: Player, item: Item) -> InteractionResult:
 	if plant != null:
 		if plant.is_fully_grown():
-			harvest()
+			var harvested: Item = harvest()
+			player.inventory.add_item_or_drop(harvested)
+
 			return InteractionResult.SUCCESS
+
 		return InteractionResult.PASS
 
 	if item is PlantType:

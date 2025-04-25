@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq01h0x262mcp"]
+[gd_scene load_steps=6 format=3 uid="uid://cq01h0x262mcp"]
 
 [ext_resource type="Script" uid="uid://bbdpvpomsdsuh" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://cfjphdn02s7b4" path="res://assets/textures/player/dude.png" id="1_symyc"]
+[ext_resource type="Script" uid="uid://cyyje7ndescf3" path="res://entities/inventory/player_inventory.gd" id="3_sglur"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_abrql"]
 radius = 5.0
@@ -26,5 +27,9 @@ collision_mask = 2
 
 [node name="interaction_shape" type="CollisionShape2D" parent="interaction_area"]
 shape = SubResource("CircleShape2D_sglur")
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("3_sglur")
+size = 36
 
 [connection signal="timeout" from="shooting_cooldown" to="." method="_on_shooting_cooldown_timeout"]

@@ -29,3 +29,9 @@ func equals(other: Item) -> bool:
 			return false
 
 	return true
+
+func create_world_item() -> WorldItem:
+	return WorldItem.create(self.duplicate())
+
+func _to_string() -> String:
+	return item_name + ":type=" + Util.enum_to_str(ItemType, item_type) + ":buy=" + str(buy_price) + ":sell=" + str(sell_price)

@@ -9,7 +9,11 @@ enum CropType {
 
 const PLANT: PackedScene = preload("res://entities/plant/plant.tscn")
 
-@export var crop_name: String
+@export var crop_name: String:
+	set(val):
+		crop_name = val
+		item_name = crop_name + " Seed"
+
 @export var crop_type: CropType
 @export_range(0, 3600) var grow_time: int ## In seconds
 @export var grow_stages: Array[Texture2D]
@@ -22,11 +26,9 @@ const PLANT: PackedScene = preload("res://entities/plant/plant.tscn")
 @export_range(0, 10) var bush_harvest_limit: int
 @export var bush_stages_per_harvest: int = 1 ## Number of growth stages to remove when harvesting
 
-
 func _init() -> void:
 	# set item properties
 	item_type = ItemType.SEED
-	item_name = crop_name + " Seed"
 
 func create() -> Plant:
 	var instance: Plant = PLANT.instantiate()

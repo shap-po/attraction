@@ -1,3 +1,5 @@
+## Base class for objects, player can interact with
+## Note that Interactible need to have "2" collision enabled to work
 extends Area2D
 class_name Interactible
 
@@ -7,5 +9,5 @@ enum InteractionResult {
 	FAIL ## Interaction failed
 }
 
-func interact(_item: Item) -> InteractionResult:
+func interact(_player: Player, _item: Item) -> InteractionResult:
 	return InteractionResult.PASS

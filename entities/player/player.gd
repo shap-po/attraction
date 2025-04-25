@@ -1,10 +1,12 @@
 extends CharacterBody2D
+class_name Player
 
 const speed: int = 50
 const weight: float = 0.4
 var allience: String = "player"
 var direction: Vector2 = Vector2.ZERO
 var health: Health = Health.new(5)
+@onready var inventory: PlayerInventory = $Inventory
 @onready var current_weapon: ProjectileType = preload("res://assets/resources/projectiles/shoe.tres") as ProjectileType
 @onready var current_plant: PlantType = preload("res://assets/resources/plant_types/chem_root.tres") as PlantType
 @onready var PROJECTILE: PackedScene = preload("res://entities/projectile/projectile.tscn")
@@ -30,8 +32,15 @@ func _physics_process(_delta: float) -> void:
 		var shoot_ang: float = get_local_mouse_position().normalized().angle()
 		player_sprite.rotation = shoot_ang
 		shoot(shoot_ang)
-	if Input.is_action_just_pressed("rcm"):
+	if Input.is_action_just_pressed("interact"):
 		interact()
+
+	if Input.is_action_just_pressed("inventory"):
+		print(inventory)
+	if Input.is_action_just_pressed("rcm"): # for testing
+		var item: WorldItem = current_plant.create_world_item()
+		Global.main.items.add_child(item)
+		item.global_position = global_position
 	move_and_slide()
 
 func shoot(shoot_ang: float) -> void:
@@ -57,7 +66,7 @@ func interact() -> Interactible.InteractionResult:
 
 	# try to interact with the closest interactible, if passed, try the next one
 	for interactible in interactibles:
-		var res: Interactible.InteractionResult = interactible.interact(current_plant)
+		var res: Interactible.InteractionResult = interactible.interact(self, current_plant)
 		if res != Interactible.InteractionResult.PASS:
 			return res
 
