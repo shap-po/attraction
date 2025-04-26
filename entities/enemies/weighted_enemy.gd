@@ -36,13 +36,13 @@ func get_spawn_ares() -> Array[SpawnArea]:
 
 static func choose(enemies: Array[WeightedEnemy]) -> WeightedEnemy:
 	var total_weight: int = 0
-	for enemy in enemies:
-		total_weight += enemy.weight
+	for weighted in enemies:
+		total_weight += weighted.weight
 
 	var random_value: int = randi() % total_weight
-	for enemy in enemies:
-		if random_value < enemy.weight:
-			return enemy
-		random_value -= enemy.weight
+	for weighted in enemies:
+		if random_value < weighted.weight:
+			return weighted
+		random_value -= weighted.weight
 
 	return null
