@@ -12,6 +12,7 @@
 script = ExtResource("1_1c0gv")
 enemy = ExtResource("2_yw5fy")
 weight = 10
+spawn_area_mask = 16
 metadata/_custom_type_script = "uid://q5c3ew7e705r"
 
 [resource]
