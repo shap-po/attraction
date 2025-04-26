@@ -2,10 +2,12 @@ extends Node2D
 class_name Plant
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var growth_timer: Timer = $GrowthTimer
 @export var plant_type: PlantType
 
 signal on_growth_stage_change(previous: int, new: int)
 signal on_fully_grown()
+signal on_final_harvest() ## Emitted when the plant can no longer regrow after harvesting and is marked for deletion
 
 var growth_ticks: int
 var growth_ticks_per_stage: float
@@ -35,7 +37,7 @@ func _on_growth_timer_timeout() -> void:
 
 	if current_growth_stage == last_growth_stage:
 		on_fully_grown.emit()
-		$GrowthTimer.stop()
+		growth_timer.stop()
 
 func _update_texture() -> void:
 	sprite_2d.texture = plant_type.grow_stages[current_growth_stage]
@@ -66,8 +68,9 @@ func harvest() -> Item:
 		on_growth_stage_change.emit(current_growth_stage, current_growth_stage)
 
 		# restart growth timer
-		$GrowthTimer.start()
+		growth_timer.start()
 	else:
 		queue_free()
+		on_final_harvest.emit()
 
 	return crop
