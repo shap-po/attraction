@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://docyp6oo1fey7"]
+[gd_scene load_steps=3 format=3 uid="uid://docyp6oo1fey7"]
 
 [ext_resource type="Script" uid="uid://cyxdhpk2lipfv" path="res://entities/plot/plot.gd" id="1_hd46f"]
-[ext_resource type="Texture2D" uid="uid://ox0ne8spsbas" path="res://assets/textures/misc/dirt_patch.png" id="2_cchbg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilcv1"]
 
@@ -9,9 +8,6 @@
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_hd46f")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_cchbg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ilcv1")

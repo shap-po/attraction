@@ -1,4 +1,5 @@
 extends Interactible
+class_name Plot
 
 signal on_plant_added(plant_type: PlantType)
 signal on_plant_removed(plant_type: PlantType)
