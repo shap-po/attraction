@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://qi74byha511i" path="res://assets/textures/tilemaps/bottom_tilemap.png" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://cq01h0x262mcp" path="res://entities/player/player.tscn" id="1_o5qli"]
-[ext_resource type="Script" uid="uid://cwog4cu7j7a1q" path="res://scenes/main.gd" id="1_sugp2"]
-[ext_resource type="Script" uid="uid://bo8f8xt4gq5kj" path="res://scenes/bottom.gd" id="3_o6xl0"]
+[ext_resource type="Script" uid="uid://cwog4cu7j7a1q" path="res://scenes/main/main.gd" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://bo8f8xt4gq5kj" path="res://scenes/main/bottom.gd" id="3_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://c6txn1p4mo1gy" path="res://assets/textures/tilemaps/spawn_tilemap.png" id="4_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dsbjxjpcoiv64" path="res://entities/enemies/ants/ant_worker.tscn" id="4_tbgi4"]
-[ext_resource type="Script" path="res://scenes/spawner.gd" id="4_tipki"]
+[ext_resource type="Script" uid="uid://cl2mjcivobu4v" path="res://scenes/main/spawner.gd" id="4_tipki"]
 [ext_resource type="PackedScene" uid="uid://n716cs15gjtv" path="res://entities/enemies/ants/ant_mound.tscn" id="6_tefeu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]

@@ -11,7 +11,7 @@ class_name Main
 func _ready() -> void:
 	Global.main = self
 	#temp_plant_connect()
-	
+
 	randomize()
 
 func _process(_delta: float) -> void:
