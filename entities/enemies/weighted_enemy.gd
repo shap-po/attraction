@@ -26,3 +26,23 @@ func _get_property_list() -> Array[Dictionary]:
 	})
 
 	return proserties
+
+func get_spawn_ares() -> Array[SpawnArea]:
+	var areas: Array[SpawnArea] = []
+	for are in SpawnArea.values():
+		if spawn_area_mask & are != 0:
+			areas.append(are)
+	return areas
+
+static func choose(enemies: Array[WeightedEnemy]) -> WeightedEnemy:
+	var total_weight: int = 0
+	for enemy in enemies:
+		total_weight += enemy.weight
+
+	var random_value: int = randi() % total_weight
+	for enemy in enemies:
+		if random_value < enemy.weight:
+			return enemy
+		random_value -= enemy.weight
+
+	return null
