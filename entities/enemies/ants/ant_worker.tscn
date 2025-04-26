@@ -11,8 +11,8 @@
 radius = 3.33333
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_flprm"]
-radius = 35.0
-height = 103.333
+radius = 53.3333
+height = 113.333
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_30rtc"]
 radius = 11.7851

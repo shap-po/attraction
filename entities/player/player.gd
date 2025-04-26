@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-const speed: int = 50
+const speed: int = 200
 const weight: float = 0.4
 var allience: String = "player"
 var direction: Vector2 = Vector2.ZERO

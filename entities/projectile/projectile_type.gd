@@ -12,6 +12,8 @@ class_name ProjectileType
 @export var is_boomerang: bool = false
 @export var cooldown: float = 1.0
 @export var rotation_deg: int = 0
+@export var rotation_inaccuracy: float = 1.0 ## in deg
+@export var speed_inaccuracy: float = 1.0 ## in whatever speed is
 @export var keep_rotating: bool = false ## Should it keep rotating after stop?
 @export var random_rotation: bool = false
 @export var hazardeous: bool = false ## Does it ignore allience?
