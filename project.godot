@@ -26,13 +26,13 @@ window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
-[gui]
-
-theme/custom_font="uid://gynxvkuiv044"
-
 [editor]
 
 export/convert_text_resources_to_binary=false
+
+[gui]
+
+theme/custom_font="uid://gynxvkuiv044"
 
 [input]
 
