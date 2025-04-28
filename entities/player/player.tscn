@@ -22,8 +22,8 @@ shape = SubResource("CircleShape2D_abrql")
 one_shot = true
 
 [node name="interaction_area" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
+collision_layer = 4
+collision_mask = 6
 
 [node name="interaction_shape" type="CollisionShape2D" parent="interaction_area"]
 shape = SubResource("CircleShape2D_sglur")

@@ -10,20 +10,27 @@ var first_iteration: bool = true
 func create_emote(type: Emote.EmoteType):
 	Emote.create_emote(type, puppet)
 
+func fenter() -> void:
+	enter()
+
 func enter() -> void:
 	pass
+
+func fexit() -> void:
+	first_iteration = true
+	exit()
 
 func exit() -> void:
 	pass
 
-func fprocces() -> void:
+func fprocces(_delta) -> void:
 	if first_iteration: # this shit so ass, im sorry
 		first_iteration = false
 		on_creation()
-		pass
-	procces()
+		return
+	procces(_delta)
 
-func procces() -> void:
+func procces(_delta) -> void:
 	pass
 
 func on_creation() -> void:

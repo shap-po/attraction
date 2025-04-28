@@ -49,7 +49,7 @@ func choose_new_point() -> void:
 		wait = (WAIT_BASE + randf_range(0, WAIT_SCATTER))
 
 
-func procces() -> void:
+func procces(_delta) -> void:
 	if !puppet:
 		return
 	if wait >= 0.0:

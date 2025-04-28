@@ -28,8 +28,8 @@ func on_creation() -> void:
 func enter() -> void:
 	create_emote(Emote.EmoteType.ALERT)
 
-
-func procces() -> void:
+	
+func procces(_delta) -> void:
 	if puppet:
 		if (stunned):
 			puppet.velocity = Vector2.ZERO

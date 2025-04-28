@@ -15,7 +15,7 @@ var target_point: Vector2
 func on_creation():
 	speed = puppet.speed * SPEED_MULTIPLIER
 
-func choose_new_point() -> void:
+func choose_new_point(_delta) -> void:
 	if puppet == null:
 		return
 

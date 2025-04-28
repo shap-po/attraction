@@ -16,17 +16,10 @@ var type: AntType
 var jitter: float = 0.05 + randf_range(-0.01, 0.05)
 
 var allience: String = "bug"
-var weight: float
 var home: Node2D = null
-@onready var collision_area_shape: CollisionShape2D = $collision_area_shape
-@onready var rotation_marker: Marker2D = $rotation_marker
-@onready var area_sight: Area2D = $rotation_marker/area_sight
-@onready var area_touch: Area2D = $rotation_marker/area_touch
 
 func _physics_process(_delta: float) -> void:
-	if velocity != Vector2.ZERO:
-		rotation_marker.rotation = lerp_angle(rotation_marker.rotation, velocity.angle(), weight) + pow(-1, randi_range(1, 2)) * jitter * randf()
-
+	rotate_where_going(jitter)
 	move_and_slide()
 
 func take_damage(damage: int) -> void:
