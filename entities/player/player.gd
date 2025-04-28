@@ -10,11 +10,11 @@ var health: Health = Health.new(5)
 @onready var current_weapon: ProjectileType = preload("res://assets/resources/projectiles/shoe.tres") as ProjectileType
 @onready var current_plant: PlantType = preload("res://assets/resources/plant_types/chem_root.tres") as PlantType
 @onready var PROJECTILE: PackedScene = preload("res://entities/projectile/projectile.tscn")
-@onready var shooting_cooldown: Timer = $shooting_cooldown
-@onready var player_sprite: Sprite2D = $player_sprite
+@onready var shooting_cooldown: Timer = $ShootingCooldownTimer
+@onready var interaction_cooldown: Timer = $InteractionCooldownTimer
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var dummy = %dummy
-@onready var interaction_area: Area2D = $interaction_area
-var can_shoot: bool = true
+@onready var interaction_area: Area2D = $InteractionArea2D
 
 
 func _ready() -> void:
@@ -24,16 +24,18 @@ func _physics_process(_delta: float) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
 	if velocity != Vector2.ZERO:
-		player_sprite.rotation = lerp_angle(player_sprite.rotation, velocity.angle(), weight)
+		sprite.rotation = lerp_angle(sprite.rotation, velocity.angle(), weight)
 
-	if Input.is_action_pressed("lcm") and can_shoot:
-		can_shoot = false
+	if Input.is_action_pressed("lcm") and shooting_cooldown.is_stopped():
 		shooting_cooldown.start()
 		var shoot_ang: float = get_local_mouse_position().normalized().angle()
-		player_sprite.rotation = shoot_ang
+		sprite.rotation = shoot_ang
 		shoot(shoot_ang)
-	if Input.is_action_just_pressed("interact"):
-		interact()
+	if Input.is_action_pressed("interact") and interaction_cooldown.is_stopped():
+		var res: Interactible.InteractionResult = interact()
+		if res != Interactible.InteractionResult.PASS:
+			interaction_cooldown.start()
+
 
 	if Input.is_action_just_pressed("inventory"):
 		print(inventory)
@@ -71,6 +73,3 @@ func interact() -> Interactible.InteractionResult:
 			return res
 
 	return Interactible.InteractionResult.PASS
-
-func _on_shooting_cooldown_timeout() -> void:
-	can_shoot = true
