@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://n716cs15gjtv"]
+[gd_scene load_steps=9 format=3 uid="uid://n716cs15gjtv"]
 
 [ext_resource type="Script" uid="uid://bepneo4fh82sg" path="res://entities/enemies/ants/ant_mound.gd" id="1_28qug"]
 [ext_resource type="Texture2D" uid="uid://b64q0j1uh6f3q" path="res://assets/textures/enemies/ants/ant_mound_small.png" id="1_44fhl"]
@@ -6,29 +6,39 @@
 [ext_resource type="Script" uid="uid://dpx7s4t6yxnwn" path="res://entities/enemies/state_machine/behaviours/ants/mound_scout.gd" id="4_a5aqs"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_bgytr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bmtoe"]
-radius = 4.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_bgytr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wyvdy"]
-radius = 37.6563
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5aqs"]
+radius = 114.28
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xog81"]
+radius = 11.7851
 
 [node name="AntMound" type="CharacterBody2D"]
-collision_layer = 4
+collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_28qug")
 
-[node name="ant_mound_sprite" type="Sprite2D" parent="."]
+[node name="collision_area_shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bgytr")
+
+[node name="rotation_marker" type="Marker2D" parent="."]
+
+[node name="ant_mound_sprite" type="Sprite2D" parent="rotation_marker"]
 position = Vector2(0, -3)
 texture = ExtResource("1_44fhl")
 
-[node name="ant_mound_collision" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_bmtoe")
+[node name="area_sight" type="Area2D" parent="rotation_marker"]
 
-[node name="area_sight" type="Area2D" parent="."]
-
-[node name="vision_area_sight_shape" type="CollisionShape2D" parent="area_sight"]
+[node name="vision_area_sight_shape" type="CollisionShape2D" parent="rotation_marker/area_sight"]
+position = Vector2(0, -1.17477e-12)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_wyvdy")
+shape = SubResource("CircleShape2D_a5aqs")
+
+[node name="area_touch" type="Area2D" parent="rotation_marker"]
+
+[node name="vision_area_touch_shape" type="CollisionShape2D" parent="rotation_marker/area_touch"]
+shape = SubResource("CircleShape2D_xog81")
 
 [node name="add_ant_points" type="Timer" parent="."]
 wait_time = 10.0

@@ -43,7 +43,7 @@ func exit() -> void:
 func enter() -> void:
 	choose_new_point()
 
-func procces() -> void:
+func procces(_delta) -> void:
 	if puppet:
 		if wait >= 0.0:
 			puppet.velocity = Vector2.ZERO

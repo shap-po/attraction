@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ruu8kpyuaiel"]
+[gd_scene load_steps=9 format=3 uid="uid://ruu8kpyuaiel"]
 
 [ext_resource type="Script" uid="uid://b5stq4xgvvdtk" path="res://entities/enemies/ants/ant_warrior.gd" id="1_0o3ao"]
 [ext_resource type="Texture2D" uid="uid://uek1e6hcw2rv" path="res://assets/textures/enemies/ants/ant_warriror.png" id="2_5kpdv"]
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_5kpdv"]
 [ext_resource type="Script" uid="uid://cem5exb0g15g0" path="res://entities/enemies/state_machine/behaviours/ants/warrior_defend_base.gd" id="4_5kpdv"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_mwupc"]
-[ext_resource type="Script" uid="uid://ceufrq8h7fk5q" path="res://entities/enemies/state_machine/behaviours/ants/flea.gd" id="6_mwupc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_teqsf"]
 
@@ -59,7 +58,3 @@ metadata/_custom_type_script = "uid://cem5exb0g15g0"
 [node name="NoAi" type="Node" parent="brain"]
 script = ExtResource("4_mwupc")
 metadata/_custom_type_script = "uid://cg1q7s1urt42s"
-
-[node name="Flea" type="Node" parent="brain"]
-script = ExtResource("6_mwupc")
-metadata/_custom_type_script = "uid://ceufrq8h7fk5q"

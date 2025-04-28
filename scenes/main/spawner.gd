@@ -11,15 +11,9 @@ const AREA_CORDS_ATLAS: Dictionary = {
 	WeightedEnemy.SpawnArea.RIGHT: Vector2i(1,0),
 	WeightedEnemy.SpawnArea.FARM: Vector2i(2,0)
 }
-const CHEM_ROOT = preload("res://assets/resources/plant_types/chem_root.tres")
 func _ready() -> void:
 	for e in WeightedEnemy.SpawnArea.values():
 		spawn_positions_dict[e] = self.get_used_cells_by_id(-1,AREA_CORDS_ATLAS[e])
-	
-	
-	weighted_enemies_spawn.append(CHEM_ROOT.enemies_pool[0])
-	natural_spawn_enemy()
-	natural_spawn_enemy()
 
 
 func natural_spawn_enemy(): ## spawns enemy with weights in here on location

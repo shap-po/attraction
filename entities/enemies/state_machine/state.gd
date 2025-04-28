@@ -16,14 +16,14 @@ func enter() -> void:
 func exit() -> void:
 	pass
 
-func fprocces() -> void:
+func fprocces(_delta) -> void:
 	if first_iteration: # this shit so ass, im sorry
 		first_iteration = false
 		on_creation()
-		pass
-	procces()
+		return
+	procces(_delta)
 
-func procces() -> void:
+func procces(_delta) -> void:
 	pass
 
 func on_creation() -> void:

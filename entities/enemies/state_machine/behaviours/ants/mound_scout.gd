@@ -19,14 +19,12 @@ func on_creation() -> void:
 func enter() -> void:
 	pass
 
-func procces() -> void:
+func procces(_delta) -> void:
 	get_puppet().summon_ant(Ant.AntType.WARRIOR)
 	pass
 
 func on_ant_killed(type: int):
 	for child in get_puppet().ants.get_children():
 		if child.type == 0:
-			child.brain.force_transition("Flea")
-		if child.type == 1:
 			child.brain.force_transition("Flea")
 	puppet.brain.force_transition("NoAi")

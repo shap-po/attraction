@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://01mbau86j0cn"]
+[gd_scene load_steps=13 format=4 uid="uid://bdg8031rfidl6"]
 
 [ext_resource type="Texture2D" uid="uid://qi74byha511i" path="res://assets/textures/tilemaps/bottom_tilemap.png" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://cq01h0x262mcp" path="res://entities/player/player.tscn" id="1_o5qli"]
@@ -8,8 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dsbjxjpcoiv64" path="res://entities/enemies/ants/ant_worker.tscn" id="4_tbgi4"]
 [ext_resource type="Script" uid="uid://cl2mjcivobu4v" path="res://scenes/main/spawner.gd" id="4_tipki"]
 [ext_resource type="PackedScene" uid="uid://n716cs15gjtv" path="res://entities/enemies/ants/ant_mound.tscn" id="6_tefeu"]
-[ext_resource type="Texture2D" uid="uid://c3o1fjyinet1x" path="res://assets/textures/misc/emotes/question.png" id="8_a8run"]
-[ext_resource type="PackedScene" uid="uid://bjsg7mkm5swaq" path="res://entities/enemies/gnat.tscn" id="9_b1x3f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("1_0wfyh")
@@ -143,13 +141,10 @@ script = ExtResource("4_tipki")
 [node name="plots" type="Node2D" parent="map"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(4, 4)
 
 [node name="dummy" type="Node2D" parent="."]
 unique_name_in_owner = true
-
-[node name="gnat" parent="dummy" instance=ExtResource("9_b1x3f")]
-position = Vector2(-202, 7)
 
 [node name="ant_mound" parent="dummy" instance=ExtResource("6_tefeu")]
 position = Vector2(-397, -89)
@@ -157,10 +152,7 @@ position = Vector2(-397, -89)
 [node name="ant_worker" parent="dummy" instance=ExtResource("4_tbgi4")]
 position = Vector2(-257, -393)
 
-[node name="Question" type="Sprite2D" parent="dummy"]
-texture = ExtResource("8_a8run")
-
 [node name="items" type="Node2D" parent="."]
 
 [node name="player" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(-48, 0)
+position = Vector2(28, -65)
