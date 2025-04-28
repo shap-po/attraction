@@ -13,7 +13,7 @@ func _ready() -> void:
 			states_dict[child.name.to_upper()] = child
 			#child.transitioned_signal.connect(on_child_transition)
 	if initial_state != null:
-		initial_state.enter()
+		initial_state.fenter()
 		current_state = initial_state
 
 func _physics_process(_delta: float) -> void:
@@ -34,13 +34,13 @@ func on_child_transition(old_state: State, new_state_name: String) -> void:
 	new_state.enter()
 
 func force_transition(new_state_name: String)-> void:
-	print("[StateMacine] ", current_state.name, " => ", new_state_name)
+	#print("[StateMacine] ", current_state.name, " => ", new_state_name)
 	var new_state: State = states_dict.get(new_state_name.to_upper())
 	if new_state == null:
 		return
 	if current_state == new_state:
 		return
 	if current_state != null:
-		current_state.exit()
+		current_state.fexit()
 	current_state = new_state
-	current_state.enter()
+	current_state.fenter()

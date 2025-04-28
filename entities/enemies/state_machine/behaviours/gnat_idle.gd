@@ -15,6 +15,7 @@ func on_creation() -> void:
 	puppet.unconditional_state = "GnatAttackPlayer"
 
 
+
 func procces(_delta) -> void:
 	if puppet == null:
 		return

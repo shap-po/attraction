@@ -8,13 +8,14 @@ func on_creation():
 	n_state = puppet.unconditional_state 
 	if n_state == "GnatIdle":
 		scale_mod = 1
-		print("[GnatAirborne] GnatAttackPlayer => GnatAirborne")
+		#print("[GnatAirborne] GnatAttackPlayer => GnatAirborne")
 	if n_state == "GnatAttackPlayer":
 		scale_mod = 0.7
-		print("[GnatAirborne] GnatIdle => GnatAirborne")
+		#print("[GnatAirborne] GnatIdle => GnatAirborne")
 
 func procces(_delta) -> void:
-	print("[GnatAirborne] scale_mod =", scale_mod)
+	#print("[GnatAirborne] scale_mod =", scale_mod)
+	#print("[GnatAirborne] n_state =", n_state)
 	if n_state == "GnatIdle":
 		scale_mod -= 0.01
 	if n_state == "GnatAttackPlayer":
@@ -30,6 +31,5 @@ func procces(_delta) -> void:
 		next_state()
 	
 func next_state():
-	print("[GnatAirborne] GnatAirborne => ", n_state)
+	#print("[GnatAirborne] GnatAirborne => ", n_state)
 	puppet.brain.force_transition(n_state)
-	n_state = ""

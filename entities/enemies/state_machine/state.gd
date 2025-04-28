@@ -10,8 +10,15 @@ var first_iteration: bool = true
 func create_emote(type: Emote.EmoteType):
 	Emote.create_emote(type, puppet)
 
+func fenter() -> void:
+	enter()
+
 func enter() -> void:
 	pass
+
+func fexit() -> void:
+	first_iteration = true
+	exit()
 
 func exit() -> void:
 	pass
