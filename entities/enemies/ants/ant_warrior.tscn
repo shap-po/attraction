@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ruu8kpyuaiel"]
+[gd_scene load_steps=10 format=3 uid="uid://ruu8kpyuaiel"]
 
 [ext_resource type="Script" uid="uid://b5stq4xgvvdtk" path="res://entities/enemies/ants/ant_warrior.gd" id="1_0o3ao"]
 [ext_resource type="Texture2D" uid="uid://uek1e6hcw2rv" path="res://assets/textures/enemies/ants/ant_warriror.png" id="2_5kpdv"]
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_5kpdv"]
+[ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="3_mwupc"]
 [ext_resource type="Script" uid="uid://cem5exb0g15g0" path="res://entities/enemies/state_machine/behaviours/ants/warrior_defend_base.gd" id="4_5kpdv"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_mwupc"]
 
@@ -20,6 +21,8 @@ scale = Vector2(0.6, 0.6)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_0o3ao")
+type = 1
+speed = 15.0
 
 [node name="collision_area_shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_teqsf")
@@ -40,6 +43,11 @@ shape = SubResource("CapsuleShape2D_hih1t")
 
 [node name="vision_area_touch_shape" type="CollisionShape2D" parent="rotation_marker/area_touch"]
 shape = SubResource("CircleShape2D_0o3ao")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_mwupc")
+value = 1
+metadata/_custom_type_script = "uid://dcfhd17x78npj"
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 0.25

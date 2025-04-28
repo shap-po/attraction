@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cq01h0x262mcp"]
+[gd_scene load_steps=7 format=3 uid="uid://cq01h0x262mcp"]
 
 [ext_resource type="Script" uid="uid://bbdpvpomsdsuh" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://cfjphdn02s7b4" path="res://assets/textures/player/dude.png" id="1_symyc"]
 [ext_resource type="Script" uid="uid://cyyje7ndescf3" path="res://entities/inventory/player_inventory.gd" id="3_sglur"]
+[ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="4_bls4j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_abrql"]
 radius = 5.0
@@ -35,3 +36,6 @@ shape = SubResource("CircleShape2D_sglur")
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("3_sglur")
 size = 36
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("4_bls4j")

@@ -153,6 +153,7 @@ position = Vector2(-202, 7)
 
 [node name="ant_mound" parent="dummy" instance=ExtResource("6_tefeu")]
 position = Vector2(-397, -89)
+collision_layer = 4
 
 [node name="ant_worker" parent="dummy" instance=ExtResource("4_tbgi4")]
 position = Vector2(-257, -393)

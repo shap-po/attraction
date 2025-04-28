@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://n716cs15gjtv"]
+[gd_scene load_steps=10 format=3 uid="uid://n716cs15gjtv"]
 
 [ext_resource type="Script" uid="uid://bepneo4fh82sg" path="res://entities/enemies/ants/ant_mound.gd" id="1_28qug"]
 [ext_resource type="Texture2D" uid="uid://b64q0j1uh6f3q" path="res://assets/textures/enemies/ants/ant_mound_small.png" id="1_44fhl"]
+[ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="3_a5aqs"]
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_nv1hj"]
 [ext_resource type="Script" uid="uid://dpx7s4t6yxnwn" path="res://entities/enemies/state_machine/behaviours/ants/mound_scout.gd" id="4_a5aqs"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_bgytr"]
@@ -39,6 +40,11 @@ shape = SubResource("CircleShape2D_a5aqs")
 
 [node name="vision_area_touch_shape" type="CollisionShape2D" parent="rotation_marker/area_touch"]
 shape = SubResource("CircleShape2D_xog81")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_a5aqs")
+value = 1
+metadata/_custom_type_script = "uid://dcfhd17x78npj"
 
 [node name="add_ant_points" type="Timer" parent="."]
 wait_time = 10.0

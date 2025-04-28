@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjsg7mkm5swaq"]
+[gd_scene load_steps=12 format=3 uid="uid://bjsg7mkm5swaq"]
 
-[ext_resource type="Script" uid="uid://dkwf1nly0b2wx" path="res://gnat.gd" id="1_4gkgm"]
+[ext_resource type="Script" uid="uid://dkwf1nly0b2wx" path="res://entities/enemies/gnat.gd" id="1_137j7"]
 [ext_resource type="Texture2D" uid="uid://ccgvaotqf4yil" path="res://assets/textures/enemies/gnat.png" id="2_84y21"]
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_iqwjq"]
+[ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="3_th1rh"]
 [ext_resource type="Script" uid="uid://b47slynxvkcm" path="res://entities/enemies/state_machine/behaviours/gnat_attack_player.gd" id="4_0ia1a"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_8hmys"]
 [ext_resource type="Script" uid="uid://by1v8sj8wxofy" path="res://entities/enemies/state_machine/behaviours/gnat_airborne.gd" id="4_137j7"]
@@ -19,7 +20,8 @@ radius = 11.7851
 [node name="gnat" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_4gkgm")
+script = ExtResource("1_137j7")
+speed = 100.0
 metadata/_edit_vertical_guides_ = [-521.0]
 
 [node name="collision_area_shape" type="CollisionShape2D" parent="."]
@@ -48,6 +50,11 @@ collision_mask = 4
 [node name="vision_area_touch_shape" type="CollisionShape2D" parent="rotation_marker/area_touch"]
 shape = SubResource("CircleShape2D_8hmys")
 
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_th1rh")
+value = 1
+metadata/_custom_type_script = "uid://dcfhd17x78npj"
+
 [node name="brain" type="Node" parent="." node_paths=PackedStringArray("initial_state", "puppet")]
 script = ExtResource("3_iqwjq")
 initial_state = NodePath("GnatAttackPlayer")
@@ -56,15 +63,12 @@ metadata/_custom_type_script = "uid://trfpmwnmpqmm"
 
 [node name="GnatAirborne" type="Node" parent="brain"]
 script = ExtResource("4_137j7")
-metadata/_custom_type_script = "uid://by1v8sj8wxofy"
 
 [node name="GnatIdle" type="Node" parent="brain"]
 script = ExtResource("4_e2xfl")
-metadata/_custom_type_script = "uid://6r10twc71dhp"
 
 [node name="GnatAttackPlayer" type="Node" parent="brain"]
 script = ExtResource("4_0ia1a")
-metadata/_custom_type_script = "uid://b47slynxvkcm"
 
 [node name="NoAi" type="Node" parent="brain"]
 script = ExtResource("4_8hmys")
