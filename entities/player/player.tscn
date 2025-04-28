@@ -12,10 +12,10 @@ radius = 5.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_abrql")
 
-[node name="player_sprite" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_symyc")
 
-[node name="player_collision" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_abrql")
 
 [node name="ShootingCooldownTimer" type="Timer" parent="."]
@@ -25,11 +25,11 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
-[node name="interaction_area" type="Area2D" parent="."]
+[node name="InteractionArea2D" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 6
 
-[node name="interaction_shape" type="CollisionShape2D" parent="interaction_area"]
+[node name="InteractionCollisionShape2D" type="CollisionShape2D" parent="InteractionArea2D"]
 shape = SubResource("CircleShape2D_sglur")
 
 [node name="Inventory" type="Node" parent="."]
