@@ -1,0 +1,118 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvekckwny1lnq"]
+
+[ext_resource type="PackedScene" uid="uid://carwgukjspvmk" path="res://scenes/tiles/item_tile2.tscn" id="1_3tvp2"]
+
+[node name="invenotryGrid" type="GridContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 9
+
+[node name="itemButton" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton2" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton3" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton4" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton5" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton6" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton7" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton8" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton9" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton10" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton11" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton12" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton13" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton14" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton15" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton16" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton17" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton18" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton19" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton20" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton21" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton22" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton23" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton24" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton25" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton26" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton27" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton28" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton29" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton30" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton31" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton32" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton33" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton34" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton35" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2
+
+[node name="itemButton36" parent="." instance=ExtResource("1_3tvp2")]
+layout_mode = 2

@@ -21,12 +21,18 @@ Global="*res://globals/global.gd"
 
 [display]
 
-window/stretch/mode="viewport"
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [editor]
 
 export/convert_text_resources_to_binary=false
+
+[gui]
+
+theme/custom_font="uid://gynxvkuiv044"
 
 [input]
 
@@ -120,3 +126,4 @@ rcm={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+lightmapping/default_font_subpixel_positioning=1
