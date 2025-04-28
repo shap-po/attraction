@@ -19,13 +19,12 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [gui]
 
 theme/custom_font="uid://gynxvkuiv044"
-theme/default_font_subpixel_positioning=0
 
 [input]
 
@@ -112,3 +111,4 @@ rcm={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+lightmapping/default_font_subpixel_positioning=1

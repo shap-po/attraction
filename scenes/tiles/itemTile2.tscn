@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://carwgukjspvmk"]
+
+[ext_resource type="Texture2D" uid="uid://d4mfc2kdbjuy1" path="res://assets/textures/shop/UI Building Blocks.png" id="1_w2xcg"]
+[ext_resource type="Texture2D" uid="uid://xh72hx23lud1" path="res://assets/textures/plants/thing_planted.png" id="2_emphv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_emphv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w2xcg"]
+texture = ExtResource("1_w2xcg")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_emphv"]
+texture = ExtResource("1_w2xcg")
+texture_margin_left = 8.0
+texture_margin_top = 9.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(48, 0, 32, 32)
+
+[node name="itemButton" type="AspectRatioContainer"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="button" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_emphv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w2xcg")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_w2xcg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_emphv")
+
+[node name="itemTexture" type="TextureRect" parent="button"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_emphv")
+stretch_mode = 5
+
+[node name="itemPrice" type="Label" parent="button"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -21.0
+offset_right = 12.0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.441515, 0.91299, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "0"
+vertical_alignment = 2
+
+[node name="itemCount" type="Label" parent="button"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -21.0
+offset_right = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 19
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 2

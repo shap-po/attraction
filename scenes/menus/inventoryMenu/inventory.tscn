@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqqsup6xm5b3a"]
+
+[ext_resource type="PackedScene" uid="uid://b4d7l1oq70mup" path="res://scenes/menus/menuWindow/menuWindowTemplateBIG.tscn" id="1_06x7i"]
+[ext_resource type="PackedScene" uid="uid://bvekckwny1lnq" path="res://scenes/tiles/invenotryGrid.tscn" id="2_ddicf"]
+
+[node name="inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="menuWindowTemplateBig" parent="." instance=ExtResource("1_06x7i")]
+layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="Items" type="PanelContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="invenotryGrid" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Items" instance=ExtResource("2_ddicf")]
+layout_mode = 2
+
+[editable path="menuWindowTemplateBig"]
