@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dawbq3k8145p2"]
 
-[ext_resource type="PackedScene" uid="uid://b4d7l1oq70mup" path="res://scenes/menus/menuWindow/menuWindowTemplateBIG.tscn" id="1_fagi7"]
+[ext_resource type="PackedScene" uid="uid://b4d7l1oq70mup" path="res://scenes/menus/menuWindow/menu_window_template_big.tscn" id="1_fagi7"]
 [ext_resource type="Texture2D" uid="uid://d4mfc2kdbjuy1" path="res://assets/textures/shop/UI Building Blocks.png" id="2_5rl1t"]
-[ext_resource type="PackedScene" uid="uid://carwgukjspvmk" path="res://scenes/tiles/itemTile2.tscn" id="3_fagi7"]
-[ext_resource type="PackedScene" uid="uid://bvekckwny1lnq" path="res://scenes/tiles/invenotryGrid.tscn" id="4_5rl1t"]
+[ext_resource type="PackedScene" uid="uid://carwgukjspvmk" path="res://scenes/tiles/item_tile2.tscn" id="3_fagi7"]
+[ext_resource type="PackedScene" uid="uid://bvekckwny1lnq" path="res://scenes/tiles/inventory_grid.tscn" id="4_5rl1t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fagi7"]
 

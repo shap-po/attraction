@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bvekckwny1lnq"]
 
-[ext_resource type="PackedScene" uid="uid://carwgukjspvmk" path="res://scenes/tiles/itemTile2.tscn" id="1_3tvp2"]
+[ext_resource type="PackedScene" uid="uid://carwgukjspvmk" path="res://scenes/tiles/item_tile2.tscn" id="1_3tvp2"]
 
 [node name="invenotryGrid" type="GridContainer"]
 size_flags_horizontal = 3

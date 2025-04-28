@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqqsup6xm5b3a"]
 
-[ext_resource type="PackedScene" uid="uid://b4d7l1oq70mup" path="res://scenes/menus/menuWindow/menuWindowTemplateBIG.tscn" id="1_06x7i"]
-[ext_resource type="PackedScene" uid="uid://bvekckwny1lnq" path="res://scenes/tiles/invenotryGrid.tscn" id="2_ddicf"]
+[ext_resource type="PackedScene" uid="uid://b4d7l1oq70mup" path="res://scenes/menus/menuWindow/menu_window_template_big.tscn" id="1_06x7i"]
+[ext_resource type="PackedScene" uid="uid://bvekckwny1lnq" path="res://scenes/tiles/inventory_grid.tscn" id="2_ddicf"]
 
 [node name="inventory" type="Control"]
 layout_mode = 3
