@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_mwupc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_teqsf"]
+radius = 6.87184
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hih1t"]
 radius = 78.3333

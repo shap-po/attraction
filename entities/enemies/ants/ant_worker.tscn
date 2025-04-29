@@ -12,11 +12,11 @@
 radius = 3.33333
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_flprm"]
-radius = 53.3333
-height = 113.333
+radius = 70.0
+height = 140.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_30rtc"]
-radius = 11.7851
+radius = 12.1335
 
 [node name="AntWorker" type="CharacterBody2D"]
 scale = Vector2(0.6, 0.6)
@@ -36,7 +36,7 @@ texture = ExtResource("1_xvnl3")
 [node name="area_sight" type="Area2D" parent="rotation_marker"]
 
 [node name="vision_area_sight_shape" type="CollisionShape2D" parent="rotation_marker/area_sight"]
-position = Vector2(16.6667, 3.78956e-14)
+position = Vector2(25, -6.10119e-12)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_flprm")
 

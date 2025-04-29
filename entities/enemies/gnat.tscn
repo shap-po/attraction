@@ -10,12 +10,13 @@
 [ext_resource type="Script" uid="uid://6r10twc71dhp" path="res://entities/enemies/state_machine/behaviours/gnat_idle.gd" id="4_e2xfl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qvl3w"]
+radius = 7.07107
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ia1a"]
-radius = 140.0
+radius = 140.004
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8hmys"]
-radius = 11.7851
+radius = 17.4642
 
 [node name="gnat" type="CharacterBody2D"]
 collision_layer = 4

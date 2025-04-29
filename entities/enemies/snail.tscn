@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://xbffllw1i5mo"]
+
+[ext_resource type="Script" uid="uid://b82g3btto72s1" path="res://entities/enemies/snail.gd" id="1_334tu"]
+[ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="2_8bnin"]
+[ext_resource type="Texture2D" uid="uid://bmwm12pdu7jnj" path="res://assets/textures/enemies/snail/slug-rigth.png" id="2_okn6t"]
+[ext_resource type="Texture2D" uid="uid://4bk3p6d7ynqs" path="res://assets/textures/enemies/snail/shell-right.png" id="3_0scor"]
+[ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_334tu"]
+[ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_vxiei"]
+[ext_resource type="Script" uid="uid://ch3cl7t1hn66h" path="res://entities/enemies/state_machine/behaviours/snail_scout_food.gd" id="6_dt2a5"]
+[ext_resource type="Script" uid="uid://fscws6o8mc6c" path="res://entities/enemies/state_machine/behaviours/snail_atttack_food.gd" id="7_vxiei"]
+[ext_resource type="Script" uid="uid://b601wghkdyp7l" path="res://entities/enemies/state_machine/behaviours/snail_hide.gd" id="8_juvgg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cgr7e"]
+radius = 7.07107
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l5ns5"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_okn6t"]
+radius = 17.4642
+
+[node name="snail" type="CharacterBody2D"]
+script = ExtResource("1_334tu")
+speed = 10.0
+
+[node name="collision_area_shape" type="CollisionShape2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CircleShape2D_cgr7e")
+
+[node name="rotation_marker" type="Marker2D" parent="."]
+
+[node name="slug_sprite" type="Sprite2D" parent="rotation_marker"]
+texture = ExtResource("2_okn6t")
+
+[node name="shell_sprite" type="Sprite2D" parent="rotation_marker"]
+texture = ExtResource("3_0scor")
+
+[node name="area_sight" type="Area2D" parent="rotation_marker"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="vision_area_sight_shape" type="CollisionShape2D" parent="rotation_marker/area_sight"]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_l5ns5")
+
+[node name="area_touch" type="Area2D" parent="rotation_marker"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="vision_area_touch_shape" type="CollisionShape2D" parent="rotation_marker/area_touch"]
+shape = SubResource("CircleShape2D_okn6t")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_8bnin")
+metadata/_custom_type_script = "uid://dcfhd17x78npj"
+
+[node name="timer" type="Timer" parent="."]
+
+[node name="brain" type="Node" parent="." node_paths=PackedStringArray("initial_state", "puppet")]
+script = ExtResource("3_334tu")
+initial_state = NodePath("NoAi")
+puppet = NodePath("..")
+metadata/_custom_type_script = "uid://trfpmwnmpqmm"
+
+[node name="SnailScoutFood" type="Node" parent="brain"]
+script = ExtResource("6_dt2a5")
+metadata/_custom_type_script = "uid://ch3cl7t1hn66h"
+
+[node name="SnailAttackFood" type="Node" parent="brain"]
+script = ExtResource("7_vxiei")
+metadata/_custom_type_script = "uid://fscws6o8mc6c"
+
+[node name="SnailHide" type="Node" parent="brain"]
+script = ExtResource("8_juvgg")
+metadata/_custom_type_script = "uid://b601wghkdyp7l"
+
+[node name="NoAi" type="Node" parent="brain"]
+script = ExtResource("4_vxiei")
+metadata/_custom_type_script = "uid://cg1q7s1urt42s"

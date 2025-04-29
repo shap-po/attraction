@@ -37,7 +37,7 @@ func enter() -> void:
 func exit() -> void:
 	puppet.timer.timeout.disconnect(clock)
 
-func procces() -> void:
+func procces(_delta) -> void:
 	if puppet == null:
 		return
 	if wait >= 0.0:
