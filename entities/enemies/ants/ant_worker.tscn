@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsbjxjpcoiv64"]
+[gd_scene load_steps=11 format=3 uid="uid://dsbjxjpcoiv64"]
 
 [ext_resource type="Script" uid="uid://d1uucxgmgkhb4" path="res://entities/enemies/ants/ant_worker.gd" id="1_bi10t"]
 [ext_resource type="Texture2D" uid="uid://cgk6kjl2046js" path="res://assets/textures/enemies/ants/ant_worker.png" id="1_xvnl3"]
+[ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="3_3cb7r"]
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_30rtc"]
 [ext_resource type="Script" uid="uid://p3mnhvxh17jl" path="res://entities/enemies/state_machine/behaviours/ants/worker_scout.gd" id="4_0cq0n"]
 [ext_resource type="Script" uid="uid://ceufrq8h7fk5q" path="res://entities/enemies/state_machine/behaviours/ants/flea.gd" id="4_td255"]
@@ -22,6 +23,7 @@ scale = Vector2(0.6, 0.6)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_bi10t")
+speed = 20.0
 
 [node name="collision_area_shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_degik")
@@ -42,6 +44,11 @@ shape = SubResource("CapsuleShape2D_flprm")
 
 [node name="vision_area_touch_shape" type="CollisionShape2D" parent="rotation_marker/area_touch"]
 shape = SubResource("CircleShape2D_30rtc")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_3cb7r")
+value = 1
+metadata/_custom_type_script = "uid://dcfhd17x78npj"
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 0.25

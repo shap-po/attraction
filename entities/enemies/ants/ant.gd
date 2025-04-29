@@ -11,7 +11,7 @@ signal ant_killed(type: AntType)
 @warning_ignore("unused_signal")
 signal enter_home(type: AntType)
 
-var type: AntType
+@export var type: AntType
 
 var jitter: float = 0.05 + randf_range(-0.01, 0.05)
 

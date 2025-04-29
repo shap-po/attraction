@@ -22,7 +22,6 @@ var current_ants: Array[int] = [0, 0]
 var ant_points: int
 
 func _ready() -> void:
-	health = Health.new(1)
 	health.on_zero.connect(on_zero_health)
 	ant_points = max_ant_points[size]
 	add_ant_points.wait_time = ant_points_recharge_speed[size]
