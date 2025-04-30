@@ -3,7 +3,6 @@ class_name GnatIdle
 
 # OVERVIEW
 # will simply sit, jitter a bit and wait something to happen
-# will
 
 @export var SPEED_MULTIPLIER: float = 0.1
 var wait: float = -1.0

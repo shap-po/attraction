@@ -53,13 +53,19 @@ shape = SubResource("CircleShape2D_okn6t")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_8bnin")
+value = 3
+metadata/_custom_type_script = "uid://dcfhd17x78npj"
+
+[node name="HealthShell" type="Node" parent="."]
+script = ExtResource("2_8bnin")
+value = 20
 metadata/_custom_type_script = "uid://dcfhd17x78npj"
 
 [node name="timer" type="Timer" parent="."]
 
 [node name="brain" type="Node" parent="." node_paths=PackedStringArray("initial_state", "puppet")]
 script = ExtResource("3_334tu")
-initial_state = NodePath("NoAi")
+initial_state = NodePath("SnailScoutFood")
 puppet = NodePath("..")
 metadata/_custom_type_script = "uid://trfpmwnmpqmm"
 

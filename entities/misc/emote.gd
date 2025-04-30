@@ -1,10 +1,11 @@
 extends Sprite2D
 class_name Emote
 
+
 @export var speed: float = 0.1
 @export var max_ticks_lifetime: float = 60
 var ticks_lifetime: float
-var direction = Vector2.RIGHT
+var direction = Vector2.UP
 
 func _ready() -> void:
 	ticks_lifetime = max_ticks_lifetime
@@ -37,10 +38,10 @@ enum EmoteType {
 	STUN
 }
 
-static func create_emote(type: EmoteType, parent: Node, propagation_direction: Vector2 = Vector2.RIGHT, speed: float = 0.1):
+static func create_emote(type: EmoteType, parent: Node, propagation_direction: Vector2 = Vector2.UP, speed: float = 0.1):
 	var new_emote: Sprite2D = Emote_node.instantiate()
 	new_emote.speed = speed
-	new_emote.propagation_direction = propagation_direction
+	new_emote.direction = propagation_direction
 	new_emote.texture = emote_dict[type]
-	parent.add_child(new_emote)
+	parent.dummy.add_child(new_emote)
 	new_emote.global_position = parent.global_position

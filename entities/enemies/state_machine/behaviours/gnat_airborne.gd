@@ -1,6 +1,9 @@
 extends State
 class_name GnatAirborne
 
+# OVERVIEW
+# this is a transit behaviour; does nothing meaningfull on its own
+
 var scale_mod: float = 1
 var n_state: String
 

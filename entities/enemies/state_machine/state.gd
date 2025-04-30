@@ -29,12 +29,14 @@ func fprocces(_delta) -> void:
 		on_creation()
 		return
 	if puppet.effects[0] > -1:
+		print(puppet.effects[0])
 		puppet.effects[0] -= 1 * _delta
-		puppet.rotation = 15 * cos(puppet.effects[0])
+		puppet.rotation = 0.7 * cos(puppet.effects[0] * 3)
 		if puppet.effects[0] < 0:
 			puppet.rotation = 0
 			puppet.effects[0] = -1
 			Emote.create_emote(Emote.EmoteType.WARNING, puppet)
+			puppet.brain.force_transition(puppet.unconditional_state)
 		return
 	procces(_delta)
 

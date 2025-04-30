@@ -3,7 +3,7 @@ class_name GnatAttackPlayer
 
 # OVERVIEW
 # this behaviour will swarm the player and attack
-# if player somehow lost, will revert to "FindFood"
+# if player somehow lost, will revert to "GnatIdle"
 
 @export var SPEED_MULTIPLIER: float = 1 * randf_range(0.9, 1.2)
 @export var ROTATION_STRENGTH: float = 0.01 ## from 1.0 to 0.0

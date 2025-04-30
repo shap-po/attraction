@@ -25,6 +25,10 @@ var effects: Array[float] = [-1]
 func _ready() -> void:
 	shooting_cooldown.timeout.connect(on_shooting_cooldown_up)
 	health.on_zero.connect(on_zero_health)
+	fready()
+
+func fready():
+	pass
 
 func rotate_where_going(jitter: float):
 	if effects[0] > -1:
@@ -53,10 +57,17 @@ func apply_stun(ticks):
 
 func take_damage(damage: int) -> void:
 	health.damage(damage)
+	on_damage_effect()
 
 func on_zero_health() -> void:
+	on_death_effect()
 	queue_free()
-	
+
+func on_death_effect() -> void:
+	pass
+func on_damage_effect() -> void:
+	pass
+
 
 func shoot(shoot_ang: float) -> void:
 	if !can_shoot:

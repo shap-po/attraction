@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cg2wpcyr4hwqr" path="res://entities/misc/emote.gd" id="1_krihv"]
 
 [node name="Emote" type="Sprite2D"]
-scale = Vector2(2, 2)
+top_level = true
 texture = ExtResource("1_gpxor")
 script = ExtResource("1_krihv")
 
