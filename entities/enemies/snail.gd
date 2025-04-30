@@ -3,6 +3,7 @@ class_name Snail
 
 var allience: String = "bug"
 var has_shell = true
+signal any_damage
 
 @onready var slug_sprite: Sprite2D = $rotation_marker/slug_sprite
 @onready var shell_sprite: Sprite2D = $rotation_marker/shell_sprite
@@ -29,14 +30,17 @@ func _physics_process(_delta: float) -> void:
 	
 	
 func take_damage(damage):
+	any_damage.emit()
 	if brain.current_state.name == "SnailHide":
 		damage_shell(damage, 0.95)
 	else:
+		if !(effects[0] > 0):
+			brain.force_transition("SnailHide")
 		damage_shell(damage, 0.6)
-	print("[snail] health: ", health.value, " health_shell: ", health_shell.value)
+	#print("[snail] health: ", health.value, " health_shell: ", health_shell.value)
 
 func damage_shell(damage, penetration_chance: float):
-	if (!has_shell) || (randf() < penetration_chance):
+	if (!has_shell) || (randf() < (1 - penetration_chance)):
 		health.damage(damage)
 		return
 	health_shell.damage(damage)

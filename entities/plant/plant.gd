@@ -1,6 +1,7 @@
-extends Node2D
+extends Area2D
 class_name Plant
 
+var allience = "player"
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var growth_timer: Timer = $GrowthTimer
 @export var plant_type: PlantType
@@ -74,3 +75,8 @@ func harvest() -> Item:
 		on_final_harvest.emit()
 
 	return crop
+
+func take_damage(damage):
+	print("[plant] Ow!")
+	if randf() < 0.5: queue_free()
+		

@@ -62,6 +62,7 @@ metadata/_custom_type_script = "uid://trfpmwnmpqmm"
 
 [node name="WarriorDefendBase" type="Node" parent="brain"]
 script = ExtResource("4_5kpdv")
+SPEED_MULTIPLIER = 1.0
 metadata/_custom_type_script = "uid://cem5exb0g15g0"
 
 [node name="NoAi" type="Node" parent="brain"]

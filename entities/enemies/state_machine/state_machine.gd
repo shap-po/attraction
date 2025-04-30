@@ -3,6 +3,7 @@ class_name StateMachine
 
 @export var initial_state: State
 @export var puppet: Node2D
+var block_transitions = false
 var current_state: State
 var states_dict: Dictionary = {}
 
@@ -34,6 +35,8 @@ func on_child_transition(old_state: State, new_state_name: String) -> void:
 	new_state.enter()
 
 func force_transition(new_state_name: String)-> void:
+	if block_transitions:
+		return
 	#print("[StateMacine] ", current_state.name, " => ", new_state_name)
 	var new_state: State = states_dict.get(new_state_name.to_upper())
 	if new_state == null:

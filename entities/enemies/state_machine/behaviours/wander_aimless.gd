@@ -43,7 +43,7 @@ func procces(_delta) -> void:
 	if wait >= 0.0:
 		puppet.velocity = Vector2.ZERO
 		return
-	if puppet.global_position.distance_to(target_point) < CHECKOUT_PRECISION:
+	if puppet.global_position.distance_squared_to(target_point) < CHECKOUT_PRECISION:
 		choose_new_point()
 	puppet.velocity = speed * puppet.global_position.direction_to(target_point)
 

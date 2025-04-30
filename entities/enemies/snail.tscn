@@ -6,20 +6,22 @@
 [ext_resource type="Texture2D" uid="uid://4bk3p6d7ynqs" path="res://assets/textures/enemies/snail/shell-right.png" id="3_0scor"]
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_334tu"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_vxiei"]
-[ext_resource type="Script" uid="uid://ch3cl7t1hn66h" path="res://entities/enemies/state_machine/behaviours/snail_scout_food.gd" id="6_dt2a5"]
-[ext_resource type="Script" uid="uid://fscws6o8mc6c" path="res://entities/enemies/state_machine/behaviours/snail_atttack_food.gd" id="7_vxiei"]
-[ext_resource type="Script" uid="uid://b601wghkdyp7l" path="res://entities/enemies/state_machine/behaviours/snail_hide.gd" id="8_juvgg"]
+[ext_resource type="Script" uid="uid://ch3cl7t1hn66h" path="res://entities/enemies/state_machine/behaviours/snail/snail_scout_food.gd" id="6_dt2a5"]
+[ext_resource type="Script" uid="uid://fscws6o8mc6c" path="res://entities/enemies/state_machine/behaviours/snail/snail_atttack_food.gd" id="7_vxiei"]
+[ext_resource type="Script" uid="uid://b601wghkdyp7l" path="res://entities/enemies/state_machine/behaviours/snail/snail_hide.gd" id="8_juvgg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cgr7e"]
 radius = 7.07107
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l5ns5"]
-radius = 30.0
+radius = 69.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_okn6t"]
 radius = 17.4642
 
 [node name="snail" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_334tu")
 speed = 10.0
 
@@ -53,7 +55,7 @@ shape = SubResource("CircleShape2D_okn6t")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_8bnin")
-value = 3
+value = 4
 metadata/_custom_type_script = "uid://dcfhd17x78npj"
 
 [node name="HealthShell" type="Node" parent="."]

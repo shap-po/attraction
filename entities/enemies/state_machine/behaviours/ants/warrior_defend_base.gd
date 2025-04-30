@@ -10,7 +10,7 @@ class_name WarriorDefendBase
 @export var SPEED_MULTIPLIER: float = 0.7
 @export var DISTANCE_BASE: float = 20
 @export var DISTANCE_SCATTER: float = 5
-@export var CHECKOUT_PRECISION: float = 1.0
+@export var CHECKOUT_PRECISION: float = 10
 @export var WAIT_BASE: float = 3.0
 @export var WAIT_SCATTER: float = 4.0
 @export var WAIT_CHANCE: float = 0.01
@@ -56,7 +56,7 @@ func procces(_delta) -> void:
 		puppet.velocity = Vector2.ZERO
 		return
 
-	if puppet.global_position.distance_to(target_point) < CHECKOUT_PRECISION:
+	if puppet.global_position.distance_squared_to(target_point) < CHECKOUT_PRECISION:
 		choose_new_point()
 	puppet.velocity = speed * puppet.global_position.direction_to(target_point)
 

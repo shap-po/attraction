@@ -62,6 +62,7 @@ metadata/_custom_type_script = "uid://trfpmwnmpqmm"
 
 [node name="Flea" type="Node" parent="brain"]
 script = ExtResource("4_td255")
+SPEED_MULTIPLIER = 0.7
 metadata/_custom_type_script = "uid://ceufrq8h7fk5q"
 
 [node name="WorkerScout" type="Node" parent="brain"]
