@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_mwupc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_teqsf"]
+radius = 6.87184
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hih1t"]
 radius = 78.3333
@@ -61,8 +62,12 @@ metadata/_custom_type_script = "uid://trfpmwnmpqmm"
 
 [node name="WarriorDefendBase" type="Node" parent="brain"]
 script = ExtResource("4_5kpdv")
+SPEED_MULTIPLIER = 1.0
 metadata/_custom_type_script = "uid://cem5exb0g15g0"
 
 [node name="NoAi" type="Node" parent="brain"]
 script = ExtResource("4_mwupc")
 metadata/_custom_type_script = "uid://cg1q7s1urt42s"
+
+[node name="ShootingCooldownTimer" type="Timer" parent="."]
+one_shot = true

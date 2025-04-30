@@ -74,3 +74,6 @@ func interact() -> Interactible.InteractionResult:
 			return res
 
 	return Interactible.InteractionResult.PASS
+
+func take_damage(damage: int) -> void:
+	print("Player received ", damage, " damage ")

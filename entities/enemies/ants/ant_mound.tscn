@@ -68,4 +68,7 @@ metadata/_custom_type_script = "uid://cg1q7s1urt42s"
 
 [node name="ants" type="Node2D" parent="."]
 
+[node name="ShootingCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="add_ant_points" to="." method="_on_add_ant_points_timeout"]

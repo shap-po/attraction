@@ -10,6 +10,7 @@ class_name Main
 
 func _ready() -> void:
 	Global.main = self
+	#print_tree()
 	#temp_plant_connect()
 
 	randomize()

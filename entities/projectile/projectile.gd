@@ -31,6 +31,7 @@ func _ready():
 	lifetime.start()
 	destroy_on_collision = res.destroy_on_collision
 	damage = res.damage
+	self.scale = Vector2(1, 1) * res.scaling
 	
 
 
@@ -52,7 +53,16 @@ func _on_lifetime_timeout() -> void:
 
 
 func _on_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
-	if body.allience != allience and body.has_method("take_damage"):
-		body.take_damage(damage)
-		if destroy_on_collision:
-			destroy()
+	if body.has_method("take_damage"):
+		if body.allience != allience:
+			body.take_damage(damage)
+			if destroy_on_collision:
+				destroy()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.has_method("take_damage"):
+		if area.allience != allience:
+			area.take_damage(damage)
+			if destroy_on_collision:
+				destroy()

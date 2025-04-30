@@ -1,10 +1,14 @@
 extends State
 class_name GnatAirborne
 
+# OVERVIEW
+# this is a transit behaviour; does nothing meaningfull on its own
+
 var scale_mod: float = 1
 var n_state: String
 
 func on_creation():
+	puppet.brain.block_transitions = true
 	n_state = puppet.unconditional_state 
 	if n_state == "GnatIdle":
 		scale_mod = 1
@@ -32,4 +36,5 @@ func procces(_delta) -> void:
 	
 func next_state():
 	#print("[GnatAirborne] GnatAirborne => ", n_state)
+	puppet.brain.block_transitions = false
 	puppet.brain.force_transition(n_state)

@@ -3,7 +3,7 @@ class_name GnatAttackPlayer
 
 # OVERVIEW
 # this behaviour will swarm the player and attack
-# if player somehow lost, will revert to "FindFood"
+# if player somehow lost, will revert to "GnatIdle"
 
 @export var SPEED_MULTIPLIER: float = 1 * randf_range(0.9, 1.2)
 @export var ROTATION_STRENGTH: float = 0.01 ## from 1.0 to 0.0
@@ -65,6 +65,10 @@ func procces(_delta) -> void:
 	#print(' cur_r: ', cur_r, '| a: ', a, '| r: ', r, '| amod: ', amod, '| rmod: ', rmod)
 	
 	puppet.velocity = speed * smod * Vector2.RIGHT.rotated(lerp_angle(b, c, cur_r ))
+	
+	if (puppet.global_position.distance_squared_to(puppet.target.global_position) < 1000) && (smod > 1):
+		puppet.shoot(puppet.velocity.angle())
+	
 	if !puppet.area_sight.overlaps_area(puppet.target.interaction_area):
 		#print(wait)
 		if wait <= -1:

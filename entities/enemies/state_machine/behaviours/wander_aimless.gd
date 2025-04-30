@@ -37,13 +37,13 @@ func enter() -> void:
 func exit() -> void:
 	puppet.timer.timeout.disconnect(clock)
 
-func procces() -> void:
+func procces(_delta) -> void:
 	if puppet == null:
 		return
 	if wait >= 0.0:
 		puppet.velocity = Vector2.ZERO
 		return
-	if puppet.global_position.distance_to(target_point) < CHECKOUT_PRECISION:
+	if puppet.global_position.distance_squared_to(target_point) < CHECKOUT_PRECISION:
 		choose_new_point()
 	puppet.velocity = speed * puppet.global_position.direction_to(target_point)
 
