@@ -8,6 +8,7 @@ class_name ProjectileType
 @export var speed: float = 0.0
 @export var deseleration: float = 0.0
 @export var lifetime: float = 1.0
+@export var scaling: float = 1.0
 @export var destroy_on_collision: bool = true
 @export var is_boomerang: bool = false
 @export var cooldown: float = 1.0

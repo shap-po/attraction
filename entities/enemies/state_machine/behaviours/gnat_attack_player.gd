@@ -65,6 +65,10 @@ func procces(_delta) -> void:
 	#print(' cur_r: ', cur_r, '| a: ', a, '| r: ', r, '| amod: ', amod, '| rmod: ', rmod)
 	
 	puppet.velocity = speed * smod * Vector2.RIGHT.rotated(lerp_angle(b, c, cur_r ))
+	
+	if (puppet.global_position.distance_squared_to(puppet.target.global_position) < 1000) && (smod > 1):
+		puppet.shoot(puppet.velocity.angle())
+	
 	if !puppet.area_sight.overlaps_area(puppet.target.interaction_area):
 		#print(wait)
 		if wait <= -1:

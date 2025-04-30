@@ -28,6 +28,14 @@ func fprocces(_delta) -> void:
 		first_iteration = false
 		on_creation()
 		return
+	if puppet.effects[0] > -1:
+		puppet.effects[0] -= 1 * _delta
+		puppet.rotation = 15 * cos(puppet.effects[0])
+		if puppet.effects[0] < 0:
+			puppet.rotation = 0
+			puppet.effects[0] = -1
+			Emote.create_emote(Emote.EmoteType.WARNING, puppet)
+		return
 	procces(_delta)
 
 func procces(_delta) -> void:

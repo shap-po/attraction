@@ -67,3 +67,6 @@ metadata/_custom_type_script = "uid://cem5exb0g15g0"
 [node name="NoAi" type="Node" parent="brain"]
 script = ExtResource("4_mwupc")
 metadata/_custom_type_script = "uid://cg1q7s1urt42s"
+
+[node name="ShootingCooldownTimer" type="Timer" parent="."]
+one_shot = true

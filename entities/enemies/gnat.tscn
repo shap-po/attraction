@@ -56,6 +56,11 @@ script = ExtResource("3_th1rh")
 value = 1
 metadata/_custom_type_script = "uid://dcfhd17x78npj"
 
+[node name="timer" type="Timer" parent="."]
+
+[node name="ShootingCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="brain" type="Node" parent="." node_paths=PackedStringArray("initial_state", "puppet")]
 script = ExtResource("3_iqwjq")
 initial_state = NodePath("GnatAttackPlayer")
@@ -74,5 +79,3 @@ script = ExtResource("4_0ia1a")
 [node name="NoAi" type="Node" parent="brain"]
 script = ExtResource("4_8hmys")
 metadata/_custom_type_script = "uid://cg1q7s1urt42s"
-
-[node name="timer" type="Timer" parent="."]

@@ -31,6 +31,7 @@ func _ready():
 	lifetime.start()
 	destroy_on_collision = res.destroy_on_collision
 	damage = res.damage
+	self.scale = Vector2(1, 1) * res.scaling
 	
 
 

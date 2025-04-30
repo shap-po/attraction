@@ -15,7 +15,7 @@ var target_point: Vector2
 func on_creation():
 	speed = puppet.speed * SPEED_MULTIPLIER
 
-func choose_new_point(_delta) -> void:
+func choose_new_point() -> void:
 	if puppet == null:
 		return
 
@@ -35,7 +35,7 @@ func choose_new_point(_delta) -> void:
 func enter() -> void:
 	choose_new_point()
 
-func procces() -> void:
+func procces(_delta) -> void:
 	if puppet == null:
 		return
 	if puppet.global_position.distance_to(target_point) < CHECKOUT_PRECISION:
