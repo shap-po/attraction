@@ -1,15 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqqsup6xm5b3a"]
+[gd_scene load_steps=4 format=3 uid="uid://dqqsup6xm5b3a"]
 
 [ext_resource type="PackedScene" uid="uid://b4d7l1oq70mup" path="res://scenes/menus/menuWindow/menu_window_template_big.tscn" id="1_06x7i"]
+[ext_resource type="Script" uid="uid://dxymiriy43huj" path="res://scenes/menus/inventoryMenu/inventory_UI.gd" id="1_jv3rg"]
 [ext_resource type="PackedScene" uid="uid://bvekckwny1lnq" path="res://scenes/tiles/inventory_grid.tscn" id="2_ddicf"]
 
-[node name="inventory" type="Control"]
+[node name="inventory_UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jv3rg")
 
 [node name="menuWindowTemplateBig" parent="." instance=ExtResource("1_06x7i")]
 layout_mode = 1
@@ -18,12 +20,14 @@ layout_mode = 1
 layout_mode = 2
 
 [node name="Label" type="Label" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 19
 text = "Inventory"
 horizontal_alignment = 1
 
 [node name="Items" type="PanelContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 

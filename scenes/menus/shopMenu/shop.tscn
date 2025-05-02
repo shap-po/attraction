@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dawbq3k8145p2"]
+[gd_scene load_steps=6 format=3 uid="uid://dawbq3k8145p2"]
 
 [ext_resource type="PackedScene" uid="uid://b4d7l1oq70mup" path="res://scenes/menus/menuWindow/menu_window_template_big.tscn" id="1_fagi7"]
-[ext_resource type="Texture2D" uid="uid://d4mfc2kdbjuy1" path="res://assets/textures/shop/UI Building Blocks.png" id="2_5rl1t"]
-[ext_resource type="PackedScene" uid="uid://carwgukjspvmk" path="res://scenes/tiles/item_tile2.tscn" id="3_fagi7"]
+[ext_resource type="Texture2D" uid="uid://2jtf7lng10tq" path="res://assets/textures/UI/UI Building Blocks.png" id="2_5rl1t"]
 [ext_resource type="PackedScene" uid="uid://bvekckwny1lnq" path="res://scenes/tiles/inventory_grid.tscn" id="4_5rl1t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fagi7"]
@@ -36,11 +35,11 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_fagi7")
 [node name="NinePatchRect" type="NinePatchRect" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info"]
 layout_mode = 2
 texture = ExtResource("2_5rl1t")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 11
-patch_margin_top = 11
-patch_margin_right = 11
-patch_margin_bottom = 11
+region_rect = Rect2(80, 48, 16, 16)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info"]
 layout_mode = 2
@@ -54,22 +53,22 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_5rl1t")
 [node name="NinePatchRect" type="NinePatchRect" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items"]
 layout_mode = 2
 texture = ExtResource("2_5rl1t")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 11
-patch_margin_top = 11
-patch_margin_right = 11
-patch_margin_bottom = 11
+region_rect = Rect2(80, 48, 16, 16)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
 
 [node name="MarginContainer" type="MarginContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items"]
 layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
 
 [node name="TabContainer" type="TabContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 19
 tab_alignment = 1
 current_tab = 1
 
@@ -78,167 +77,7 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="ScrollContainer" type="ScrollContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer"]
-layout_mode = 2
-
-[node name="GridContainer" type="GridContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-columns = 5
-
-[node name="itemButton" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton2" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton3" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton4" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton5" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton6" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton7" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton8" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton9" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton10" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton11" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton12" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton13" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton14" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton15" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton16" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton17" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton18" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton19" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton20" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton21" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton22" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton23" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton24" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton25" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton26" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton27" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton28" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton29" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton30" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton31" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton32" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton33" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton34" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton35" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton36" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="itemButton37" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_fagi7")]
-custom_minimum_size = Vector2(128, 128)
+[node name="ScrollContainer" type="ScrollContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop"]
 layout_mode = 2
 
 [node name="Inventory" type="MarginContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer"]

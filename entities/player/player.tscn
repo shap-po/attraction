@@ -35,7 +35,6 @@ shape = SubResource("CircleShape2D_sglur")
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("3_sglur")
-size = 36
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("4_bls4j")

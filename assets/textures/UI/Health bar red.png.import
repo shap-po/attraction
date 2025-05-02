@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4mfc2kdbjuy1"
-path="res://.godot/imported/UI Building Blocks.png-1129c44384acf867d52bae8da23948bb.ctex"
+uid="uid://uoqwnawo3eo2"
+path="res://.godot/imported/Health bar red.png-b734c3d5307c470dc2b15084276e1dcb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/shop/UI Building Blocks.png"
-dest_files=["res://.godot/imported/UI Building Blocks.png-1129c44384acf867d52bae8da23948bb.ctex"]
+source_file="res://assets/textures/UI/Health bar red.png"
+dest_files=["res://.godot/imported/Health bar red.png-b734c3d5307c470dc2b15084276e1dcb.ctex"]
 
 [params]
 
