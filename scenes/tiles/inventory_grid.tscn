@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvekckwny1lnq"]
+[gd_scene load_steps=3 format=3 uid="uid://bvekckwny1lnq"]
 
 [ext_resource type="PackedScene" uid="uid://cyj7a7ob202jq" path="res://scenes/tiles/item_button3.tscn" id="1_8dokt"]
+[ext_resource type="Script" uid="uid://drbhtyxhjnosc" path="res://scenes/tiles/inventory_grid.gd" id="1_mua8r"]
 
 [node name="invenotryGrid" type="GridContainer"]
 anchors_preset = 15
@@ -11,6 +12,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 9
+script = ExtResource("1_mua8r")
 
 [node name="itemButton" parent="." instance=ExtResource("1_8dokt")]
 layout_mode = 2

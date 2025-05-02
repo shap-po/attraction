@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyj7a7ob202jq"]
+[gd_scene load_steps=7 format=3 uid="uid://cyj7a7ob202jq"]
 
 [ext_resource type="Texture2D" uid="uid://2jtf7lng10tq" path="res://assets/textures/UI/UI Building Blocks.png" id="1_ewjwq"]
+[ext_resource type="Script" uid="uid://c8sn13x5ast1q" path="res://scenes/tiles/item_button_3.gd" id="1_ilx0p"]
 [ext_resource type="Texture2D" uid="uid://xh72hx23lud1" path="res://assets/textures/plants/thing_planted.png" id="2_ilx0p"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_emphv"]
@@ -27,6 +28,7 @@ offset_right = 17.0
 offset_bottom = 17.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_ilx0p")
 
 [node name="button" type="Button" parent="."]
 custom_minimum_size = Vector2(17, 17)

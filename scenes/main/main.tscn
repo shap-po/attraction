@@ -200,6 +200,11 @@ health = NodePath("../../player/Health")
 
 [node name="inventory_UI" parent="CanvasLayer" instance=ExtResource("9_b1x3f")]
 
+[node name="invenotryGrid" parent="CanvasLayer/inventory_UI/menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Items" index="0" node_paths=PackedStringArray("inventory")]
+inventory = NodePath("../../../../../../../../../player/Inventory")
+
 [connection signal="toggle_inventory" from="player" to="CanvasLayer/inventory_UI" method="_on_player_toggle_inventory"]
 
 [editable path="player"]
+[editable path="CanvasLayer/inventory_UI"]
+[editable path="CanvasLayer/inventory_UI/menuWindowTemplateBig"]
