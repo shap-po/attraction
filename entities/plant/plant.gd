@@ -4,6 +4,7 @@ class_name Plant
 var allience = "player"
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var growth_timer: Timer = $GrowthTimer
+@onready var health: Health = $Health
 @export var plant_type: PlantType
 
 signal on_growth_stage_change(previous: int, new: int)
@@ -22,6 +23,8 @@ func _ready() -> void:
 	assert(plant_type != null, "Plant '" + self.to_string() + "' initialised with plant_type = null")
 	_update_texture()
 	last_growth_stage = plant_type.grow_stages.size() - 1
+	health.max_value = plant_type.health
+	health.value = plant_type.health
 	@warning_ignore("integer_division")
 	growth_ticks_per_stage = plant_type.grow_time / last_growth_stage
 
@@ -47,11 +50,15 @@ func is_fully_grown() -> bool:
 	return current_growth_stage == last_growth_stage
 
 func create_crop() -> Item:
+	# The more damaged the plant is, the less quality the crop will have
+	# final range: 0.5 - 1.0
+	var quality: float = health.as_float() * 0.5 + 0.5
+
 	var crop: Item = Item.new()
 	crop.item_type = Item.ItemType.CROP
 	crop.item_name = plant_type.crop_name
 	crop.item_texture = plant_type.fruit_item_texture
-	crop.sell_price = plant_type.grown_sell_price
+	crop.sell_price = plant_type.grown_sell_price * quality
 	return crop
 
 func harvest() -> Item:
@@ -76,7 +83,8 @@ func harvest() -> Item:
 
 	return crop
 
-func take_damage(damage):
-	print("[plant] Ow!")
-	if randf() < 0.5: queue_free()
-		
+func take_damage(damage: int) -> void:
+	health.damage(damage)
+
+func _on_health_on_zero() -> void:
+	queue_free()
