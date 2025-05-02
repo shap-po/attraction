@@ -41,3 +41,9 @@ func heal(amount: int) -> void:
 	assert(amount >= 0, "Amount must be positive!")
 	value = value + amount
 	on_heal.emit(amount)
+
+## Returns health as percentage (0.0 - 1.0)
+func as_float() -> float:
+	if max_value <= 0:
+		return 1.0
+	return float(value) / max_value

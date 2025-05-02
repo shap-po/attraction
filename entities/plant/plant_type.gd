@@ -21,6 +21,7 @@ const PLANT: PackedScene = preload("res://entities/plant/plant.tscn")
 
 @export_range(0, 3600) var grow_time: int ## In seconds
 @export var grow_stages: Array[Texture2D]
+@export var health: int
 @export_group("Fruit Item Properties")
 @export var grown_sell_price: int
 @export var fruit_item_texture: Texture2D
