@@ -43,6 +43,7 @@ func choose_new_point() -> void:
 	if get_puppet().home == null:
 		puppet.brain.force_transition("NoAi")
 		print("NOT FINISHED BEHAVIOUR")
+		return
 	orbit_angle += ORBIT_SPEED
 	target_point = get_puppet().home.global_position + Vector2(DISTANCE_BASE, 0).rotated(orbit_angle) + Vector2(randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER), randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER))
 	if randf() < WAIT_CHANCE:
