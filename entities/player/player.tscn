@@ -38,3 +38,4 @@ script = ExtResource("3_sglur")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("4_bls4j")
+value = 10
