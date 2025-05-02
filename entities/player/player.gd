@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+signal toggle_inventory
+
 const speed: int = 160
 const weight: float = 0.4
 var allience: String = "player"
@@ -38,8 +40,10 @@ func _physics_process(_delta: float) -> void:
 			interaction_cooldown.start()
 
 
+	# toggle inventory
 	if Input.is_action_just_pressed("inventory"):
-		print(inventory)
+		toggle_inventory.emit()
+
 	if Input.is_action_just_pressed("rcm"): # for testing
 		var item: WorldItem = current_plant.create_world_item()
 		Global.main.items.add_child(item)

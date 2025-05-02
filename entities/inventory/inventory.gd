@@ -4,19 +4,11 @@ class_name Inventory
 
 signal on_content_changed(slot: int)
 
-@export_range(1, 81) var size: int
-var _content: Array[Item] = []
+@export var _content: Array[Item] = []
 
-func _ready() -> void:
-	_init_content()
-
-func _init_content() -> void:
-	_content = []
-	for i in range(size):
-		_content.append(null)
 
 func is_in_bounds(slot: int) -> bool:
-	return slot >= 0 and slot < size
+	return slot >= 0 and slot < _content.size()
 
 func get_item(slot: int) -> Item:
 	if not is_in_bounds(slot):
@@ -70,20 +62,20 @@ func remove_item(slot: int, count: int = -1) -> Item:
 	_content[slot] = null
 	on_content_changed.emit(slot)
 	return item
-
+	
 func find_empty_slot() -> int:
-	for i in range(size):
+	for i in range(_content.size()):
 		if _content[i] == null:
 			return i
 
 	return -1
 
 func find_item(item: Item) -> int:
-	for i in range(size):
+	for i in range(_content.size()):
 		if _content[i] != null and _content[i].equals(item):
 			return i
 
 	return -1
 
 func _to_string() -> String:
-	return "Inventory " + self.name + ": {size: " + str(size) + ", content: " + str(_content) + "}"
+	return "Inventory " + self.name + ": {size: " + str(_content.size()) + ", content: " + str(_content) + "}"
