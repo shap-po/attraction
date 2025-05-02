@@ -31,6 +31,7 @@ const PLANT: PackedScene = preload("res://entities/plant/plant.tscn")
 @export var bush_stages_per_harvest: int = 1 ## Number of growth stages to remove when harvesting
 @export_group("Enemies")
 @export var enemies_pool: Array[WeightedEnemy] = []
+@export_range(0, 20, 1, "or_greater") var enemy_points: int
 
 func _init() -> void:
 	# set item properties

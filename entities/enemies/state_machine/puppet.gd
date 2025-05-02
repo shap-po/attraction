@@ -80,11 +80,9 @@ func shoot(shoot_ang: float) -> void:
 	new_projectile.allience = "bug"
 	new_projectile.res = current_weapon
 	dummy.add_child(new_projectile)
-	
+
 	shooting_cooldown.wait_time = current_weapon.cooldown
 	shooting_cooldown.start()
 
 func on_shooting_cooldown_up():
 	can_shoot = true
-
-	

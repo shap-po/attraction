@@ -9,7 +9,7 @@ var allience = "player"
 
 signal on_growth_stage_change(previous: int, new: int)
 signal on_fully_grown()
-signal on_final_harvest() ## Emitted when the plant can no longer regrow after harvesting and is marked for deletion
+signal on_before_remove() ## Emitted when the plant is marked for deletion
 
 var growth_ticks: int
 var growth_ticks_per_stage: float
@@ -79,7 +79,7 @@ func harvest() -> Item:
 		growth_timer.start()
 	else:
 		queue_free()
-		on_final_harvest.emit()
+		on_before_remove.emit()
 
 	return crop
 
@@ -88,3 +88,4 @@ func take_damage(damage: int) -> void:
 
 func _on_health_on_zero() -> void:
 	queue_free()
+	on_before_remove.emit()
