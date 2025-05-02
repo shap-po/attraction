@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://beu7qx7kog058"]
+
+[ext_resource type="Texture2D" uid="uid://b4sqityafmlbb" path="res://assets/textures/enemies/centepede/centepede_middle.png" id="1_bs3ts"]
+[ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="2_b8n20"]
+[ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_so2wk"]
+[ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_vq73m"]
+[ext_resource type="Texture2D" uid="uid://b8f6iie0pwqcg" path="res://assets/textures/enemies/centepede/centepede_head.png" id="5_so2wk"]
+[ext_resource type="Texture2D" uid="uid://drwftv26rnln" path="res://assets/textures/enemies/centepede/centepede_tail.png" id="6_vq73m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y87ld"]
+radius = 7.07107
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qt6k0"]
+radius = 69.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ece0n"]
+radius = 17.4642
+
+[node name="centepede" type="CharacterBody2D"]
+
+[node name="collision_area_shape" type="CollisionShape2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CircleShape2D_y87ld")
+
+[node name="rotation_marker" type="Marker2D" parent="."]
+
+[node name="centepede_sprite" type="Sprite2D" parent="rotation_marker"]
+texture = ExtResource("1_bs3ts")
+
+[node name="area_sight" type="Area2D" parent="rotation_marker"]
+visible = false
+collision_layer = 4
+collision_mask = 4
+
+[node name="vision_area_sight_shape" type="CollisionShape2D" parent="rotation_marker/area_sight"]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_qt6k0")
+
+[node name="area_touch" type="Area2D" parent="rotation_marker"]
+visible = false
+collision_layer = 4
+collision_mask = 4
+
+[node name="vision_area_touch_shape" type="CollisionShape2D" parent="rotation_marker/area_touch"]
+shape = SubResource("CircleShape2D_ece0n")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_b8n20")
+value = 10
+metadata/_custom_type_script = "uid://dcfhd17x78npj"
+
+[node name="timer" type="Timer" parent="."]
+
+[node name="brain" type="Node" parent="."]
+script = ExtResource("3_so2wk")
+metadata/_custom_type_script = "uid://trfpmwnmpqmm"
+
+[node name="NoAi" type="Node" parent="brain"]
+script = ExtResource("4_vq73m")
+metadata/_custom_type_script = "uid://cg1q7s1urt42s"
+
+[node name="ShootingCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="upper_connection" type="Marker2D" parent="."]
+position = Vector2(5, 0)
+
+[node name="lower_connection" type="Marker2D" parent="."]
+position = Vector2(-5, 0)
+
+[node name="CentepedeHead" type="Sprite2D" parent="."]
+position = Vector2(10, -1)
+rotation = -0.270526
+texture = ExtResource("5_so2wk")
+
+[node name="CentepedeTail" type="Sprite2D" parent="."]
+position = Vector2(-10, -2)
+rotation = 0.445059
+texture = ExtResource("6_vq73m")
