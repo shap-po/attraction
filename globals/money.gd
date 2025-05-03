@@ -2,17 +2,17 @@ extends Node
 
 signal on_change(previous: int, new: int)
 
-var money: int = 0:
+var value: int = 0:
 	set(val):
-		on_change.emit(money, val)
-		money = val
+		on_change.emit(value, val)
+		value = val
 
 func add(amount: int) -> void:
-	money += amount
+	value += amount
 
 func remove(amount: int) -> bool:
-	if money - amount < 0:
+	if value - amount < 0:
 		return false
 
-	money -= amount
+	value -= amount
 	return true
