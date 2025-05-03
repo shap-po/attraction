@@ -38,13 +38,8 @@ func on_pressed(index: int) -> void:
 		return
 
 	untoggle_slot(index)
-	swap_slots(pressed_index, index)
+	inventory.swap_slots(pressed_index, index)
 	pressed_index = -1
-
-func swap_slots(slot1: int, slot2: int) -> void:
-	inventory.swap_slots(slot1, slot2)
-	update_slot(slot1)
-	update_slot(slot2)
 
 func update_slot(slot_index: int):
 	slots[slot_index].update(inventory._content[slot_index])
