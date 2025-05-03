@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_334tu"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_vxiei"]
 [ext_resource type="Script" uid="uid://ch3cl7t1hn66h" path="res://entities/enemies/state_machine/behaviours/snail/snail_scout_food.gd" id="6_dt2a5"]
-[ext_resource type="Script" path="res://entities/enemies/state_machine/behaviours/snail/snail_attack_food.gd" id="7_dt2a5"]
+[ext_resource type="Script" uid="uid://fscws6o8mc6c" path="res://entities/enemies/state_machine/behaviours/snail/snail_attack_food.gd" id="7_dt2a5"]
 [ext_resource type="Script" uid="uid://b601wghkdyp7l" path="res://entities/enemies/state_machine/behaviours/snail/snail_hide.gd" id="8_juvgg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cgr7e"]

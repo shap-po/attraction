@@ -10,7 +10,8 @@ const HIT_FLASH: VisualShader = preload("res://assets/shaders/hit_flash.tres")
 @export var sprite: Sprite2D:
 	set(val):
 		sprite = val
-		setup()
+		if Engine.is_editor_hint():
+			setup()
 
 func _ready() -> void:
 	health.on_damage.connect(on_damage)
