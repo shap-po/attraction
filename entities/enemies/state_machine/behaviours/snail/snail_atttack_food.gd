@@ -28,7 +28,7 @@ func procces(_delta) -> void:
 	
 	if puppet.global_position.distance_squared_to(target_point) < 500:
 		puppet.velocity = 0.0001 * puppet.global_position.direction_to(target_point)
-		puppet.shoot(puppet.velocity.angle())
+		puppet.melee(1)
 		return
 		
 	

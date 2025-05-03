@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://01mbau86j0cn"]
+[gd_scene load_steps=16 format=4 uid="uid://01mbau86j0cn"]
 
 [ext_resource type="Texture2D" uid="uid://qi74byha511i" path="res://assets/textures/tilemaps/bottom_tilemap.png" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://cq01h0x262mcp" path="res://entities/player/player.tscn" id="1_o5qli"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c3o1fjyinet1x" path="res://assets/textures/misc/emotes/question.png" id="8_a8run"]
 [ext_resource type="PackedScene" uid="uid://dgo2sncuhbver" path="res://ui/health_bar.tscn" id="9_a8run"]
 [ext_resource type="PackedScene" uid="uid://dqqsup6xm5b3a" path="res://scenes/menus/inventoryMenu/inventory_UI.tscn" id="9_b1x3f"]
+[ext_resource type="PackedScene" uid="uid://bjsg7mkm5swaq" path="res://entities/enemies/gnat.tscn" id="11_ouso4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("1_0wfyh")
@@ -185,11 +186,8 @@ unique_name_in_owner = true
 [node name="snail" parent="dummy" instance=ExtResource("6_b1x3f")]
 position = Vector2(-161, -37)
 
-[node name="gnat" parent="dummy" instance=ExtResource("9_b1x3f")]
-offset_left = 141.0
-offset_top = -59.0
-offset_right = 141.0
-offset_bottom = -59.0
+[node name="gnat" parent="dummy" instance=ExtResource("11_ouso4")]
+position = Vector2(141, -59)
 
 [node name="Zero-Zero" type="Sprite2D" parent="dummy"]
 texture = ExtResource("8_a8run")
