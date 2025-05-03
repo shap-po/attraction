@@ -2,44 +2,50 @@ extends GridContainer
 class_name InventoryGrid
 
 @export var inventory: PlayerInventory
-@onready var slots: Array = get_children()
-var pressed_index: int = -1
+@onready var slots: Array[InventoryItem] = []
+var selected_slot: int = -1
 
 func _ready() -> void:
+	for s in get_children():
+		if s is InventoryItem:
+			slots.append(s)
+		else:
+			push_error(str(s) + " must be an InventoryItem")
+
 	inventory.on_content_changed.connect(update_slot)
 	update_slots()
+
+func _process(_delta: float) -> void:
+	if selected_slot == -1:
+		return
+
+	slots[selected_slot].item_content.global_position = get_global_mouse_position()
+
 
 func on_open() -> void:
 	pass
 
 func on_close() -> void:
-	if pressed_index != -1:
-		untoggle_slot(pressed_index)
-		pressed_index = -1
-
-func untoggle_slot(index: int) -> void:
-	var slot: InventoryItem = slots[index]
-	slot.button.set_pressed_no_signal(false)
+	if selected_slot != -1:
+		slots[selected_slot].reset_content_position()
+		selected_slot = -1
 
 func on_pressed(index: int) -> void:
-	if pressed_index == -1:
+	if selected_slot == -1:
 		# do not allow selecting an empty slot first
 		if inventory.get_item(index) == null:
-			untoggle_slot(index)
 			return
 
-		pressed_index = index
+		selected_slot = index
 		return
 
-	untoggle_slot(pressed_index)
-
-	if pressed_index == index:
-		pressed_index = -1
+	if selected_slot == index:
+		selected_slot = -1
 		return
 
-	untoggle_slot(index)
-	inventory.swap_slots(pressed_index, index)
-	pressed_index = -1
+	slots[selected_slot].reset_content_position()
+	inventory.swap_slots(selected_slot, index)
+	selected_slot = -1
 
 func update_slot(slot_index: int):
 	slots[slot_index].update(inventory._content[slot_index])
