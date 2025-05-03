@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dawbq3k8145p2"]
+[gd_scene load_steps=8 format=3 uid="uid://dawbq3k8145p2"]
 
 [ext_resource type="PackedScene" uid="uid://b4d7l1oq70mup" path="res://scenes/menus/menuWindow/menu_window_template_big.tscn" id="1_fagi7"]
 [ext_resource type="Texture2D" uid="uid://2jtf7lng10tq" path="res://assets/textures/UI/UI Building Blocks.png" id="2_5rl1t"]
-[ext_resource type="PackedScene" uid="uid://bvekckwny1lnq" path="res://scenes/tiles/inventory_grid.tscn" id="4_5rl1t"]
+[ext_resource type="Texture2D" uid="uid://8e3r0b7qmow" path="res://assets/textures/moth/Moth girl.png" id="3_av0wc"]
+[ext_resource type="Script" uid="uid://bn5bxsgdvtgqr" path="res://entities/moth/moth.gd" id="4_nuq1x"]
+[ext_resource type="AudioStream" uid="uid://k5xbfgp4dfx5" path="res://assets/textures/moth/squeaky toy.wav" id="5_av0wc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fagi7"]
 
@@ -29,7 +31,6 @@ layout_mode = 2
 
 [node name="info" type="PanelContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_fagi7")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info"]
@@ -41,8 +42,31 @@ patch_margin_top = 12
 patch_margin_right = 12
 patch_margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info"]
+[node name="MarginContainer" type="MarginContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info"]
 layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Money:"
+
+[node name="moth" type="TextureRect" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+texture = ExtResource("3_av0wc")
+stretch_mode = 2
+script = ExtResource("4_nuq1x")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer/moth"]
+stream = ExtResource("5_av0wc")
 
 [node name="items" type="PanelContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer"]
 layout_mode = 2
@@ -70,10 +94,9 @@ theme_override_constants/margin_bottom = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 19
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Shop" type="MarginContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -81,10 +104,8 @@ metadata/_tab_index = 0
 layout_mode = 2
 
 [node name="Inventory" type="MarginContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
-
-[node name="invenotryGrid" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Inventory" instance=ExtResource("4_5rl1t")]
-layout_mode = 2
 
 [editable path="menuWindowTemplateBig"]

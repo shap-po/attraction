@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://k5xbfgp4dfx5"
+path="res://.godot/imported/squeaky toy.wav-4a76d5364e1921857258ecc58d4f2fe7.sample"
+
+[deps]
+
+source_file="res://assets/textures/moth/squeaky toy.wav"
+dest_files=["res://.godot/imported/squeaky toy.wav-4a76d5364e1921857258ecc58d4f2fe7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
