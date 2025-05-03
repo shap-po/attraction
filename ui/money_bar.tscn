@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://v5faejistspp"]
+
+[ext_resource type="Script" uid="uid://bo8dln6sfqmr4" path="res://ui/money_bar.gd" id="1_f8qhw"]
+
+[node name="Money" type="Label"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -25.0
+offset_right = 58.0
+offset_bottom = -4.0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 19
+text = "Money: $$$"
+vertical_alignment = 2
+script = ExtResource("1_f8qhw")
