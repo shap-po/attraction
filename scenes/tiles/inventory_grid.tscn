@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvekckwny1lnq"]
 
-[ext_resource type="PackedScene" uid="uid://cyj7a7ob202jq" path="res://scenes/tiles/item_button.tscn" id="1_8dokt"]
+[ext_resource type="PackedScene" uid="uid://cyj7a7ob202jq" path="res://scenes/tiles/inventory_item.tscn" id="1_8dokt"]
 [ext_resource type="Script" uid="uid://drbhtyxhjnosc" path="res://scenes/tiles/inventory_grid.gd" id="1_mua8r"]
 
 [node name="invenotryGrid" type="GridContainer"]
