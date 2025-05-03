@@ -9,7 +9,7 @@ var target: Node2D
 
 @onready var current_weapon: ProjectileType = preload("res://assets/resources/projectiles/bite.tres") as ProjectileType
 
-@onready var dummy = %dummy
+@onready var dummy: Node2D = get_parent()
 @onready var collision_area_shape: CollisionShape2D = $collision_area_shape
 @onready var rotation_marker: Marker2D = $rotation_marker
 @onready var area_sight: Area2D = $rotation_marker/area_sight
@@ -112,5 +112,3 @@ func melee(damage: int) -> void:
 
 func on_acting_cooldown_up():
 	can_act = true
-
-

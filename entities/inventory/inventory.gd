@@ -6,6 +6,12 @@ signal on_content_changed(slot: int)
 
 @export var _content: Array[Item] = []
 
+func swap_slots(slot1: int, slot2: int):
+	var temp_slot: Item = _content[slot1]
+	_content[slot1] = _content[slot2]
+	_content[slot2] = temp_slot
+	on_content_changed.emit(slot1)
+	on_content_changed.emit(slot2)
 
 func is_in_bounds(slot: int) -> bool:
 	return slot >= 0 and slot < _content.size()
@@ -62,7 +68,7 @@ func remove_item(slot: int, count: int = -1) -> Item:
 	_content[slot] = null
 	on_content_changed.emit(slot)
 	return item
-	
+
 func find_empty_slot() -> int:
 	for i in range(_content.size()):
 		if _content[i] == null:

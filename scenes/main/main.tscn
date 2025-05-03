@@ -204,9 +204,17 @@ position = Vector2(-48, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="health_bar" parent="CanvasLayer" instance=ExtResource("9_a8run")]
+[node name="health_bar" parent="CanvasLayer" node_paths=PackedStringArray("health") instance=ExtResource("9_a8run")]
+health = NodePath("../../player/Health")
 
 [node name="inventory_UI" parent="CanvasLayer" instance=ExtResource("9_b1x3f")]
 
+[node name="invenotryGrid" parent="CanvasLayer/inventory_UI/menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Items" index="0" node_paths=PackedStringArray("inventory")]
+inventory = NodePath("../../../../../../../../../player/Inventory")
+
 [connection signal="timeout" from="map/Spawner/NextWaveTimer" to="map/Spawner" method="_on_next_wave_timer_timeout"]
 [connection signal="toggle_inventory" from="player" to="CanvasLayer/inventory_UI" method="_on_player_toggle_inventory"]
+
+[editable path="player"]
+[editable path="CanvasLayer/inventory_UI"]
+[editable path="CanvasLayer/inventory_UI/menuWindowTemplateBig"]
