@@ -46,6 +46,7 @@ func on_pressed(index: int) -> void:
 		return
 
 	if selected_slot == index:
+		slots[selected_slot].reset_content_position()
 		selected_slot = -1
 		return
 
