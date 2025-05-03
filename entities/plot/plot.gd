@@ -14,7 +14,7 @@ func create_plant(plant_type: PlantType):
 		plant.queue_free()
 
 	plant = plant_type.create()
-	plant.on_final_harvest.connect(_final_harvest)
+	plant.on_before_remove.connect(remove_plant)
 	plant.on_fully_grown.connect(func(): on_plant_fully_grown.emit(plant.plant_type))
 	plant_node.add_child(plant)
 	on_plant_added.emit(plant_type)
@@ -25,7 +25,7 @@ func harvest() -> Item:
 
 	return null
 
-func _final_harvest() -> void:
+func remove_plant() -> void:
 	on_plant_removed.emit(plant.plant_type)
 	plant = null
 
@@ -41,7 +41,6 @@ func interact(player: Player, item: Item) -> InteractionResult:
 
 	if item is PlantType:
 		create_plant(item as PlantType)
-		on_plant_added.emit(item)
 		return InteractionResult.SUCCESS
 
 	return InteractionResult.PASS

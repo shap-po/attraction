@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dxymiriy43huj" path="res://scenes/menus/inventoryMenu/inventory_UI.gd" id="1_jv3rg"]
 [ext_resource type="PackedScene" uid="uid://bvekckwny1lnq" path="res://scenes/tiles/inventory_grid.tscn" id="2_ddicf"]
 
-[node name="inventory_UI" type="Control"]
+[node name="inventory_UI" type="Control" node_paths=PackedStringArray("inventory_grid")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jv3rg")
+inventory_grid = NodePath("menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Items/invenotryGrid")
 
 [node name="menuWindowTemplateBig" parent="." instance=ExtResource("1_06x7i")]
 layout_mode = 1

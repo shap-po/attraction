@@ -9,7 +9,7 @@ var target: Node2D
 
 @onready var current_weapon: ProjectileType = preload("res://assets/resources/projectiles/bite.tres") as ProjectileType
 
-@onready var dummy = %dummy
+@onready var dummy: Node2D = get_parent()
 @onready var collision_area_shape: CollisionShape2D = $collision_area_shape
 @onready var rotation_marker: Marker2D = $rotation_marker
 @onready var area_sight: Area2D = $rotation_marker/area_sight
@@ -17,13 +17,14 @@ var target: Node2D
 @onready var health: Health = $Health
 @onready var brain: StateMachine = $brain
 @onready var timer: Timer = $timer
-@onready var shooting_cooldown: Timer = $ShootingCooldownTimer
-var can_shoot = true
+@onready var acting_cooldown: Timer = $ShootingCooldownTimer
+var melee_cooldown: float = 0.75
+var can_act = true
 
 var effects: Array[float] = [-1]
 ##                           stun,
 func _ready() -> void:
-	shooting_cooldown.timeout.connect(on_shooting_cooldown_up)
+	acting_cooldown.timeout.connect(on_acting_cooldown_up)
 	health.on_zero.connect(on_zero_health)
 	fready()
 
@@ -70,9 +71,9 @@ func on_damage_effect() -> void:
 
 
 func shoot(shoot_ang: float) -> void:
-	if !can_shoot:
+	if !can_act:
 		return
-	can_shoot = false
+	can_act = false
 	var projectile: PackedScene = preload("res://entities/projectile/projectile.tscn")
 	var new_projectile: Projectile = projectile.instantiate()
 	new_projectile.global_position = self.global_position
@@ -80,11 +81,34 @@ func shoot(shoot_ang: float) -> void:
 	new_projectile.allience = "bug"
 	new_projectile.res = current_weapon
 	dummy.add_child(new_projectile)
-	
-	shooting_cooldown.wait_time = current_weapon.cooldown
-	shooting_cooldown.start()
+	acting_cooldown.wait_time = current_weapon.cooldown
+	acting_cooldown.start()
 
-func on_shooting_cooldown_up():
-	can_shoot = true
+func melee(damage: int) -> void:
 
-	
+	if !target:
+		return
+
+	if !can_act:
+		return
+	can_act = false
+
+	if target.has_method("take_damage"):
+		target.take_damage(damage)
+
+	var pv = Vector2(0, -1).rotated(randf_range(-0.4, 0.4))
+	var pos1 = target.global_position - pv * 5
+	var pos2 = target.global_position + pv * 5
+	var rot2 = pv.angle()
+	var rot1 = pv.angle()
+
+	Emote.create_emote(Emote.EmoteType.BITE_LOWER, target, pv, 0.15, pos1, rot1, false)
+	Emote.create_emote(Emote.EmoteType.BITE_UPPER, target, pv * -1, 0.15, pos2, rot2, false)
+
+	acting_cooldown.wait_time = melee_cooldown
+	acting_cooldown.start()
+
+
+
+func on_acting_cooldown_up():
+	can_act = true
