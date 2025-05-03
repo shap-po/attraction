@@ -1,18 +1,20 @@
-[gd_resource type="Resource" script_class="PlantType" load_steps=9 format=3 uid="uid://k4x3j85xvjfh"]
+[gd_resource type="Resource" script_class="PlantType" load_steps=10 format=3 uid="uid://k4x3j85xvjfh"]
 
 [ext_resource type="Script" uid="uid://q5c3ew7e705r" path="res://entities/enemies/weighted_enemy.gd" id="1_1c0gv"]
 [ext_resource type="Texture2D" uid="uid://b1n6sm3rtnbos" path="res://assets/textures/item/carrot_seeds.png" id="1_04x0a"]
 [ext_resource type="Texture2D" uid="uid://xh72hx23lud1" path="res://assets/textures/plants/thing_planted.png" id="1_jod0d"]
+[ext_resource type="PackedScene" uid="uid://ruu8kpyuaiel" path="res://entities/enemies/ants/ant_warrior.tscn" id="2_f2imu"]
 [ext_resource type="Texture2D" uid="uid://dueacno8wyefd" path="res://assets/textures/plants/carrot/carrot_growing.png" id="2_ftonx"]
-[ext_resource type="PackedScene" uid="uid://n716cs15gjtv" path="res://entities/enemies/ants/ant_mound.tscn" id="2_yw5fy"]
 [ext_resource type="Texture2D" uid="uid://cla7txer8f04y" path="res://assets/textures/plants/carrot/carrot_ripe.png" id="3_1c0gv"]
+[ext_resource type="PackedScene" uid="uid://dsbjxjpcoiv64" path="res://entities/enemies/ants/ant_worker.tscn" id="3_va3gl"]
 [ext_resource type="Script" uid="uid://qi268pka2ile" path="res://entities/plant/plant_type.gd" id="4_yw5fy"]
 
 [sub_resource type="Resource" id="Resource_yw5fy"]
 script = ExtResource("1_1c0gv")
-enemy = ExtResource("2_yw5fy")
+enemies = Array[PackedScene]([ExtResource("2_f2imu"), ExtResource("3_va3gl")])
 weight = 10
-spawn_area_mask = 16
+points_cost = 5
+spawn_area_mask = 7
 metadata/_custom_type_script = "uid://q5c3ew7e705r"
 
 [resource]
@@ -21,9 +23,11 @@ crop_name = "Chem Root"
 crop_type = 0
 grow_time = 10
 grow_stages = Array[Texture2D]([ExtResource("1_jod0d"), ExtResource("2_ftonx"), ExtResource("3_1c0gv")])
-grown_sell_price = 0
+health = 10
+grown_sell_price = 100
 fruit_item_texture = ExtResource("3_1c0gv")
 enemies_pool = Array[ExtResource("1_1c0gv")]([SubResource("Resource_yw5fy")])
+enemy_points = 10
 item_texture = ExtResource("1_04x0a")
 item_description = ""
 buy_price = 0

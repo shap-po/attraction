@@ -7,12 +7,11 @@ const hotbar_size: int = 9
 
 @onready var player: Player = $".."
 
-
 var selected_slot: int = 0:
 	set(val):
-		selected_slot = val % size
+		selected_slot = val % _content.size()
 		if selected_slot < 0:
-			selected_slot += size
+			selected_slot += _content.size()
 		on_selected_slot_changed.emit()
 
 func get_selected_item() -> Item:

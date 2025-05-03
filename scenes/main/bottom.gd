@@ -14,7 +14,9 @@ const DIRT_TILES: Array[Vector2i] = [
 ]
 
 const PLOT: PackedScene = preload("res://entities/plot/plot.tscn")
-@onready var plots: Node2D = $"../plots"
+@onready var plots: Node2D = %Plots
+@onready var spawner: Spawner = %Spawner
+
 
 func _ready() -> void:
 	populate_plots()
@@ -25,3 +27,14 @@ func populate_plots() -> void:
 			var plot: Plot = PLOT.instantiate()
 			plots.add_child(plot)
 			plot.global_position = map_to_local(pos)
+
+			plot.on_plant_added.connect(on_plant_added)
+			plot.on_plant_removed.connect(on_plant_removed)
+
+func on_plant_added(plant_type: PlantType) -> void:
+	spawner.enemies_pool.append_array(plant_type.enemies_pool)
+	spawner.enemy_points += plant_type.enemy_points
+
+func on_plant_removed(plant_type: PlantType) -> void:
+	Util.remove_array(spawner.enemies_pool, plant_type.enemies_pool)
+	spawner.enemy_points -= plant_type.enemy_points

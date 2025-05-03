@@ -21,6 +21,7 @@ const PLANT: PackedScene = preload("res://entities/plant/plant.tscn")
 
 @export_range(0, 3600) var grow_time: int ## In seconds
 @export var grow_stages: Array[Texture2D]
+@export var health: int
 @export_group("Fruit Item Properties")
 @export var grown_sell_price: int
 @export var fruit_item_texture: Texture2D
@@ -30,6 +31,7 @@ const PLANT: PackedScene = preload("res://entities/plant/plant.tscn")
 @export var bush_stages_per_harvest: int = 1 ## Number of growth stages to remove when harvesting
 @export_group("Enemies")
 @export var enemies_pool: Array[WeightedEnemy] = []
+@export_range(0, 20, 1, "or_greater") var enemy_points: int
 
 func _init() -> void:
 	# set item properties

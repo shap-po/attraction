@@ -85,26 +85,26 @@ func shoot(shoot_ang: float) -> void:
 	acting_cooldown.start()
 
 func melee(damage: int) -> void:
-	
+
 	if !target:
 		return
-	
+
 	if !can_act:
 		return
 	can_act = false
-	
+
 	if target.has_method("take_damage"):
 		target.take_damage(damage)
-	
+
 	var pv = Vector2(0, -1).rotated(randf_range(-0.4, 0.4))
 	var pos1 = target.global_position - pv * 5
 	var pos2 = target.global_position + pv * 5
 	var rot2 = pv.angle()
 	var rot1 = pv.angle()
-	
+
 	Emote.create_emote(Emote.EmoteType.BITE_LOWER, target, pv, 0.15, pos1, rot1, false)
 	Emote.create_emote(Emote.EmoteType.BITE_UPPER, target, pv * -1, 0.15, pos2, rot2, false)
-	
+
 	acting_cooldown.wait_time = melee_cooldown
 	acting_cooldown.start()
 
@@ -113,4 +113,4 @@ func melee(damage: int) -> void:
 func on_acting_cooldown_up():
 	can_act = true
 
-	
+
