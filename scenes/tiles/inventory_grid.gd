@@ -1,9 +1,9 @@
 extends GridContainer
 class_name InventoryGrid
 
-const INVENTORY_ITEM: PackedScene = preload("res://scenes/tiles/inventory_item.tscn")
+const INVENTORY_SLOT = preload("res://scenes/tiles/inventory_slot.tscn")
 @export var inventory: PlayerInventory
-@onready var slots: Array[InventoryItem] = []
+@onready var slots: Array[InventorySlot] = []
 var selected_slot: int = -1
 
 func _ready() -> void:
@@ -14,7 +14,7 @@ func _ready() -> void:
 			n.queue_free()
 
 	for s in range(inventory._content.size()):
-		var slot: InventoryItem = INVENTORY_ITEM.instantiate()
+		var slot: InventorySlot = INVENTORY_SLOT.instantiate()
 		add_child(slot)
 		slots.append(slot)
 

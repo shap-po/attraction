@@ -1,5 +1,5 @@
 extends AspectRatioContainer
-class_name InventoryItem
+class_name InventorySlot
 
 @onready var inventory_grid: InventoryGrid = get_parent()
 @onready var button: Button = $Button
