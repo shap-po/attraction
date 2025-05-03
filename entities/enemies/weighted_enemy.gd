@@ -10,8 +10,9 @@ enum SpawnArea {
 	FARM = 16
 }
 
-@export var enemy: PackedScene
-@export_range(-100, 100) var weight: int
+@export var enemies: Array[PackedScene] = []
+@export_range(0, 100) var weight: int
+@export_range(0, 20, 1, "or_greater") var points_cost: int
 var spawn_area_mask: int
 
 func _get_property_list() -> Array[Dictionary]:
@@ -29,18 +30,21 @@ func _get_property_list() -> Array[Dictionary]:
 
 func get_spawn_ares() -> Array[SpawnArea]:
 	var areas: Array[SpawnArea] = []
-	for are in SpawnArea.values():
-		if spawn_area_mask & are != 0:
-			areas.append(are)
+	for area in SpawnArea.values():
+		if spawn_area_mask & area != 0:
+			areas.append(area)
 	return areas
 
-static func choose(enemies: Array[WeightedEnemy]) -> WeightedEnemy:
+static func choose(enemy_pool: Array[WeightedEnemy]) -> WeightedEnemy:
 	var total_weight: int = 0
-	for weighted in enemies:
+	for weighted in enemy_pool:
 		total_weight += weighted.weight
 
+	if total_weight == 0:
+		return null
+
 	var random_value: int = randi() % total_weight
-	for weighted in enemies:
+	for weighted in enemy_pool:
 		if random_value < weighted.weight:
 			return weighted
 		random_value -= weighted.weight

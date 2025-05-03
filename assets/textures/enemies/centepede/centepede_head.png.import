@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b12qlqd4nkxfx"
-path="res://.godot/imported/rolypoly_down.png-d10256bcc4fa3768d105d5b0045347c3.ctex"
+uid="uid://b8f6iie0pwqcg"
+path="res://.godot/imported/centepede_head.png-1e1965d78d20eea475a0f8693a09ddd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/rolypoly_down.png"
-dest_files=["res://.godot/imported/rolypoly_down.png-d10256bcc4fa3768d105d5b0045347c3.ctex"]
+source_file="res://assets/textures/enemies/centepede/centepede_head.png"
+dest_files=["res://.godot/imported/centepede_head.png-1e1965d78d20eea475a0f8693a09ddd5.ctex"]
 
 [params]
 

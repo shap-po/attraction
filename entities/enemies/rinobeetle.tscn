@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://dh28jgsc0odwm"]
+
+[ext_resource type="Script" uid="uid://da4mtb5ulkpbl" path="res://entities/enemies/rinobeetle.gd" id="1_0e75h"]
+[ext_resource type="Texture2D" uid="uid://bt2s81h2mler4" path="res://assets/textures/enemies/rinobeetle/rinobeetle_left.png" id="1_ubfig"]
+[ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="2_0e75h"]
+[ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_1mrpe"]
+[ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_qfkxo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xu6m"]
+radius = 7.07107
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nofxu"]
+radius = 69.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pkghw"]
+radius = 17.4642
+
+[node name="Rinobeetle" type="CharacterBody2D"]
+script = ExtResource("1_0e75h")
+
+[node name="collision_area_shape" type="CollisionShape2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CircleShape2D_8xu6m")
+
+[node name="rotation_marker" type="Marker2D" parent="."]
+
+[node name="rinobeetle_sprite" type="Sprite2D" parent="rotation_marker"]
+texture = ExtResource("1_ubfig")
+
+[node name="area_sight" type="Area2D" parent="rotation_marker"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="vision_area_sight_shape" type="CollisionShape2D" parent="rotation_marker/area_sight"]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_nofxu")
+
+[node name="area_touch" type="Area2D" parent="rotation_marker"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="vision_area_touch_shape" type="CollisionShape2D" parent="rotation_marker/area_touch"]
+shape = SubResource("CircleShape2D_pkghw")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_0e75h")
+value = 10
+metadata/_custom_type_script = "uid://dcfhd17x78npj"
+
+[node name="timer" type="Timer" parent="."]
+
+[node name="brain" type="Node" parent="."]
+script = ExtResource("3_1mrpe")
+metadata/_custom_type_script = "uid://trfpmwnmpqmm"
+
+[node name="NoAi" type="Node" parent="brain"]
+script = ExtResource("4_qfkxo")
+metadata/_custom_type_script = "uid://cg1q7s1urt42s"
+
+[node name="ShootingCooldownTimer" type="Timer" parent="."]
+one_shot = true
