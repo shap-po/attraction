@@ -1,16 +1,22 @@
 extends GridContainer
 class_name InventoryGrid
 
+const INVENTORY_ITEM: PackedScene = preload("res://scenes/tiles/inventory_item.tscn")
 @export var inventory: PlayerInventory
 @onready var slots: Array[InventoryItem] = []
 var selected_slot: int = -1
 
 func _ready() -> void:
-	for s in get_children():
-		if s is InventoryItem:
-			slots.append(s)
-		else:
-			push_error(str(s) + " must be an InventoryItem")
+	if get_children().size() != 0:
+		push_error("Invenotry grid cannot have child nodes!")
+		for n in get_children():
+			remove_child(n)
+			n.queue_free()
+
+	for s in range(inventory._content.size()):
+		var slot: InventoryItem = INVENTORY_ITEM.instantiate()
+		add_child(slot)
+		slots.append(slot)
 
 	inventory.on_content_changed.connect(update_slot)
 	update_slots()
