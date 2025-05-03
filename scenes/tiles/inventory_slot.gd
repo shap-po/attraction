@@ -31,9 +31,9 @@ func update(item: Item) -> void:
 	update_count(item)
 
 func update_price(item: Item) -> void:
-	if item.buy_price != 0:
+	if item.sell_price != 0:
 		item_price.visible = true
-		item_price.text = str(item.buy_price)
+		item_price.text = str(item.sell_price)
 	else:
 		item_price.visible = false
 
