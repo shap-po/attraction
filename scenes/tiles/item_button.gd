@@ -21,15 +21,21 @@ func update(item: Item) -> void:
 	if item == null:
 		hide_all_visuals()
 		return
+
 	item_visual.visible = true
 	item_visual.texture = item.item_texture
 
+	update_price(item)
+	update_count(item)
+
+func update_price(item: Item) -> void:
 	if item.buy_price != 0:
 		item_price.visible = true
 		item_price.text = str(item.buy_price)
 	else:
 		item_price.visible = false
 
+func update_count(item: Item) -> void:
 	if item is CountableItem:
 		item_count.text = str(item.count)
 		item_count.visible = true
