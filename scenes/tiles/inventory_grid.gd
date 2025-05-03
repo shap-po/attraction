@@ -18,7 +18,7 @@ func on_close() -> void:
 		pressed_index = -1
 
 func untoggle_slot(index: int) -> void:
-	var slot: ItemButton_3 = slots[index]
+	var slot: ItemButton = slots[index]
 	slot.button.set_pressed_no_signal(false)
 
 func on_pressed(index: int) -> void:

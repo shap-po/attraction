@@ -1,5 +1,5 @@
 extends AspectRatioContainer
-class_name ItemButton_3
+class_name ItemButton
 
 @onready var inventory_grid: InventoryGrid = get_parent()
 @onready var item_visual: TextureRect = $button/itemTexture
