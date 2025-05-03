@@ -4,6 +4,7 @@ class_name StateMachine
 @export var initial_state: State
 @export var puppet: Node2D
 var block_transitions = false
+@export var hunger: int = 1
 var current_state: State
 var states_dict: Dictionary = {}
 
@@ -40,6 +41,7 @@ func force_transition(new_state_name: String)-> void:
 	#print("[StateMacine] ", current_state.name, " => ", new_state_name)
 	var new_state: State = states_dict.get(new_state_name.to_upper())
 	if new_state == null:
+		print("[StateMachine] WARNING: could not find state by the name \"", new_state_name, "\" in ", self.get_parent().name)
 		return
 	if current_state == new_state:
 		return

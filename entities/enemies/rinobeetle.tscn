@@ -1,22 +1,30 @@
-[gd_scene load_steps=9 format=3 uid="uid://dh28jgsc0odwm"]
+[gd_scene load_steps=14 format=3 uid="uid://dh28jgsc0odwm"]
 
 [ext_resource type="Script" uid="uid://da4mtb5ulkpbl" path="res://entities/enemies/rinobeetle.gd" id="1_0e75h"]
 [ext_resource type="Texture2D" uid="uid://bt2s81h2mler4" path="res://assets/textures/enemies/rinobeetle/rinobeetle_left.png" id="1_ubfig"]
 [ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="2_0e75h"]
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_1mrpe"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_qfkxo"]
+[ext_resource type="Script" uid="uid://q30codlmf2a8" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_attack_food.gd" id="6_8xu6m"]
+[ext_resource type="Script" uid="uid://2r4elrvoaq8k" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_attack_player.gd" id="7_nofxu"]
+[ext_resource type="Script" uid="uid://b8jmda7t5uhet" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_idle.gd" id="8_pkghw"]
+[ext_resource type="Script" uid="uid://dnv2f6j17a7ii" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_scout_food.gd" id="9_nofxu"]
+[ext_resource type="Script" uid="uid://8gl3yt567o8u" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_charge.gd" id="10_pkghw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xu6m"]
 radius = 7.07107
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nofxu"]
-radius = 69.0
+radius = 70.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pkghw"]
-radius = 17.4642
+radius = 11.0
 
 [node name="Rinobeetle" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_0e75h")
+speed = 30.0
 
 [node name="collision_area_shape" type="CollisionShape2D" parent="."]
 light_mask = 4
@@ -50,13 +58,36 @@ metadata/_custom_type_script = "uid://dcfhd17x78npj"
 
 [node name="timer" type="Timer" parent="."]
 
-[node name="brain" type="Node" parent="."]
+[node name="brain" type="Node" parent="." node_paths=PackedStringArray("initial_state", "puppet")]
 script = ExtResource("3_1mrpe")
+initial_state = NodePath("RinobeetleIdle")
+puppet = NodePath("..")
+hunger = 5
 metadata/_custom_type_script = "uid://trfpmwnmpqmm"
 
 [node name="NoAi" type="Node" parent="brain"]
 script = ExtResource("4_qfkxo")
 metadata/_custom_type_script = "uid://cg1q7s1urt42s"
+
+[node name="RinobeetleAttackFood" type="Node" parent="brain"]
+script = ExtResource("6_8xu6m")
+metadata/_custom_type_script = "uid://q30codlmf2a8"
+
+[node name="RinobeetleAttackPlayer" type="Node" parent="brain"]
+script = ExtResource("7_nofxu")
+metadata/_custom_type_script = "uid://2r4elrvoaq8k"
+
+[node name="RinobeetleIdle" type="Node" parent="brain"]
+script = ExtResource("8_pkghw")
+metadata/_custom_type_script = "uid://b8jmda7t5uhet"
+
+[node name="RinobeetleScout" type="Node" parent="brain"]
+script = ExtResource("9_nofxu")
+metadata/_custom_type_script = "uid://dnv2f6j17a7ii"
+
+[node name="RinobeetleCharge" type="Node" parent="brain"]
+script = ExtResource("10_pkghw")
+metadata/_custom_type_script = "uid://8gl3yt567o8u"
 
 [node name="ShootingCooldownTimer" type="Timer" parent="."]
 one_shot = true

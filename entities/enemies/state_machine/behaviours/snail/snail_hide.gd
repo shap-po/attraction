@@ -11,6 +11,7 @@ var wait: float
 func on_creation():
 	if !puppet.has_shell:
 		puppet.brain.force_transition(puppet.unconditional_state)
+	create_emote(Emote.EmoteType.WARNING)
 	wait = HIDE_TIME
 	puppet.velocity = Vector2.ZERO
 	puppet.slug_sprite.visible = false

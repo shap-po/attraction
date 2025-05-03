@@ -10,6 +10,12 @@ var target: Node2D
 @onready var current_weapon: ProjectileType = preload("res://assets/resources/projectiles/bite.tres") as ProjectileType
 
 @onready var dummy: Node2D = get_parent()
+
+enum FindType {
+	PLAYER,
+	PLANT,
+	NONE
+}
 @onready var collision_area_shape: CollisionShape2D = $collision_area_shape
 @onready var rotation_marker: Marker2D = $rotation_marker
 @onready var area_sight: Area2D = $rotation_marker/area_sight
@@ -84,7 +90,7 @@ func shoot(shoot_ang: float) -> void:
 	acting_cooldown.wait_time = current_weapon.cooldown
 	acting_cooldown.start()
 
-func melee(damage: int) -> void:
+func melee(damage: int, cooldown: float = 0.75) -> void:
 
 	if !target:
 		return
@@ -104,11 +110,25 @@ func melee(damage: int) -> void:
 
 	Emote.create_emote(Emote.EmoteType.BITE_LOWER, target, pv, 0.15, pos1, rot1, false)
 	Emote.create_emote(Emote.EmoteType.BITE_UPPER, target, pv * -1, 0.15, pos2, rot2, false)
-
-	acting_cooldown.wait_time = melee_cooldown
+	acting_cooldown.wait_time = cooldown
 	acting_cooldown.start()
 
 
 
 func on_acting_cooldown_up():
 	can_act = true
+
+func check_area(priority: FindType = FindType.PLAYER) -> FindType:
+	var areas: Array[Area2D] = area_sight.get_overlapping_areas()
+	var ret: FindType = FindType.NONE
+	if areas:
+		for area in areas:
+			if area is Plant:
+				target = area
+				ret = FindType.PLANT
+				if priority == FindType.PLANT: return ret
+			if area.name == "InteractionArea2D": ## if yk better solution let me know -peu
+				target = area.get_parent()
+				ret = FindType.PLAYER
+				if priority == FindType.PLAYER: return ret
+	return ret

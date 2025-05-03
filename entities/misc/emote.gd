@@ -42,12 +42,13 @@ enum EmoteType {
 	BITE_UPPER
 }
 
-static func create_emote(type: EmoteType, parent: Node, propagation_direction: Vector2 = Vector2.UP, speed: float = 0.1, pos: Vector2 = parent.global_position, rot: float = 0, follow: bool = true):
+static func create_emote(type: EmoteType, parent: Node, propagation_direction: Vector2 = Vector2.UP, speed: float = 0.1, pos: Vector2 = parent.global_position, rot: float = 0, follow: bool = true, sc: float = 0.5):
 	var new_emote: Sprite2D = Emote_node.instantiate()
 	new_emote.speed = speed
 	new_emote.direction = propagation_direction
 	new_emote.texture = emote_dict[type]
 	new_emote.rotation = rot
+	new_emote.scale = Vector2(sc, sc)
 	if follow:
 		parent.dummy.add_child(new_emote)
 	else:
