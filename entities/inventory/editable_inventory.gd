@@ -4,15 +4,6 @@ class_name EditableInventory
 
 signal on_content_changed(slot: int)
 
-func is_in_bounds(slot: int) -> bool:
-	return slot >= 0 and slot < _content.size()
-
-func get_item(slot: int) -> Item:
-	if not is_in_bounds(slot):
-		return null
-
-	return _content[slot]
-
 func add_item(item: Item, slot: int = -1) -> bool:
 	if item == null:
 		return false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://01mbau86j0cn"]
+[gd_scene load_steps=20 format=4 uid="uid://01mbau86j0cn"]
 
 [ext_resource type="Texture2D" uid="uid://qi74byha511i" path="res://assets/textures/tilemaps/bottom_tilemap.png" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://cq01h0x262mcp" path="res://entities/player/player.tscn" id="1_o5qli"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dqqsup6xm5b3a" path="res://scenes/menus/inventoryMenu/inventory_UI.tscn" id="9_b1x3f"]
 [ext_resource type="PackedScene" uid="uid://bjsg7mkm5swaq" path="res://entities/enemies/gnat.tscn" id="11_ouso4"]
 [ext_resource type="PackedScene" uid="uid://v5faejistspp" path="res://ui/money_bar.tscn" id="12_blune"]
+[ext_resource type="Script" uid="uid://cgndn6txmw3af" path="res://ui/inventory/player_inventory_grid.gd" id="12_raeie"]
+[ext_resource type="PackedScene" uid="uid://c0nydah1xrgoi" path="res://ui/inventory/inventory_slot.tscn" id="13_hxu8e"]
 [ext_resource type="PackedScene" uid="uid://dh28jgsc0odwm" path="res://entities/enemies/rinobeetle.tscn" id="13_th5th"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
@@ -212,6 +214,8 @@ health = NodePath("../../player/Health")
 [node name="inventory_UI" parent="CanvasLayer" instance=ExtResource("9_b1x3f")]
 
 [node name="invenotryGrid" parent="CanvasLayer/inventory_UI/menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Items" index="0" node_paths=PackedStringArray("inventory")]
+script = ExtResource("12_raeie")
+slot_scene = ExtResource("13_hxu8e")
 inventory = NodePath("../../../../../../../../../player/Inventory")
 
 [node name="Money" parent="CanvasLayer" instance=ExtResource("12_blune")]
