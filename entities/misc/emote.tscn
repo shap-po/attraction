@@ -5,6 +5,7 @@
 
 [node name="Emote" type="Sprite2D"]
 top_level = true
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_gpxor")
 script = ExtResource("1_krihv")
 

@@ -36,5 +36,7 @@ func procces(_delta) -> void:
 	
 func next_state():
 	#print("[GnatAirborne] GnatAirborne => ", n_state)
+	if n_state == "GnatAttackPlayer":
+		create_emote(Emote.EmoteType.ALERT)
 	puppet.brain.block_transitions = false
 	puppet.brain.force_transition(n_state)

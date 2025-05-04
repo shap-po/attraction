@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xbffllw1i5mo"]
+[gd_scene load_steps=14 format=3 uid="uid://xbffllw1i5mo"]
 
 [ext_resource type="Script" uid="uid://b82g3btto72s1" path="res://entities/enemies/snail.gd" id="1_334tu"]
 [ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="2_8bnin"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ch3cl7t1hn66h" path="res://entities/enemies/state_machine/behaviours/snail/snail_scout_food.gd" id="6_dt2a5"]
 [ext_resource type="Script" uid="uid://fscws6o8mc6c" path="res://entities/enemies/state_machine/behaviours/snail/snail_attack_food.gd" id="7_dt2a5"]
 [ext_resource type="Script" uid="uid://b601wghkdyp7l" path="res://entities/enemies/state_machine/behaviours/snail/snail_hide.gd" id="8_juvgg"]
+[ext_resource type="Script" uid="uid://b5v6ejeh35w3c" path="res://entities/enemies/state_machine/behaviours/return_forest.gd" id="10_juvgg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cgr7e"]
 radius = 7.07107
@@ -86,6 +87,10 @@ metadata/_custom_type_script = "uid://b601wghkdyp7l"
 [node name="NoAi" type="Node" parent="brain"]
 script = ExtResource("4_vxiei")
 metadata/_custom_type_script = "uid://cg1q7s1urt42s"
+
+[node name="ReturnForest" type="Node" parent="brain"]
+script = ExtResource("10_juvgg")
+metadata/_custom_type_script = "uid://b5v6ejeh35w3c"
 
 [node name="ShootingCooldownTimer" type="Timer" parent="."]
 one_shot = true

@@ -74,6 +74,7 @@ func procces(_delta) -> void:
 		if wait <= -1:
 			wait = 200
 		elif wait == 0:
+			create_emote(Emote.EmoteType.QUESTION)
 			puppet.target = null
 		else:
 			wait -= 1
