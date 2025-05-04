@@ -47,7 +47,9 @@ func populate_plots() -> void:
 func on_plant_added(plant_type: PlantType) -> void:
 	spawner.enemies_pool.append_array(plant_type.enemies_pool)
 	spawner.enemy_points += plant_type.enemy_points
+	spawner.ant_points += plant_type.ant_points
 
 func on_plant_removed(plant_type: PlantType) -> void:
 	Util.remove_array(spawner.enemies_pool, plant_type.enemies_pool)
 	spawner.enemy_points -= plant_type.enemy_points
+	spawner.ant_points -= plant_type.ant_points
