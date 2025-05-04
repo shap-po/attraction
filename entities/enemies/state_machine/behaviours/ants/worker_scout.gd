@@ -26,6 +26,7 @@ func on_creation() -> void:
 	if !(puppet is AntWorker):
 		push_error("something initiated braincell of ant_worker without it actually being ant_worker.")
 		return
+	choose_new_point()
 	speed = puppet.speed * SPEED_MULTIPLIER
 	get_puppet().timer.wait_time = TIMER_CYCLE
 	get_puppet().timer.timeout.connect(clock)
@@ -38,20 +39,29 @@ func choose_new_point() -> void:
 		wait = (WAIT_BASE + randf_range(0, WAIT_SCATTER))
 
 func exit() -> void:
-	get_puppet().timer.timeout.disconnect(clock)
-
-func enter() -> void:
-	choose_new_point()
+	if get_puppet().timer.timeout.is_connected(clock):
+		get_puppet().timer.timeout.disconnect(clock)
 
 func procces(_delta) -> void:
-	if puppet:
-		if wait >= 0.0:
-			puppet.velocity = Vector2.ZERO
-			return
-		if puppet.global_position.distance_squared_to(target_point) < CHECKOUT_PRECISION:
-			choose_new_point()
-		puppet.velocity = speed * puppet.global_position.direction_to(target_point)
-	pass
+	if puppet == null:
+		return
+		
+	if wait >= 0.0:
+		puppet.velocity = Vector2.ZERO
+		return
+		
+	var find = puppet.check_area(Puppet.FindType.PLANT)
+	if find == Puppet.FindType.PLANT:
+		if puppet.home == null:
+			puppet.brain.force_transition("WorkerAttackFood")
+		else:
+			puppet.get_parent().get_parent().target = puppet.target
+			puppet.brain.force_transition("Flea")
+	
+	if puppet.global_position.distance_squared_to(target_point) < CHECKOUT_PRECISION:
+		choose_new_point()
+	puppet.velocity = speed * puppet.global_position.direction_to(target_point)
+	
 
 func clock() -> void:
 	if wait >= 0:

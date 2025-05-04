@@ -37,7 +37,6 @@ func procces(_delta: float) -> void:
 	var bodies: Array[Node2D] = puppet.area_touch.get_overlapping_bodies()
 	bodies.remove_at(0)
 	if bodies:
-		print(bodies)
 		for body in bodies:
 			if body.has_method("take_damage"):
 				body.take_damage(3)

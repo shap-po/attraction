@@ -8,9 +8,15 @@ var target_point
 var protection_target = null
 
 func on_creation():
-	Emote.create_emote(Emote.EmoteType.WARNING, puppet)
-	if protection_target is AntWorker:
-		protection_target = target_point 
+	var bodies: Array[Node2D] = puppet.area_sight.get_overlapping_bodies()
+	bodies.remove_at(0)
+	if bodies:
+		for body in bodies:
+			if body is AntWorker:
+				puppet.target = body
+				break
+	if puppet.target is AntWorker:
+		protection_target = puppet.target
 	speed = puppet.speed * SPEED_MULTIPLIER
 	puppet.unconditional_state = "WarriorEscort"
 	if !puppet.target:
@@ -19,7 +25,8 @@ func on_creation():
 func choose_new_point() -> void:
 	if puppet == null:
 		return
-	target_point = protection_target.global_position + Vector2.ZERO.rotated(protection_target.rotation_marker.rotation) * 10
+	target_point = protection_target.global_position + Vector2(randf_range(-5, 5), randf_range(-5, 5))
+	# TODO does not work for now
 
 func process(_delta):
 	var find: Puppet.FindType = puppet.check_area()
