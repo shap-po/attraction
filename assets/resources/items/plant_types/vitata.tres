@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="PlantType" load_steps=9 format=3 uid="uid://x414mesjp0jx"]
+[gd_resource type="Resource" script_class="PlantType" load_steps=10 format=3 uid="uid://x414mesjp0jx"]
 
 [ext_resource type="Script" uid="uid://q5c3ew7e705r" path="res://entities/enemies/weighted_enemy.gd" id="1_g8xjy"]
 [ext_resource type="Texture2D" uid="uid://bqepucg4wrwir" path="res://assets/textures/plants/vitata/vitata_item.png" id="2_5q2dl"]
+[ext_resource type="PackedScene" uid="uid://dh28jgsc0odwm" path="res://entities/enemies/rinobeetle.tscn" id="2_7hgva"]
 [ext_resource type="Texture2D" uid="uid://1aqsd1y4o657" path="res://assets/textures/plants/vitata/vitata_planted.png" id="2_oh86e"]
 [ext_resource type="Texture2D" uid="uid://cbujrk0ynn6x8" path="res://assets/textures/plants/vitata/vitata_growing.png" id="3_5q2dl"]
 [ext_resource type="Texture2D" uid="uid://cabmptyejgb02" path="res://assets/textures/plants/vitata/vitata_ripe.png" id="4_7hgva"]
@@ -11,7 +12,7 @@
 [sub_resource type="Resource" id="Resource_npylt"]
 script = ExtResource("1_g8xjy")
 name = "Rhino"
-enemies = Array[PackedScene]([])
+enemies = Array[PackedScene]([ExtResource("2_7hgva")])
 weight = 40
 points_cost = 80
 spawn_area_mask = 7
@@ -26,8 +27,9 @@ grow_stages = Array[Texture2D]([ExtResource("2_oh86e"), ExtResource("3_5q2dl"), 
 health = 10
 grown_sell_price = 400
 fruit_item_texture = ExtResource("2_5q2dl")
+invasion_chance = 0.2
 enemies_pool = Array[ExtResource("1_g8xjy")]([SubResource("Resource_npylt")])
-enemy_points = 20
+enemy_points = 10
 ant_points = 2
 item_texture = ExtResource("5_oh86e")
 item_description = "You might wanna let it grow for a while

@@ -10,7 +10,7 @@ var direction: Vector2 = Vector2.ZERO
 @onready var inventory: PlayerInventory = $Inventory
 @onready var health: Health = $Health
 @onready var current_weapon: ProjectileType = preload("res://assets/resources/projectiles/shoe.tres") as ProjectileType
-@onready var current_plant: PlantType = preload("res://assets/resources/items/plant_types/chem_root.tres") as PlantType
+@onready var current_plant: PlantType = preload("res://assets/resources/items/plant_types/vitata.tres") as PlantType
 @onready var PROJECTILE: PackedScene = preload("res://entities/projectile/projectile.tscn")
 @onready var shooting_cooldown: Timer = $ShootingCooldownTimer
 @onready var interaction_cooldown: Timer = $InteractionCooldownTimer
@@ -89,7 +89,7 @@ func interact() -> Interactible.InteractionResult:
 
 func take_damage(damage: int) -> void:
 	health.damage(damage)
-	
+
 func apply_stun(time: float):
 	## TODO
 	pass
