@@ -6,6 +6,9 @@ class_name BaseInventoryGrid
 @onready var slots: Array[InventorySlot] = []
 
 func _ready() -> void:
+	setup()
+
+func setup() -> void:
 	if get_children().size() != 0:
 		push_error("Invenotry grid cannot have child nodes!")
 		for n in get_children():

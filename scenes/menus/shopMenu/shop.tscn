@@ -1,10 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://dawbq3k8145p2"]
+[gd_scene load_steps=14 format=3 uid="uid://dawbq3k8145p2"]
 
 [ext_resource type="PackedScene" uid="uid://b4d7l1oq70mup" path="res://scenes/menus/menuWindow/menu_window_template_big.tscn" id="1_fagi7"]
+[ext_resource type="Script" uid="uid://b8odsh53yeegs" path="res://entities/inventory/base_inventory.gd" id="1_fpu1e"]
+[ext_resource type="Script" uid="uid://ctrmjcdiifqv6" path="res://scenes/menus/shopMenu/shop.gd" id="1_k1mm3"]
 [ext_resource type="Texture2D" uid="uid://2jtf7lng10tq" path="res://assets/textures/UI/UI Building Blocks.png" id="2_5rl1t"]
+[ext_resource type="Script" uid="uid://cuwfyh7pt3x4g" path="res://entities/inventory/item.gd" id="2_kt51k"]
 [ext_resource type="Texture2D" uid="uid://8e3r0b7qmow" path="res://assets/textures/moth/Moth girl.png" id="3_av0wc"]
+[ext_resource type="Resource" uid="uid://k4x3j85xvjfh" path="res://assets/resources/items/plant_types/chem_root.tres" id="3_k1mm3"]
 [ext_resource type="Script" uid="uid://bn5bxsgdvtgqr" path="res://entities/moth/moth.gd" id="4_nuq1x"]
 [ext_resource type="AudioStream" uid="uid://k5xbfgp4dfx5" path="res://assets/textures/moth/squeaky toy.wav" id="5_av0wc"]
+[ext_resource type="PackedScene" uid="uid://jao16wk712rc" path="res://ui/inventory/shop_inventory_grid.tscn" id="6_rnbto"]
+[ext_resource type="PackedScene" uid="uid://diwbyb8aoifji" path="res://ui/inventory/player_inventory_grid.tscn" id="7_fpu1e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fagi7"]
 
@@ -17,6 +23,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_k1mm3")
+
+[node name="ShopInventory" type="Node" parent="."]
+script = ExtResource("1_fpu1e")
+_content = Array[ExtResource("2_kt51k")]([ExtResource("3_k1mm3")])
+metadata/_custom_type_script = "uid://b8odsh53yeegs"
 
 [node name="menuWindowTemplateBig_MarginContainer_PanelContainer_MarginContainer#HSplitContainer" type="HSplitContainer" parent="."]
 layout_mode = 2
@@ -105,19 +117,23 @@ theme_override_constants/margin_bottom = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 19
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="Shop" type="MarginContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop"]
+[node name="ShopInvenotryGrid" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop" node_paths=PackedStringArray("inventory") instance=ExtResource("6_rnbto")]
 layout_mode = 2
+inventory = NodePath("../../../../../../../../../../ShopInventory")
 
 [node name="Inventory" type="MarginContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="PlayerInvenotryGrid" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Inventory" instance=ExtResource("7_fpu1e")]
+layout_mode = 2
 
 [connection signal="pressed" from="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer/moth/Button" to="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer/moth" method="_on_button_pressed"]
 [connection signal="timeout" from="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer/moth/Timer" to="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer/moth" method="_on_timer_timeout"]

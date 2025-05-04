@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://c3o1fjyinet1x" path="res://assets/textures/misc/emotes/question.png" id="8_a8run"]
 [ext_resource type="PackedScene" uid="uid://dgo2sncuhbver" path="res://ui/health_bar.tscn" id="9_a8run"]
 [ext_resource type="PackedScene" uid="uid://dqqsup6xm5b3a" path="res://scenes/menus/inventoryMenu/inventory_UI.tscn" id="9_b1x3f"]
+[ext_resource type="PackedScene" uid="uid://dawbq3k8145p2" path="res://scenes/menus/shopMenu/shop.tscn" id="10_hxu8e"]
 [ext_resource type="PackedScene" uid="uid://bjsg7mkm5swaq" path="res://entities/enemies/gnat.tscn" id="11_ouso4"]
 [ext_resource type="PackedScene" uid="uid://v5faejistspp" path="res://ui/money_bar.tscn" id="12_blune"]
-[ext_resource type="Script" uid="uid://cgndn6txmw3af" path="res://ui/inventory/player_inventory_grid.gd" id="12_raeie"]
 [ext_resource type="PackedScene" uid="uid://c0nydah1xrgoi" path="res://ui/inventory/inventory_slot.tscn" id="13_hxu8e"]
 [ext_resource type="PackedScene" uid="uid://dh28jgsc0odwm" path="res://entities/enemies/rinobeetle.tscn" id="13_th5th"]
 
@@ -208,13 +208,23 @@ position = Vector2(-48, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="shop" parent="CanvasLayer" node_paths=PackedStringArray("player_inventory") instance=ExtResource("10_hxu8e")]
+player_inventory = NodePath("../../player/Inventory")
+
+[node name="ShopInvenotryGrid" parent="CanvasLayer/shop/menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop" index="0" node_paths=PackedStringArray("player_inventory")]
+player_inventory = NodePath("../../../../../../../../../../../../player/Inventory")
+
+[node name="PlayerInvenotryGrid" parent="CanvasLayer/shop/menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Inventory" index="0" node_paths=PackedStringArray("inventory")]
+inventory = NodePath("../../../../../../../../../../../../player/Inventory")
+
 [node name="health_bar" parent="CanvasLayer" node_paths=PackedStringArray("health") instance=ExtResource("9_a8run")]
 health = NodePath("../../player/Health")
 
-[node name="inventory_UI" parent="CanvasLayer" instance=ExtResource("9_b1x3f")]
+[node name="inventory_UI" parent="CanvasLayer" node_paths=PackedStringArray("inventory_grid") instance=ExtResource("9_b1x3f")]
+inventory_grid = NodePath("menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Items/PlayerInventoryGrid")
 
-[node name="invenotryGrid" parent="CanvasLayer/inventory_UI/menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Items" index="0" node_paths=PackedStringArray("inventory")]
-script = ExtResource("12_raeie")
+[node name="PlayerInventoryGrid" parent="CanvasLayer/inventory_UI/menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Items" index="0" node_paths=PackedStringArray("inventory")]
+columns = 9
 slot_scene = ExtResource("13_hxu8e")
 inventory = NodePath("../../../../../../../../../player/Inventory")
 
@@ -227,5 +237,7 @@ position = Vector2(-22, -129)
 [connection signal="toggle_inventory" from="player" to="CanvasLayer/inventory_UI" method="_on_player_toggle_inventory"]
 
 [editable path="player"]
+[editable path="CanvasLayer/shop"]
+[editable path="CanvasLayer/shop/menuWindowTemplateBig"]
 [editable path="CanvasLayer/inventory_UI"]
 [editable path="CanvasLayer/inventory_UI/menuWindowTemplateBig"]
