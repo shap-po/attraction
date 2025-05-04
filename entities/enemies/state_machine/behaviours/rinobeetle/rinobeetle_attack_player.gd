@@ -2,7 +2,6 @@ extends State
 class_name RinobeetleAttackPlayer
 
 @export var SPEED_MULTIPLIER: float = 1
- 
 var wait: int = -1
 var smod: float = 1.0
 
@@ -14,8 +13,8 @@ func on_creation() -> void:
 	puppet.unconditional_state = "RinobeetleAttackPlayer"
 	if !puppet.target:
 		puppet.brain.force_transition("RinobeetleScout")
-	
-	
+
+
 func choose_point():
 	target_point = (puppet.global_position.direction_to(puppet.target.global_position) * -50) + puppet.target.global_position
 
@@ -28,20 +27,18 @@ func procces(delta) -> void:
 		return
 	if !target_point:
 		choose_point()
-	
+
 	if (puppet.global_position.distance_squared_to(target_point) < 150):
 		if (puppet.global_position.distance_squared_to(puppet.target.global_position) < 4000):
 			puppet.brain.force_transition("RinobeetleCharge")
 		else:
 			choose_point()
-			
+
 	puppet.velocity = speed * smod * puppet.global_position.direction_to(target_point)
-				
+
 	if (puppet.global_position.distance_squared_to(puppet.target.global_position) < 150):
-			puppet.melee(1)
-		
-	
-	
+		puppet.melee(1)
+
 	if !puppet.area_sight.overlaps_area(puppet.target.interaction_area):
 		#print(wait)
 		if wait <= -1:

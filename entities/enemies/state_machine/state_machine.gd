@@ -3,7 +3,7 @@ class_name StateMachine
 
 @export var initial_state: State
 @export var puppet: Node2D
-var block_transitions = false
+var block_transitions: bool = false
 @export var hunger: int = 1
 var current_state: State
 var states_dict: Dictionary = {}
@@ -13,7 +13,7 @@ func _ready() -> void:
 		if child is State:
 			child.puppet = puppet
 			states_dict[child.name.to_upper()] = child
-			#child.transitioned_signal.connect(on_child_transition)
+	#child.transitioned_signal.connect(on_child_transition)
 	if initial_state != null:
 		initial_state.fenter()
 		current_state = initial_state

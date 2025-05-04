@@ -4,9 +4,7 @@ class_name Puppet
 var unconditional_state: String = "NoAi"
 @export var speed: float
 @export var weight: float = 0.4
-
 var target: Node2D
-
 @onready var current_weapon: ProjectileType = preload("res://assets/resources/projectiles/bite.tres") as ProjectileType
 
 @onready var dummy: Node2D = get_parent()
@@ -25,9 +23,10 @@ enum FindType {
 @onready var timer: Timer = $timer
 @onready var acting_cooldown: Timer = $ShootingCooldownTimer
 var melee_cooldown: float = 0.75
-var can_act = true
+var can_act: bool = true
 
 var effects: Array[float] = [-1]
+
 ##                           stun,
 func _ready() -> void:
 	acting_cooldown.timeout.connect(on_acting_cooldown_up)
@@ -72,12 +71,13 @@ func on_zero_health() -> void:
 
 func on_death_effect() -> void:
 	pass
+
 func on_damage_effect() -> void:
 	pass
 
 
 func shoot(shoot_ang: float) -> void:
-	if !can_act:
+	if not can_act:
 		return
 	can_act = false
 	var projectile: PackedScene = preload("res://entities/projectile/projectile.tscn")
@@ -91,11 +91,9 @@ func shoot(shoot_ang: float) -> void:
 	acting_cooldown.start()
 
 func melee(damage: int, cooldown: float = 0.75) -> void:
-
-	if !target:
+	if target == null:
 		return
-
-	if !can_act:
+	if not can_act:
 		return
 	can_act = false
 
@@ -112,8 +110,6 @@ func melee(damage: int, cooldown: float = 0.75) -> void:
 	Emote.create_emote(Emote.EmoteType.BITE_UPPER, target, pv * -1, 0.15, pos2, rot2, false)
 	acting_cooldown.wait_time = cooldown
 	acting_cooldown.start()
-
-
 
 func on_acting_cooldown_up():
 	can_act = true

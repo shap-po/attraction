@@ -13,9 +13,7 @@ class_name RinobeetleIdle
 @export var WAIT_BASE: float = 1.0
 @export var WAIT_SCATTER: float = 1.0
 var wait: float = -1.0
-@export var time_next_state = 13
-
-
+@export var time_next_state: float = 13
 var speed: float
 var target_point: Vector2
 
@@ -42,18 +40,17 @@ func procces(_delta) -> void:
 	if wait >= 0.0:
 		puppet.velocity = Vector2.ZERO
 		return
-	var find = puppet.check_area()
+	var find: Puppet.FindType = puppet.check_area()
 	if find == Puppet.FindType.PLANT:
 		puppet.brain.force_transition("RinobeetleAttackFood")
 	if find == Puppet.FindType.PLAYER:
 		create_emote(Emote.EmoteType.ALERT)
 		puppet.brain.force_transition("RinobeetleAttackPlayer")
-	
+
 	if puppet.global_position.distance_squared_to(target_point) < CHECKOUT_PRECISION:
 		choose_new_point()
 	puppet.velocity = speed * puppet.global_position.direction_to(target_point)
-	
-	
+
 
 func clock(delta):
 	if time_next_state >= 0:

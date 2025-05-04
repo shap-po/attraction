@@ -1,11 +1,10 @@
 extends Sprite2D
 class_name Emote
 
-
 @export var speed: float = 0.1
 @export var max_ticks_lifetime: float = 60
 var ticks_lifetime: float
-var direction = Vector2.UP
+var direction: Vector2 = Vector2.UP
 
 func _ready() -> void:
 	ticks_lifetime = max_ticks_lifetime
