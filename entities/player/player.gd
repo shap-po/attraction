@@ -95,7 +95,7 @@ func interact() -> Interactible.InteractionResult:
 
 func take_damage(damage: int) -> void:
 	health.damage(damage)
-	
+
 func apply_stun(time: float):
 	Emote.create_emote(Emote.EmoteType.STUN, self)
 	stun = time

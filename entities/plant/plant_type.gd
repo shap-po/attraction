@@ -25,6 +25,8 @@ const PLANT: PackedScene = preload("res://entities/plant/plant.tscn")
 @export_group("Fruit Item Properties")
 @export var grown_sell_price: int
 @export var fruit_item_texture: Texture2D
+## How likely is the plant to replant itself on nearby plots
+@export_range(0.0, 1.0, 0.05) var invasion_chance: float = 0.0
 # Specific for bushes
 @export_group("Bush Properties")
 @export_range(0, 10) var bush_harvest_limit: int
@@ -32,6 +34,7 @@ const PLANT: PackedScene = preload("res://entities/plant/plant.tscn")
 @export_group("Enemies")
 @export var enemies_pool: Array[WeightedEnemy] = []
 @export_range(0, 20, 1, "or_greater") var enemy_points: int
+@export var ant_points: int = 0
 
 func _init() -> void:
 	# set item properties
