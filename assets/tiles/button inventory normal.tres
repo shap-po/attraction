@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dpyi3tekla651"]
+
+[ext_resource type="Texture2D" uid="uid://2jtf7lng10tq" path="res://assets/textures/UI/UI Building Blocks.png" id="1_6kwpx"]
+
+[resource]
+texture = ExtResource("1_6kwpx")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(15, 47, 18, 18)
