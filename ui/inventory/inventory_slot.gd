@@ -7,6 +7,7 @@ class_name InventorySlot
 @onready var item_texture: TextureRect = $Button/ItemContent/ItemTexture
 @onready var item_price: Label = $Button/ItemContent/ItemPrice
 @onready var item_count: Label = $Button/ItemContent/ItemCount
+@onready var selected_indicator: ColorRect = $selected_indicator
 
 
 func _on_button_pressed() -> void:

@@ -45,9 +45,9 @@ func _physics_process(_delta: float) -> void:
 		if res != Interactible.InteractionResult.PASS:
 			interaction_cooldown.start()
 
-	if Input.is_action_pressed("hotbar_next"):
+	if Input.is_action_just_released("hotbar_next"):
 		inventory.selected_slot += 1
-	if Input.is_action_pressed("hotbar_previous"):
+	if Input.is_action_just_released("hotbar_previous"):
 		inventory.selected_slot -= 1
 
 	# toggle inventory
