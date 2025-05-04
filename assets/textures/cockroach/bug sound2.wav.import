@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ht5a28f8qwsd"
+path="res://.godot/imported/bug sound2.wav-10d6586cc38dad1eb4f8c037f428fead.sample"
+
+[deps]
+
+source_file="res://assets/textures/cockroach/bug sound2.wav"
+dest_files=["res://.godot/imported/bug sound2.wav-10d6586cc38dad1eb4f8c037f428fead.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

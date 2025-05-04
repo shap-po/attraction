@@ -1,6 +1,8 @@
 extends TileMapLayer
 class_name Spawner
 
+signal incoming_wave(wave_location: WeightedEnemy.SpawnArea, bug_allert_timeout: int)
+
 @onready var next_wave_timer: Timer = $NextWaveTimer
 @onready var dummy: Node2D = %dummy
 @onready var plots: Node2D = %Plots
@@ -53,7 +55,7 @@ func prepare_wave() -> void:
 	var enemy: WeightedEnemy = WeightedEnemy.choose(pool)
 	if enemy == null:
 		return
-	wave_location = enemy.get_spawn_ares().pick_random()
+		wave_location = enemy.get_spawn_ares().pick_random()
 	_filter_pool_by_area(pool, wave_location)
 
 	# add the enemy to the wave
@@ -95,6 +97,7 @@ func _on_next_wave_timer_timeout() -> void:
 
 		# allert the player and set the timer for the wave
 		print("A wave incoming from ", Util.enum_to_str(WeightedEnemy.SpawnArea, wave_location), " in ", Global.bug_allert_timeout, " seconds!\nEnemies: ", wave_enemies)
+		incoming_wave.emit(wave_location, Global.bug_allert_timeout)
 		next_wave_timer.wait_time = Global.bug_allert_timeout
 		return
 

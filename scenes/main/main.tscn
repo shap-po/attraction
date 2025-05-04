@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://c3o1fjyinet1x" path="res://assets/textures/misc/emotes/question.png" id="8_a8run"]
 [ext_resource type="PackedScene" uid="uid://dgo2sncuhbver" path="res://ui/health_bar.tscn" id="9_a8run"]
 [ext_resource type="PackedScene" uid="uid://dqqsup6xm5b3a" path="res://scenes/menus/inventoryMenu/inventory_UI.tscn" id="9_b1x3f"]
+[ext_resource type="PackedScene" uid="uid://dyaoam7smtqhx" path="res://scenes/tiles/talking_box.tscn" id="10_7smn1"]
 [ext_resource type="PackedScene" uid="uid://bjsg7mkm5swaq" path="res://entities/enemies/gnat.tscn" id="11_ouso4"]
-[ext_resource type="PackedScene" uid="uid://v5faejistspp" path="res://ui/money_bar.tscn" id="12_blune"]
-[ext_resource type="PackedScene" uid="uid://dh28jgsc0odwm" path="res://entities/enemies/rinobeetle.tscn" id="13_th5th"]
+[ext_resource type="PackedScene" path="res://ui/money_bar.tscn" id="12_blune"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("1_0wfyh")
@@ -206,6 +206,8 @@ position = Vector2(-48, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="talking_box" parent="CanvasLayer" instance=ExtResource("10_7smn1")]
+
 [node name="health_bar" parent="CanvasLayer" node_paths=PackedStringArray("health") instance=ExtResource("9_a8run")]
 health = NodePath("../../player/Health")
 
@@ -216,9 +218,7 @@ inventory = NodePath("../../../../../../../../../player/Inventory")
 
 [node name="Money" parent="CanvasLayer" instance=ExtResource("12_blune")]
 
-[node name="Rinobeetle" parent="." instance=ExtResource("13_th5th")]
-position = Vector2(-22, -129)
-
+[connection signal="incoming_wave" from="map/Spawner" to="CanvasLayer/talking_box" method="_on_spawner_incoming_wave"]
 [connection signal="timeout" from="map/Spawner/NextWaveTimer" to="map/Spawner" method="_on_next_wave_timer_timeout"]
 [connection signal="toggle_inventory" from="player" to="CanvasLayer/inventory_UI" method="_on_player_toggle_inventory"]
 
