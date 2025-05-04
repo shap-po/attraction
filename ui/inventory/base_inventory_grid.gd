@@ -17,8 +17,8 @@ func setup() -> void:
 
 	for s in range(inventory._content.size()):
 		var slot: InventorySlot = slot_scene.instantiate()
-		add_child(slot)
 		slots.append(slot)
+		add_child(slot)
 
 	update_slots()
 
@@ -35,9 +35,21 @@ func on_close() -> void:
 func on_pressed(index: int) -> void:
 	pass
 
-func update_slot(slot_index: int):
-	slots[slot_index].update(inventory._content[slot_index])
+func _update_slot(index: int) -> void:
+	var slot: InventorySlot = slots[index]
+	var item: Item = inventory.get_item(index)
+	update_slot(slot, item)
+
+func update_slot(slot: InventorySlot, item: Item) -> void:
+	if item == null:
+		slot.item_texture.visible = false
+		slot.item_price.visible = false
+		slot.item_count.visible = false
+		return
+
+	slot.item_texture.visible = true
+	slot.item_texture.texture = item.item_texture
 
 func update_slots():
 	for i in slots.size():
-		slots[i].update(inventory._content[i])
+		_update_slot(i)

@@ -24,3 +24,15 @@ func buy_item(item: Item) -> bool:
 		Money.remove(item.buy_price)
 
 	return res
+
+func update_slot(slot: InventorySlot, item: Item) -> void:
+	super.update_slot(slot, item)
+	if item == null:
+		return
+
+	slot.item_count.visible = false
+	slot.item_price.add_theme_color_override("font_color", Color(0.9, 0.9, 0.0))
+
+	# update price
+	slot.item_price.visible = true
+	slot.item_price.text = str(item.buy_price)

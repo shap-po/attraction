@@ -6,7 +6,7 @@ var selected_slot: int = -1
 
 func _ready() -> void:
 	super._ready()
-	get_inventory().on_content_changed.connect(update_slot)
+	get_inventory().on_content_changed.connect(_update_slot)
 
 func _process(_delta: float) -> void:
 	if selected_slot == -1:
@@ -50,6 +50,24 @@ func reset_slot_content_position(index: int) -> void:
 	slot.item_content.global_position = slot.button.global_position
 	slots[index].item_content.z_index = 0
 	slot.item_content.z_as_relative = false
+
+func update_slot(slot: InventorySlot, item: Item) -> void:
+	super.update_slot(slot, item)
+	if item == null:
+		return
+
+	# update count
+	if item is CountableItem:
+		slot.item_count.text = str(item.count)
+		slot.item_count.visible = true
+	else:
+		slot.item_count.visible = false
+	# update price
+	if item.sell_price != 0:
+		slot.item_price.visible = true
+		slot.item_price.text = str(item.sell_price)
+	else:
+		slot.item_price.visible = false
 
 func _validate_property(property: Dictionary) -> void:
 	# override inventory type hint

@@ -1,15 +1,8 @@
 @tool
-extends BaseInventoryGrid
+extends PlayerInventoryGrid
 class_name SellInventoryGrid
 
-func _ready() -> void:
-	super._ready()
-	get_inventory().on_content_changed.connect(update_slot)
-
-
 func on_pressed(index: int) -> void:
-	super.on_pressed(index)
-
 	sell_item(index)
 
 func sell_item(index: int) -> bool:
@@ -22,17 +15,9 @@ func sell_item(index: int) -> bool:
 	item = get_inventory().remove_item(index)
 
 	# calc the price
-	var price = item.sell_price
+	var price: int = item.sell_price
 	if item is CountableItem:
 		price *= item.count
 
 	Money.add(price)
 	return true
-
-func get_inventory() -> PlayerInventory:
-	return inventory as PlayerInventory
-
-func _validate_property(property: Dictionary) -> void:
-	# override inventory type hint
-	if property.name == "inventory":
-		property.hint_string = "PlayerInventory"
