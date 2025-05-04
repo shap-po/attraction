@@ -82,9 +82,9 @@ func _filter_pool_by_area(pool: Array[WeightedEnemy], area: WeightedEnemy.SpawnA
 	var i: int = 0
 	while i < pool.size():
 		if pool[i].spawn_area_mask & int(area) == 0:
-			i += 1
-		else:
 			pool.pop_at(i)
+		else:
+			i += 1
 
 func _on_next_wave_timer_timeout() -> void:
 	if wave_location == null or wave_enemies.size() == 0:
