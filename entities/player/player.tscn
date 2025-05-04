@@ -26,15 +26,17 @@ collision_mask = 6
 [node name="InteractionCollisionShape2D" type="CollisionShape2D" parent="InteractionArea2D"]
 shape = SubResource("CircleShape2D_sglur")
 
-[node name="Hand" type="Sprite2D" parent="."]
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Hand" type="Sprite2D" parent="Body"]
 position = Vector2(1, -6)
 texture = ExtResource("2_8fjmc")
 
-[node name="Hand2" type="Sprite2D" parent="."]
+[node name="Hand2" type="Sprite2D" parent="Body"]
 position = Vector2(1, 5)
 texture = ExtResource("2_8fjmc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
 texture = ExtResource("1_symyc")
 
 [node name="ShootingCooldownTimer" type="Timer" parent="."]
