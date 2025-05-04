@@ -4,8 +4,9 @@ signal on_change(previous: int, new: int)
 
 var value: int = 0:
 	set(val):
-		on_change.emit(value, val)
+		var previous: int = value
 		value = val
+		on_change.emit(previous, val)
 
 func add(amount: int) -> void:
 	value += amount

@@ -17,6 +17,7 @@ var direction: Vector2 = Vector2.ZERO
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var dummy = %dummy
 @onready var interaction_area: Area2D = $InteractionArea2D
+@onready var shop: Control = $"../CanvasLayer/shop"
 
 
 func _ready() -> void:
@@ -38,10 +39,18 @@ func _physics_process(_delta: float) -> void:
 		if res != Interactible.InteractionResult.PASS:
 			interaction_cooldown.start()
 
+	if Input.is_action_pressed("hotbar_next"):
+		inventory.selected_slot += 1
+	if Input.is_action_pressed("hotbar_previous"):
+		inventory.selected_slot -= 1
 
 	# toggle inventory
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory.emit()
+
+	if Input.is_action_just_pressed("space"):
+		shop.toggle()
+
 
 	if Input.is_action_just_pressed("rcm"): # for testing
 		var item: WorldItem = current_plant.create_world_item()
