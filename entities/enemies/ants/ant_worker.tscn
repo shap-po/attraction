@@ -12,8 +12,8 @@
 radius = 3.33333
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_flprm"]
-radius = 70.0
-height = 140.0
+radius = 85.0
+height = 213.333
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_30rtc"]
 radius = 12.1335
@@ -23,7 +23,7 @@ scale = Vector2(0.6, 0.6)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_bi10t")
-speed = 20.0
+speed = 30.0
 
 [node name="collision_area_shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_degik")
@@ -34,13 +34,16 @@ shape = SubResource("CircleShape2D_degik")
 texture = ExtResource("1_xvnl3")
 
 [node name="area_sight" type="Area2D" parent="rotation_marker"]
+collision_layer = 5
+collision_mask = 5
 
 [node name="vision_area_sight_shape" type="CollisionShape2D" parent="rotation_marker/area_sight"]
-position = Vector2(25, -6.10119e-12)
+position = Vector2(30, 3.78924e-14)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_flprm")
 
 [node name="area_touch" type="Area2D" parent="rotation_marker"]
+collision_layer = 5
 
 [node name="vision_area_touch_shape" type="CollisionShape2D" parent="rotation_marker/area_touch"]
 shape = SubResource("CircleShape2D_30rtc")

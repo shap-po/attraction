@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://n716cs15gjtv"]
+[gd_scene load_steps=13 format=3 uid="uid://n716cs15gjtv"]
 
 [ext_resource type="Script" uid="uid://bepneo4fh82sg" path="res://entities/enemies/ants/ant_mound.gd" id="1_28qug"]
 [ext_resource type="Texture2D" uid="uid://b64q0j1uh6f3q" path="res://assets/textures/enemies/ants/ant_mound_small.png" id="1_44fhl"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_nv1hj"]
 [ext_resource type="Script" uid="uid://dpx7s4t6yxnwn" path="res://entities/enemies/state_machine/behaviours/ants/mound_scout.gd" id="4_a5aqs"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_bgytr"]
+[ext_resource type="Script" uid="uid://c58ojmhyxhn6u" path="res://entities/enemies/state_machine/behaviours/ants/mound_raid.gd" id="7_pja52"]
+[ext_resource type="Script" uid="uid://dwlnmgh6br07s" path="res://entities/enemies/state_machine/behaviours/ants/mound_defend.gd" id="8_2uhk1"]
+[ext_resource type="Script" uid="uid://jm44kicpnkwr" path="res://entities/enemies/state_machine/behaviours/ants/mound_upgrade.gd" id="9_kqpsj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bgytr"]
 
@@ -65,6 +68,18 @@ metadata/_custom_type_script = "uid://dpx7s4t6yxnwn"
 [node name="NoAi" type="Node" parent="brain"]
 script = ExtResource("4_bgytr")
 metadata/_custom_type_script = "uid://cg1q7s1urt42s"
+
+[node name="MoundRaid" type="Node" parent="brain"]
+script = ExtResource("7_pja52")
+metadata/_custom_type_script = "uid://c58ojmhyxhn6u"
+
+[node name="MoundDefend" type="Node" parent="brain"]
+script = ExtResource("8_2uhk1")
+metadata/_custom_type_script = "uid://dwlnmgh6br07s"
+
+[node name="MoundUpgrade" type="Node" parent="brain"]
+script = ExtResource("9_kqpsj")
+metadata/_custom_type_script = "uid://jm44kicpnkwr"
 
 [node name="ants" type="Node2D" parent="."]
 

@@ -56,3 +56,8 @@ func procces(_delta) -> void:
 func clock() -> void:
 	if wait >= 0:
 		wait -= 1.0 * TIMER_CYCLE
+
+func on_alerted(cause):
+	create_emote(Emote.EmoteType.ALERT)
+	puppet.unconditional_state = "Flea"
+	puppet.brain.force_transition("Flea")

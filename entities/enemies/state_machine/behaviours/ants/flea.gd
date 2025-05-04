@@ -42,10 +42,6 @@ func on_creation() -> void:
 		target_point = puppet.target.global_position
 		
 
-
-func enter() -> void:
-	create_emote(Emote.EmoteType.ALERT)
-
 	
 func procces(_delta) -> void:
 	if puppet:
@@ -53,7 +49,7 @@ func procces(_delta) -> void:
 			puppet.velocity = Vector2.ZERO
 			return
 		if puppet.global_position.distance_to(target_point) < CHECKOUT_PRECISION:
-			get_puppet().enter_home.emit(get_puppet().type)
+			get_puppet().enter_home.emit(get_puppet())
 			puppet.queue_free()
 		puppet.velocity = speed * puppet.global_position.direction_to(target_point)
 	pass

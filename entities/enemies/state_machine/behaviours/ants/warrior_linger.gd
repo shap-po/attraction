@@ -18,11 +18,13 @@ var speed: float
 var target_point: Vector2
 
 func on_creation() -> void:
+	if puppet.unconditional_state == "WarriorLinger": puppet.unconditional_state = "WarriorFlea"
+	if puppet.unconditional_state == "WarriorRage": puppet.unconditional_state = "WarriorFlea"
 	time_next_state = 10
-	puppet.unconditional_state = "WarriorRage"
 	speed = puppet.speed * SPEED_MULTIPLIER
 
 func choose_new_point() -> void:
+	
 	if puppet == null:
 		return
 	target_point = puppet.global_position + Vector2(randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER), randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER)) + Vector2(pow(-1, randi_range(1, 2)) * DISTANCE_BASE, pow(-1, randi_range(1, 2)) * DISTANCE_BASE)
@@ -31,7 +33,7 @@ func choose_new_point() -> void:
 
 
 func enter() -> void:
-	choose_new_point()
+	if target_point == null: choose_new_point()
 
 func procces(_delta) -> void:
 	if puppet == null:
@@ -41,10 +43,14 @@ func procces(_delta) -> void:
 		puppet.velocity = Vector2.ZERO
 		return
 	var find: Puppet.FindType = puppet.check_area()
-	
 	if find == Puppet.FindType.PLAYER:
-		create_emote(Emote.EmoteType.ALERT)
-		puppet.brain.force_transition("WarriorProtect")
+		if puppet.unconditional_state == "WarriorRage":
+			puppet.brain.force_transition("WarriorRage")
+		else:
+			puppet.brain.force_transition("WarriorProtect")
+		return
+		
+	
 
 	if puppet.global_position.distance_squared_to(target_point) < CHECKOUT_PRECISION:
 		choose_new_point()
@@ -55,11 +61,12 @@ func clock(delta):
 	if time_next_state >= 0:
 		time_next_state -= delta
 	else:
-		puppet.brain.force_transition("Flea")
+		puppet.brain.force_transition(puppet.unconditional_state)
 	if wait >= 0:
 		wait -= delta
 
-func on_damage_effect():
+func on_alerted(cause):
 	puppet.unconditional_state = "WarriorRage"
-	puppet.brain.force_transition("WarriorRage")
-	
+	var find = puppet.check_area()
+	if (find == puppet.FindType.PLAYER):
+		puppet.brain.force_transition("WarriorRage")

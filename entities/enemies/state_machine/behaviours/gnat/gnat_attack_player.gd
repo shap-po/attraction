@@ -8,12 +8,13 @@ class_name GnatAttackPlayer
 @export var SPEED_MULTIPLIER: float = 1 * randf_range(0.9, 1.2)
 @export var ROTATION_STRENGTH: float = 0.01 ## from 1.0 to 0.0
 var cur_r: float = ROTATION_STRENGTH
-var wait: int = -1
+var wait: float = 6
 
 var speed: float
 var target_point: Vector2
 
 func on_creation() -> void:
+	wait = 6
 	speed = puppet.speed * SPEED_MULTIPLIER
 	puppet.unconditional_state = "GnatIdle"
 	if !puppet.target:
@@ -71,14 +72,11 @@ func procces(_delta) -> void:
 
 	if !puppet.area_sight.overlaps_area(puppet.target.interaction_area):
 		#print(wait)
-		if wait <= -1:
-			wait = 200
-		elif wait == 0:
+		if wait <= 0:
 			create_emote(Emote.EmoteType.QUESTION)
 			puppet.target = null
 		else:
-			wait -= 1
+			wait -= _delta * 1
 	else:
-		#print(wait)
-		wait = -1
+		wait = 6
 		

@@ -9,6 +9,7 @@ signal brain_ant_killed(type: Ant.AntType)
 var allience: String = "bug"
 var sprite_texture: Array = [preload("res://assets/textures/enemies/ants/ant_mound_small.png"), preload("res://assets/textures/enemies/ants/ant_mound_medium.png"), preload("res://assets/textures/enemies/ants/ant_mound_big.png")]
 @onready var add_ant_points: Timer = $add_ant_points
+@onready var ant_mound_sprite: Sprite2D = $rotation_marker/ant_mound_sprite
 
 const ANT: Array = [preload("res://entities/enemies/ants/ant_worker.tscn"), preload("res://entities/enemies/ants/ant_warrior.tscn")]
 @onready var ants: Node2D = $ants
@@ -23,12 +24,17 @@ var max_list: Array[Array] = [max_workers, max_warriors, max_queens]
 var summon_chances: Array[float] = [0.5, 0.5, 0]
 ##                                 worker, warrior, queen
 
+var upgrade_points_needed = [3, 15, 100]
+var upgrade_points = 0
 
 
 @export var max_ant_points: Array[int] = [16, 24, 32]
 @export var ant_cost: Array[int] = [1, 3, 10]
 var current_ants: Array[int] = [0, 0, 0]
 var ant_points: int
+
+func update_with_size():
+	ant_mound_sprite = sprite_texture[size]
 
 func _ready() -> void:
 	health.on_zero.connect(on_zero_health)
@@ -44,7 +50,10 @@ func summon_ant() -> void:
 			type = i
 			break
 	while type >= 0:
-		if (current_ants[type] > max_list[type][size]) and (ant_points >= ant_cost[type]): type -= 1
+		if (current_ants[type] > max_list[type][size]) or (ant_points <= ant_cost[type]): 
+			type -= 1
+		else:
+			break
 	if type == -1:
 		return
 
@@ -60,14 +69,16 @@ func summon_ant() -> void:
 
 func on_ant_killed(type: Ant.AntType):
 	current_ants[type] -= 1
-	brain_ant_killed.emit(type)
+	#brain_ant_killed.emit(type)
 
 func on_ant_damaged(type: Ant.AntType):
 	brain_ant_damaged.emit(type)
 
-func on_ant_returned(type: Ant.AntType):
-	current_ants[type] -= 1
-	ant_points += ant_cost[type]
+func on_ant_returned(ant: Node2D):
+	current_ants[ant.type] -= 1
+	if ant.brain.hunger <= 0:
+		upgrade_points += 1
+	ant_points += ant_cost[ant.type]
 
 func _on_add_ant_points_timeout() -> void:
 	if ant_points <= max_ant_points[size]:
@@ -79,3 +90,4 @@ func take_damage(damage: int) -> void:
 
 func _on_summon_cooldown_timeout() -> void:
 	summon_ant()
+	pass
