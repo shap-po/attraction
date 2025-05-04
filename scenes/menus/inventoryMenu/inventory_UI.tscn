@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://b4d7l1oq70mup" path="res://scenes/menus/menuWindow/menu_window_template_big.tscn" id="1_06x7i"]
 [ext_resource type="Script" uid="uid://dxymiriy43huj" path="res://scenes/menus/inventoryMenu/inventory_UI.gd" id="1_jv3rg"]
-[ext_resource type="PackedScene" uid="uid://bvekckwny1lnq" path="res://scenes/tiles/inventory_grid.tscn" id="2_ddicf"]
+[ext_resource type="Script" uid="uid://cgndn6txmw3af" path="res://ui/inventory/player_inventory_grid.gd" id="3_jv3rg"]
 
-[node name="inventory_UI" type="Control" node_paths=PackedStringArray("inventory_grid")]
+[node name="inventory_UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jv3rg")
-inventory_grid = NodePath("menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Items/invenotryGrid")
 
 [node name="menuWindowTemplateBig" parent="." instance=ExtResource("1_06x7i")]
 layout_mode = 1
@@ -32,7 +31,8 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="invenotryGrid" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Items" instance=ExtResource("2_ddicf")]
+[node name="PlayerInventoryGrid" type="GridContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Items"]
 layout_mode = 2
+script = ExtResource("3_jv3rg")
 
 [editable path="menuWindowTemplateBig"]

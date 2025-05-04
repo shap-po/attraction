@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjsg7mkm5swaq"]
+[gd_scene load_steps=13 format=3 uid="uid://bjsg7mkm5swaq"]
 
 [ext_resource type="Script" uid="uid://dkwf1nly0b2wx" path="res://entities/enemies/gnat.gd" id="1_137j7"]
 [ext_resource type="Texture2D" uid="uid://ccgvaotqf4yil" path="res://assets/textures/enemies/gnat.png" id="2_84y21"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_8hmys"]
 [ext_resource type="Script" uid="uid://by1v8sj8wxofy" path="res://entities/enemies/state_machine/behaviours/gnat/gnat_airborne.gd" id="4_137j7"]
 [ext_resource type="Script" uid="uid://6r10twc71dhp" path="res://entities/enemies/state_machine/behaviours/gnat/gnat_idle.gd" id="4_e2xfl"]
+[ext_resource type="Script" uid="uid://dxuabvdjh8ku7" path="res://entities/enemies/state_machine/behaviours/gnat/gnat_travel.gd" id="9_th1rh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qvl3w"]
 radius = 7.07107
@@ -63,9 +64,13 @@ one_shot = true
 
 [node name="brain" type="Node" parent="." node_paths=PackedStringArray("initial_state", "puppet")]
 script = ExtResource("3_iqwjq")
-initial_state = NodePath("GnatAttackPlayer")
+initial_state = NodePath("GnatTravel")
 puppet = NodePath("..")
 metadata/_custom_type_script = "uid://trfpmwnmpqmm"
+
+[node name="GnatTravel" type="Node" parent="brain"]
+script = ExtResource("9_th1rh")
+metadata/_custom_type_script = "uid://dxuabvdjh8ku7"
 
 [node name="GnatAirborne" type="Node" parent="brain"]
 script = ExtResource("4_137j7")

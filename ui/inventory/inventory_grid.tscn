@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvekckwny1lnq"]
+[gd_scene load_steps=2 format=3 uid="uid://b0w00robs8al4"]
 
-[ext_resource type="Script" uid="uid://drbhtyxhjnosc" path="res://scenes/tiles/inventory_grid.gd" id="1_mua8r"]
+[ext_resource type="Script" uid="uid://drbhtyxhjnosc" path="res://ui/inventory/base_inventory_grid.gd" id="1_mua8r"]
 
 [node name="InvenotryGrid" type="GridContainer"]
 anchors_preset = 15

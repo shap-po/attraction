@@ -14,34 +14,49 @@ var direction: Vector2 = Vector2.ZERO
 @onready var PROJECTILE: PackedScene = preload("res://entities/projectile/projectile.tscn")
 @onready var shooting_cooldown: Timer = $ShootingCooldownTimer
 @onready var interaction_cooldown: Timer = $InteractionCooldownTimer
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var body: Node2D = $Body
 @onready var dummy = %dummy
 @onready var interaction_area: Area2D = $InteractionArea2D
+@onready var shop: Control = $"../CanvasLayer/shop"
 
+var stun: float = 0.0
 
 func _ready() -> void:
 	shooting_cooldown.wait_time = current_weapon.cooldown
 
 func _physics_process(_delta: float) -> void:
+
+	if stun > 0:
+		stun -= _delta
+		return
+
 	direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
 	if velocity != Vector2.ZERO:
-		sprite.rotation = lerp_angle(sprite.rotation, velocity.angle(), weight)
+		body.rotation = lerp_angle(body.rotation, velocity.angle(), weight)
 
 	if Input.is_action_pressed("lcm") and shooting_cooldown.is_stopped():
 		shooting_cooldown.start()
 		var shoot_ang: float = get_local_mouse_position().normalized().angle()
-		sprite.rotation = shoot_ang
+		body.rotation = shoot_ang
 		shoot(shoot_ang)
 	if Input.is_action_pressed("interact") and interaction_cooldown.is_stopped():
 		var res: Interactible.InteractionResult = interact()
 		if res != Interactible.InteractionResult.PASS:
 			interaction_cooldown.start()
 
+	if Input.is_action_just_released("hotbar_next"):
+		inventory.selected_slot += 1
+	if Input.is_action_just_released("hotbar_previous"):
+		inventory.selected_slot -= 1
 
 	# toggle inventory
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory.emit()
+
+	if Input.is_action_just_pressed("space"):
+		shop.toggle()
+
 
 	if Input.is_action_just_pressed("rcm"): # for testing
 		var item: WorldItem = current_plant.create_world_item()
@@ -80,3 +95,7 @@ func interact() -> Interactible.InteractionResult:
 
 func take_damage(damage: int) -> void:
 	health.damage(damage)
+
+func apply_stun(time: float):
+	Emote.create_emote(Emote.EmoteType.STUN, self)
+	stun = time

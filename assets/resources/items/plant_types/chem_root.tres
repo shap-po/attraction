@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlantType" load_steps=10 format=3 uid="uid://k4x3j85xvjfh"]
+[gd_resource type="Resource" script_class="PlantType" load_steps=11 format=3 uid="uid://k4x3j85xvjfh"]
 
 [ext_resource type="Script" uid="uid://q5c3ew7e705r" path="res://entities/enemies/weighted_enemy.gd" id="1_0mif7"]
 [ext_resource type="PackedScene" uid="uid://ruu8kpyuaiel" path="res://entities/enemies/ants/ant_warrior.tscn" id="2_dt36b"]
@@ -9,11 +9,21 @@
 [ext_resource type="Texture2D" uid="uid://b1n6sm3rtnbos" path="res://assets/textures/item/carrot_seeds.png" id="7_e4i2o"]
 [ext_resource type="Script" uid="uid://qi268pka2ile" path="res://entities/plant/plant_type.gd" id="8_ymfw5"]
 
-[sub_resource type="Resource" id="Resource_yw5fy"]
+[sub_resource type="Resource" id="Resource_0mif7"]
 script = ExtResource("1_0mif7")
-enemies = Array[PackedScene]([ExtResource("2_dt36b"), ExtResource("3_r3nlo")])
+name = "Ants: Worker + Warior"
+enemies = Array[PackedScene]([ExtResource("2_dt36b"), ExtResource("2_dt36b")])
 weight = 10
-points_cost = 5
+points_cost = 25
+spawn_area_mask = 7
+metadata/_custom_type_script = "uid://q5c3ew7e705r"
+
+[sub_resource type="Resource" id="Resource_dt36b"]
+script = ExtResource("1_0mif7")
+name = "Worker Ant"
+enemies = Array[PackedScene]([ExtResource("3_r3nlo")])
+weight = 15
+points_cost = 20
 spawn_area_mask = 7
 metadata/_custom_type_script = "uid://q5c3ew7e705r"
 
@@ -24,11 +34,13 @@ crop_type = 0
 grow_time = 10
 grow_stages = Array[Texture2D]([ExtResource("5_aauep"), ExtResource("6_sksry"), ExtResource("4_gock7")])
 health = 10
-grown_sell_price = 100
+grown_sell_price = 50
 fruit_item_texture = ExtResource("4_gock7")
-enemies_pool = Array[ExtResource("1_0mif7")]([SubResource("Resource_yw5fy")])
-enemy_points = 10
+invasion_chance = 0.0
+enemies_pool = Array[ExtResource("1_0mif7")]([SubResource("Resource_0mif7"), SubResource("Resource_dt36b")])
+enemy_points = 5
+ant_points = 5
 item_texture = ExtResource("7_e4i2o")
-item_description = ""
-buy_price = 0
+item_description = "A chemically-modified carrot that ants seem to love"
+buy_price = 10
 sell_price = 0

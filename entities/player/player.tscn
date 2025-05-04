@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cq01h0x262mcp"]
+[gd_scene load_steps=9 format=3 uid="uid://cq01h0x262mcp"]
 
 [ext_resource type="Script" uid="uid://bbdpvpomsdsuh" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://cfjphdn02s7b4" path="res://assets/textures/player/dude.png" id="1_symyc"]
+[ext_resource type="Texture2D" uid="uid://q1ymflflwrdb" path="res://assets/textures/player/hand.png" id="2_8fjmc"]
 [ext_resource type="Script" uid="uid://cyyje7ndescf3" path="res://entities/inventory/player_inventory.gd" id="3_sglur"]
 [ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="4_bls4j"]
 [ext_resource type="Script" uid="uid://cuwfyh7pt3x4g" path="res://entities/inventory/item.gd" id="4_fkugw"]
@@ -12,20 +13,11 @@ radius = 5.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_sglur"]
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 5
 script = ExtResource("1_abrql")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_symyc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_abrql")
-
-[node name="ShootingCooldownTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="InteractionCooldownTimer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
 
 [node name="InteractionArea2D" type="Area2D" parent="."]
 collision_layer = 4
@@ -33,6 +25,26 @@ collision_mask = 6
 
 [node name="InteractionCollisionShape2D" type="CollisionShape2D" parent="InteractionArea2D"]
 shape = SubResource("CircleShape2D_sglur")
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Hand" type="Sprite2D" parent="Body"]
+position = Vector2(1, -6)
+texture = ExtResource("2_8fjmc")
+
+[node name="Hand2" type="Sprite2D" parent="Body"]
+position = Vector2(1, 5)
+texture = ExtResource("2_8fjmc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
+texture = ExtResource("1_symyc")
+
+[node name="ShootingCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="InteractionCooldownTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("3_sglur")

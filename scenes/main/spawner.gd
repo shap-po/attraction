@@ -7,6 +7,9 @@ signal incoming_wave(wave_location: WeightedEnemy.SpawnArea, bug_allert_timeout:
 @onready var dummy: Node2D = %dummy
 @onready var plots: Node2D = %Plots
 
+const ANT_MOUND_WE: WeightedEnemy = preload("res://assets/resources/weighted_enemies/ant_mound.tres")
+const ANT_POINTS_PER_MOUND = 10
+
 const AREA_CORDS_ATLAS: Dictionary = {
 	WeightedEnemy.SpawnArea.TOP: Vector2i(0, 0),
 	WeightedEnemy.SpawnArea.BOTTOM: Vector2i(0, 2),
@@ -18,9 +21,10 @@ var spawn_positions: Dictionary = {} ## points on the map that correspond to spa
 
 var enemies_pool: Array[WeightedEnemy] = []
 var enemy_points: int = 0
+var ant_points: int = 0
 
 var wave_location: WeightedEnemy.SpawnArea
-var wave_enemies: Array[PackedScene] = []
+var wave_enemies: Array[WeightedEnemy] = []
 
 func _ready() -> void:
 	for area in WeightedEnemy.SpawnArea.values():
@@ -30,19 +34,22 @@ func _ready() -> void:
 
 
 func pick_and_spawn_enemy() -> void:
-	if enemies_pool.size() == 0:
+	var pool: Array[WeightedEnemy] = enemies_pool.duplicate()
+	# Add mounds for points
+	for _i in range(ant_points / 10):
+		pool.append(ANT_MOUND_WE)
+
+	_filter_pool_by_points(pool, enemy_points)
+
+	if pool.size() == 0:
 		return
 
-	var enemy_to_spawn: WeightedEnemy = WeightedEnemy.choose(enemies_pool)
+	var enemy_to_spawn: WeightedEnemy = WeightedEnemy.choose(pool)
 	if enemy_to_spawn == null:
 		return
 
-	for enemy_scene: PackedScene in enemy_to_spawn.enemies:
-		var location_to_spawn: WeightedEnemy.SpawnArea = enemy_to_spawn.get_spawn_ares().pick_random()
-
-		var new_enemy: Node2D = enemy_scene.instantiate()
-		dummy.add_child(new_enemy)
-		new_enemy.global_position = pick_coords(location_to_spawn)
+	var location_to_spawn: WeightedEnemy.SpawnArea = enemy_to_spawn.get_spawn_ares().pick_random()
+	spawn_enemy_group(location_to_spawn, enemy_to_spawn.enemies)
 
 ## Prepares the next wave of enemies
 func prepare_wave() -> void:
@@ -63,7 +70,7 @@ func prepare_wave() -> void:
 	_filter_pool_by_area(pool, wave_location)
 
 	# add the enemy to the wave
-	wave_enemies.append_array(enemy.enemies)
+	wave_enemies.append(enemy)
 	points -= enemy.points_cost
 
 	while points > 0:
@@ -72,7 +79,7 @@ func prepare_wave() -> void:
 		if enemy == null:
 			break
 
-		wave_enemies.append_array(enemy.enemies)
+		wave_enemies.append(enemy)
 		points -= enemy.points_cost
 
 
@@ -106,17 +113,25 @@ func _on_next_wave_timer_timeout() -> void:
 		return
 
 	print("The wave is here!")
-	for enemy in wave_enemies:
-		if enemy == null:
-			continue
-		var new_enemy: Node2D = enemy.instantiate()
-		dummy.add_child(new_enemy)
-		new_enemy.global_position = pick_coords(wave_location)
+	for weighted_enemy in wave_enemies:
+		spawn_enemy_group(wave_location, weighted_enemy.enemies)
 
 	# reset the wave
 	wave_enemies = []
 	# reset the timer
 	next_wave_timer.wait_time = Global.time_between_waves
+
+func spawn_enemy_group(location: WeightedEnemy.SpawnArea, enemy_group: Array[PackedScene]) -> void:
+	var coords: Vector2 = pick_coords(location)
+	for enemy in enemy_group:
+		if enemy == null:
+			continue
+		var new_enemy: Node2D = enemy.instantiate()
+		dummy.add_child(new_enemy)
+		new_enemy.global_position = coords
+
+func _on_random_bug_timer_timeout() -> void:
+	pick_and_spawn_enemy()
 
 func pick_coords(area: WeightedEnemy.SpawnArea) -> Vector2:
 	var spawn_cords: Vector2i = spawn_positions[area].pick_random()
@@ -125,9 +140,11 @@ func pick_coords(area: WeightedEnemy.SpawnArea) -> Vector2:
 func recalculate_enemy_pools() -> void:
 	enemies_pool = []
 	enemy_points = 0
+	ant_points = 0
 
 	for plot in plots.get_children():
 		if plot is Plot and plot.plant != null and plot.plant.plant_type != null:
 			var plant_type: PlantType = plot.plant.plant_type
 			enemies_pool.append_array(plant_type.enemies_pool)
 			enemy_points += plant_type.enemy_points
+			ant_points += plant_type.ant_points

@@ -7,6 +7,7 @@ signal on_plant_fully_grown(plant_type: PlantType)
 
 @onready var plant_node: Node2D = $PlantNode
 var plant: Plant
+var siblings: Array[Plot] = []
 
 func create_plant(plant_type: PlantType):
 	if plant != null:
@@ -16,6 +17,7 @@ func create_plant(plant_type: PlantType):
 	plant = plant_type.create()
 	plant.on_before_remove.connect(remove_plant)
 	plant.on_fully_grown.connect(func(): on_plant_fully_grown.emit(plant.plant_type))
+	plant.plot = self
 	plant_node.add_child(plant)
 	on_plant_added.emit(plant_type)
 

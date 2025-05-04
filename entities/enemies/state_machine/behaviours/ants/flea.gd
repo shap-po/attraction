@@ -15,18 +15,32 @@ func get_puppet() -> Ant:
 	return puppet as Ant
 
 func on_creation() -> void:
-	if !(puppet is AntWorker):
-		push_warning("something initiated braincell of ant_worker without it actually being ant_worker.")
 	get_puppet().timer.wait_time = STUN_TIME
 	get_puppet().timer.timeout.connect(stunned_timeout)
 	get_puppet().timer.start()
 	speed = puppet.speed * SPEED_MULTIPLIER
 	if get_puppet().home:
 		target_point = get_puppet().home.global_position
-
-
-func enter() -> void:
-	create_emote(Emote.EmoteType.ALERT)
+	else:
+		var map_markers: Node2D = $/root/main/map/map_markers ## it has stupid
+		var checkout_locations: Array[Node2D] = []
+		puppet.unconditional_state = "ReturnForest"
+		if !map_markers:
+			#print("aw hell nah")
+			return
+		checkout_locations.clear()
+		for child in map_markers.get_child(1).get_children(): ## its the fastest way possible, but prone to errors
+			if child.visible == true:
+				checkout_locations.append(child)
+		puppet.target = checkout_locations[0]
+		var dis1 = puppet.target.global_position.distance_squared_to(puppet.global_position)
+		for loc in checkout_locations:
+			var dis2 = loc.global_position.distance_squared_to(puppet.global_position)
+			if dis1 < dis2: 
+				puppet.target = loc
+				dis1 = dis2
+		target_point = puppet.target.global_position
+		
 
 	
 func procces(_delta) -> void:
@@ -35,7 +49,7 @@ func procces(_delta) -> void:
 			puppet.velocity = Vector2.ZERO
 			return
 		if puppet.global_position.distance_to(target_point) < CHECKOUT_PRECISION:
-			get_puppet().enter_home.emit(get_puppet().type)
+			get_puppet().enter_home.emit(get_puppet())
 			puppet.queue_free()
 		puppet.velocity = speed * puppet.global_position.direction_to(target_point)
 	pass

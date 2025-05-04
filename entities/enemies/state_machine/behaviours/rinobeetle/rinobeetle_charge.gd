@@ -1,18 +1,18 @@
 extends State
 class_name RinobeetleCharge
 
-var wait: int = -1
+var wait: float = -1
 var smod: float = 1.0
 
 var speed: float
 var target_direction: Vector2
 
 func on_creation() -> void:
-	wait = 0.75
+	wait = 0.4
 	smod = 6
 	puppet.unconditional_state = "RinobeetleAttackPlayer"
 	puppet.velocity = Vector2.ZERO
-	create_emote(Emote.EmoteType.WARNING)
+	create_emote(Emote.EmoteType.ANGRY)
 	if !puppet.target:
 		puppet.brain.force_transition("RinobeetleScout")
 	choose_direction()
@@ -21,7 +21,6 @@ func choose_direction():
 	target_direction = puppet.global_position.direction_to(puppet.target.global_position)
 
 func procces(_delta: float) -> void:
-	print(wait)
 
 	if wait > 0:
 		wait -= _delta
@@ -38,7 +37,6 @@ func procces(_delta: float) -> void:
 	var bodies: Array[Node2D] = puppet.area_touch.get_overlapping_bodies()
 	bodies.remove_at(0)
 	if bodies:
-		print(bodies)
 		for body in bodies:
 			if body.has_method("take_damage"):
 				body.take_damage(3)

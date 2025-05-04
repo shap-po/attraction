@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsbjxjpcoiv64"]
+[gd_scene load_steps=12 format=3 uid="uid://dsbjxjpcoiv64"]
 
 [ext_resource type="Script" uid="uid://d1uucxgmgkhb4" path="res://entities/enemies/ants/ant_worker.gd" id="1_bi10t"]
 [ext_resource type="Texture2D" uid="uid://cgk6kjl2046js" path="res://assets/textures/enemies/ants/ant_worker.png" id="1_xvnl3"]
@@ -6,14 +6,15 @@
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_30rtc"]
 [ext_resource type="Script" uid="uid://p3mnhvxh17jl" path="res://entities/enemies/state_machine/behaviours/ants/worker_scout.gd" id="4_0cq0n"]
 [ext_resource type="Script" uid="uid://ceufrq8h7fk5q" path="res://entities/enemies/state_machine/behaviours/ants/flea.gd" id="4_td255"]
+[ext_resource type="Script" uid="uid://igyuims72jk8" path="res://entities/enemies/state_machine/behaviours/ants/worker_attack_food.gd" id="5_u4ed6"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="6_asxgm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_degik"]
 radius = 3.33333
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_flprm"]
-radius = 70.0
-height = 140.0
+radius = 85.0
+height = 213.333
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_30rtc"]
 radius = 12.1335
@@ -23,7 +24,7 @@ scale = Vector2(0.6, 0.6)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_bi10t")
-speed = 20.0
+speed = 30.0
 
 [node name="collision_area_shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_degik")
@@ -34,13 +35,16 @@ shape = SubResource("CircleShape2D_degik")
 texture = ExtResource("1_xvnl3")
 
 [node name="area_sight" type="Area2D" parent="rotation_marker"]
+collision_layer = 5
+collision_mask = 5
 
 [node name="vision_area_sight_shape" type="CollisionShape2D" parent="rotation_marker/area_sight"]
-position = Vector2(25, -6.10119e-12)
+position = Vector2(30, 3.78924e-14)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_flprm")
 
 [node name="area_touch" type="Area2D" parent="rotation_marker"]
+collision_layer = 5
 
 [node name="vision_area_touch_shape" type="CollisionShape2D" parent="rotation_marker/area_touch"]
 shape = SubResource("CircleShape2D_30rtc")
@@ -59,6 +63,10 @@ script = ExtResource("3_30rtc")
 initial_state = NodePath("WorkerScout")
 puppet = NodePath("..")
 metadata/_custom_type_script = "uid://trfpmwnmpqmm"
+
+[node name="WorkerAttackFood" type="Node" parent="brain"]
+script = ExtResource("5_u4ed6")
+metadata/_custom_type_script = "uid://igyuims72jk8"
 
 [node name="Flea" type="Node" parent="brain"]
 script = ExtResource("4_td255")
