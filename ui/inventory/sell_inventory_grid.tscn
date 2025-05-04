@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://drdrc0w2ofwje"]
+
+[ext_resource type="Script" uid="uid://63p4wbl6acw0" path="res://ui/inventory/sell_inventory_grid.gd" id="1_f6kas"]
+[ext_resource type="PackedScene" uid="uid://c0nydah1xrgoi" path="res://ui/inventory/inventory_slot.tscn" id="2_i57xm"]
+
+[node name="SellInvenotryGrid" type="GridContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 9
+script = ExtResource("1_f6kas")
+slot_scene = ExtResource("2_i57xm")

@@ -6,7 +6,6 @@ var selected_slot: int = -1
 
 func _ready() -> void:
 	super._ready()
-
 	get_inventory().on_content_changed.connect(update_slot)
 
 func _process(_delta: float) -> void:

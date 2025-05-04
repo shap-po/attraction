@@ -208,13 +208,12 @@ position = Vector2(-48, 0)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="shop" parent="CanvasLayer" node_paths=PackedStringArray("player_inventory") instance=ExtResource("10_hxu8e")]
-visible = false
 player_inventory = NodePath("../../player/Inventory")
 
 [node name="ShopInvenotryGrid" parent="CanvasLayer/shop/menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop" index="0" node_paths=PackedStringArray("player_inventory")]
 player_inventory = NodePath("../../../../../../../../../../../../player/Inventory")
 
-[node name="PlayerInvenotryGrid" parent="CanvasLayer/shop/menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Inventory" index="0" node_paths=PackedStringArray("inventory")]
+[node name="SellInvenotryGrid" parent="CanvasLayer/shop/menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Inventory" index="0" node_paths=PackedStringArray("inventory")]
 inventory = NodePath("../../../../../../../../../../../../player/Inventory")
 
 [node name="health_bar" parent="CanvasLayer" node_paths=PackedStringArray("health") instance=ExtResource("9_a8run")]

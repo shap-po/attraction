@@ -10,13 +10,14 @@
 [ext_resource type="Script" uid="uid://bn5bxsgdvtgqr" path="res://entities/moth/moth.gd" id="4_nuq1x"]
 [ext_resource type="AudioStream" uid="uid://k5xbfgp4dfx5" path="res://assets/textures/moth/squeaky toy.wav" id="5_av0wc"]
 [ext_resource type="PackedScene" uid="uid://jao16wk712rc" path="res://ui/inventory/shop_inventory_grid.tscn" id="6_rnbto"]
-[ext_resource type="PackedScene" uid="uid://diwbyb8aoifji" path="res://ui/inventory/player_inventory_grid.tscn" id="7_fpu1e"]
+[ext_resource type="PackedScene" uid="uid://drdrc0w2ofwje" path="res://ui/inventory/sell_inventory_grid.tscn" id="11_k1mm3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fagi7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5rl1t"]
 
 [node name="shop" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,7 +133,7 @@ inventory = NodePath("../../../../../../../../../../ShopInventory")
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="PlayerInvenotryGrid" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Inventory" instance=ExtResource("7_fpu1e")]
+[node name="SellInvenotryGrid" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Inventory" instance=ExtResource("11_k1mm3")]
 layout_mode = 2
 
 [connection signal="pressed" from="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer/moth/Button" to="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer/moth" method="_on_button_pressed"]
