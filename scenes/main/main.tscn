@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://01mbau86j0cn"]
+[gd_scene load_steps=25 format=4 uid="uid://01mbau86j0cn"]
 
 [ext_resource type="Texture2D" uid="uid://qi74byha511i" path="res://assets/textures/tilemaps/bottom_tilemap.png" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://cq01h0x262mcp" path="res://entities/player/player.tscn" id="1_o5qli"]
@@ -13,8 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://dqqsup6xm5b3a" path="res://scenes/menus/inventoryMenu/inventory_UI.tscn" id="9_b1x3f"]
 [ext_resource type="PackedScene" uid="uid://dawbq3k8145p2" path="res://scenes/menus/shopMenu/shop.tscn" id="10_hxu8e"]
 [ext_resource type="PackedScene" uid="uid://v5faejistspp" path="res://ui/money_bar.tscn" id="12_blune"]
+[ext_resource type="Script" uid="uid://cuwfyh7pt3x4g" path="res://entities/inventory/item.gd" id="12_r4lks"]
 [ext_resource type="PackedScene" uid="uid://c0nydah1xrgoi" path="res://ui/inventory/inventory_slot.tscn" id="13_hxu8e"]
+[ext_resource type="Resource" uid="uid://k4x3j85xvjfh" path="res://assets/resources/items/plant_types/chem_root.tres" id="13_pg34l"]
+[ext_resource type="Resource" uid="uid://ct66jji0nttnl" path="res://assets/resources/items/plant_types/tomato.tres" id="14_m4h2d"]
+[ext_resource type="Resource" uid="uid://fqchbt1u3lrm" path="res://assets/resources/items/plant_types/micronaner.tres" id="15_p8abn"]
 [ext_resource type="PackedScene" uid="uid://cdxjd6nljq0aj" path="res://ui/inventory/hotbar_inventory_grid.tscn" id="15_raeie"]
+[ext_resource type="Resource" uid="uid://x414mesjp0jx" path="res://assets/resources/items/plant_types/vitata.tres" id="16_s17dp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("1_0wfyh")
@@ -255,6 +260,9 @@ player_inventory = NodePath("../../player/Inventory")
 
 [node name="shop" parent="CanvasLayer" node_paths=PackedStringArray("player_inventory") instance=ExtResource("10_hxu8e")]
 player_inventory = NodePath("../../player/Inventory")
+
+[node name="ShopInventory" parent="CanvasLayer/shop" index="0"]
+_content = Array[ExtResource("12_r4lks")]([ExtResource("13_pg34l"), ExtResource("14_m4h2d"), ExtResource("15_p8abn"), ExtResource("16_s17dp"), null, null, null, null, null])
 
 [node name="ShopInvenotryGrid" parent="CanvasLayer/shop/menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop" index="0" node_paths=PackedStringArray("player_inventory")]
 player_inventory = NodePath("../../../../../../../../../../../../player/Inventory")
