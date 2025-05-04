@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="PlantType" load_steps=10 format=3 uid="uid://ct66jji0nttnl"]
+
+[ext_resource type="Script" uid="uid://q5c3ew7e705r" path="res://entities/enemies/weighted_enemy.gd" id="1_sodn0"]
+[ext_resource type="PackedScene" uid="uid://xbffllw1i5mo" path="res://entities/enemies/snail.tscn" id="2_iuxuf"]
+[ext_resource type="Script" uid="uid://qi268pka2ile" path="res://entities/plant/plant_type.gd" id="2_orwkl"]
+[ext_resource type="Texture2D" uid="uid://d36reellwltlc" path="res://assets/textures/plants/tomato/tomato_item.png" id="3_dey3m"]
+[ext_resource type="Texture2D" uid="uid://ftxocy2k2lun" path="res://assets/textures/plants/tomato/tomato_planted.png" id="4_k7kq2"]
+[ext_resource type="Texture2D" uid="uid://dr4mn1x75vmui" path="res://assets/textures/plants/tomato/tomato_growing.png" id="5_ele0f"]
+[ext_resource type="Texture2D" uid="uid://csh3h7mbobqgc" path="res://assets/textures/plants/tomato/tomato_ripe.png" id="6_i51v1"]
+[ext_resource type="Texture2D" uid="uid://bcclyyv0cnxph" path="res://assets/textures/item/tomato_seeds.png" id="7_6g4ck"]
+
+[sub_resource type="Resource" id="Resource_7tn6i"]
+script = ExtResource("1_sodn0")
+name = "Snail"
+enemies = Array[PackedScene]([ExtResource("2_iuxuf")])
+weight = 15
+points_cost = 30
+spawn_area_mask = 7
+metadata/_custom_type_script = "uid://q5c3ew7e705r"
+
+[resource]
+script = ExtResource("2_orwkl")
+crop_name = "Tomato"
+crop_type = 0
+grow_time = 10
+grow_stages = Array[Texture2D]([ExtResource("4_k7kq2"), ExtResource("5_ele0f"), ExtResource("6_i51v1")])
+health = 12
+grown_sell_price = 100
+fruit_item_texture = ExtResource("3_dey3m")
+enemies_pool = Array[ExtResource("1_sodn0")]([SubResource("Resource_7tn6i")])
+enemy_points = 15
+ant_points = 0
+item_texture = ExtResource("7_6g4ck")
+item_description = "A single tomato will grow out of this... How does that even work?
+Snails enjoy eating those"
+buy_price = 40
+sell_price = 0
+metadata/_custom_type_script = "uid://qi268pka2ile"

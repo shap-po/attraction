@@ -32,6 +32,7 @@ const PLANT: PackedScene = preload("res://entities/plant/plant.tscn")
 @export_group("Enemies")
 @export var enemies_pool: Array[WeightedEnemy] = []
 @export_range(0, 20, 1, "or_greater") var enemy_points: int
+@export var ant_points: int = 0
 
 func _init() -> void:
 	# set item properties
