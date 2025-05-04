@@ -9,6 +9,8 @@ func _ready() -> void:
 	inventory = player_inventory.hotbar
 	super._ready()
 	get_inventory().on_content_changed.connect(_update_slot)
+	player_inventory.on_selected_slot_changed.connect(_update_selected_slot)
+	_update_selected_slot()
 
 func get_inventory() -> PlayerInventory.HotbarInventory:
 	return inventory as PlayerInventory.HotbarInventory
@@ -36,7 +38,7 @@ func _validate_property(property: Dictionary) -> void:
 func on_pressed(index: int) -> void:
 	player_inventory.selected_slot = index
 
-func _on_inventory_on_selected_slot_changed() -> void:
-	slots[player_inventory.selected_slot].selected_indicator.visible = true
+func _update_selected_slot() -> void:
 	slots[last_selected_slot].selected_indicator.visible = false
+	slots[player_inventory.selected_slot].selected_indicator.visible = true
 	last_selected_slot = player_inventory.selected_slot

@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dgo2sncuhbver" path="res://ui/health_bar.tscn" id="9_a8run"]
 [ext_resource type="PackedScene" uid="uid://dqqsup6xm5b3a" path="res://scenes/menus/inventoryMenu/inventory_UI.tscn" id="9_b1x3f"]
 [ext_resource type="PackedScene" uid="uid://dawbq3k8145p2" path="res://scenes/menus/shopMenu/shop.tscn" id="10_hxu8e"]
-[ext_resource type="PackedScene" path="res://ui/money_bar.tscn" id="12_blune"]
+[ext_resource type="PackedScene" uid="uid://v5faejistspp" path="res://ui/money_bar.tscn" id="12_blune"]
 [ext_resource type="PackedScene" uid="uid://c0nydah1xrgoi" path="res://ui/inventory/inventory_slot.tscn" id="13_hxu8e"]
 [ext_resource type="PackedScene" uid="uid://cdxjd6nljq0aj" path="res://ui/inventory/hotbar_inventory_grid.tscn" id="15_raeie"]
 
