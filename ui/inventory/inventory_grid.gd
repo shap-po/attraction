@@ -1,7 +1,7 @@
 extends GridContainer
 class_name InventoryGrid
 
-const INVENTORY_SLOT: PackedScene = preload("res://scenes/tiles/inventory_slot.tscn")
+const INVENTORY_SLOT: PackedScene = preload("res://ui/inventory/inventory_slot.tscn")
 @export var inventory: PlayerInventory
 @onready var slots: Array[InventorySlot] = []
 var selected_slot: int = -1

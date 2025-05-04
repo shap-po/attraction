@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b4d7l1oq70mup" path="res://scenes/menus/menuWindow/menu_window_template_big.tscn" id="1_06x7i"]
 [ext_resource type="Script" uid="uid://dxymiriy43huj" path="res://scenes/menus/inventoryMenu/inventory_UI.gd" id="1_jv3rg"]
-[ext_resource type="PackedScene" uid="uid://bvekckwny1lnq" path="res://scenes/tiles/inventory_grid.tscn" id="2_ddicf"]
+[ext_resource type="PackedScene" uid="uid://bvekckwny1lnq" path="res://ui/inventory/inventory_grid.tscn" id="2_ddicf"]
 
 [node name="inventory_UI" type="Control" node_paths=PackedStringArray("inventory_grid")]
 layout_mode = 3
