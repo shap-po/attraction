@@ -1,17 +1,8 @@
-## Base class for everything that can hold multiple items
-extends Node
-class_name Inventory
+## Inventory that can be changed at runtime
+extends BaseInventory
+class_name EditableInventory
 
 signal on_content_changed(slot: int)
-
-@export var _content: Array[Item] = []
-
-func swap_slots(slot1: int, slot2: int):
-	var temp_slot: Item = _content[slot1]
-	_content[slot1] = _content[slot2]
-	_content[slot2] = temp_slot
-	on_content_changed.emit(slot1)
-	on_content_changed.emit(slot2)
 
 func is_in_bounds(slot: int) -> bool:
 	return slot >= 0 and slot < _content.size()
@@ -83,5 +74,9 @@ func find_item(item: Item) -> int:
 
 	return -1
 
-func _to_string() -> String:
-	return "Inventory " + self.name + ": {size: " + str(_content.size()) + ", content: " + str(_content) + "}"
+func swap_slots(slot1: int, slot2: int) -> void:
+	var temp_slot: Item = _content[slot1]
+	_content[slot1] = _content[slot2]
+	_content[slot2] = temp_slot
+	on_content_changed.emit(slot1)
+	on_content_changed.emit(slot2)

@@ -1,4 +1,4 @@
-extends Inventory
+extends EditableInventory
 class_name PlayerInventory
 
 signal on_selected_slot_changed()
