@@ -55,7 +55,11 @@ func prepare_wave() -> void:
 	var enemy: WeightedEnemy = WeightedEnemy.choose(pool)
 	if enemy == null:
 		return
-		wave_location = enemy.get_spawn_ares().pick_random()
+	var spawn_areas: Array[WeightedEnemy.SpawnArea] = enemy.get_spawn_ares()
+	if spawn_areas.size() == 0:
+		return
+
+	wave_location = spawn_areas.pick_random()
 	_filter_pool_by_area(pool, wave_location)
 
 	# add the enemy to the wave
