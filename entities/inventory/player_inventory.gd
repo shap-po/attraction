@@ -6,14 +6,16 @@ signal on_hotbar_changed(slot: int)
 
 const hotbar_size: int = 9
 
+
 @onready var player: Player = $".."
 
 var selected_slot: int = 0:
 	set(val):
-		selected_slot = val % _content.size()
+		selected_slot = val % hotbar_size
 		if selected_slot < 0:
-			selected_slot += _content.size()
+			selected_slot += hotbar_size
 		on_selected_slot_changed.emit()
+		
 
 var hotbar: HotbarInventory = HotbarInventory.new()
 

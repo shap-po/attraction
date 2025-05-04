@@ -4,14 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://c0nydah1xrgoi" path="res://ui/inventory/inventory_slot.tscn" id="2_ru78t"]
 
 [node name="HotbarInvenotryGrid" type="GridContainer"]
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+grow_vertical = 0
+size_flags_horizontal = 6
+size_flags_vertical = 10
 mouse_filter = 2
+theme_override_constants/h_separation = -1
 columns = 9
 script = ExtResource("1_5uqil")
 slot_scene = ExtResource("2_ru78t")

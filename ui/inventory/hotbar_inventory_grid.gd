@@ -3,6 +3,7 @@ extends BaseInventoryGrid
 class_name HotbarInventoryGrid
 
 @export var player_inventory: PlayerInventory
+@onready var last_selected_slot: int = 0
 
 func _ready() -> void:
 	inventory = player_inventory.hotbar
@@ -31,3 +32,11 @@ func _validate_property(property: Dictionary) -> void:
 	# override inventory type hint
 	if property.name == "inventory":
 		property.usage = PROPERTY_USAGE_NO_EDITOR
+
+func on_pressed(index: int) -> void:
+	player_inventory.selected_slot = index
+
+func _on_inventory_on_selected_slot_changed() -> void:
+	slots[player_inventory.selected_slot].selected_indicator.visible = true
+	slots[last_selected_slot].selected_indicator.visible = false
+	last_selected_slot = player_inventory.selected_slot
