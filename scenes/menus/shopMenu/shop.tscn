@@ -65,11 +65,6 @@ theme_override_constants/margin_bottom = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 19
-text = "Money:"
-
 [node name="moth" type="TextureRect" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
