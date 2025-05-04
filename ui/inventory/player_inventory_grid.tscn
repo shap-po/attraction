@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://diwbyb8aoifji"]
+
+[ext_resource type="Script" uid="uid://cgndn6txmw3af" path="res://ui/inventory/player_inventory_grid.gd" id="1_tfl16"]
+[ext_resource type="PackedScene" uid="uid://c0nydah1xrgoi" path="res://ui/inventory/inventory_slot.tscn" id="2_esied"]
+
+[node name="PlayerInvenotryGrid" type="GridContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 9
+script = ExtResource("1_tfl16")
+slot_scene = ExtResource("2_esied")

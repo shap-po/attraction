@@ -1,13 +1,19 @@
-extends Node
+@tool
+extends Control
 
-@export var player_inventory: PlayerInventory
+@export var player_inventory: PlayerInventory:
+	set(val):
+		player_inventory = val
+		if shop_invenotry_grid != null:
+			shop_invenotry_grid.player_inventory = player_inventory
+		if sell_invenotry_grid != null:
+			sell_invenotry_grid.inventory = player_inventory
 
-func buy_item(item: Item) -> bool:
-	if Money.value - item.buy_price < 0:
-		return false
+@onready var shop_invenotry_grid: ShopInventoryGrid = $menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/ShopInvenotryGrid
+@onready var sell_invenotry_grid: SellInventoryGrid = $menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Inventory/SellInvenotryGrid
 
-	var res: bool = player_inventory.add_item(item)
-	if res:
-		Money.remove(item.buy_price)
+func _ready() -> void:
+	visible = false
 
-	return res
+func toggle() -> void:
+	visible = not visible

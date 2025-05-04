@@ -14,7 +14,7 @@ static func create(item: Item) -> WorldItem:
 	instance.item = item
 	return instance
 
-func try_pickup(inventory: Inventory) -> bool:
+func try_pickup(inventory: EditableInventory) -> bool:
 	var res: bool = inventory.add_item(item)
 	if res:
 		queue_free()

@@ -1,6 +1,6 @@
 extends Control
 
-@export var inventory_grid: InventoryGrid
+@export var inventory_grid: BaseInventoryGrid
 
 func _ready() -> void:
 	visible = false
