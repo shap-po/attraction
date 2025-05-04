@@ -65,8 +65,19 @@ texture = ExtResource("3_av0wc")
 stretch_mode = 2
 script = ExtResource("4_nuq1x")
 
+[node name="Button" type="Button" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer/moth"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 22.0
+offset_top = 27.0
+offset_right = 42.0
+offset_bottom = 47.0
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer/moth"]
 stream = ExtResource("5_av0wc")
+
+[node name="Timer" type="Timer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer/moth"]
+one_shot = true
 
 [node name="items" type="PanelContainer" parent="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer"]
 layout_mode = 2
@@ -107,5 +118,8 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[connection signal="pressed" from="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer/moth/Button" to="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer/moth" method="_on_button_pressed"]
+[connection signal="timeout" from="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer/moth/Timer" to="menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/info/MarginContainer/VBoxContainer/moth" method="_on_timer_timeout"]
 
 [editable path="menuWindowTemplateBig"]
