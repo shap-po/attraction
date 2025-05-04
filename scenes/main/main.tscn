@@ -156,6 +156,20 @@ position = Vector2(-104, -248)
 [node name="big2" type="Marker2D" parent="map/map_markers/checkout_plot_locations"]
 position = Vector2(89, -247)
 
+[node name="Node2D" type="Node2D" parent="map/map_markers"]
+
+[node name="propable_player_locations" type="Node2D" parent="map/map_markers"]
+position = Vector2(0, -1)
+
+[node name="near_home" type="Marker2D" parent="map/map_markers/propable_player_locations"]
+position = Vector2(135, -7)
+
+[node name="near_big_plots" type="Marker2D" parent="map/map_markers/propable_player_locations"]
+position = Vector2(-7, -246)
+
+[node name="near_small_plots" type="Marker2D" parent="map/map_markers/propable_player_locations"]
+position = Vector2(-247, -39)
+
 [node name="well" type="Marker2D" parent="map/map_markers"]
 position = Vector2(160, -111)
 

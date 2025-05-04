@@ -41,8 +41,7 @@ func choose_new_point() -> void:
 	if puppet == null:
 		return
 	if get_puppet().home == null:
-		puppet.brain.force_transition("NoAi")
-		print("NOT FINISHED BEHAVIOUR")
+		puppet.brain.force_transition("WarriorLinger")
 		return
 	orbit_angle += ORBIT_SPEED
 	target_point = get_puppet().home.global_position + Vector2(DISTANCE_BASE, 0).rotated(orbit_angle) + Vector2(randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER), randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER))
@@ -67,3 +66,7 @@ func clock() -> void:
 
 func exit() -> void:
 	get_puppet().timer.timeout.disconnect(clock)
+	
+func on_alerted():
+	puppet.unconditional_state = "WarriorRage"
+	puppet.brain.force_transition("WarriorRage")

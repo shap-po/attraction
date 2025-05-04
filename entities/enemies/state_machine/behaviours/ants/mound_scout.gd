@@ -20,7 +20,7 @@ func enter() -> void:
 	pass
 
 func procces(_delta) -> void:
-	get_puppet().summon_ant(Ant.AntType.WARRIOR)
+	get_puppet().summon_ant()
 	pass
 
 func on_ant_killed(type: int):

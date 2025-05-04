@@ -9,6 +9,6 @@ const RINOBEETLE_LEFT = preload("res://assets/textures/enemies/rinobeetle/rinobe
 const RINOBEETLE_RIGHT = preload("res://assets/textures/enemies/rinobeetle/rinobeetle_right.png")
 
 func _physics_process(_delta: float) -> void:
-	#print(brain.current_state.name)
+	print(brain.current_state.name)
 	choose_from_four_sprites(rinobeetle_sprite, RINOBEETLE_UP, RINOBEETLE_DOWN, RINOBEETLE_LEFT, RINOBEETLE_RIGHT)
 	move_and_slide()

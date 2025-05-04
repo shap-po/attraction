@@ -21,11 +21,27 @@ var home: Node2D = null
 func _physics_process(_delta: float) -> void:
 	rotate_where_going(jitter)
 	move_and_slide()
+	additional_to_process(_delta)
+	
+func additional_to_process(_delta: float):
+	pass
 
 func take_damage(damage: int) -> void:
+	alert_other_ants("ant_damaged")
 	ant_damaged.emit(type)
 	health.damage(damage)
 
 func on_zero_health() -> void:
 	ant_killed.emit(type)
 	queue_free()
+
+func alert_other_ants(cause): ## the ant will alert itself
+	var bodies: Array[Node2D] = area_sight.get_overlapping_bodies()
+	if bodies:
+		for body in bodies:
+			if body.has_method("on_alerted"):
+				body.on_alerted(cause)
+
+func on_alerted(cause):
+	if self.brain.current_state.has_method("on_alerted"):
+		self.brain.current_state.on_alerted(cause)

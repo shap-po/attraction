@@ -16,7 +16,7 @@ radius = 114.28
 radius = 11.7851
 
 [node name="AntMound" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 6
 collision_mask = 0
 script = ExtResource("1_28qug")
 
@@ -71,4 +71,8 @@ metadata/_custom_type_script = "uid://cg1q7s1urt42s"
 [node name="ShootingCooldownTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="summon_cooldown" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="add_ant_points" to="." method="_on_add_ant_points_timeout"]
+[connection signal="timeout" from="summon_cooldown" to="." method="_on_summon_cooldown_timeout"]

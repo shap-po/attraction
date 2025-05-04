@@ -10,7 +10,7 @@ var checkout_locations: Array[Marker2D] = []
 func on_creation() -> void:
 	var marker_index: int = 0
 	if puppet.unconditional_state == "RinobeetleAttackPlayer":
-		marker_index = 3
+		marker_index = 2
 	if !map_markers:
 		#print("aw hell nah")
 		return
