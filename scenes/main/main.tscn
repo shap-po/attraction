@@ -220,6 +220,7 @@ inventory = NodePath("../../../../../../../../../../../../player/Inventory")
 health = NodePath("../../player/Health")
 
 [node name="inventory_UI" parent="CanvasLayer" node_paths=PackedStringArray("inventory_grid") instance=ExtResource("9_b1x3f")]
+visible = false
 inventory_grid = NodePath("menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Items/PlayerInventoryGrid")
 
 [node name="PlayerInventoryGrid" parent="CanvasLayer/inventory_UI/menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Items" index="0" node_paths=PackedStringArray("inventory")]
