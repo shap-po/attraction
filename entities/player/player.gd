@@ -89,7 +89,7 @@ func interact() -> Interactible.InteractionResult:
 
 func take_damage(damage: int) -> void:
 	health.damage(damage)
-	
+
 func apply_stun(time: float):
 	## TODO
 	pass

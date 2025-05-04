@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeightedEnemy" load_steps=3 format=3 uid="uid://dfb6ovirvn2te"]
+
+[ext_resource type="Script" uid="uid://q5c3ew7e705r" path="res://entities/enemies/weighted_enemy.gd" id="1_21ic0"]
+[ext_resource type="PackedScene" uid="uid://n716cs15gjtv" path="res://entities/enemies/ants/ant_mound.tscn" id="1_m3gwi"]
+
+[resource]
+script = ExtResource("1_21ic0")
+name = "Ant Mound"
+enemies = Array[PackedScene]([ExtResource("1_m3gwi")])
+weight = 80
+points_cost = 100
+spawn_area_mask = 16
+metadata/_custom_type_script = "uid://q5c3ew7e705r"

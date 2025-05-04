@@ -11,6 +11,7 @@ signal on_growth_stage_change(previous: int, new: int)
 signal on_fully_grown()
 signal on_before_remove() ## Emitted when the plant is marked for deletion
 
+var plot: Plot
 var growth_ticks: int
 var growth_ticks_per_stage: float
 var last_growth_stage: int
@@ -34,6 +35,8 @@ func _on_growth_timer_timeout() -> void:
 	var prev_stage: int = current_growth_stage
 	current_growth_stage = min(growth_ticks / growth_ticks_per_stage, last_growth_stage)
 	if prev_stage == current_growth_stage:
+		if current_growth_stage == last_growth_stage and plant_type.invasion_chance > 0:
+			invade()
 		return
 
 	_update_texture()
@@ -41,13 +44,22 @@ func _on_growth_timer_timeout() -> void:
 
 	if current_growth_stage == last_growth_stage:
 		on_fully_grown.emit()
-		growth_timer.stop()
+		# Remove the timer if no longer needed
+		if plant_type.invasion_chance == 0:
+			growth_timer.stop()
 
 func _update_texture() -> void:
 	sprite_2d.texture = plant_type.grow_stages[current_growth_stage]
 
 func is_fully_grown() -> bool:
 	return current_growth_stage == last_growth_stage
+
+func invade() -> void:
+	if randf() <= plant_type.invasion_chance:
+		for plot in plot.siblings:
+			if plot.plant == null:
+				plot.create_plant(plant_type)
+				return
 
 func create_crop() -> Item:
 	# The more damaged the plant is, the less quality the crop will have
