@@ -8,7 +8,7 @@ class_name MoundScout
 # the hive is provoked
 
 @onready var map_markers: Node2D = $/root/main/map/map_markers ## it has stupid
-var time_next_state: float = 20
+var time_next_state: float = 30
 var checkout_locations: Array[Node2D] = []
 
 func get_puppet() -> AntMound:
@@ -18,7 +18,7 @@ func on_creation() -> void:
 	if !(puppet is AntMound):
 		push_error("something initiated braincell of ant_mound without it actually being ant_mound.")
 		return
-	time_next_state = 20
+	time_next_state = 30
 	get_puppet().summon_chances = [0.5, 0.25, 0]
 	get_puppet().brain_ant_killed.connect(on_ant_killed)
 	

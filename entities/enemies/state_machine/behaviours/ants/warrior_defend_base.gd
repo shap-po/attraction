@@ -73,7 +73,8 @@ func clock() -> void:
 		wait -= 1.0 * TIMER_CYCLE
 
 func exit() -> void:
-	get_puppet().timer.timeout.disconnect(clock)
+	if get_puppet().timer.timeout.is_connected(clock):
+		get_puppet().timer.timeout.disconnect(clock)
 	
 func on_alerted(pos):
 	var find = puppet.check_area()

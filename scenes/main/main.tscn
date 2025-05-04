@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://01mbau86j0cn"]
+[gd_scene load_steps=19 format=4 uid="uid://01mbau86j0cn"]
 
 [ext_resource type="Texture2D" uid="uid://qi74byha511i" path="res://assets/textures/tilemaps/bottom_tilemap.png" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://cq01h0x262mcp" path="res://entities/player/player.tscn" id="1_o5qli"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c6txn1p4mo1gy" path="res://assets/textures/tilemaps/spawn_tilemap.png" id="4_85g3d"]
 [ext_resource type="Script" uid="uid://cl2mjcivobu4v" path="res://scenes/main/spawner.gd" id="4_tipki"]
 [ext_resource type="PackedScene" uid="uid://n716cs15gjtv" path="res://entities/enemies/ants/ant_mound.tscn" id="6_ouso4"]
+[ext_resource type="PackedScene" uid="uid://bjsg7mkm5swaq" path="res://entities/enemies/gnat.tscn" id="8_7smn1"]
 [ext_resource type="Texture2D" uid="uid://c3o1fjyinet1x" path="res://assets/textures/misc/emotes/question.png" id="8_a8run"]
 [ext_resource type="PackedScene" uid="uid://dgo2sncuhbver" path="res://ui/health_bar.tscn" id="9_a8run"]
 [ext_resource type="PackedScene" uid="uid://dqqsup6xm5b3a" path="res://scenes/menus/inventoryMenu/inventory_UI.tscn" id="9_b1x3f"]
@@ -230,10 +231,13 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="AntMound" parent="dummy" instance=ExtResource("6_ouso4")]
-position = Vector2(-300, -14)
+position = Vector2(-285, -368)
 
 [node name="Zero-Zero" type="Sprite2D" parent="dummy"]
 texture = ExtResource("8_a8run")
+
+[node name="gnat" parent="dummy" instance=ExtResource("8_7smn1")]
+position = Vector2(-8, -413)
 
 [node name="items" type="Node2D" parent="."]
 

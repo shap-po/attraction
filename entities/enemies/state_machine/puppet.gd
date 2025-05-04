@@ -106,8 +106,8 @@ func melee(damage: int, cooldown: float = 0.75) -> void:
 	var rot2 = pv.angle()
 	var rot1 = pv.angle()
 
-	Emote.create_emote(Emote.EmoteType.BITE_LOWER, target, pv, 0.15, pos1, rot1, false)
-	Emote.create_emote(Emote.EmoteType.BITE_UPPER, target, pv * -1, 0.15, pos2, rot2, false)
+	Emote.create_emote(Emote.EmoteType.BITE_LOWER, target, pv, 0.4, pos1, rot1, false, 0.5, 15)
+	Emote.create_emote(Emote.EmoteType.BITE_UPPER, target, pv * -1, 0.4, pos2, rot2, false, 0.5, 15)
 	acting_cooldown.wait_time = cooldown
 	acting_cooldown.start()
 
