@@ -39,7 +39,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_tqov1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_6rjj8")
 
 [node name="ItemContent" type="Control" parent="Button"]
-z_index = 1
 layout_mode = 2
 anchors_preset = 0
 offset_right = 17.0

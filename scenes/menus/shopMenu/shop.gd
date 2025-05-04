@@ -1,5 +1,5 @@
 @tool
-extends Node
+extends Control
 
 @export var player_inventory: PlayerInventory:
 	set(val):
@@ -11,3 +11,9 @@ extends Node
 
 @onready var shop_invenotry_grid: ShopInventoryGrid = $menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Shop/ShopInvenotryGrid
 @onready var player_invenotry_grid: PlayerInventoryGrid = $menuWindowTemplateBig/MarginContainer/PanelContainer/MarginContainer/HSplitContainer/items/MarginContainer/TabContainer/Inventory/PlayerInvenotryGrid
+
+func _ready() -> void:
+	visible = false
+
+func toggle() -> void:
+	visible = not visible

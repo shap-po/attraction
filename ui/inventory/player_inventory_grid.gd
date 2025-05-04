@@ -21,7 +21,7 @@ func get_inventory() -> PlayerInventory:
 func on_close() -> void:
 	super.on_close()
 	if selected_slot != -1:
-		slots[selected_slot].reset_content_position()
+		reset_slot_content_position(selected_slot)
 		selected_slot = -1
 
 func on_pressed(index: int) -> void:
@@ -32,17 +32,25 @@ func on_pressed(index: int) -> void:
 			return
 
 		selected_slot = index
+		slots[index].item_content.z_index = 1
+		slots[index].item_content.z_as_relative = true
 		return
 
 	if selected_slot == index:
-		slots[selected_slot].reset_content_position()
+		reset_slot_content_position(selected_slot)
 		selected_slot = -1
 		return
 
-	slots[selected_slot].reset_content_position()
+	reset_slot_content_position(selected_slot)
 	get_inventory().swap_slots(selected_slot, index)
 	selected_slot = -1
 
+
+func reset_slot_content_position(index: int) -> void:
+	var slot: InventorySlot = slots[index]
+	slot.item_content.global_position = slot.button.global_position
+	slots[index].item_content.z_index = 0
+	slot.item_content.z_as_relative = false
 
 func _validate_property(property: Dictionary) -> void:
 	# override inventory type hint

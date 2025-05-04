@@ -44,8 +44,5 @@ func update_count(item: Item) -> void:
 	else:
 		item_count.visible = false
 
-func reset_content_position() -> void:
-	item_content.global_position = button.global_position
-
 func _on_button_pressed() -> void:
 	inventory_grid.on_pressed(get_index())

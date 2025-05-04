@@ -27,7 +27,7 @@ script = ExtResource("1_k1mm3")
 
 [node name="ShopInventory" type="Node" parent="."]
 script = ExtResource("1_fpu1e")
-_content = Array[ExtResource("2_kt51k")]([ExtResource("3_k1mm3")])
+_content = Array[ExtResource("2_kt51k")]([ExtResource("3_k1mm3"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://b8odsh53yeegs"
 
 [node name="menuWindowTemplateBig_MarginContainer_PanelContainer_MarginContainer#HSplitContainer" type="HSplitContainer" parent="."]
