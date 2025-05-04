@@ -40,7 +40,7 @@ script = ExtResource("1_dg2fr")
 
 [node name="main_animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_diatp")
-frame_progress = 0.946319
+frame_progress = 0.352872
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)

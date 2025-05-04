@@ -5,6 +5,8 @@ extends Interactible
 var anim: bool = false
 	
 
+func _ready() -> void:
+	main_animation.play()
 
 func toggle_notification():
 	if listen.visible == true:

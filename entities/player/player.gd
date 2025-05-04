@@ -19,11 +19,17 @@ var direction: Vector2 = Vector2.ZERO
 @onready var interaction_area: Area2D = $InteractionArea2D
 @onready var shop: Control = $"../CanvasLayer/shop"
 
+var stun: float = 0.0
 
 func _ready() -> void:
 	shooting_cooldown.wait_time = current_weapon.cooldown
 
 func _physics_process(_delta: float) -> void:
+	
+	if stun > 0:
+		stun -= _delta
+		return
+	
 	direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
 	if velocity != Vector2.ZERO:
@@ -91,5 +97,5 @@ func take_damage(damage: int) -> void:
 	health.damage(damage)
 	
 func apply_stun(time: float):
-	## TODO
-	pass
+	Emote.create_emote(Emote.EmoteType.STUN, self)
+	stun = time
