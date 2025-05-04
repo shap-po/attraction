@@ -10,6 +10,7 @@ enum SpawnArea {
 	FARM = 16
 }
 
+@export var name: String ## For developer usage
 @export var enemies: Array[PackedScene] = []
 @export_range(0, 100) var weight: int
 @export_range(0, 20, 1, "or_greater") var points_cost: int

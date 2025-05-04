@@ -224,6 +224,7 @@ script = ExtResource("4_tipki")
 [node name="NextWaveTimer" type="Timer" parent="map/Spawner"]
 
 [node name="RandomBugTimer" type="Timer" parent="map/Spawner"]
+autostart = true
 
 [node name="Plots" type="Node2D" parent="map"]
 unique_name_in_owner = true
@@ -276,6 +277,7 @@ inventory = NodePath("../../../../../../../../../player/Inventory")
 [node name="Money" parent="CanvasLayer" instance=ExtResource("12_blune")]
 
 [connection signal="timeout" from="map/Spawner/NextWaveTimer" to="map/Spawner" method="_on_next_wave_timer_timeout"]
+[connection signal="timeout" from="map/Spawner/RandomBugTimer" to="map/Spawner" method="_on_random_bug_timer_timeout"]
 [connection signal="toggle_inventory" from="player" to="CanvasLayer/inventory_UI" method="_on_player_toggle_inventory"]
 [connection signal="on_selected_slot_changed" from="player/Inventory" to="CanvasLayer/HotbarInvenotryGrid" method="_on_inventory_on_selected_slot_changed"]
 
