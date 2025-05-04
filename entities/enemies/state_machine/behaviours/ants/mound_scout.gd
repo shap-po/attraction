@@ -14,7 +14,7 @@ func on_creation() -> void:
 	if !(puppet is AntMound):
 		push_error("something initiated braincell of ant_mound without it actually being ant_mound.")
 		return
-	puppet.summon_chances = [0.5, 0.5, 0]
+	get_puppet().summon_chances = [0.5, 0.5, 0]
 	get_puppet().brain_ant_killed.connect(on_ant_killed)
 
 func exit():
