@@ -36,9 +36,6 @@ const PLANT: PackedScene = preload("res://entities/plant/plant.tscn")
 @export_range(0, 20, 1, "or_greater") var enemy_points: int
 @export var ant_points: int = 0
 
-func _init() -> void:
-	# set item properties
-	item_type = ItemType.SEED
 
 func create() -> Plant:
 	var instance: Plant = PLANT.instantiate()
@@ -47,7 +44,7 @@ func create() -> Plant:
 
 func _validate_property(property: Dictionary) -> void:
 	# hide properties that are set automatically
-	if property.name in ["item_name", "item_type"]:
+	if property.name in ["item_name"]:
 		property.usage = PROPERTY_USAGE_NONE
 	# hide bush properties if crop type is not bush
 	if crop_type != CropType.BUSH and property.name in ["bush_harvest_limit", "bush_stages_per_harvest"]:

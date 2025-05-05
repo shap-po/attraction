@@ -67,7 +67,6 @@ func create_crop() -> Item:
 	var quality: float = health.as_float() * 0.5 + 0.5
 
 	var crop: Item = Item.new()
-	crop.item_type = Item.ItemType.CROP
 	crop.item_name = plant_type.crop_name
 	crop.item_texture = plant_type.fruit_item_texture
 	crop.sell_price = plant_type.grown_sell_price * quality

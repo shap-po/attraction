@@ -26,7 +26,6 @@ random_rotation = false
 hazardeous = false
 item_name = "Bite"
 item_description = ""
-item_type = -1
 buy_price = 0
 sell_price = 0
 metadata/_custom_type_script = "uid://bni8jtxq4k6h3"

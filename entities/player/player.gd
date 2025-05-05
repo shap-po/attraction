@@ -15,7 +15,7 @@ var direction: Vector2 = Vector2.ZERO
 @onready var body: Node2D = $Body
 @onready var dummy = %dummy
 @onready var interaction_area: Area2D = $InteractionArea2D
-@onready var shop: Control = $"../CanvasLayer/shop"
+@onready var shop: Control = $"../UICanvasLayer/shop"
 var stun: float = 0.0
 
 func _physics_process(_delta: float) -> void:

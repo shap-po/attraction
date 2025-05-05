@@ -27,7 +27,6 @@ hazardeous = false
 item_name = "Hypershoe"
 item_texture = ExtResource("2_shv28")
 item_description = "A good old shoe"
-item_type = 0
 buy_price = 0
 sell_price = 0
 metadata/_custom_type_script = "uid://bni8jtxq4k6h3"
