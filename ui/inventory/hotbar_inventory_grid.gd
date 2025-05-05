@@ -23,6 +23,7 @@ func update_slot(slot: InventorySlot, item: Item) -> void:
 	if item == null:
 		return
 
+	slot.item_price.visible = false
 	# update count
 	if item is CountableItem:
 		slot.item_count.text = str(item.count)

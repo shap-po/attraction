@@ -43,6 +43,6 @@ func interact(player: Player, item: Item) -> InteractionResult:
 
 	if item is PlantType:
 		create_plant(item as PlantType)
-		return InteractionResult.SUCCESS
+		return InteractionResult.CONSUME
 
 	return InteractionResult.PASS

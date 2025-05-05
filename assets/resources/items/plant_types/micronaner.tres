@@ -35,6 +35,7 @@ bush_stages_per_harvest = 3
 enemies_pool = Array[ExtResource("1_k5u8r")]([SubResource("Resource_xopda")])
 enemy_points = 15
 ant_points = 0
+count = 1
 item_texture = ExtResource("7_pher1")
 item_description = "Mineature banana seeds! Attract flies"
 buy_price = 200

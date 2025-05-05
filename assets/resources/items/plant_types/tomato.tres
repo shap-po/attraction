@@ -31,6 +31,7 @@ invasion_chance = 0.0
 enemies_pool = Array[ExtResource("1_sodn0")]([SubResource("Resource_7tn6i")])
 enemy_points = 20
 ant_points = 0
+count = 1
 item_texture = ExtResource("7_6g4ck")
 item_description = "A single tomato will grow out of this... How does that even work?
 Snails enjoy eating those"

@@ -3,7 +3,7 @@ extends Interactible
 @onready var main_animation: AnimatedSprite2D = $main_animation
 @onready var listen: Sprite2D = $listen
 var anim: bool = false
-	
+
 
 func _ready() -> void:
 	main_animation.play()

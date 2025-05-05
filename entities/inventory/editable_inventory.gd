@@ -42,6 +42,11 @@ func remove_item(slot: int, count: int = -1) -> Item:
 	# for countable items, remove the specified count
 	if item is CountableItem and (count != -1 or count < item.count):
 		item.count -= count
+		if item.count <= 0:
+			_content[slot] = null
+			on_content_changed.emit(slot)
+			return item
+
 		var item_copy: CountableItem = item.duplicate()
 		item_copy.count = count
 		on_content_changed.emit(slot)

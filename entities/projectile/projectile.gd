@@ -32,8 +32,6 @@ func _ready():
 	destroy_on_collision = res.destroy_on_collision
 	damage = res.damage
 	self.scale = Vector2(1, 1) * res.scaling
-	
-
 
 func _physics_process(_delta: float) -> void:
 	global_position += speed * direction

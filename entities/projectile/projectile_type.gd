@@ -1,7 +1,6 @@
-extends Resource
+extends Item
 class_name ProjectileType
 
-@export var name: String
 @export var texture: Texture2D
 @export var collision_shape: RectangleShape2D
 @export var damage: int = 1

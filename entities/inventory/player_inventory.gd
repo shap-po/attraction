@@ -6,8 +6,7 @@ signal on_hotbar_changed(slot: int)
 
 const hotbar_size: int = 9
 
-
-@onready var player: Player = $".."
+@onready var player: Player = get_parent()
 
 var selected_slot: int = 0:
 	set(val):
@@ -15,7 +14,7 @@ var selected_slot: int = 0:
 		if selected_slot < 0:
 			selected_slot += hotbar_size
 		on_selected_slot_changed.emit()
-		
+
 
 var hotbar: HotbarInventory = HotbarInventory.new()
 
@@ -23,12 +22,11 @@ class HotbarInventory extends BaseInventory:
 	signal on_content_changed(slot: int)
 
 func _ready() -> void:
-	hotbar._content.resize(hotbar_size)
-	hotbar._content.fill(null)
+	hotbar._content = _content.slice(0, hotbar_size)
 	on_content_changed.connect(_on_content_changed)
 
 func _on_content_changed(slot: int) -> void:
-	if slot <= hotbar_size:
+	if slot < hotbar_size:
 		hotbar._content[slot] = _content[slot]
 		hotbar.on_content_changed.emit(slot)
 
