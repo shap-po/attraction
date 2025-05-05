@@ -16,7 +16,7 @@ script = ExtResource("1_k5u8r")
 name = "Fly"
 enemies = Array[PackedScene]([ExtResource("2_yf3mn")])
 weight = 20
-points_cost = 40
+points_cost = 20
 spawn_area_mask = 7
 metadata/_custom_type_script = "uid://q5c3ew7e705r"
 
@@ -33,7 +33,7 @@ invasion_chance = 0.0
 bush_harvest_limit = 3
 bush_stages_per_harvest = 3
 enemies_pool = Array[ExtResource("1_k5u8r")]([SubResource("Resource_xopda")])
-enemy_points = 15
+enemy_points = 20
 ant_points = 0
 count = 1
 item_texture = ExtResource("7_pher1")

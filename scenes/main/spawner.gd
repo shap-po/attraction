@@ -4,6 +4,8 @@ class_name Spawner
 signal incoming_wave(wave_location: WeightedEnemy.SpawnArea, bug_allert_timeout: int)
 
 @onready var next_wave_timer: Timer = $NextWaveTimer
+@onready var random_bug_timer: Timer = $RandomBugTimer
+
 @onready var dummy: Node2D = %dummy
 @onready var plots: Node2D = %Plots
 
@@ -128,10 +130,11 @@ func spawn_enemy_group(location: WeightedEnemy.SpawnArea, enemy_group: Array[Pac
 			continue
 		var new_enemy: Node2D = enemy.instantiate()
 		dummy.add_child(new_enemy)
-		new_enemy.global_position = coords
+		new_enemy.global_position = coords + Vector2(randf_range(-10, 10), randf_range(-10, 10))
 
 func _on_random_bug_timer_timeout() -> void:
 	pick_and_spawn_enemy()
+	random_bug_timer.wait_time += 0.5
 
 func pick_coords(area: WeightedEnemy.SpawnArea) -> Vector2:
 	var spawn_cords: Vector2i = spawn_positions[area].pick_random()
