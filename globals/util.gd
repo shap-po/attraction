@@ -13,3 +13,11 @@ static func remove_array(array: Array, values: Array) -> void:
 		pos = array.find(val)
 		if pos != -1:
 			array.pop_at(pos)
+
+## Recursively removes node and all its children from the tree
+static func remove_node(node: Node) -> void:
+	if node == null:
+		return
+	for child in node.get_children():
+		remove_node(child)
+	node.queue_free()

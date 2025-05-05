@@ -67,7 +67,7 @@ func take_damage(damage: int) -> void:
 
 func on_zero_health() -> void:
 	on_death_effect()
-	queue_free()
+	Util.remove_node(self)
 
 func on_death_effect() -> void:
 	pass
