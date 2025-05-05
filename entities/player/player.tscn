@@ -225,3 +225,4 @@ value = 10
 sprite = NodePath("../../Body/Sprite2D")
 
 [connection signal="on_selected_slot_changed" from="Inventory" to="." method="_on_inventory_on_selected_slot_changed"]
+[connection signal="on_zero" from="Health" to="." method="_on_health_on_zero"]

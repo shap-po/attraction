@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2bhcbke67pkj"]
+
+[ext_resource type="PackedScene" uid="uid://cjgjef3cy2o0f" path="res://scenes/menus/game_over/game_over.tscn" id="1_ye0sc"]
+
+[node name="GameOver" instance=ExtResource("1_ye0sc")]
+
+[node name="Label" parent="VBoxContainer" index="0"]
+text = "You won!
+Thanks for playing!"
+horizontal_alignment = 1
+
+[node name="StartButton" parent="VBoxContainer" index="1"]
+text = "Play again"
