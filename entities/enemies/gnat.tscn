@@ -1,17 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjsg7mkm5swaq"]
+[gd_scene load_steps=16 format=3 uid="uid://bjsg7mkm5swaq"]
 
 [ext_resource type="Script" uid="uid://dkwf1nly0b2wx" path="res://entities/enemies/gnat.gd" id="1_137j7"]
 [ext_resource type="Texture2D" uid="uid://ccgvaotqf4yil" path="res://assets/textures/enemies/gnat.png" id="2_84y21"]
+[ext_resource type="Shader" uid="uid://cej1ldywa62pw" path="res://assets/shaders/hit_flash.tres" id="2_a1c2t"]
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_iqwjq"]
 [ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="3_th1rh"]
 [ext_resource type="Script" uid="uid://b47slynxvkcm" path="res://entities/enemies/state_machine/behaviours/gnat/gnat_attack_player.gd" id="4_0ia1a"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_8hmys"]
 [ext_resource type="Script" uid="uid://by1v8sj8wxofy" path="res://entities/enemies/state_machine/behaviours/gnat/gnat_airborne.gd" id="4_137j7"]
 [ext_resource type="Script" uid="uid://6r10twc71dhp" path="res://entities/enemies/state_machine/behaviours/gnat/gnat_idle.gd" id="4_e2xfl"]
+[ext_resource type="PackedScene" uid="uid://sgaf0148k0cx" path="res://components/hit_flash.tscn" id="5_tckyk"]
 [ext_resource type="Script" uid="uid://dxuabvdjh8ku7" path="res://entities/enemies/state_machine/behaviours/gnat/gnat_travel.gd" id="9_th1rh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qvl3w"]
 radius = 7.07107
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m38vy"]
+resource_local_to_scene = true
+shader = ExtResource("2_a1c2t")
+shader_parameter/Enabled = false
+shader_parameter/Color = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ia1a"]
 radius = 140.004
@@ -34,6 +42,7 @@ shape = SubResource("CircleShape2D_qvl3w")
 [node name="rotation_marker" type="Marker2D" parent="."]
 
 [node name="gnat_sprite" type="Sprite2D" parent="rotation_marker"]
+material = SubResource("ShaderMaterial_m38vy")
 texture = ExtResource("2_84y21")
 
 [node name="area_sight" type="Area2D" parent="rotation_marker"]
@@ -56,6 +65,9 @@ shape = SubResource("CircleShape2D_8hmys")
 script = ExtResource("3_th1rh")
 value = 1
 metadata/_custom_type_script = "uid://dcfhd17x78npj"
+
+[node name="HitFlash" parent="Health" node_paths=PackedStringArray("sprite") instance=ExtResource("5_tckyk")]
+sprite = NodePath("../../rotation_marker/gnat_sprite")
 
 [node name="timer" type="Timer" parent="."]
 

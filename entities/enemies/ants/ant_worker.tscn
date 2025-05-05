@@ -1,16 +1,24 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsbjxjpcoiv64"]
+[gd_scene load_steps=15 format=3 uid="uid://dsbjxjpcoiv64"]
 
 [ext_resource type="Script" uid="uid://d1uucxgmgkhb4" path="res://entities/enemies/ants/ant_worker.gd" id="1_bi10t"]
 [ext_resource type="Texture2D" uid="uid://cgk6kjl2046js" path="res://assets/textures/enemies/ants/ant_worker.png" id="1_xvnl3"]
+[ext_resource type="Shader" uid="uid://cej1ldywa62pw" path="res://assets/shaders/hit_flash.tres" id="2_uo62q"]
 [ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="3_3cb7r"]
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_30rtc"]
 [ext_resource type="Script" uid="uid://p3mnhvxh17jl" path="res://entities/enemies/state_machine/behaviours/ants/worker_scout.gd" id="4_0cq0n"]
 [ext_resource type="Script" uid="uid://ceufrq8h7fk5q" path="res://entities/enemies/state_machine/behaviours/ants/flea.gd" id="4_td255"]
 [ext_resource type="Script" uid="uid://igyuims72jk8" path="res://entities/enemies/state_machine/behaviours/ants/worker_attack_food.gd" id="5_u4ed6"]
+[ext_resource type="PackedScene" uid="uid://sgaf0148k0cx" path="res://components/hit_flash.tscn" id="5_ymao7"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="6_asxgm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_degik"]
 radius = 3.33333
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ctpsf"]
+resource_local_to_scene = true
+shader = ExtResource("2_uo62q")
+shader_parameter/Enabled = false
+shader_parameter/Color = Color(1, 1, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_flprm"]
 radius = 85.0
@@ -32,6 +40,7 @@ shape = SubResource("CircleShape2D_degik")
 [node name="rotation_marker" type="Marker2D" parent="."]
 
 [node name="ant_worker_sprite" type="Sprite2D" parent="rotation_marker"]
+material = SubResource("ShaderMaterial_ctpsf")
 texture = ExtResource("1_xvnl3")
 
 [node name="area_sight" type="Area2D" parent="rotation_marker"]
@@ -53,6 +62,9 @@ shape = SubResource("CircleShape2D_30rtc")
 script = ExtResource("3_3cb7r")
 value = 1
 metadata/_custom_type_script = "uid://dcfhd17x78npj"
+
+[node name="HitFlash" parent="Health" node_paths=PackedStringArray("sprite") instance=ExtResource("5_ymao7")]
+sprite = NodePath("../../rotation_marker/ant_worker_sprite")
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 0.25

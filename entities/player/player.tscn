@@ -1,8 +1,9 @@
-[gd_scene load_steps=48 format=3 uid="uid://cq01h0x262mcp"]
+[gd_scene load_steps=51 format=3 uid="uid://cq01h0x262mcp"]
 
 [ext_resource type="Script" uid="uid://bbdpvpomsdsuh" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://cfjphdn02s7b4" path="res://assets/textures/player/dude.png" id="1_symyc"]
 [ext_resource type="Texture2D" uid="uid://q1ymflflwrdb" path="res://assets/textures/player/hand.png" id="2_8fjmc"]
+[ext_resource type="Shader" uid="uid://cej1ldywa62pw" path="res://assets/shaders/hit_flash.tres" id="3_13wue"]
 [ext_resource type="Script" uid="uid://cyyje7ndescf3" path="res://entities/inventory/player_inventory.gd" id="3_sglur"]
 [ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="4_bls4j"]
 [ext_resource type="Script" uid="uid://cuwfyh7pt3x4g" path="res://entities/inventory/item.gd" id="4_fkugw"]
@@ -36,11 +37,18 @@
 [ext_resource type="Texture2D" uid="uid://cabmptyejgb02" path="res://assets/textures/plants/vitata/vitata_ripe.png" id="32_a2brg"]
 [ext_resource type="Texture2D" uid="uid://b8opbtw8qw3mw" path="res://assets/textures/item/vitata_seeds.png" id="33_arp52"]
 [ext_resource type="Resource" uid="uid://bxq11lf1wgeta" path="res://assets/resources/items/watering_can.tres" id="35_0eo6o"]
+[ext_resource type="PackedScene" uid="uid://sgaf0148k0cx" path="res://components/hit_flash.tscn" id="38_wy7bt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_abrql"]
 radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sglur"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_geky7"]
+resource_local_to_scene = true
+shader = ExtResource("3_13wue")
+shader_parameter/Enabled = false
+shader_parameter/Color = Color(1, 1, 1, 1)
 
 [sub_resource type="Resource" id="Resource_0mif7"]
 script = ExtResource("6_afbqv")
@@ -195,6 +203,7 @@ position = Vector2(1, 5)
 texture = ExtResource("2_8fjmc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Body"]
+material = SubResource("ShaderMaterial_geky7")
 texture = ExtResource("1_symyc")
 
 [node name="ShootingCooldownTimer" type="Timer" parent="."]
@@ -211,5 +220,8 @@ _content = Array[ExtResource("4_fkugw")]([ExtResource("6_np63p"), SubResource("R
 [node name="Health" type="Node" parent="."]
 script = ExtResource("4_bls4j")
 value = 10
+
+[node name="HitFlash" parent="Health" node_paths=PackedStringArray("sprite") instance=ExtResource("38_wy7bt")]
+sprite = NodePath("../../Body/Sprite2D")
 
 [connection signal="on_selected_slot_changed" from="Inventory" to="." method="_on_inventory_on_selected_slot_changed"]

@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://ruu8kpyuaiel"]
+[gd_scene load_steps=18 format=3 uid="uid://ruu8kpyuaiel"]
 
 [ext_resource type="Script" uid="uid://b5stq4xgvvdtk" path="res://entities/enemies/ants/ant_warrior.gd" id="1_0o3ao"]
 [ext_resource type="Texture2D" uid="uid://uek1e6hcw2rv" path="res://assets/textures/enemies/ants/ant_warriror.png" id="2_5kpdv"]
+[ext_resource type="Shader" uid="uid://cej1ldywa62pw" path="res://assets/shaders/hit_flash.tres" id="2_a5qyp"]
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_5kpdv"]
 [ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="3_mwupc"]
 [ext_resource type="Script" uid="uid://cem5exb0g15g0" path="res://entities/enemies/state_machine/behaviours/ants/warrior_defend_base.gd" id="4_5kpdv"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_mwupc"]
+[ext_resource type="PackedScene" uid="uid://sgaf0148k0cx" path="res://components/hit_flash.tscn" id="5_e248a"]
 [ext_resource type="Script" uid="uid://ceufrq8h7fk5q" path="res://entities/enemies/state_machine/behaviours/ants/flea.gd" id="5_haesk"]
 [ext_resource type="Script" uid="uid://cpuvl3xp62mww" path="res://entities/enemies/state_machine/behaviours/ants/warrior_linger.gd" id="8_xgvcr"]
 [ext_resource type="Script" uid="uid://djq4m314oo53i" path="res://entities/enemies/state_machine/behaviours/ants/warrior_rage.gd" id="9_f84t3"]
@@ -14,6 +16,12 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_teqsf"]
 radius = 6.87184
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gres"]
+resource_local_to_scene = true
+shader = ExtResource("2_a5qyp")
+shader_parameter/Enabled = false
+shader_parameter/Color = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rq8cp"]
 radius = 150.0
@@ -35,6 +43,7 @@ shape = SubResource("CircleShape2D_teqsf")
 [node name="rotation_marker" type="Marker2D" parent="."]
 
 [node name="ant_warrior_sprite" type="Sprite2D" parent="rotation_marker"]
+material = SubResource("ShaderMaterial_0gres")
 texture = ExtResource("2_5kpdv")
 
 [node name="area_sight" type="Area2D" parent="rotation_marker"]
@@ -54,6 +63,9 @@ shape = SubResource("CircleShape2D_0o3ao")
 script = ExtResource("3_mwupc")
 value = 3
 metadata/_custom_type_script = "uid://dcfhd17x78npj"
+
+[node name="HitFlash" parent="Health" node_paths=PackedStringArray("sprite") instance=ExtResource("5_e248a")]
+sprite = NodePath("../../rotation_marker/ant_warrior_sprite")
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 0.25

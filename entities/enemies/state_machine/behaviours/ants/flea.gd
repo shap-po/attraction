@@ -36,13 +36,13 @@ func on_creation() -> void:
 		var dis1 = puppet.target.global_position.distance_squared_to(puppet.global_position)
 		for loc in checkout_locations:
 			var dis2 = loc.global_position.distance_squared_to(puppet.global_position)
-			if dis1 < dis2: 
+			if dis1 < dis2:
 				puppet.target = loc
 				dis1 = dis2
 		target_point = puppet.target.global_position
-		
 
-	
+
+
 func procces(_delta) -> void:
 	if puppet:
 		if (stunned):

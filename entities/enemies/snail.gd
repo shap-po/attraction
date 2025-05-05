@@ -27,8 +27,8 @@ func _physics_process(_delta: float) -> void:
 	if shell_sprite.visible:
 		choose_from_four_sprites(shell_sprite, SHELL_UP, SHELL_DOWN, SHELL_LEFT, SHELL_RIGHT)
 	move_and_slide()
-	
-	
+
+
 func take_damage(damage):
 	any_damage.emit()
 	if brain.current_state.name == "SnailHide":

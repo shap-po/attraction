@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://xbffllw1i5mo"]
+[gd_scene load_steps=18 format=3 uid="uid://xbffllw1i5mo"]
 
 [ext_resource type="Script" uid="uid://b82g3btto72s1" path="res://entities/enemies/snail.gd" id="1_334tu"]
 [ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="2_8bnin"]
+[ext_resource type="Shader" uid="uid://cej1ldywa62pw" path="res://assets/shaders/hit_flash.tres" id="2_cnh2r"]
 [ext_resource type="Texture2D" uid="uid://bmwm12pdu7jnj" path="res://assets/textures/enemies/snail/slug-rigth.png" id="2_okn6t"]
 [ext_resource type="Texture2D" uid="uid://4bk3p6d7ynqs" path="res://assets/textures/enemies/snail/shell-right.png" id="3_0scor"]
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_334tu"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_vxiei"]
+[ext_resource type="PackedScene" uid="uid://sgaf0148k0cx" path="res://components/hit_flash.tscn" id="6_6nt8q"]
 [ext_resource type="Script" uid="uid://ch3cl7t1hn66h" path="res://entities/enemies/state_machine/behaviours/snail/snail_scout_food.gd" id="6_dt2a5"]
 [ext_resource type="Script" uid="uid://fscws6o8mc6c" path="res://entities/enemies/state_machine/behaviours/snail/snail_attack_food.gd" id="7_dt2a5"]
 [ext_resource type="Script" uid="uid://b601wghkdyp7l" path="res://entities/enemies/state_machine/behaviours/snail/snail_hide.gd" id="8_juvgg"]
@@ -13,6 +15,18 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cgr7e"]
 radius = 7.07107
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ixmv"]
+resource_local_to_scene = true
+shader = ExtResource("2_cnh2r")
+shader_parameter/Enabled = false
+shader_parameter/Color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fv5fr"]
+resource_local_to_scene = true
+shader = ExtResource("2_cnh2r")
+shader_parameter/Enabled = false
+shader_parameter/Color = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l5ns5"]
 radius = 69.0
@@ -34,9 +48,11 @@ shape = SubResource("CircleShape2D_cgr7e")
 [node name="rotation_marker" type="Marker2D" parent="."]
 
 [node name="slug_sprite" type="Sprite2D" parent="rotation_marker"]
+material = SubResource("ShaderMaterial_8ixmv")
 texture = ExtResource("2_okn6t")
 
 [node name="shell_sprite" type="Sprite2D" parent="rotation_marker"]
+material = SubResource("ShaderMaterial_fv5fr")
 texture = ExtResource("3_0scor")
 
 [node name="area_sight" type="Area2D" parent="rotation_marker"]
@@ -59,10 +75,16 @@ script = ExtResource("2_8bnin")
 value = 4
 metadata/_custom_type_script = "uid://dcfhd17x78npj"
 
+[node name="HitFlash" parent="Health" node_paths=PackedStringArray("sprite") instance=ExtResource("6_6nt8q")]
+sprite = NodePath("../../rotation_marker/slug_sprite")
+
 [node name="HealthShell" type="Node" parent="."]
 script = ExtResource("2_8bnin")
 value = 20
 metadata/_custom_type_script = "uid://dcfhd17x78npj"
+
+[node name="HitFlash" parent="HealthShell" node_paths=PackedStringArray("sprite") instance=ExtResource("6_6nt8q")]
+sprite = NodePath("../../rotation_marker/shell_sprite")
 
 [node name="timer" type="Timer" parent="."]
 
