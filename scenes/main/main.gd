@@ -7,7 +7,6 @@ class_name Main
 @onready var dummy: Node2D = %dummy
 
 
-
 func _ready() -> void:
 	Global.main = self
 	#print_tree()
@@ -19,4 +18,4 @@ func _process(_delta: float) -> void:
 	camera_2d.position = player.position
 
 func _on_time_left_timer_timeout() -> void:
-	Global.game_over()
+	Global.lose()
