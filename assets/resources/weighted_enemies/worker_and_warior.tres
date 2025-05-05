@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeightedEnemy" load_steps=4 format=3 uid="uid://d6dwqvoy0lwc"]
+
+[ext_resource type="PackedScene" uid="uid://dsbjxjpcoiv64" path="res://entities/enemies/ants/ant_worker.tscn" id="1_3hjmw"]
+[ext_resource type="PackedScene" uid="uid://ruu8kpyuaiel" path="res://entities/enemies/ants/ant_warrior.tscn" id="2_c8o78"]
+[ext_resource type="Script" uid="uid://q5c3ew7e705r" path="res://entities/enemies/weighted_enemy.gd" id="3_i3ihe"]
+
+[resource]
+script = ExtResource("3_i3ihe")
+name = "Ants: Worker + Warior"
+enemies = Array[PackedScene]([ExtResource("1_3hjmw"), ExtResource("2_c8o78")])
+weight = 10
+points_cost = 10
+spawn_area_mask = 7
+metadata/_custom_type_script = "uid://q5c3ew7e705r"

@@ -1,22 +1,16 @@
-[gd_resource type="Resource" script_class="PlantType" load_steps=10 format=3 uid="uid://x414mesjp0jx"]
+[gd_resource type="Resource" script_class="PlantType" load_steps=12 format=3 uid="uid://x414mesjp0jx"]
 
 [ext_resource type="Script" uid="uid://q5c3ew7e705r" path="res://entities/enemies/weighted_enemy.gd" id="1_g8xjy"]
 [ext_resource type="Texture2D" uid="uid://bqepucg4wrwir" path="res://assets/textures/plants/vitata/vitata_item.png" id="2_5q2dl"]
-[ext_resource type="PackedScene" uid="uid://dh28jgsc0odwm" path="res://entities/enemies/rinobeetle.tscn" id="2_7hgva"]
 [ext_resource type="Texture2D" uid="uid://1aqsd1y4o657" path="res://assets/textures/plants/vitata/vitata_planted.png" id="2_oh86e"]
+[ext_resource type="Resource" uid="uid://qdnrp42iv40i" path="res://assets/resources/weighted_enemies/worker.tres" id="2_q8ad2"]
 [ext_resource type="Texture2D" uid="uid://cbujrk0ynn6x8" path="res://assets/textures/plants/vitata/vitata_growing.png" id="3_5q2dl"]
+[ext_resource type="Resource" uid="uid://b76awlt737pf2" path="res://assets/resources/weighted_enemies/fly.tres" id="3_dsg8c"]
 [ext_resource type="Texture2D" uid="uid://cabmptyejgb02" path="res://assets/textures/plants/vitata/vitata_ripe.png" id="4_7hgva"]
+[ext_resource type="Resource" uid="uid://big23bro2vkgj" path="res://assets/resources/weighted_enemies/snail.tres" id="4_xchvo"]
+[ext_resource type="Resource" uid="uid://dood0i42qb88y" path="res://assets/resources/weighted_enemies/rhino.tres" id="5_32wip"]
 [ext_resource type="Script" uid="uid://qi268pka2ile" path="res://entities/plant/plant_type.gd" id="5_hl4nl"]
 [ext_resource type="Texture2D" uid="uid://b8opbtw8qw3mw" path="res://assets/textures/item/vitata_seeds.png" id="5_oh86e"]
-
-[sub_resource type="Resource" id="Resource_npylt"]
-script = ExtResource("1_g8xjy")
-name = "Rhino"
-enemies = Array[PackedScene]([ExtResource("2_7hgva")])
-weight = 30
-points_cost = 80
-spawn_area_mask = 7
-metadata/_custom_type_script = "uid://q5c3ew7e705r"
 
 [resource]
 script = ExtResource("5_hl4nl")
@@ -28,7 +22,7 @@ health = 4
 grown_sell_price = 400
 fruit_item_texture = ExtResource("2_5q2dl")
 invasion_chance = 0.2
-enemies_pool = Array[ExtResource("1_g8xjy")]([SubResource("Resource_npylt")])
+enemies_pool = Array[ExtResource("1_g8xjy")]([ExtResource("2_q8ad2"), ExtResource("3_dsg8c"), ExtResource("4_xchvo"), ExtResource("5_32wip")])
 enemy_points = 10
 ant_points = 2
 count = 1

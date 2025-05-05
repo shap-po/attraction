@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeightedEnemy" load_steps=3 format=3 uid="uid://qdnrp42iv40i"]
+
+[ext_resource type="PackedScene" uid="uid://dsbjxjpcoiv64" path="res://entities/enemies/ants/ant_worker.tscn" id="1_ug16y"]
+[ext_resource type="Script" uid="uid://q5c3ew7e705r" path="res://entities/enemies/weighted_enemy.gd" id="2_tf5tx"]
+
+[resource]
+script = ExtResource("2_tf5tx")
+name = "Worker Ant"
+enemies = Array[PackedScene]([ExtResource("1_ug16y")])
+weight = 15
+points_cost = 10
+spawn_area_mask = 7
+metadata/_custom_type_script = "uid://q5c3ew7e705r"

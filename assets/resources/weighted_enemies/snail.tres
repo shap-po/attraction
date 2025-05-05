@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeightedEnemy" load_steps=3 format=3 uid="uid://big23bro2vkgj"]
+
+[ext_resource type="PackedScene" uid="uid://xbffllw1i5mo" path="res://entities/enemies/snail.tscn" id="1_xqsqr"]
+[ext_resource type="Script" uid="uid://q5c3ew7e705r" path="res://entities/enemies/weighted_enemy.gd" id="2_2jrm7"]
+
+[resource]
+script = ExtResource("2_2jrm7")
+name = "Snail"
+enemies = Array[PackedScene]([ExtResource("1_xqsqr")])
+weight = 15
+points_cost = 20
+spawn_area_mask = 7
+metadata/_custom_type_script = "uid://q5c3ew7e705r"

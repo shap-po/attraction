@@ -14,7 +14,7 @@ func on_creation() -> void:
 	if !puppet.target:
 		puppet.brain.force_transition("WarriorLinger")
 	create_emote(Emote.EmoteType.ANGRY)
-	
+
 func choose_new_point() -> void:
 	if puppet == null:
 		return
@@ -26,8 +26,8 @@ func procces(_delta) -> void:
 	if !puppet.target:
 		puppet.brain.force_transition("WarriorLinger")
 		return
-		
-	
+
+
 	puppet.velocity = speed * puppet.global_position.direction_to(target_point)
 
 	if (puppet.target.global_position.distance_squared_to(target_point) > 2000):
@@ -39,7 +39,7 @@ func procces(_delta) -> void:
 	if (puppet.global_position.distance_squared_to(puppet.target.global_position) < 200):
 		puppet.melee(1)
 
-	if !puppet.area_sight.overlaps_area(puppet.target.interaction_area):
+	if puppet.target.get("interaction_area") and !puppet.area_sight.overlaps_area(puppet.target.interaction_area):
 		#print(wait)
 		if wait <= 0:
 			create_emote(Emote.EmoteType.QUESTION)

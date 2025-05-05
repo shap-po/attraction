@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeightedEnemy" load_steps=3 format=3 uid="uid://b76awlt737pf2"]
+
+[ext_resource type="PackedScene" uid="uid://bjsg7mkm5swaq" path="res://entities/enemies/gnat.tscn" id="1_5wxpp"]
+[ext_resource type="Script" uid="uid://q5c3ew7e705r" path="res://entities/enemies/weighted_enemy.gd" id="2_5cf0p"]
+
+[resource]
+script = ExtResource("2_5cf0p")
+name = "Fly"
+enemies = Array[PackedScene]([ExtResource("1_5wxpp")])
+weight = 20
+points_cost = 20
+spawn_area_mask = 7
+metadata/_custom_type_script = "uid://q5c3ew7e705r"

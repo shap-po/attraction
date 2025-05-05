@@ -1,24 +1,17 @@
-[gd_resource type="Resource" script_class="PlantType" load_steps=12 format=3 uid="uid://fqchbt1u3lrm"]
+[gd_resource type="Resource" script_class="PlantType" load_steps=13 format=3 uid="uid://fqchbt1u3lrm"]
 
 [ext_resource type="Script" uid="uid://q5c3ew7e705r" path="res://entities/enemies/weighted_enemy.gd" id="1_k5u8r"]
+[ext_resource type="Resource" uid="uid://qdnrp42iv40i" path="res://assets/resources/weighted_enemies/worker.tres" id="2_65qtw"]
 [ext_resource type="Script" uid="uid://qi268pka2ile" path="res://entities/plant/plant_type.gd" id="2_hwrlo"]
 [ext_resource type="Texture2D" uid="uid://de5nwc6d6k83g" path="res://assets/textures/plants/micronaner/micronaner_item.png" id="2_xopda"]
-[ext_resource type="PackedScene" uid="uid://bjsg7mkm5swaq" path="res://entities/enemies/gnat.tscn" id="2_yf3mn"]
+[ext_resource type="Resource" uid="uid://b76awlt737pf2" path="res://assets/resources/weighted_enemies/fly.tres" id="2_yf3mn"]
 [ext_resource type="Texture2D" uid="uid://n864k6qq50ga" path="res://assets/textures/plants/micronaner/micronaner_planted.png" id="3_mwltb"]
+[ext_resource type="Resource" uid="uid://big23bro2vkgj" path="res://assets/resources/weighted_enemies/snail.tres" id="3_pher1"]
 [ext_resource type="Texture2D" uid="uid://cl5kfvvjpbnlj" path="res://assets/textures/plants/micronaner/micronaner_growing.png" id="4_yf3mn"]
 [ext_resource type="Texture2D" uid="uid://btq3wbe7kdmb6" path="res://assets/textures/plants/micronaner/micronaner_final.png" id="5_lbnda"]
 [ext_resource type="Texture2D" uid="uid://cow6m2cejx0hm" path="res://assets/textures/plants/micronaner/micronaner_grownl.png" id="5_mwltb"]
 [ext_resource type="Texture2D" uid="uid://b4fbe2brb0e32" path="res://assets/textures/plants/micronaner/micronaner_ripel.png" id="6_65qtw"]
 [ext_resource type="Texture2D" uid="uid://d1ef0f5ug6nam" path="res://assets/textures/item/micronaner_seeds.png" id="7_pher1"]
-
-[sub_resource type="Resource" id="Resource_xopda"]
-script = ExtResource("1_k5u8r")
-name = "Fly"
-enemies = Array[PackedScene]([ExtResource("2_yf3mn")])
-weight = 20
-points_cost = 20
-spawn_area_mask = 7
-metadata/_custom_type_script = "uid://q5c3ew7e705r"
 
 [resource]
 script = ExtResource("2_hwrlo")
@@ -32,7 +25,7 @@ fruit_item_texture = ExtResource("2_xopda")
 invasion_chance = 0.0
 bush_harvest_limit = 3
 bush_stages_per_harvest = 3
-enemies_pool = Array[ExtResource("1_k5u8r")]([SubResource("Resource_xopda")])
+enemies_pool = Array[ExtResource("1_k5u8r")]([ExtResource("2_65qtw"), ExtResource("3_pher1"), ExtResource("2_yf3mn")])
 enemy_points = 20
 ant_points = 0
 count = 1
