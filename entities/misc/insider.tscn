@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://clbonmc1xk8q"]
+[gd_scene load_steps=10 format=3 uid="uid://c8fyd080f81vv"]
 
 [ext_resource type="Script" uid="uid://xw0cmevmlup" path="res://entities/misc/insider.gd" id="1_dg2fr"]
 [ext_resource type="Texture2D" uid="uid://ekna2d030cim" path="res://assets/textures/misc/Cookaracha1.png" id="1_wq2rl"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bjnh2621il7jh" path="res://assets/textures/misc/Cookaracha4.png" id="4_xau06"]
 [ext_resource type="Texture2D" uid="uid://ek48v42tec8o" path="res://assets/textures/misc/Cookaracha5.png" id="5_xp153"]
 [ext_resource type="Texture2D" uid="uid://dhjel87m2gnlj" path="res://assets/textures/misc/listen.png" id="6_efl54"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ol8h5"]
+radius = 36.0
+height = 86.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_diatp"]
 animations = [{
@@ -31,22 +35,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ol8h5"]
-radius = 24.0
-height = 52.0
-
-[node name="insider" type="Area2D"]
+[node name="Insider" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_dg2fr")
 
-[node name="main_animation" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_diatp")
-frame_progress = 0.352872
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="InteractionCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_ol8h5")
 
-[node name="listen" type="Sprite2D" parent="."]
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_diatp")
+frame_progress = 0.352872
+
+[node name="Alert" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, -44)
 scale = Vector2(1.5, 1.5)

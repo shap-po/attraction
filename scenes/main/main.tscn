@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://01mbau86j0cn"]
+[gd_scene load_steps=27 format=4 uid="uid://01mbau86j0cn"]
 
 [ext_resource type="Texture2D" uid="uid://qi74byha511i" path="res://assets/textures/tilemaps/bottom_tilemap.png" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://cq01h0x262mcp" path="res://entities/player/player.tscn" id="1_o5qli"]
@@ -6,9 +6,10 @@
 [ext_resource type="Script" uid="uid://bo8f8xt4gq5kj" path="res://scenes/main/bottom.gd" id="3_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://c6txn1p4mo1gy" path="res://assets/textures/tilemaps/spawn_tilemap.png" id="4_85g3d"]
 [ext_resource type="Script" uid="uid://cl2mjcivobu4v" path="res://scenes/main/spawner.gd" id="4_tipki"]
-[ext_resource type="PackedScene" uid="uid://n716cs15gjtv" path="res://entities/enemies/ants/ant_mound.tscn" id="6_ouso4"]
+[ext_resource type="Shader" uid="uid://cej1ldywa62pw" path="res://assets/shaders/hit_flash.tres" id="8_pg34l"]
 [ext_resource type="PackedScene" uid="uid://dgo2sncuhbver" path="res://ui/health_bar.tscn" id="9_a8run"]
 [ext_resource type="PackedScene" uid="uid://dqqsup6xm5b3a" path="res://scenes/menus/inventoryMenu/inventory_UI.tscn" id="9_b1x3f"]
+[ext_resource type="PackedScene" uid="uid://c8fyd080f81vv" path="res://entities/misc/insider.tscn" id="9_raeie"]
 [ext_resource type="PackedScene" uid="uid://dyaoam7smtqhx" path="res://scenes/tiles/talking_box.tscn" id="10_7smn1"]
 [ext_resource type="PackedScene" uid="uid://dawbq3k8145p2" path="res://scenes/menus/shopMenu/shop.tscn" id="10_hxu8e"]
 [ext_resource type="Resource" uid="uid://bxq11lf1wgeta" path="res://assets/resources/items/watering_can.tres" id="11_necax"]
@@ -136,6 +137,12 @@ texture = ExtResource("4_85g3d")
 [sub_resource type="TileSet" id="TileSet_85g3d"]
 sources/0 = SubResource("TileSetAtlasSource_tipki")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m4h2d"]
+resource_local_to_scene = true
+shader = ExtResource("8_pg34l")
+shader_parameter/Enabled = false
+shader_parameter/Color = Color(1, 1, 1, 1)
+
 [node name="main" type="Node2D"]
 script = ExtResource("1_sugp2")
 
@@ -237,13 +244,16 @@ unique_name_in_owner = true
 [node name="dummy" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="AntMound" parent="dummy" instance=ExtResource("6_ouso4")]
-position = Vector2(38, -40)
+[node name="insider" parent="." instance=ExtResource("9_raeie")]
+position = Vector2(160, -123)
 
 [node name="items" type="Node2D" parent="."]
 
 [node name="player" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(-48, 0)
+
+[node name="Sprite2D" parent="player/Body" index="2"]
+material = SubResource("ShaderMaterial_m4h2d")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -280,6 +290,7 @@ inventory = NodePath("../../../../../../../../../player/Inventory")
 
 [node name="Money" parent="UICanvasLayer" instance=ExtResource("12_blune")]
 
+[connection signal="incoming_wave" from="map/Spawner" to="insider" method="_on_spawner_incoming_wave"]
 [connection signal="incoming_wave" from="map/Spawner" to="UICanvasLayer/talking_box" method="_on_spawner_incoming_wave"]
 [connection signal="timeout" from="map/Spawner/NextWaveTimer" to="map/Spawner" method="_on_next_wave_timer_timeout"]
 [connection signal="timeout" from="map/Spawner/RandomBugTimer" to="map/Spawner" method="_on_random_bug_timer_timeout"]
