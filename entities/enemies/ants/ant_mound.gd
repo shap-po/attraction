@@ -50,7 +50,7 @@ func summon_ant() -> void:
 			type = i
 			break
 	while type >= 0:
-		if (current_ants[type] > max_list[type][size]) or (ant_points <= ant_cost[type]): 
+		if (current_ants[type] > max_list[type][size]) or (ant_points <= ant_cost[type]):
 			type -= 1
 		else:
 			break
@@ -91,3 +91,7 @@ func take_damage(damage: int) -> void:
 func _on_summon_cooldown_timeout() -> void:
 	summon_ant()
 	pass
+
+func free_ants() -> void:
+	for ant in ants.get_children():
+		ant.reparent(dummy)

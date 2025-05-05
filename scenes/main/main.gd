@@ -4,7 +4,7 @@ class_name Main
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var items: Node2D = $items
 @onready var player: CharacterBody2D = $player
-
+@onready var dummy: Node2D = %dummy
 
 
 

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bxq11lf1wgeta"]
+
+[ext_resource type="Texture2D" uid="uid://cy4802ic8fwkh" path="res://assets/textures/player/watering_can_empty.png" id="1_bu5nx"]
+[ext_resource type="Script" uid="uid://cuwfyh7pt3x4g" path="res://entities/inventory/item.gd" id="1_ui3sk"]
+
+[resource]
+script = ExtResource("1_ui3sk")
+item_name = "Watering Can"
+item_texture = ExtResource("1_bu5nx")
+item_description = "Speed up your crops!
+Also works great on ant mounds"
+buy_price = 200
+sell_price = 0
+metadata/_custom_type_script = "uid://cuwfyh7pt3x4g"

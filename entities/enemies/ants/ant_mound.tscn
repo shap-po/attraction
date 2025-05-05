@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://n716cs15gjtv"]
+[gd_scene load_steps=14 format=3 uid="uid://n716cs15gjtv"]
 
 [ext_resource type="Script" uid="uid://bepneo4fh82sg" path="res://entities/enemies/ants/ant_mound.gd" id="1_28qug"]
 [ext_resource type="Texture2D" uid="uid://b64q0j1uh6f3q" path="res://assets/textures/enemies/ants/ant_mound_small.png" id="1_44fhl"]
+[ext_resource type="Script" uid="uid://br20hsutu7bfs" path="res://entities/enemies/ants/ant_mound_interaction.gd" id="3_2uhk1"]
 [ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="3_a5aqs"]
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_nv1hj"]
 [ext_resource type="Script" uid="uid://dpx7s4t6yxnwn" path="res://entities/enemies/state_machine/behaviours/ants/mound_scout.gd" id="4_a5aqs"]
@@ -19,7 +20,7 @@ radius = 114.28
 radius = 11.7851
 
 [node name="AntMound" type="CharacterBody2D"]
-collision_layer = 6
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_28qug")
 
@@ -40,6 +41,8 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_a5aqs")
 
 [node name="area_touch" type="Area2D" parent="rotation_marker"]
+collision_layer = 3
+script = ExtResource("3_2uhk1")
 
 [node name="vision_area_touch_shape" type="CollisionShape2D" parent="rotation_marker/area_touch"]
 shape = SubResource("CircleShape2D_xog81")

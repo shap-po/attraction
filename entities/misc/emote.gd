@@ -49,8 +49,5 @@ static func create_emote(type: EmoteType, parent: Node, propagation_direction: V
 	new_emote.max_ticks_lifetime = mx
 	new_emote.rotation = rot
 	new_emote.scale = Vector2(sc, sc)
-	if follow:
-		parent.dummy.add_child(new_emote)
-	else:
-		parent.get_parent().add_child(new_emote)
+	Global.main.dummy.add_child(new_emote)
 	new_emote.global_position = pos
