@@ -3,7 +3,7 @@ class_name Player
 
 signal toggle_inventory
 
-const speed: int = 160
+const speed: int = 100
 const weight: float = 0.4
 var allience: String = "player"
 var direction: Vector2 = Vector2.ZERO
