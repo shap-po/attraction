@@ -7,8 +7,11 @@ class_name WorkerScout
 # if approached will flea
 # if whitnesses damage/kill will hide
 
+@onready var bias_marker: Marker2D = $"/root/main/map/map_markers/checkout_plot_locations/small2-default"
 @export var SPEED_MULTIPLIER: float = 0.7
 @export var DISTANCE_BASE: float = 100.0
+@export var DISTANCE_BIAS: float = 60.0
+@export var DISTANCE_BIAS_MIN: float = 62500.0
 @export var DISTANCE_SCATTER: float = 50.0
 @export var CHECKOUT_PRECISION: float = 10.0
 @export var WAIT_BASE: float = 3.0
@@ -35,6 +38,9 @@ func choose_new_point() -> void:
 	if puppet == null:
 		return
 	target_point = puppet.global_position + Vector2(randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER), randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER)) + Vector2(pow(-1, randi_range(1, 2)) * DISTANCE_BASE, pow(-1, randi_range(1, 2)) * DISTANCE_BASE)
+	# add bias
+	if puppet.global_position.distance_squared_to(bias_marker.global_position) > DISTANCE_BIAS_MIN:
+		target_point += puppet.global_position.direction_to(bias_marker.global_position) * DISTANCE_BIAS
 	if randf() < 0.1:
 		wait = (WAIT_BASE + randf_range(0, WAIT_SCATTER))
 
@@ -45,11 +51,11 @@ func exit() -> void:
 func procces(_delta) -> void:
 	if puppet == null:
 		return
-		
+
 	if wait >= 0.0:
 		puppet.velocity = Vector2.ZERO
 		return
-		
+
 	var find = puppet.check_area(Puppet.FindType.PLANT)
 	if find == Puppet.FindType.PLANT:
 		if puppet.home == null:
@@ -57,11 +63,11 @@ func procces(_delta) -> void:
 		else:
 			puppet.get_parent().get_parent().target = puppet.target
 			puppet.brain.force_transition("Flea")
-	
+
 	if puppet.global_position.distance_squared_to(target_point) < CHECKOUT_PRECISION:
 		choose_new_point()
 	puppet.velocity = speed * puppet.global_position.direction_to(target_point)
-	
+
 
 func clock() -> void:
 	if wait >= 0:
