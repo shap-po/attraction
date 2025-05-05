@@ -35,7 +35,7 @@ func toggle_animation():
 func interact(player: Player, item: Item) -> InteractionResult:
 	alert.visible = false
 	if spawner.wave_location == null or spawner.wave_enemies.size() == 0:
-		talking_box.show_text("Next wave in " + str(int(spawner.next_wave_timer.time_left)) + " seconds")
+		talking_box.show_text("Next wave in " + str(int(spawner.next_wave_timer.time_left) + Global.bug_allert_timeout) + " seconds")
 	else:
 		talking_box.show_text("Bugs are comming from " + enum_to_text(spawner.wave_location) + " in " + str(int(spawner.next_wave_timer.time_left)) + " seconds")
 	return InteractionResult.SUCCESS
