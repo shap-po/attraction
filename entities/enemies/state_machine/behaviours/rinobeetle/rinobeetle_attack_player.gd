@@ -18,9 +18,8 @@ func on_creation() -> void:
 
 func choose_point():
 	target_point = (puppet.global_position.direction_to(puppet.target.global_position) * -50) + puppet.target.global_position
-	#target_point = puppet.target.global_position
-	
-	print("[RinobeetleAttackPlayer] chose point ", target_point)
+
+#target_point = puppet.target.global_position
 
 
 func procces(delta) -> void:

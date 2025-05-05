@@ -27,7 +27,6 @@ func _show_text(text_length):
 		await get_tree().create_timer(0.05).timeout
 		label.visible_characters += 1
 	is_talking = false
-	print("end")
 
 func show_text(text: String):
 	label.text = text
