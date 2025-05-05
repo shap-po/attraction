@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cq01h0x262mcp"]
+[gd_scene load_steps=13 format=3 uid="uid://cq01h0x262mcp"]
 
 [ext_resource type="Script" uid="uid://bbdpvpomsdsuh" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://cfjphdn02s7b4" path="res://assets/textures/player/dude.png" id="1_symyc"]
@@ -7,36 +7,7 @@
 [ext_resource type="Script" uid="uid://cyyje7ndescf3" path="res://entities/inventory/player_inventory.gd" id="3_sglur"]
 [ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="4_bls4j"]
 [ext_resource type="Script" uid="uid://cuwfyh7pt3x4g" path="res://entities/inventory/item.gd" id="4_fkugw"]
-[ext_resource type="Script" uid="uid://q5c3ew7e705r" path="res://entities/enemies/weighted_enemy.gd" id="6_afbqv"]
 [ext_resource type="Resource" uid="uid://sv24yji0d8g8" path="res://assets/resources/projectiles/shoe.tres" id="6_np63p"]
-[ext_resource type="PackedScene" uid="uid://ruu8kpyuaiel" path="res://entities/enemies/ants/ant_warrior.tscn" id="7_gx6sm"]
-[ext_resource type="PackedScene" uid="uid://dsbjxjpcoiv64" path="res://entities/enemies/ants/ant_worker.tscn" id="8_yqrof"]
-[ext_resource type="Texture2D" uid="uid://cla7txer8f04y" path="res://assets/textures/plants/carrot/carrot_ripe.png" id="9_3wlsy"]
-[ext_resource type="Texture2D" uid="uid://xh72hx23lud1" path="res://assets/textures/plants/thing_planted.png" id="10_b2kln"]
-[ext_resource type="Texture2D" uid="uid://dueacno8wyefd" path="res://assets/textures/plants/carrot/carrot_growing.png" id="11_we0b7"]
-[ext_resource type="Texture2D" uid="uid://b1n6sm3rtnbos" path="res://assets/textures/item/carrot_seeds.png" id="12_mtric"]
-[ext_resource type="Script" uid="uid://qi268pka2ile" path="res://entities/plant/plant_type.gd" id="13_eyb6c"]
-[ext_resource type="PackedScene" uid="uid://bjsg7mkm5swaq" path="res://entities/enemies/gnat.tscn" id="14_8q4fm"]
-[ext_resource type="Texture2D" uid="uid://de5nwc6d6k83g" path="res://assets/textures/plants/micronaner/micronaner_item.png" id="15_np63p"]
-[ext_resource type="Texture2D" uid="uid://n864k6qq50ga" path="res://assets/textures/plants/micronaner/micronaner_planted.png" id="16_0eo6o"]
-[ext_resource type="Texture2D" uid="uid://cl5kfvvjpbnlj" path="res://assets/textures/plants/micronaner/micronaner_growing.png" id="17_ttr27"]
-[ext_resource type="Texture2D" uid="uid://cow6m2cejx0hm" path="res://assets/textures/plants/micronaner/micronaner_grownl.png" id="18_13wue"]
-[ext_resource type="Texture2D" uid="uid://btq3wbe7kdmb6" path="res://assets/textures/plants/micronaner/micronaner_final.png" id="19_wy7bt"]
-[ext_resource type="Texture2D" uid="uid://b4fbe2brb0e32" path="res://assets/textures/plants/micronaner/micronaner_ripel.png" id="20_geky7"]
-[ext_resource type="Texture2D" uid="uid://d1ef0f5ug6nam" path="res://assets/textures/item/micronaner_seeds.png" id="21_qwspa"]
-[ext_resource type="PackedScene" uid="uid://xbffllw1i5mo" path="res://entities/enemies/snail.tscn" id="22_r633c"]
-[ext_resource type="Texture2D" uid="uid://d36reellwltlc" path="res://assets/textures/plants/tomato/tomato_item.png" id="23_pacje"]
-[ext_resource type="Texture2D" uid="uid://ftxocy2k2lun" path="res://assets/textures/plants/tomato/tomato_planted.png" id="24_2h0qb"]
-[ext_resource type="Texture2D" uid="uid://dr4mn1x75vmui" path="res://assets/textures/plants/tomato/tomato_growing.png" id="25_mmk7k"]
-[ext_resource type="Texture2D" uid="uid://csh3h7mbobqgc" path="res://assets/textures/plants/tomato/tomato_ripe.png" id="26_g3pa7"]
-[ext_resource type="Texture2D" uid="uid://bcclyyv0cnxph" path="res://assets/textures/item/tomato_seeds.png" id="27_7otdo"]
-[ext_resource type="PackedScene" uid="uid://dh28jgsc0odwm" path="res://entities/enemies/rinobeetle.tscn" id="28_c112w"]
-[ext_resource type="Texture2D" uid="uid://bqepucg4wrwir" path="res://assets/textures/plants/vitata/vitata_item.png" id="29_u37te"]
-[ext_resource type="Texture2D" uid="uid://1aqsd1y4o657" path="res://assets/textures/plants/vitata/vitata_planted.png" id="30_ssgi7"]
-[ext_resource type="Texture2D" uid="uid://cbujrk0ynn6x8" path="res://assets/textures/plants/vitata/vitata_growing.png" id="31_rtlkk"]
-[ext_resource type="Texture2D" uid="uid://cabmptyejgb02" path="res://assets/textures/plants/vitata/vitata_ripe.png" id="32_a2brg"]
-[ext_resource type="Texture2D" uid="uid://b8opbtw8qw3mw" path="res://assets/textures/item/vitata_seeds.png" id="33_arp52"]
-[ext_resource type="Resource" uid="uid://bxq11lf1wgeta" path="res://assets/resources/items/watering_can.tres" id="35_0eo6o"]
 [ext_resource type="PackedScene" uid="uid://sgaf0148k0cx" path="res://components/hit_flash.tscn" id="38_wy7bt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_abrql"]
@@ -49,134 +20,6 @@ resource_local_to_scene = true
 shader = ExtResource("3_13wue")
 shader_parameter/Enabled = false
 shader_parameter/Color = Color(1, 1, 1, 1)
-
-[sub_resource type="Resource" id="Resource_0mif7"]
-script = ExtResource("6_afbqv")
-name = "Ants: Worker + Warior"
-enemies = Array[PackedScene]([ExtResource("7_gx6sm"), ExtResource("7_gx6sm")])
-weight = 10
-points_cost = 25
-spawn_area_mask = 7
-metadata/_custom_type_script = "uid://q5c3ew7e705r"
-
-[sub_resource type="Resource" id="Resource_dt36b"]
-script = ExtResource("6_afbqv")
-name = "Worker Ant"
-enemies = Array[PackedScene]([ExtResource("8_yqrof")])
-weight = 15
-points_cost = 20
-spawn_area_mask = 7
-metadata/_custom_type_script = "uid://q5c3ew7e705r"
-
-[sub_resource type="Resource" id="Resource_221hk"]
-script = ExtResource("13_eyb6c")
-crop_name = "Chem Root"
-crop_type = 0
-grow_time = 10
-grow_stages = Array[Texture2D]([ExtResource("10_b2kln"), ExtResource("11_we0b7"), ExtResource("9_3wlsy")])
-health = 10
-grown_sell_price = 50
-fruit_item_texture = ExtResource("9_3wlsy")
-invasion_chance = 0.0
-enemies_pool = Array[ExtResource("6_afbqv")]([SubResource("Resource_0mif7"), SubResource("Resource_dt36b")])
-enemy_points = 5
-ant_points = 5
-count = 4
-item_texture = ExtResource("12_mtric")
-item_description = "A chemically-modified carrot that ants seem to love"
-buy_price = 10
-sell_price = 0
-
-[sub_resource type="Resource" id="Resource_xopda"]
-script = ExtResource("6_afbqv")
-name = "Fly"
-enemies = Array[PackedScene]([ExtResource("14_8q4fm")])
-weight = 20
-points_cost = 40
-spawn_area_mask = 7
-metadata/_custom_type_script = "uid://q5c3ew7e705r"
-
-[sub_resource type="Resource" id="Resource_jjk8f"]
-script = ExtResource("13_eyb6c")
-crop_name = "Micronaner"
-crop_type = 1
-grow_time = 10
-grow_stages = Array[Texture2D]([ExtResource("16_0eo6o"), ExtResource("17_ttr27"), ExtResource("18_13wue"), ExtResource("19_wy7bt"), ExtResource("20_geky7")])
-health = 8
-grown_sell_price = 300
-fruit_item_texture = ExtResource("15_np63p")
-invasion_chance = 0.0
-bush_harvest_limit = 2
-bush_stages_per_harvest = 3
-enemies_pool = Array[ExtResource("6_afbqv")]([SubResource("Resource_xopda")])
-enemy_points = 15
-ant_points = 0
-count = 1
-item_texture = ExtResource("21_qwspa")
-item_description = "Mineature banana seeds! Attract flies"
-buy_price = 200
-sell_price = 0
-metadata/_custom_type_script = "uid://qi268pka2ile"
-
-[sub_resource type="Resource" id="Resource_7tn6i"]
-script = ExtResource("6_afbqv")
-name = "Snail"
-enemies = Array[PackedScene]([ExtResource("22_r633c")])
-weight = 15
-points_cost = 30
-spawn_area_mask = 7
-metadata/_custom_type_script = "uid://q5c3ew7e705r"
-
-[sub_resource type="Resource" id="Resource_cnswy"]
-script = ExtResource("13_eyb6c")
-crop_name = "Tomato"
-crop_type = 0
-grow_time = 10
-grow_stages = Array[Texture2D]([ExtResource("24_2h0qb"), ExtResource("25_mmk7k"), ExtResource("26_g3pa7")])
-health = 12
-grown_sell_price = 100
-fruit_item_texture = ExtResource("23_pacje")
-invasion_chance = 0.0
-enemies_pool = Array[ExtResource("6_afbqv")]([SubResource("Resource_7tn6i")])
-enemy_points = 20
-ant_points = 0
-count = 1
-item_texture = ExtResource("27_7otdo")
-item_description = "A single tomato will grow out of this... How does that even work?
-Snails enjoy eating those"
-buy_price = 40
-sell_price = 0
-metadata/_custom_type_script = "uid://qi268pka2ile"
-
-[sub_resource type="Resource" id="Resource_npylt"]
-script = ExtResource("6_afbqv")
-name = "Rhino"
-enemies = Array[PackedScene]([ExtResource("28_c112w")])
-weight = 40
-points_cost = 80
-spawn_area_mask = 7
-metadata/_custom_type_script = "uid://q5c3ew7e705r"
-
-[sub_resource type="Resource" id="Resource_q5bfg"]
-script = ExtResource("13_eyb6c")
-crop_name = "Vitata"
-crop_type = 0
-grow_time = 10
-grow_stages = Array[Texture2D]([ExtResource("30_ssgi7"), ExtResource("31_rtlkk"), ExtResource("32_a2brg")])
-health = 10
-grown_sell_price = 400
-fruit_item_texture = ExtResource("29_u37te")
-invasion_chance = 0.2
-enemies_pool = Array[ExtResource("6_afbqv")]([SubResource("Resource_npylt")])
-enemy_points = 10
-ant_points = 2
-count = 1
-item_texture = ExtResource("33_arp52")
-item_description = "You might wanna let it grow for a while
-Attracts rhino beetles"
-buy_price = 400
-sell_price = 0
-metadata/_custom_type_script = "uid://qi268pka2ile"
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 5
@@ -215,7 +58,7 @@ one_shot = true
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("3_sglur")
-_content = Array[ExtResource("4_fkugw")]([ExtResource("6_np63p"), SubResource("Resource_221hk"), SubResource("Resource_jjk8f"), SubResource("Resource_cnswy"), SubResource("Resource_q5bfg"), ExtResource("35_0eo6o"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+_content = Array[ExtResource("4_fkugw")]([ExtResource("6_np63p"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("4_bls4j")

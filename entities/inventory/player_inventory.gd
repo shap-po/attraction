@@ -4,6 +4,7 @@ class_name PlayerInventory
 signal on_selected_slot_changed()
 signal on_hotbar_changed(slot: int)
 
+const CHEM_ROOT: PlantType = preload("res://assets/resources/items/plant_types/chem_root.tres")
 const hotbar_size: int = 9
 
 @onready var player: Player = get_parent()
@@ -22,8 +23,14 @@ class HotbarInventory extends BaseInventory:
 	signal on_content_changed(slot: int)
 
 func _ready() -> void:
+	add_starter_kit()
 	hotbar._content = _content.slice(0, hotbar_size)
 	on_content_changed.connect(_on_content_changed)
+
+func add_starter_kit() -> void:
+	var seeds = CHEM_ROOT.duplicate()
+	seeds.count = 5
+	add_item(seeds)
 
 func _on_content_changed(slot: int) -> void:
 	if slot < hotbar_size:

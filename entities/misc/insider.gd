@@ -33,11 +33,11 @@ func toggle_animation():
 		anim = true
 
 func interact(player: Player, item: Item) -> InteractionResult:
-	if not alert.visible:
-		return InteractionResult.PASS
-
 	alert.visible = false
-	talking_box.show_text("Bugs are comming from " + enum_to_text(spawner.wave_location) + " in " + str(int(spawner.next_wave_timer.time_left)) + " seconds")
+	if spawner.wave_location == null or spawner.wave_enemies.size() == 0:
+		talking_box.show_text("Next wave in " + str(int(spawner.next_wave_timer.time_left)) + " seconds")
+	else:
+		talking_box.show_text("Bugs are comming from " + enum_to_text(spawner.wave_location) + " in " + str(int(spawner.next_wave_timer.time_left)) + " seconds")
 	return InteractionResult.SUCCESS
 
 

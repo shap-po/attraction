@@ -238,6 +238,7 @@ script = ExtResource("4_tipki")
 [node name="NextWaveTimer" type="Timer" parent="map/Spawner"]
 
 [node name="RandomBugTimer" type="Timer" parent="map/Spawner"]
+wait_time = 10.0
 autostart = true
 
 [node name="Plots" type="Node2D" parent="map"]
