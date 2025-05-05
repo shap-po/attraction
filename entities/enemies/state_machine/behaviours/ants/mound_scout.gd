@@ -43,7 +43,7 @@ func enter() -> void:
 func procces(_delta) -> void:
 	time_next_state -= _delta
 	if time_next_state <= 0:
-		if not get_puppet().target and get_puppet().target is Plant:
+		if get_puppet().target != null and get_puppet().target is Plant:
 			var target_loc
 			var dis1 = puppet.target.global_position.distance_squared_to(puppet.global_position)
 			for loc in checkout_locations:
