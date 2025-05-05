@@ -7,8 +7,8 @@
 script = ExtResource("1_ui3sk")
 item_name = "Watering Can"
 item_texture = ExtResource("1_bu5nx")
-item_description = "Speed up your crops!
-Also works great on ant mounds"
+item_description = "Works great on ant mounds
+Does not speed up your crops!"
 buy_price = 200
 sell_price = 0
 metadata/_custom_type_script = "uid://cuwfyh7pt3x4g"

@@ -47,6 +47,8 @@ func update_slot(slot: InventorySlot, item: Item) -> void:
 		slot.item_count.visible = false
 		return
 
+	slot.button.tooltip_text = item.item_name + '\n' + item.item_description
+
 	slot.item_texture.visible = true
 	slot.item_texture.texture = item.item_texture
 
