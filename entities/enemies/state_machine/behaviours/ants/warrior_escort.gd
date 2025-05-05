@@ -4,7 +4,7 @@ class_name WarriorEscort
 
 @export var SPEED_MULTIPLIER: float = 1.45 * randf_range(0.95, 1.1)
 var speed
-var target_point 
+var target_point
 var protection_target = null
 
 func on_creation():
@@ -14,7 +14,7 @@ func on_creation():
 	if !puppet.target:
 		puppet.brain.force_transition("WarriorLinger")
 	puppet.velocity = Vector2.ZERO
-	
+
 func choose_new_point() -> void:
 	if puppet == null:
 		return
@@ -28,28 +28,30 @@ func choose_new_point() -> void:
 					list.append(body)
 		puppet.target = list.pick_random()
 		if puppet.target is AntWorker:
-			protection_target = puppet.target	
-	
+			protection_target = puppet.target
+
 	if (target_point == null) and (protection_target != null):
 		target_point = protection_target.global_position + Vector2(randf_range(-15, 15), randf_range(-15, 15))
-		
+
 
 func procces(_delta):
 	#print("d: ",target_point, " ", puppet.global_position)
-	if (protection_target == null): 
+	if (protection_target == null):
 		choose_new_point()
-		if protection_target == null: 
+		if protection_target == null:
 			puppet.brain.force_transition("WarriorLinger")
 	if puppet.global_position.distance_squared_to(target_point) < 100:
 		target_point = null
 		choose_new_point()
-	
+
 	var find: Puppet.FindType = puppet.check_area()
 	if find == Puppet.FindType.PLAYER:
 		if (puppet.global_position.distance_squared_to(puppet.target.global_position) < 1400):
 			puppet.brain.force_transition("WarriorRage")
 			return
 
+	if target_point == null:
+		return
 	puppet.velocity = speed * puppet.global_position.direction_to(target_point)
 	#puppet.global_position = target_point
 
