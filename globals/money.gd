@@ -7,6 +7,8 @@ var value: int = 0:
 		var previous: int = value
 		value = val
 		on_change.emit(previous, val)
+		if value >= Global.money_goal:
+			Global.win()
 
 func add(amount: int) -> void:
 	value += amount

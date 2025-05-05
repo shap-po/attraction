@@ -103,4 +103,4 @@ func _on_inventory_on_selected_slot_changed() -> void:
 
 
 func _on_health_on_zero() -> void:
-	get_tree().change_scene_to_file("res://scenes/menus/game_over/game_over.tscn")
+	Global.game_over()

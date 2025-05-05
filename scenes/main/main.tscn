@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://01mbau86j0cn"]
+[gd_scene load_steps=28 format=4 uid="uid://01mbau86j0cn"]
 
 [ext_resource type="Texture2D" uid="uid://qi74byha511i" path="res://assets/textures/tilemaps/bottom_tilemap.png" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://cq01h0x262mcp" path="res://entities/player/player.tscn" id="1_o5qli"]
@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://fqchbt1u3lrm" path="res://assets/resources/items/plant_types/micronaner.tres" id="15_p8abn"]
 [ext_resource type="PackedScene" uid="uid://cdxjd6nljq0aj" path="res://ui/inventory/hotbar_inventory_grid.tscn" id="15_raeie"]
 [ext_resource type="Resource" uid="uid://x414mesjp0jx" path="res://assets/resources/items/plant_types/vitata.tres" id="16_s17dp"]
+[ext_resource type="Script" uid="uid://b0fd6lry28e1c" path="res://scenes/main/timer.gd" id="22_m4h2d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sugp2"]
 texture = ExtResource("1_0wfyh")
@@ -257,6 +258,10 @@ material = SubResource("ShaderMaterial_m4h2d")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="TimeLeftTimer" type="Timer" parent="."]
+wait_time = 360.0
+autostart = true
+
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="talking_box" parent="UICanvasLayer" instance=ExtResource("10_7smn1")]
@@ -290,12 +295,28 @@ inventory = NodePath("../../../../../../../../../player/Inventory")
 
 [node name="Money" parent="UICanvasLayer" instance=ExtResource("12_blune")]
 
+[node name="Timer" type="Label" parent="UICanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 57.0
+offset_bottom = -19.0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 19
+text = "Time left"
+vertical_alignment = 2
+script = ExtResource("22_m4h2d")
+
 [connection signal="incoming_wave" from="map/Spawner" to="insider" method="_on_spawner_incoming_wave"]
 [connection signal="incoming_wave" from="map/Spawner" to="UICanvasLayer/talking_box" method="_on_spawner_incoming_wave"]
 [connection signal="timeout" from="map/Spawner/NextWaveTimer" to="map/Spawner" method="_on_next_wave_timer_timeout"]
 [connection signal="timeout" from="map/Spawner/RandomBugTimer" to="map/Spawner" method="_on_random_bug_timer_timeout"]
 [connection signal="toggle_inventory" from="player" to="UICanvasLayer/inventory_UI" method="_on_player_toggle_inventory"]
 [connection signal="on_selected_slot_changed" from="player/Inventory" to="UICanvasLayer/HotbarInvenotryGrid" method="_on_inventory_on_selected_slot_changed"]
+[connection signal="timeout" from="TimeLeftTimer" to="." method="_on_time_left_timer_timeout"]
 
 [editable path="player"]
 [editable path="UICanvasLayer/shop"]

@@ -17,3 +17,6 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	camera_2d.position = player.position
+
+func _on_time_left_timer_timeout() -> void:
+	Global.game_over()
