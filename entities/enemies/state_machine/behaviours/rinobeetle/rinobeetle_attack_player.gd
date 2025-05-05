@@ -41,7 +41,7 @@ func procces(delta) -> void:
 	if (puppet.global_position.distance_squared_to(puppet.target.global_position) < 150):
 		puppet.melee(1)
 
-	if !puppet.area_sight.overlaps_area(puppet.target.interaction_area):
+	if puppet.target.get("interaction_area") && !puppet.area_sight.overlaps_area(puppet.target.interaction_area):
 		#print(wait)
 		if wait <= 0:
 			create_emote(Emote.EmoteType.QUESTION)
@@ -51,4 +51,3 @@ func procces(delta) -> void:
 	else:
 		#print(wait)
 		wait = 6.0
-		
