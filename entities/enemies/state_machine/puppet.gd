@@ -27,7 +27,7 @@ var can_act: bool = true
 
 var effects: Array[float] = [-1]
 
-##                           stun,
+##                           stun timer,
 func _ready() -> void:
 	acting_cooldown.timeout.connect(on_acting_cooldown_up)
 	health.on_zero.connect(on_zero_health)

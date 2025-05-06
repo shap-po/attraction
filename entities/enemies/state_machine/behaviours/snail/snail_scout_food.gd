@@ -23,11 +23,11 @@ func on_creation():
 	if puppet == null:
 		return
 	choose_new_point()
-	
+
 func choose_new_point() -> void:
 	if !(puppet.target): puppet.target = checkout_locations.pick_random()
 	target_point = puppet.target.global_position
-	
+
 
 
 

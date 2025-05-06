@@ -35,6 +35,8 @@ func on_child_transition(old_state: State, new_state_name: String) -> void:
 
 	new_state.enter()
 
+## Transitiones from one state to another
+## Pro tip: Most of the time you want to use `return` after running this function
 func force_transition(new_state_name: String)-> void:
 	if block_transitions:
 		return
