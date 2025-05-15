@@ -23,7 +23,7 @@ func fexit() -> void:
 func exit() -> void:
 	pass
 
-func fprocces(_delta) -> void:
+func fprocces(_delta: float) -> void:
 	if first_iteration: ## this shit so ass, im sorry
 		first_iteration = false
 		on_creation()
@@ -40,7 +40,7 @@ func fprocces(_delta) -> void:
 		return
 	procces(_delta)
 
-func procces(_delta) -> void:
+func procces(_delta: float) -> void:
 	pass
 
 func on_creation() -> void:

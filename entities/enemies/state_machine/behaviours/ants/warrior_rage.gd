@@ -11,8 +11,10 @@ var target_point: Vector2
 
 func on_creation() -> void:
 	speed = puppet.speed * SPEED_MULTIPLIER
-	if !puppet.target:
+	if puppet.target == null:
 		puppet.brain.force_transition("WarriorLinger")
+		return
+
 	create_emote(Emote.EmoteType.ANGRY)
 
 func choose_new_point() -> void:
@@ -23,24 +25,22 @@ func choose_new_point() -> void:
 func procces(_delta) -> void:
 	if puppet == null:
 		return
-	if !puppet.target:
+	if puppet.target == null:
 		puppet.brain.force_transition("WarriorLinger")
 		return
 
-
 	puppet.velocity = speed * puppet.global_position.direction_to(target_point)
 
-	if (puppet.target.global_position.distance_squared_to(target_point) > 2000):
+	if puppet.target.global_position.distance_squared_to(target_point) > 2000:
 		choose_new_point()
 
-	if (puppet.global_position.distance_squared_to(target_point) < 200):
+	if puppet.global_position.distance_squared_to(target_point) < 200:
 		choose_new_point()
 
-	if (puppet.global_position.distance_squared_to(puppet.target.global_position) < 200):
+	if puppet.global_position.distance_squared_to(puppet.target.global_position) < 200:
 		puppet.melee(1)
 
-	if puppet.target.get("interaction_area") and !puppet.area_sight.overlaps_area(puppet.target.interaction_area):
-		#print(wait)
+	if puppet.target.get("interaction_area") and not puppet.area_sight.overlaps_area(puppet.target.interaction_area):
 		if wait <= 0:
 			create_emote(Emote.EmoteType.QUESTION)
 			puppet.target = null
@@ -49,5 +49,5 @@ func procces(_delta) -> void:
 	else:
 		wait = 6
 
-func on_alerted(cause):
+func on_alerted(pos: Vector2) -> void:
 	puppet.unconditional_state = "WarriorRage"

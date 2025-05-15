@@ -7,36 +7,35 @@ class_name GnatAirborne
 var scale_mod: float = 1
 var n_state: String
 
-func on_creation():
+func on_creation() -> void:
 	puppet.brain.block_transitions = true
-	n_state = puppet.unconditional_state 
+	n_state = puppet.unconditional_state
+
 	if n_state == "GnatIdle":
 		scale_mod = 1
-		#print("[GnatAirborne] GnatAttackPlayer => GnatAirborne")
 	if n_state == "GnatAttackPlayer":
 		scale_mod = 0.7
-		#print("[GnatAirborne] GnatIdle => GnatAirborne")
 
-func procces(_delta) -> void:
-	#print("[GnatAirborne] scale_mod =", scale_mod)
-	#print("[GnatAirborne] n_state =", n_state)
+func procces(_delta: float) -> void:
 	if n_state == "GnatIdle":
 		scale_mod -= 0.01
 	if n_state == "GnatAttackPlayer":
 		scale_mod += 0.005
-	
-	
+
 	puppet.scale = Vector2(1, 1) * scale_mod
-	if (scale_mod >= 1) && (n_state == "GnatAttackPlayer"):
+	if scale_mod >= 1 and n_state == "GnatAttackPlayer":
 		scale_mod = 1.01
 		next_state()
-	if (scale_mod <= 0.7) && (n_state == "GnatIdle"):
+		return
+
+	if scale_mod <= 0.7 and n_state == "GnatIdle":
 		scale_mod = 0.69
 		next_state()
-	
-func next_state():
-	#print("[GnatAirborne] GnatAirborne => ", n_state)
+		return
+
+func next_state() -> void:
 	if n_state == "GnatAttackPlayer":
 		create_emote(Emote.EmoteType.ALERT)
+
 	puppet.brain.block_transitions = false
 	puppet.brain.force_transition(n_state)

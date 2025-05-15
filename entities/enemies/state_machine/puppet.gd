@@ -4,6 +4,7 @@ class_name Puppet
 var unconditional_state: String = "NoAi"
 @export var speed: float
 @export var weight: float = 0.4
+@export_range(0, 100) var damage: int = 0
 var target: Node2D
 @onready var current_weapon: ProjectileType = preload("res://assets/resources/projectiles/bite.tres") as ProjectileType
 
@@ -33,19 +34,19 @@ func _ready() -> void:
 	health.on_zero.connect(on_zero_health)
 	fready()
 
-func fready():
+func fready() -> void:
 	pass
 
-func rotate_where_going(jitter: float):
+func rotate_where_going(jitter: float) -> void:
 	if effects[0] > -1:
 		return
 	if velocity != Vector2.ZERO:
 		rotation_marker.rotation = lerp_angle(rotation_marker.rotation, velocity.angle(), weight) + pow(-1, randi_range(1, 2)) * jitter * randf()
 
-func choose_from_four_sprites(sprite_node: Sprite2D, texture_up, texture_down, texture_left, texture_right):
+func choose_from_four_sprites(sprite_node: Sprite2D, texture_up: Texture2D, texture_down: Texture2D, texture_left: Texture2D, texture_right: Texture2D) -> void:
 	if effects[0] > -1:
 		return
-	var rot = rad_to_deg(velocity.angle())
+	var rot: float = rad_to_deg(velocity.angle())
 	if rot < 0: rot += 360
 	if (rot > 315) || (rot <= 45):
 		sprite_node.texture = texture_right
@@ -56,10 +57,9 @@ func choose_from_four_sprites(sprite_node: Sprite2D, texture_up, texture_down, t
 	if (rot > 225) && (rot <= 315):
 		sprite_node.texture = texture_up
 
-func apply_stun(ticks):
+func apply_stun(ticks: float) -> void:
 	Emote.create_emote(Emote.EmoteType.STUN, self)
 	effects[0] = ticks
-
 
 func take_damage(damage: int) -> void:
 	health.damage(damage)
@@ -75,7 +75,6 @@ func on_death_effect() -> void:
 func on_damage_effect() -> void:
 	pass
 
-
 func shoot(shoot_ang: float) -> void:
 	if not can_act:
 		return
@@ -90,24 +89,26 @@ func shoot(shoot_ang: float) -> void:
 	acting_cooldown.wait_time = current_weapon.cooldown
 	acting_cooldown.start()
 
-func melee(damage: int, cooldown: float = 0.75) -> void:
+func melee(damage: int = self.damage, cooldown: float = 0.75) -> void:
 	if target == null:
 		return
 	if not can_act:
 		return
+
 	can_act = false
 
 	if target.has_method("take_damage"):
 		target.take_damage(damage)
 
-	var pv = Vector2(0, -1).rotated(randf_range(-0.4, 0.4))
-	var pos1 = target.global_position - pv * 5
-	var pos2 = target.global_position + pv * 5
-	var rot2 = pv.angle()
-	var rot1 = pv.angle()
+	var pv: Vector2 = Vector2(0, -1).rotated(randf_range(-0.4, 0.4))
+	var pos1: Vector2 = target.global_position - pv * 5
+	var pos2: Vector2 = target.global_position + pv * 5
+	var rot2: float = pv.angle()
+	var rot1: float = pv.angle()
 
 	Emote.create_emote(Emote.EmoteType.BITE_LOWER, target, pv, 0.4, pos1, rot1, false, 0.5, 15)
 	Emote.create_emote(Emote.EmoteType.BITE_UPPER, target, pv * -1, 0.4, pos2, rot2, false, 0.5, 15)
+
 	acting_cooldown.wait_time = cooldown
 	acting_cooldown.start()
 
@@ -116,15 +117,17 @@ func on_acting_cooldown_up():
 
 func check_area(priority: FindType = FindType.PLAYER) -> FindType:
 	var areas: Array[Area2D] = area_sight.get_overlapping_areas()
-	var ret: FindType = FindType.NONE
+	var res: FindType = FindType.NONE
 	if areas:
 		for area in areas:
 			if area is Plant:
 				target = area
-				ret = FindType.PLANT
-				if priority == FindType.PLANT: return ret
+				res = FindType.PLANT
+				if priority == FindType.PLANT:
+					return res
 			if area.name == "InteractionArea2D": ## if yk better solution let me know -peu
 				target = area.get_parent()
-				ret = FindType.PLAYER
-				if priority == FindType.PLAYER: return ret
-	return ret
+				res = FindType.PLAYER
+				if priority == FindType.PLAYER:
+					return res
+	return res

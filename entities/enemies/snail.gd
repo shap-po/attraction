@@ -2,22 +2,22 @@ extends Puppet
 class_name Snail
 
 var allience: String = "bug"
-var has_shell = true
+var has_shell: bool = true
 signal any_damage
 
 @onready var slug_sprite: Sprite2D = $rotation_marker/slug_sprite
 @onready var shell_sprite: Sprite2D = $rotation_marker/shell_sprite
 @onready var health_shell: Health = $HealthShell
 
-const SHELL_DOWN = preload("res://assets/textures/enemies/snail/shell-down.png")
-const SHELL_LEFT = preload("res://assets/textures/enemies/snail/shell-left.png")
-const SHELL_RIGHT = preload("res://assets/textures/enemies/snail/shell-right.png")
-const SHELL_UP = preload("res://assets/textures/enemies/snail/shell-up.png")
+const SHELL_DOWN: Texture2D = preload("res://assets/textures/enemies/snail/shell-down.png")
+const SHELL_LEFT: Texture2D = preload("res://assets/textures/enemies/snail/shell-left.png")
+const SHELL_RIGHT: Texture2D = preload("res://assets/textures/enemies/snail/shell-right.png")
+const SHELL_UP: Texture2D = preload("res://assets/textures/enemies/snail/shell-up.png")
 
-const SLUG_DOWN = preload("res://assets/textures/enemies/snail/slug-down.png")
-const SLUG_LEFT = preload("res://assets/textures/enemies/snail/slug-left.png")
-const SLUG_RIGHT = preload("res://assets/textures/enemies/snail/slug-rigth.png")
-const SLUG_UP = preload("res://assets/textures/enemies/snail/slug-up.png")
+const SLUG_DOWN: Texture2D = preload("res://assets/textures/enemies/snail/slug-down.png")
+const SLUG_LEFT: Texture2D = preload("res://assets/textures/enemies/snail/slug-left.png")
+const SLUG_RIGHT: Texture2D = preload("res://assets/textures/enemies/snail/slug-rigth.png")
+const SLUG_UP: Texture2D = preload("res://assets/textures/enemies/snail/slug-up.png")
 
 func fready() -> void:
 	health_shell.on_zero.connect(on_zero_health_shell)
@@ -37,7 +37,6 @@ func take_damage(damage: int) -> void:
 		if effects[0] <= 0: # not stunned
 			brain.force_transition("SnailHide")
 		damage_shell(damage, 0.6)
-	#print("[snail] health: ", health.value, " health_shell: ", health_shell.value)
 
 func damage_shell(damage: int, penetration_chance: float) -> void:
 	if not has_shell or randf() < (1 - penetration_chance):

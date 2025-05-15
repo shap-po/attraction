@@ -3,9 +3,11 @@ class_name RinobeetleAttackFood
 var target_point
 
 
-func on_creation():
-	if !(puppet.target):
+func on_creation() -> void:
+	if puppet.target == null:
 		puppet.brain.force_transition("RinobeetleScout")
+		return
+
 	puppet.unconditional_state = "RinobeetleAttackPlayer"
 	choose_new_point()
 
@@ -14,8 +16,9 @@ func choose_new_point() -> void:
 
 
 func procces(_delta) -> void:
-	if !(puppet.target):
+	if puppet.target == null:
 		puppet.brain.force_transition("RinobeetleScout")
+		return
 
 	if puppet.global_position.distance_squared_to(target_point) < 500:
 		puppet.velocity = 0.0001 * puppet.global_position.direction_to(target_point)
@@ -25,6 +28,6 @@ func procces(_delta) -> void:
 
 	puppet.velocity = puppet.speed * puppet.global_position.direction_to(target_point)
 
-func on_damage_effect():
+func on_damage_effect() -> void:
 	puppet.unconditional_state = "RinobeetleAttackPlayer"
 	puppet.brain.force_transition("RinobeetleScout")

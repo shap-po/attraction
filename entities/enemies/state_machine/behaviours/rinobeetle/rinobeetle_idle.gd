@@ -33,26 +33,30 @@ func choose_new_point() -> void:
 func enter() -> void:
 	choose_new_point()
 
-func procces(_delta) -> void:
+func procces(_delta: float) -> void:
 	if puppet == null:
 		return
+
 	clock(_delta)
 	if wait >= 0.0:
 		puppet.velocity = Vector2.ZERO
 		return
+
 	var find: Puppet.FindType = puppet.check_area()
 	if find == Puppet.FindType.PLANT:
 		puppet.brain.force_transition("RinobeetleAttackFood")
+		return
 	if find == Puppet.FindType.PLAYER:
 		create_emote(Emote.EmoteType.ALERT)
 		puppet.brain.force_transition("RinobeetleAttackPlayer")
+		return
 
 	if puppet.global_position.distance_squared_to(target_point) < CHECKOUT_PRECISION:
 		choose_new_point()
 	puppet.velocity = speed * puppet.global_position.direction_to(target_point)
 
 
-func clock(delta):
+func clock(delta: float) -> void:
 	if time_next_state >= 0:
 		time_next_state -= delta
 	else:
@@ -61,10 +65,11 @@ func clock(delta):
 		else:
 			puppet.unconditional_state = "RinobeetleAttackFood"
 		puppet.brain.force_transition("RinobeetleScout")
+		return
 	if wait >= 0:
 		wait -= delta
 
-func on_damage_effect():
+func on_damage_effect() -> void:
 	puppet.unconditional_state = "RinobeetleAttackPlayer"
 	puppet.brain.force_transition("RinobeetleScout")
 	

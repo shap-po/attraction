@@ -12,7 +12,7 @@ class_name EscapeScatter
 var speed: float
 var target_point: Vector2
 
-func on_creation():
+func on_creation() -> void:
 	speed = puppet.speed * SPEED_MULTIPLIER
 
 func choose_new_point() -> void:
@@ -27,15 +27,12 @@ func choose_new_point() -> void:
 	else:
 		pass
 
-
 	target_point = puppet.global_position
-
-#kill me
 
 func enter() -> void:
 	choose_new_point()
 
-func procces(_delta) -> void:
+func procces(_delta: float) -> void:
 	if puppet == null:
 		return
 	if puppet.global_position.distance_to(target_point) < CHECKOUT_PRECISION:

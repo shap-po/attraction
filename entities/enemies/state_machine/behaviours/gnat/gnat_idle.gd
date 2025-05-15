@@ -13,16 +13,15 @@ var target_point: Vector2
 func on_creation() -> void:
 	puppet.unconditional_state = "GnatAttackPlayer"
 
-
-
-func procces(_delta) -> void:
+func procces(_delta: float) -> void:
 	if puppet == null:
 		return
+
 	puppet.velocity = Vector2.ZERO
 	var find: Puppet.FindType = puppet.check_area(Puppet.FindType.PLAYER)
 	if find == Puppet.FindType.PLAYER:
 		puppet.brain.force_transition("GnatAirborne")
 		return
+
 	if wait >= 0.0:
 		puppet.velocity = Vector2.ZERO
-		return

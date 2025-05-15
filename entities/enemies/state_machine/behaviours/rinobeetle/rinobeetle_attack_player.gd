@@ -12,42 +12,40 @@ func on_creation() -> void:
 	wait = 6
 	speed = puppet.speed * SPEED_MULTIPLIER
 	puppet.unconditional_state = "RinobeetleAttackPlayer"
-	if !puppet.target:
+	if puppet.target == null:
 		puppet.brain.force_transition("RinobeetleScout")
+		return
 
-
-func choose_point():
+func choose_point() -> void:
 	target_point = (puppet.global_position.direction_to(puppet.target.global_position) * -50) + puppet.target.global_position
-
-#target_point = puppet.target.global_position
-
 
 func procces(delta) -> void:
 	if puppet == null:
 		return
-	if !puppet.target:
+	if puppet.target == null:
 		puppet.brain.force_transition("RinobeetleScout")
 		return
-	if !target_point:
+
+	if target_point == null:
 		choose_point()
 
-	if (puppet.global_position.distance_squared_to(puppet.target.global_position) < 4000) and (puppet.global_position.distance_squared_to(puppet.target.global_position) > 500):
+	var dist: float = puppet.global_position.distance_squared_to(puppet.target.global_position)
+	if dist < 4000 and dist > 500:
 		puppet.brain.force_transition("RinobeetleCharge")
+		return
 	else:
 		choose_point()
 
 	puppet.velocity = speed * smod * puppet.global_position.direction_to(target_point)
 
-	if (puppet.global_position.distance_squared_to(puppet.target.global_position) < 150):
+	if dist < 150:
 		puppet.melee(1)
 
-	if puppet.target.get("interaction_area") && !puppet.area_sight.overlaps_area(puppet.target.interaction_area):
-		#print(wait)
+	if puppet.target.get("interaction_area") and not puppet.area_sight.overlaps_area(puppet.target.interaction_area):
 		if wait <= 0:
 			create_emote(Emote.EmoteType.QUESTION)
 			puppet.target = null
 		else:
 			wait -= delta
 	else:
-		#print(wait)
 		wait = 6.0

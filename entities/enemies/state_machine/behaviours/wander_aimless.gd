@@ -28,7 +28,7 @@ func choose_new_point() -> void:
 		return
 	target_point = puppet.global_position + Vector2(randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER), randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER)) + Vector2(pow(-1, randi_range(1, 2)) * DISTANCE_BASE, pow(-1, randi_range(1, 2)) * DISTANCE_BASE)
 	if randf() < 0.1:
-		wait = (WAIT_BASE + randf_range(0, WAIT_SCATTER))
+		wait = WAIT_BASE + randf_range(0, WAIT_SCATTER)
 
 
 func enter() -> void:
@@ -37,7 +37,7 @@ func enter() -> void:
 func exit() -> void:
 	puppet.timer.timeout.disconnect(clock)
 
-func procces(_delta) -> void:
+func procces(_delta: float) -> void:
 	if puppet == null:
 		return
 	if wait >= 0.0:
@@ -47,7 +47,7 @@ func procces(_delta) -> void:
 		choose_new_point()
 	puppet.velocity = speed * puppet.global_position.direction_to(target_point)
 
-func clock():
+func clock() -> void:
 	if wait >= 0:
 		wait -= 1.0 * TIMER_CYCLE
 	

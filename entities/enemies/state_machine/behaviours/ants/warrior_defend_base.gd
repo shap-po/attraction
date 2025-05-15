@@ -26,13 +26,14 @@ func get_puppet() -> AntWarrior:
 	return puppet as AntWarrior
 
 func on_creation() -> void:
-	if !(puppet is AntWarrior):
+	if not puppet is AntWarrior:
 		push_warning("something initiated braincell of ant_warrior without it actually being ant_warrior.")
 		return
+
 	ORBIT_SPEED *= pow(-1, randi_range(1, 2))
 	speed = puppet.speed * SPEED_MULTIPLIER
-	get_puppet().timer.wait_time = TIMER_CYCLE
-	get_puppet().timer.timeout.connect(clock)
+	puppet.timer.wait_time = TIMER_CYCLE
+	puppet.timer.timeout.connect(clock)
 	orbit_angle = deg_to_rad(randi_range(0, 360))
 	choose_new_point()
 	puppet.unconditional_state = "WarriorDefendBase"
@@ -46,20 +47,20 @@ func choose_new_point() -> void:
 		return
 	orbit_angle += ORBIT_SPEED
 	target_point = get_puppet().home.global_position + Vector2(DISTANCE_BASE, 0).rotated(orbit_angle) + Vector2(randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER), randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER))
-	
+
 	if randf() < WAIT_CHANCE:
-		wait = (WAIT_BASE + randf_range(0, WAIT_SCATTER))
+		wait = WAIT_BASE + randf_range(0, WAIT_SCATTER)
 
 
-func procces(_delta) -> void:
-	if !puppet:
+func procces(_delta: float) -> void:
+	if puppet == null:
 		return
-		
+
 	var find: Puppet.FindType = puppet.check_area()
 	if find == Puppet.FindType.PLAYER:
 		puppet.brain.force_transition("WarriorProtect")
 		return
-		
+
 	if wait >= 0.0:
 		puppet.velocity = Vector2.ZERO
 		return
@@ -75,14 +76,15 @@ func clock() -> void:
 func exit() -> void:
 	if get_puppet().timer.timeout.is_connected(clock):
 		get_puppet().timer.timeout.disconnect(clock)
-	
-func on_alerted(pos):
-	var find = puppet.check_area()
+
+func on_alerted(pos: Vector2) -> void:
+	var find: Puppet.FindType = puppet.check_area()
 	puppet.unconditional_state = "WarriorRage"
 	if (find == puppet.FindType.PLAYER):
 		puppet.brain.force_transition("WarriorRage")
-	else:
-		create_emote(Emote.EmoteType.WARNING)
-		puppet.brain.force_transition("WarriorLinger")
-		if pos != Vector2.ZERO:
-			puppet.brain.current_state.target_point = pos
+		return
+
+	create_emote(Emote.EmoteType.WARNING)
+	puppet.brain.force_transition("WarriorLinger")
+	if pos != Vector2.ZERO:
+		puppet.brain.current_state.target_point = pos

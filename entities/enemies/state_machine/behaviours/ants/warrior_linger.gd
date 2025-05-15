@@ -18,15 +18,18 @@ var speed: float
 var target_point: Vector2
 
 func on_creation() -> void:
-	if puppet.unconditional_state == "WarriorLinger": puppet.unconditional_state = "WarriorFlea"
-	if puppet.unconditional_state == "WarriorRage": puppet.unconditional_state = "Flea"
+	if puppet.unconditional_state == "WarriorLinger":
+		puppet.unconditional_state = "WarriorFlea"
+	if puppet.unconditional_state == "WarriorRage":
+		puppet.unconditional_state = "Flea"
+
 	time_next_state = 10
 	speed = puppet.speed * SPEED_MULTIPLIER
 
 func choose_new_point() -> void:
-	
 	if puppet == null:
 		return
+
 	target_point = puppet.global_position + Vector2(randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER), randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER)) + Vector2(pow(-1, randi_range(1, 2)) * DISTANCE_BASE, pow(-1, randi_range(1, 2)) * DISTANCE_BASE)
 	if randf() < 0.1:
 		wait = (WAIT_BASE + randf_range(0, WAIT_SCATTER))
@@ -35,13 +38,15 @@ func choose_new_point() -> void:
 func enter() -> void:
 	if target_point == null: choose_new_point()
 
-func procces(_delta) -> void:
+func procces(_delta: float) -> void:
 	if puppet == null:
 		return
+
 	clock(_delta)
 	if wait >= 0.0:
 		puppet.velocity = Vector2.ZERO
 		return
+
 	var find: Puppet.FindType = puppet.check_area()
 	if find == Puppet.FindType.PLAYER:
 		if puppet.unconditional_state == "WarriorRage":
@@ -49,15 +54,13 @@ func procces(_delta) -> void:
 		else:
 			puppet.brain.force_transition("WarriorProtect")
 		return
-		
-	
 
 	if puppet.global_position.distance_squared_to(target_point) < CHECKOUT_PRECISION:
 		choose_new_point()
 	puppet.velocity = speed * puppet.global_position.direction_to(target_point)
 
 
-func clock(delta):
+func clock(delta: float) -> void:
 	if time_next_state >= 0:
 		time_next_state -= delta
 	else:
@@ -65,8 +68,8 @@ func clock(delta):
 	if wait >= 0:
 		wait -= delta
 
-func on_alerted(cause):
+func on_alerted(pos: Vector2) -> void:
 	puppet.unconditional_state = "WarriorRage"
-	var find = puppet.check_area()
-	if (find == puppet.FindType.PLAYER):
+	var find: Puppet.FindType = puppet.check_area()
+	if find == puppet.FindType.PLAYER:
 		puppet.brain.force_transition("WarriorRage")

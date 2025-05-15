@@ -19,7 +19,7 @@ func choose_new_point() -> void:
 	target_point = puppet.target.global_position
 
 func procces(_delta) -> void:
-	if !(puppet.target):
+	if puppet.target == null:
 		if puppet.brain.hunger <= 0:
 			puppet.unconditional_state = "ReturnForest"
 			puppet.brain.force_transition("ReturnForest")
