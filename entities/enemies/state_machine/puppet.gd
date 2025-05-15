@@ -6,8 +6,6 @@ var unconditional_state: String = "NoAi"
 @export var weight: float = 0.4
 @export_range(0, 100) var damage: int = 0
 var target: Node2D
-@onready var current_weapon: ProjectileType = preload("res://assets/resources/projectiles/bite.tres") as ProjectileType
-
 @onready var dummy: Node2D = get_parent()
 
 enum FindType {
@@ -74,20 +72,6 @@ func on_death_effect() -> void:
 
 func on_damage_effect() -> void:
 	pass
-
-func shoot(shoot_ang: float) -> void:
-	if not can_act:
-		return
-	can_act = false
-	var projectile: PackedScene = preload("res://entities/projectile/projectile.tscn")
-	var new_projectile: Projectile = projectile.instantiate()
-	new_projectile.global_position = self.global_position
-	new_projectile.global_rotation = shoot_ang
-	new_projectile.allience = "bug"
-	new_projectile.res = current_weapon
-	dummy.add_child(new_projectile)
-	acting_cooldown.wait_time = current_weapon.cooldown
-	acting_cooldown.start()
 
 func melee(damage: int = self.damage, cooldown: float = 0.75) -> void:
 	if target == null:
