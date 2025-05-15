@@ -1,4 +1,4 @@
-@tool
+@tool # to auto-generate enum property in editor
 extends Resource
 class_name WeightedEnemy
 

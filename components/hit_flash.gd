@@ -1,6 +1,6 @@
 ## Controls the hit flash effect on the sprite when the player takes damage.
 ## This script must be attached to a Health node.
-@tool
+@tool # to assign the sprite material in editor
 extends Node
 
 const HIT_FLASH: VisualShader = preload("res://assets/shaders/hit_flash.tres")

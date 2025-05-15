@@ -1,4 +1,4 @@
-@tool
+@tool # to automatically assign the inventory in editor
 extends Control
 
 @export var player_inventory: PlayerInventory:

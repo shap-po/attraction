@@ -1,4 +1,4 @@
-@tool
+@tool # to disable inventory property in editor
 extends BaseInventoryGrid
 class_name HotbarInventoryGrid
 
@@ -35,7 +35,6 @@ func update_slot(slot: InventorySlot, item: Item) -> void:
 		slot.item_count.visible = false
 
 func _validate_property(property: Dictionary) -> void:
-	# override inventory type hint
 	if property.name == "inventory":
 		property.usage = PROPERTY_USAGE_NO_EDITOR
 

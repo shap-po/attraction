@@ -1,4 +1,4 @@
-@tool
+@tool # to hide properties in editor
 extends CountableItem
 class_name PlantType
 

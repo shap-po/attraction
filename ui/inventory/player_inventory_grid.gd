@@ -1,4 +1,4 @@
-@tool
+@tool # to override inventory type hint
 extends BaseInventoryGrid
 class_name PlayerInventoryGrid
 

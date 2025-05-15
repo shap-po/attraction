@@ -1,4 +1,4 @@
-@tool
+@tool # extends PlayerInventoryGrid that has @tool
 extends PlayerInventoryGrid
 class_name SellInventoryGrid
 
