@@ -6,6 +6,9 @@ var selected_slot: int = -1
 var selected_slot_pos: Vector2 = Vector2.ZERO ## position of the item content in the slot
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+
 	super._ready()
 	get_inventory().on_content_changed.connect(_update_slot)
 

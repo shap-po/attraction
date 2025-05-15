@@ -4,7 +4,7 @@
 extends Node
 
 const HIT_FLASH: VisualShader = preload("res://assets/shaders/hit_flash.tres")
-@onready var health: Health = $".."
+@onready var health: Health = get_parent()
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var sprite: Sprite2D:
@@ -14,7 +14,8 @@ const HIT_FLASH: VisualShader = preload("res://assets/shaders/hit_flash.tres")
 			setup()
 
 func _ready() -> void:
-	health.on_damage.connect(on_damage)
+	if not Engine.is_editor_hint():
+		health.on_damage.connect(on_damage)
 
 func setup() -> void:
 	if sprite == null:

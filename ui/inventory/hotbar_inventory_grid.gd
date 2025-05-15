@@ -6,6 +6,9 @@ class_name HotbarInventoryGrid
 @onready var last_selected_slot: int = 0
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+
 	inventory = player_inventory.hotbar
 	super._ready()
 	get_inventory().on_content_changed.connect(_update_slot)
