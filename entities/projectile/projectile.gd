@@ -4,8 +4,8 @@ class_name Projectile
 @onready var projectile_sprite: Sprite2D = $projectile_sprite
 @onready var projectile_collision: CollisionShape2D = $projectile_collision
 @onready var lifetime: Timer = $lifetime
+var projectile_type: ProjectileType
 var allience: String
-var res
 var speed: float
 var deseleration: float
 var direction
@@ -17,21 +17,21 @@ var rotation_inaccuracy: float
 var speed_inaccuracy: float
 
 func _ready():
-	projectile_sprite.texture = res.texture
-	projectile_collision.shape = res.collision_shape
-	speed_inaccuracy = res.speed_inaccuracy
-	speed = res.speed + randf_range(-speed_inaccuracy, speed_inaccuracy)
-	deseleration = res.deseleration
-	rotation_inaccuracy = res.rotation_inaccuracy
+	projectile_sprite.texture = projectile_type.texture
+	projectile_collision.shape = projectile_type.collision_shape
+	speed_inaccuracy = projectile_type.speed_inaccuracy
+	speed = projectile_type.speed + randf_range(-speed_inaccuracy, speed_inaccuracy)
+	deseleration = projectile_type.deseleration
+	rotation_inaccuracy = projectile_type.rotation_inaccuracy
 	direction = Vector2.RIGHT.rotated(rotation + deg_to_rad(randf_range(-rotation_inaccuracy, rotation_inaccuracy)))
-	if res.random_rotation: self.rotation = randf() * 2
-	rotation_speed = deg_to_rad(res.rotation_deg)
-	keep_rotating = res.keep_rotating
-	lifetime.wait_time = res.lifetime
+	if projectile_type.random_rotation: self.rotation = randf() * 2
+	rotation_speed = deg_to_rad(projectile_type.rotation_deg)
+	keep_rotating = projectile_type.keep_rotating
+	lifetime.wait_time = projectile_type.lifetime
 	lifetime.start()
-	destroy_on_collision = res.destroy_on_collision
-	damage = res.damage
-	self.scale = Vector2(1, 1) * res.scaling
+	destroy_on_collision = projectile_type.destroy_on_collision
+	damage = projectile_type.damage
+	self.scale = Vector2(1, 1) * projectile_type.scaling
 
 func _physics_process(_delta: float) -> void:
 	global_position += speed * direction

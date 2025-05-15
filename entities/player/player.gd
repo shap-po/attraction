@@ -56,13 +56,9 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func shoot(shoot_ang: float, weapon: ProjectileType) -> void:
-	var projectile: PackedScene = preload("res://entities/projectile/projectile.tscn")
-	var new_projectile: Projectile = projectile.instantiate()
-	new_projectile.global_position = self.global_position
-	new_projectile.global_rotation = shoot_ang
-	new_projectile.allience = "player"
-	new_projectile.res = weapon
-	dummy.add_child(new_projectile)
+	var projectile: Projectile = weapon.create(shoot_ang, allience)
+	projectile.global_position = self.global_position
+	dummy.add_child(projectile)
 
 func interact() -> Interactible.InteractionResult:
 	var areas: Array[Area2D] = interaction_area.get_overlapping_areas()
