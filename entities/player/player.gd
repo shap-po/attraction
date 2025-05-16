@@ -62,9 +62,7 @@ func shoot(shoot_ang: float, weapon: ProjectileType) -> void:
 
 func interact() -> Interactible.InteractionResult:
 	var areas: Array[Area2D] = interaction_area.get_overlapping_areas()
-	# sort areas by distance to player
-	# note: squared distance is faster to calculate and is sufficient for comparison
-	areas.sort_custom(func(a: Area2D, b: Area2D): return global_position.distance_squared_to(a.global_position) <= global_position.distance_squared_to(b.global_position))
+	Util.sort_by_distance_asc(self, areas)
 
 	# filter out interactibles
 	var interactibles: Array[Interactible] = []

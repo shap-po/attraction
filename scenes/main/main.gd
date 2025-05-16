@@ -5,13 +5,10 @@ class_name Main
 @onready var items: Node2D = $items
 @onready var player: CharacterBody2D = $player
 @onready var dummy: Node2D = %dummy
-
+@onready var map_markers: MapMarkers = $map/MapMarkers
 
 func _ready() -> void:
 	Global.main = self
-	#print_tree()
-	#temp_plant_connect()
-
 	randomize()
 
 func _process(_delta: float) -> void:

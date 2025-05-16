@@ -3,23 +3,18 @@ class_name RinobeetleScout
 
 @export var SPEED_MULTIPLIER: float = 0.7
 var target_point # Vector2
-@onready var map_markers: Node2D = $/root/main/map/map_markers ## it has stupid
 var checkout_locations: Array[Marker2D] = []
 
 
 func on_creation() -> void:
-	var marker_index: int = 0
+	# pick locations to visit based on the state
+	checkout_locations = Global.main.map_markers.plot_locations
 	if puppet.unconditional_state == "RinobeetleAttackPlayer":
-		marker_index = 2
-	if map_markers == null:
-		return
+		checkout_locations = Global.main.map_markers.propable_player_locations
 
-	checkout_locations.clear()
-	for child in map_markers.get_child(marker_index).get_children():
-		if child.visible == true:
-			checkout_locations.append(child)
 	if puppet == null:
 		return
+
 	choose_new_point()
 
 func choose_new_point() -> void:

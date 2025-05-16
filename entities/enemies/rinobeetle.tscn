@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://q30codlmf2a8" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_attack_food.gd" id="6_8xu6m"]
 [ext_resource type="Script" uid="uid://2r4elrvoaq8k" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_attack_player.gd" id="7_nofxu"]
 [ext_resource type="Script" uid="uid://b8jmda7t5uhet" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_idle.gd" id="8_pkghw"]
-[ext_resource type="Script" uid="uid://dnv2f6j17a7ii" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_scout_food.gd" id="9_nofxu"]
+[ext_resource type="Script" uid="uid://dnv2f6j17a7ii" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_scout.gd" id="9_nofxu"]
 [ext_resource type="Script" uid="uid://8gl3yt567o8u" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_charge.gd" id="10_pkghw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xu6m"]

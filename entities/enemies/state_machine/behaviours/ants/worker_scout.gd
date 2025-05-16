@@ -7,7 +7,6 @@ class_name WorkerScout
 # if approached will flea
 # if whitnesses damage/kill will hide
 
-@onready var bias_marker: Marker2D = $"/root/main/map/map_markers/checkout_plot_locations/small2-default"
 @export var SPEED_MULTIPLIER: float = 0.7
 @export var DISTANCE_BASE: float = 100.0
 @export var DISTANCE_BIAS: float = 60.0
@@ -39,8 +38,8 @@ func choose_new_point() -> void:
 		return
 	target_point = puppet.global_position + Vector2(randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER), randf_range(-DISTANCE_SCATTER, DISTANCE_SCATTER)) + Vector2(pow(-1, randi_range(1, 2)) * DISTANCE_BASE, pow(-1, randi_range(1, 2)) * DISTANCE_BASE)
 	# add bias twoards center of the plots
-	if puppet.global_position.distance_squared_to(bias_marker.global_position) > DISTANCE_BIAS_MIN:
-		target_point += puppet.global_position.direction_to(bias_marker.global_position) * DISTANCE_BIAS
+	if puppet.global_position.distance_squared_to(Global.main.map_markers.scout_ants_bias.global_position) > DISTANCE_BIAS_MIN:
+		target_point += puppet.global_position.direction_to(Global.main.map_markers.scout_ants_bias.global_position) * DISTANCE_BIAS
 	if randf() < 0.1:
 		wait = (WAIT_BASE + randf_range(0, WAIT_SCATTER))
 
