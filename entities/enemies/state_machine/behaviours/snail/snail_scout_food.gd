@@ -21,7 +21,8 @@ func procces(_delta: float) -> void:
 	if find == Puppet.FindType.PLANT:
 		puppet.brain.force_transition("SnailAttackFood")
 		return
-	if not target_point:
-		return
+	if target_point.distance_squared_to(puppet.global_position) < 50:
+		puppet.target = null
+		choose_new_point()
 
 	puppet.velocity = puppet.speed * SPEED_MULTIPLIER * puppet.global_position.direction_to(target_point)
