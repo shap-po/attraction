@@ -68,7 +68,7 @@ func clock(delta: float) -> void:
 	if wait >= 0:
 		wait -= delta
 
-func on_alerted(pos: Vector2) -> void:
+func on_alerted(_pos: Vector2) -> void:
 	puppet.unconditional_state = "WarriorRage"
 	var find: Puppet.FindType = puppet.check_area()
 	if find == puppet.FindType.PLAYER:

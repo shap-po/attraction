@@ -22,7 +22,7 @@ var enemies_pool: Array[WeightedEnemy] = []
 var enemy_points: int = 0
 var ant_points: int = 0
 
-var wave_location: WeightedEnemy.SpawnArea
+var wave_location: WeightedEnemy.SpawnArea = 0
 var wave_enemies: Array[WeightedEnemy] = []
 
 func _ready() -> void:
@@ -35,6 +35,7 @@ func _ready() -> void:
 func pick_and_spawn_enemy() -> void:
 	var pool: Array[WeightedEnemy] = enemies_pool.duplicate()
 	# Add mounds for points
+	@warning_ignore("narrowing_conversion")
 	for _i in range(ant_points / 10):
 		pool.append(ANT_MOUND_WE)
 

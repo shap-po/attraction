@@ -49,5 +49,5 @@ func procces(_delta) -> void:
 	else:
 		wait = 6
 
-func on_alerted(pos: Vector2) -> void:
+func on_alerted(_pos: Vector2) -> void:
 	puppet.unconditional_state = "WarriorRage"

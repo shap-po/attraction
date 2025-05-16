@@ -30,6 +30,6 @@ func procces(_delta: float) -> void:
 func exit():
 	get_puppet().sprite.rotation = 0
 
-func on_alerted(pos: Vector2) -> void:
+func on_alerted(_pos: Vector2) -> void:
 	puppet.unconditional_state = "WarriorRage"
 	puppet.brain.force_transition("WarriorRage")

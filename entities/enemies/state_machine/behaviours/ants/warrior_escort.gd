@@ -58,7 +58,7 @@ func procces(_delta: float) -> void:
 	puppet.velocity = speed * puppet.global_position.direction_to(target_point)
 
 
-func on_alerted(pos: Vector2) -> void:
+func on_alerted(_pos: Vector2) -> void:
 	var find: Puppet.FindType = puppet.check_area()
 	puppet.unconditional_state = "WarriorRage"
 	if find == puppet.FindType.PLAYER:

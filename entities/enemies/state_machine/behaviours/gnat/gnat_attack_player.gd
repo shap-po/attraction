@@ -58,6 +58,7 @@ func procces(_delta: float) -> void:
 		else:
 			cur_r = 0.03
 
+	@warning_ignore("narrowing_conversion")
 	var smod: int = 4000 / a
 	if smod < 1:
 		smod = 1

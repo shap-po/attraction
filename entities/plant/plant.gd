@@ -55,11 +55,12 @@ func is_fully_grown() -> bool:
 	return current_growth_stage == last_growth_stage
 
 func invade() -> void:
-	if randf() <= plant_type.invasion_chance:
-		for plot in plot.siblings:
-			if plot.plant == null:
-				plot.create_plant(plant_type)
-				return
+	if randf() > plant_type.invasion_chance:
+		return
+	for sibling_plot in plot.siblings:
+		if sibling_plot.plant == null:
+			sibling_plot.create_plant(plant_type)
+			return
 
 func create_crop() -> Item:
 	# The more damaged the plant is, the less quality the crop will have
@@ -69,6 +70,7 @@ func create_crop() -> Item:
 	var crop: Item = Item.new()
 	crop.item_name = plant_type.crop_name
 	crop.item_texture = plant_type.fruit_item_texture
+	@warning_ignore("narrowing_conversion")
 	crop.sell_price = plant_type.grown_sell_price * quality
 	return crop
 

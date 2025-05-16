@@ -32,7 +32,7 @@ func on_open() -> void:
 func on_close() -> void:
 	pass
 
-func on_pressed(index: int) -> void:
+func on_pressed(_index: int) -> void:
 	pass
 
 func _update_slot(index: int) -> void:

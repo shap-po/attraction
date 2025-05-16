@@ -82,7 +82,7 @@ func _on_add_ant_points_timeout() -> void:
 		ant_points += 1
 		add_ant_points.start()
 
-func take_damage(damage: int) -> void:
+func take_damage(_damage: int) -> void:
 	pass
 
 func _on_summon_cooldown_timeout() -> void:

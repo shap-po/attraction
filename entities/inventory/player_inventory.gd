@@ -2,7 +2,6 @@ extends EditableInventory
 class_name PlayerInventory
 
 signal on_selected_slot_changed()
-signal on_hotbar_changed(slot: int)
 
 const CHEM_ROOT: PlantType = preload("res://assets/resources/items/plant_types/chem_root.tres")
 const hotbar_size: int = 9
@@ -15,7 +14,6 @@ var selected_slot: int = 0:
 		if selected_slot < 0:
 			selected_slot += hotbar_size
 		on_selected_slot_changed.emit()
-
 
 var hotbar: HotbarInventory = HotbarInventory.new()
 

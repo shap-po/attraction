@@ -28,5 +28,5 @@ func procces(_delta: float) -> void:
 	if wait <= 0:
 		puppet.brain.force_transition("MoundScout")
 
-func on_ant_killed(type: Ant.AntType):
+func on_ant_killed(_type: Ant.AntType):
 	wait = 20

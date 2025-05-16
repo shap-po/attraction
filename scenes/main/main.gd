@@ -19,7 +19,6 @@ var endless_mode: bool = false
 func _ready() -> void:
 	Global.main = self
 	randomize()
-	Global.on_main_ready.emit()
 
 func _process(_delta: float) -> void:
 	camera_2d.position = player.position

@@ -73,7 +73,7 @@ func clock() -> void:
 	if wait >= 0:
 		wait -= 1.0 * TIMER_CYCLE
 
-func on_alerted(pos: Vector2) -> void:
+func on_alerted(_pos: Vector2) -> void:
 	create_emote(Emote.EmoteType.ALERT)
 	puppet.unconditional_state = "Flea"
 	puppet.brain.force_transition("Flea")

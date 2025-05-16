@@ -2,7 +2,7 @@ extends Label
 
 @onready var game_timer: GameTimer = $"../../GameTimer"
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not Global.main.endless_mode:
 		text = "Time left: " + time_to_str(game_timer.time_till_game_over)
 	else:
