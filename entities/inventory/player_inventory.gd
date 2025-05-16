@@ -3,6 +3,7 @@ class_name PlayerInventory
 
 signal on_selected_slot_changed()
 
+const SHOE: ProjectileType = preload("res://assets/resources/projectiles/shoe.tres")
 const CHEM_ROOT: PlantType = preload("res://assets/resources/items/plant_types/chem_root.tres")
 const hotbar_size: int = 9
 
@@ -26,7 +27,8 @@ func _ready() -> void:
 	on_content_changed.connect(_on_content_changed)
 
 func add_starter_kit() -> void:
-	var seeds = CHEM_ROOT.duplicate()
+	add_item(SHOE.duplicate())
+	var seeds: PlantType = CHEM_ROOT.duplicate()
 	seeds.count = 5
 	add_item(seeds)
 

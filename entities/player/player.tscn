@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cq01h0x262mcp"]
+[gd_scene load_steps=12 format=3 uid="uid://cq01h0x262mcp"]
 
 [ext_resource type="Script" uid="uid://bbdpvpomsdsuh" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://cfjphdn02s7b4" path="res://assets/textures/player/dude.png" id="1_symyc"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://cyyje7ndescf3" path="res://entities/inventory/player_inventory.gd" id="3_sglur"]
 [ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="4_bls4j"]
 [ext_resource type="Script" uid="uid://cuwfyh7pt3x4g" path="res://entities/inventory/item.gd" id="4_fkugw"]
-[ext_resource type="Resource" uid="uid://sv24yji0d8g8" path="res://assets/resources/projectiles/shoe.tres" id="6_np63p"]
 [ext_resource type="PackedScene" uid="uid://sgaf0148k0cx" path="res://components/hit_flash.tscn" id="38_wy7bt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_abrql"]
@@ -58,7 +57,7 @@ one_shot = true
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("3_sglur")
-_content = Array[ExtResource("4_fkugw")]([ExtResource("6_np63p"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+_content = Array[ExtResource("4_fkugw")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("4_bls4j")
