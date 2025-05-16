@@ -20,9 +20,11 @@ const PROJECTILE: PackedScene = preload("res://entities/projectile/projectile.ts
 @export var random_rotation: bool = false
 @export var hazardeous: bool = false ## Does it ignore allience?
 
-func create(angle: float, alliance: String) -> Projectile:
+func create(position: Vector2, angle: float, alliance: String) -> Projectile:
 	var instance: Projectile = PROJECTILE.instantiate()
 	instance.global_rotation = angle
 	instance.allience = alliance
 	instance.projectile_type = self
+	instance.global_position = position
+	Global.main.dummy.add_child(instance)
 	return instance

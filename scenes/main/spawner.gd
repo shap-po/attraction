@@ -6,11 +6,8 @@ signal incoming_wave(wave_location: WeightedEnemy.SpawnArea, bug_allert_timeout:
 @onready var next_wave_timer: Timer = $NextWaveTimer
 @onready var random_bug_timer: Timer = $RandomBugTimer
 
-@onready var dummy: Node2D = %dummy
-@onready var plots: Node2D = %Plots
-
 const ANT_MOUND_WE: WeightedEnemy = preload("res://assets/resources/weighted_enemies/ant_mound.tres")
-const ANT_POINTS_PER_MOUND = 10
+const ANT_POINTS_PER_MOUND: int = 10
 
 const AREA_CORDS_ATLAS: Dictionary = {
 	WeightedEnemy.SpawnArea.TOP: Vector2i(0, 0),
@@ -129,7 +126,7 @@ func spawn_enemy_group(location: WeightedEnemy.SpawnArea, enemy_group: Array[Pac
 		if enemy == null:
 			continue
 		var new_enemy: Node2D = enemy.instantiate()
-		dummy.add_child(new_enemy)
+		Global.main.dummy.add_child(new_enemy)
 		new_enemy.global_position = coords + Vector2(randf_range(-10, 10), randf_range(-10, 10))
 
 func _on_random_bug_timer_timeout() -> void:
@@ -145,7 +142,7 @@ func recalculate_enemy_pools() -> void:
 	enemy_points = 0
 	ant_points = 0
 
-	for plot in plots.get_children():
+	for plot in Global.main.plots.get_children():
 		if plot is Plot and plot.plant != null and plot.plant.plant_type != null:
 			var plant_type: PlantType = plot.plant.plant_type
 			enemies_pool.append_array(plant_type.enemies_pool)

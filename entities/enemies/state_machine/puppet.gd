@@ -6,7 +6,6 @@ var unconditional_state: String = "NoAi"
 @export var weight: float = 0.4
 @export_range(0, 100) var damage: int = 0
 var target: Node2D
-@onready var dummy: Node2D = get_parent()
 
 enum FindType {
 	PLAYER,

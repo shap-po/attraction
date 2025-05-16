@@ -17,17 +17,13 @@ const ANT: Array = [preload("res://entities/enemies/ants/ant_worker.tscn"), prel
 @export var max_warriors: Array[int] = [2, 4, 6]
 @export var max_queens: Array[int] = [0, 1, 1]
 var max_list: Array[Array] = [max_workers, max_warriors, max_queens]
-
 @export var ant_points_recharge_speed: Array[float] = [12.0, 8.0, 6.0]
-
 @onready var summon_cooldown: Timer = $summon_cooldown
 var summon_chances: Array[float] = [0.5, 0.5, 0]
 ##                                 worker, warrior, queen
 
 var upgrade_points_needed = [3, 15, 100]
 var upgrade_points = 0
-
-
 @export var max_ant_points: Array[int] = [16, 24, 32]
 @export var ant_cost: Array[int] = [1, 3, 10]
 var current_ants: Array[int] = [0, 0, 0]
@@ -69,7 +65,8 @@ func summon_ant() -> void:
 
 func on_ant_killed(type: Ant.AntType):
 	current_ants[type] -= 1
-	#brain_ant_killed.emit(type)
+
+#brain_ant_killed.emit(type)
 
 func on_ant_damaged(type: Ant.AntType):
 	brain_ant_damaged.emit(type)
@@ -94,4 +91,4 @@ func _on_summon_cooldown_timeout() -> void:
 
 func free_ants() -> void:
 	for ant in ants.get_children():
-		ant.reparent(dummy)
+		ant.reparent(Global.main.dummy)

@@ -13,7 +13,6 @@ var direction: Vector2 = Vector2.ZERO
 @onready var shooting_cooldown: Timer = $ShootingCooldownTimer
 @onready var interaction_cooldown: Timer = $InteractionCooldownTimer
 @onready var body: Node2D = $Body
-@onready var dummy = %dummy
 @onready var interaction_area: Area2D = $InteractionArea2D
 @onready var shop: Control = $"../UICanvasLayer/shop"
 var stun: float = 0.0
@@ -56,9 +55,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func shoot(shoot_ang: float, weapon: ProjectileType) -> void:
-	var projectile: Projectile = weapon.create(shoot_ang, allience)
-	projectile.global_position = self.global_position
-	dummy.add_child(projectile)
+	weapon.create(global_position, shoot_ang, allience)
 
 func interact() -> Interactible.InteractionResult:
 	var areas: Array[Area2D] = interaction_area.get_overlapping_areas()
