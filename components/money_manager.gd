@@ -1,4 +1,5 @@
 extends Node
+class_name MoneyManager
 
 signal on_change(previous: int, new: int)
 
@@ -7,8 +8,8 @@ var value: int = 0:
 		var previous: int = value
 		value = val
 		on_change.emit(previous, val)
-		if value >= Global.money_goal:
-			Global.win()
+		if value >= Global.money_goal and not Global.main.endless_mode:
+			Global.main.win()
 
 func add(amount: int) -> void:
 	value += amount

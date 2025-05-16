@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://globals/global.gd"
-Money="*res://globals/money.gd"
 
 [display]
 

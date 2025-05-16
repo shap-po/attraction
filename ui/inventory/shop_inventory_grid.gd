@@ -16,12 +16,12 @@ func on_pressed(index: int) -> void:
 	buy_item(item)
 
 func buy_item(item: Item) -> bool:
-	if Money.value - item.buy_price < 0:
+	if Global.main.money_manager.value - item.buy_price < 0:
 		return false
 
 	var res: bool = player_inventory.add_item(item.duplicate())
 	if res:
-		Money.remove(item.buy_price)
+		Global.main.money_manager.remove(item.buy_price)
 
 	return res
 

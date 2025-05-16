@@ -94,4 +94,5 @@ func _on_inventory_on_selected_slot_changed() -> void:
 
 
 func _on_health_on_zero() -> void:
-	Global.lose()
+	if not Global.main.endless_mode:
+		Global.main.lose()

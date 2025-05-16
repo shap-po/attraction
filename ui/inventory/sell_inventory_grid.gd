@@ -19,5 +19,5 @@ func sell_item(index: int) -> bool:
 	if item is CountableItem:
 		price *= item.count
 
-	Money.add(price)
+	Global.main.money_manager.add(price)
 	return true

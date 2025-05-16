@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjgjef3cy2o0f"]
 
-[ext_resource type="Script" uid="uid://d28ryaeuui7bh" path="res://scenes/menus/game_over/game_over.gd" id="1_1n3bm"]
+[ext_resource type="Script" uid="uid://d28ryaeuui7bh" path="res://scenes/menus/game_over/game_over_screen.gd" id="1_1n3bm"]
 [ext_resource type="StyleBox" uid="uid://bl1cxbgmx01jl" path="res://assets/tiles/button inventory hover.tres" id="2_v1nh5"]
 [ext_resource type="StyleBox" uid="uid://dpyi3tekla651" path="res://assets/tiles/button inventory normal.tres" id="3_3a1gr"]
 
@@ -49,7 +49,7 @@ text = "Game Over"
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
-focus_neighbor_right = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../Endless")
 theme_override_font_sizes/font_size = 19
 theme_override_styles/focus = SubResource("StyleBoxEmpty_680q2")
 theme_override_styles/hover = ExtResource("2_v1nh5")
@@ -57,9 +57,20 @@ theme_override_styles/pressed = ExtResource("2_v1nh5")
 theme_override_styles/normal = ExtResource("3_3a1gr")
 text = "Restart"
 
+[node name="Endless" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/focus = SubResource("StyleBoxEmpty_680q2")
+theme_override_styles/hover = ExtResource("2_v1nh5")
+theme_override_styles/pressed = ExtResource("2_v1nh5")
+theme_override_styles/normal = ExtResource("3_3a1gr")
+text = "Play Endless"
+
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-focus_neighbor_right = NodePath("../StartButton")
+focus_neighbor_top = NodePath("../Endless")
 focus_neighbor_bottom = NodePath("../StartButton")
 theme_override_font_sizes/font_size = 19
 theme_override_styles/hover = ExtResource("2_v1nh5")
@@ -68,4 +79,5 @@ theme_override_styles/normal = ExtResource("3_3a1gr")
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Endless" to="." method="_on_endless_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

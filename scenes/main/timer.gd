@@ -1,12 +1,14 @@
 extends Label
 
-@onready var time_left_timer: Timer = $"../../TimeLeftTimer"
+@onready var game_timer: GameTimer = $"../../GameTimer"
 
 func _process(delta: float) -> void:
-	var seconds: int = int(time_left_timer.time_left)
-	var time: String
-	if seconds > 60:
-		time = str(seconds / 60) + " min"
+	if not Global.main.endless_mode:
+		text = "Time left: " + time_to_str(game_timer.time_till_game_over)
 	else:
-		time = str(seconds) + " sec"
-	text = "Time left: " + time
+		text = "Time played: " + time_to_str(game_timer.time_passed)
+
+func time_to_str(seconds: int) -> String:
+	if seconds > 60:
+		return str(seconds / 60) + " min"
+	return str(seconds) + " sec"
