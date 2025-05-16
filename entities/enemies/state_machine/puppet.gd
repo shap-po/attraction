@@ -44,14 +44,15 @@ func choose_from_four_sprites(sprite_node: Sprite2D, texture_up: Texture2D, text
 	if effects[0] > -1:
 		return
 	var rot: float = rad_to_deg(velocity.angle())
-	if rot < 0: rot += 360
-	if (rot > 315) || (rot <= 45):
+	if rot < 0:
+		rot += 360
+	if rot > 315 or rot <= 45:
 		sprite_node.texture = texture_right
-	if (rot > 45) && (rot <= 135):
+	if rot > 45 and rot <= 135:
 		sprite_node.texture = texture_down
-	if (rot > 135) && (rot <= 225):
+	if rot > 135 and rot <= 225:
 		sprite_node.texture = texture_left
-	if (rot > 225) && (rot <= 315):
+	if rot > 225 and rot <= 315:
 		sprite_node.texture = texture_up
 
 func apply_stun(ticks: float) -> void:
@@ -101,16 +102,15 @@ func on_acting_cooldown_up():
 func check_area(priority: FindType = FindType.PLAYER) -> FindType:
 	var areas: Array[Area2D] = area_sight.get_overlapping_areas()
 	var res: FindType = FindType.NONE
-	if areas:
-		for area in areas:
-			if area is Plant:
-				target = area
-				res = FindType.PLANT
-				if priority == FindType.PLANT:
-					return res
-			if area.name == "InteractionArea2D": ## if yk better solution let me know -peu
-				target = area.get_parent()
-				res = FindType.PLAYER
-				if priority == FindType.PLAYER:
-					return res
+	for area in areas:
+		if area is Plant:
+			target = area
+			res = FindType.PLANT
+			if priority == FindType.PLANT:
+				return res
+		if area.name == "InteractionArea2D": ## if yk better solution let me know -peu
+			target = area.get_parent()
+			res = FindType.PLAYER
+			if priority == FindType.PLAYER:
+				return res
 	return res
