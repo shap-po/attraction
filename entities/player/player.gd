@@ -54,6 +54,11 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("space"):
 		inventory_ui.set_visible(false)
 		shop.toggle()
+
+	if Input.is_action_just_pressed("close_menu"):
+		inventory_ui.set_visible(false)
+		shop.set_visible(false)
+
 	move_and_slide()
 
 func shoot(shoot_ang: float, weapon: ProjectileType) -> void:
