@@ -323,8 +323,10 @@ vertical_alignment = 2
 script = ExtResource("22_m4h2d")
 
 [node name="WinMenu" parent="UICanvasLayer" instance=ExtResource("24_6llfj")]
+visible = false
 
 [node name="GameOverMenu" parent="UICanvasLayer" instance=ExtResource("25_0bhws")]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_p8abn")
