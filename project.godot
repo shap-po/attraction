@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Attraction"
+config/name="The Bug Attractor"
+config/version="1.0.1"
 run/main_scene="uid://01mbau86j0cn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
