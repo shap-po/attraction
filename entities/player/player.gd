@@ -27,15 +27,16 @@ func _physics_process(_delta: float) -> void:
 	if velocity != Vector2.ZERO:
 		body.rotation = lerp_angle(body.rotation, velocity.angle(), weight)
 
-	if Input.is_action_pressed("lcm") and shooting_cooldown.is_stopped() and inventory.get_selected_item() is ProjectileType:
-		shooting_cooldown.start()
-		var shoot_ang: float = get_local_mouse_position().normalized().angle()
-		body.rotation = shoot_ang
-		shoot(shoot_ang, inventory.get_selected_item() as ProjectileType)
-	if Input.is_action_pressed("interact") and interaction_cooldown.is_stopped():
-		var res: Interactible.InteractionResult = interact()
-		if res != Interactible.InteractionResult.PASS:
-			interaction_cooldown.start()
+	if not is_gui_open():
+		if Input.is_action_pressed("lcm") and shooting_cooldown.is_stopped() and inventory.get_selected_item() is ProjectileType:
+			shooting_cooldown.start()
+			var shoot_ang: float = get_local_mouse_position().normalized().angle()
+			body.rotation = shoot_ang
+			shoot(shoot_ang, inventory.get_selected_item() as ProjectileType)
+		if Input.is_action_pressed("interact") and interaction_cooldown.is_stopped():
+			var res: Interactible.InteractionResult = interact()
+			if res != Interactible.InteractionResult.PASS:
+				interaction_cooldown.start()
 
 	if Input.is_action_just_released("hotbar_next"):
 		inventory.selected_slot += 1
@@ -83,6 +84,9 @@ func interact() -> Interactible.InteractionResult:
 			return res
 
 	return Interactible.InteractionResult.PASS
+
+func is_gui_open() -> bool:
+	return inventory_ui.visible or shop.visible
 
 func take_damage(damage: int) -> void:
 	health.damage(damage)
