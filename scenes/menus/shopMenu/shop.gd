@@ -16,4 +16,7 @@ func _ready() -> void:
 	visible = false
 
 func toggle() -> void:
-	visible = not visible
+	set_open(not visible)
+
+func set_open(value: bool) -> void:
+	visible = value

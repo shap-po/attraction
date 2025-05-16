@@ -341,7 +341,6 @@ metadata/_custom_type_script = "uid://yvrbha6im2mp"
 [connection signal="incoming_wave" from="Map/Spawner" to="UICanvasLayer/talking_box" method="_on_spawner_incoming_wave"]
 [connection signal="timeout" from="Map/Spawner/NextWaveTimer" to="Map/Spawner" method="_on_next_wave_timer_timeout"]
 [connection signal="timeout" from="Map/Spawner/RandomBugTimer" to="Map/Spawner" method="_on_random_bug_timer_timeout"]
-[connection signal="toggle_inventory" from="Player" to="UICanvasLayer/inventory_UI" method="_on_player_toggle_inventory"]
 [connection signal="on_selected_slot_changed" from="Player/Inventory" to="UICanvasLayer/HotbarInvenotryGrid" method="_on_inventory_on_selected_slot_changed"]
 [connection signal="on_game_over" from="GameTimer" to="." method="_on_game_timer_on_game_over"]
 [connection signal="timeout" from="GameTimer" to="GameTimer" method="_on_timeout"]

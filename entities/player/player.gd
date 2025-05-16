@@ -1,8 +1,6 @@
 extends CharacterBody2D
 class_name Player
 
-signal toggle_inventory
-
 const speed: int = 100
 const weight: float = 0.4
 var allience: String = "player"
@@ -14,6 +12,8 @@ var direction: Vector2 = Vector2.ZERO
 @onready var interaction_cooldown: Timer = $InteractionCooldownTimer
 @onready var body: Node2D = $Body
 @onready var interaction_area: Area2D = $InteractionArea2D
+
+@onready var inventory_ui: Control = $"../UICanvasLayer/inventory_UI"
 @onready var shop: Control = $"../UICanvasLayer/shop"
 var stun: float = 0.0
 
@@ -48,9 +48,11 @@ func _physics_process(_delta: float) -> void:
 
 	# toggle inventory
 	if Input.is_action_just_pressed("inventory"):
-		toggle_inventory.emit()
+		shop.set_visible(false)
+		inventory_ui.toggle()
 
 	if Input.is_action_just_pressed("space"):
+		inventory_ui.set_visible(false)
 		shop.toggle()
 	move_and_slide()
 

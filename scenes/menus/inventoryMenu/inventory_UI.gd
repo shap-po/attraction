@@ -5,11 +5,16 @@ extends Control
 func _ready() -> void:
 	visible = false
 
-#opens and closes inventory
-func _on_player_toggle_inventory() -> void:
-	if visible:
-		visible = false
-		inventory_grid.on_close()
-	else:
+func toggle() -> void:
+	set_open(not visible)
+
+func set_open(value: bool) -> void:
+	if visible == value:
+		return
+
+	if value:
 		inventory_grid.on_open()
 		visible = true
+	else:
+		visible = false
+		inventory_grid.on_close()
