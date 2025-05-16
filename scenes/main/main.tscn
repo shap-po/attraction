@@ -336,6 +336,7 @@ parameters/looping = true
 script = ExtResource("27_0bhws")
 metadata/_custom_type_script = "uid://yvrbha6im2mp"
 
+[connection signal="on_endless_enter" from="." to="UICanvasLayer/Money" method="_on_main_on_endless_enter"]
 [connection signal="incoming_wave" from="Map/Spawner" to="Insider" method="_on_spawner_incoming_wave"]
 [connection signal="incoming_wave" from="Map/Spawner" to="UICanvasLayer/talking_box" method="_on_spawner_incoming_wave"]
 [connection signal="timeout" from="Map/Spawner/NextWaveTimer" to="Map/Spawner" method="_on_next_wave_timer_timeout"]
