@@ -19,7 +19,7 @@ var target_point: Vector2
 
 func on_creation() -> void:
 	if puppet.unconditional_state == "WarriorLinger":
-		puppet.unconditional_state = "WarriorFlea"
+		puppet.unconditional_state = "Flea"
 	if puppet.unconditional_state == "WarriorRage":
 		puppet.unconditional_state = "Flea"
 

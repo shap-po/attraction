@@ -2,7 +2,7 @@ extends State
 class_name Flea
 
 # OVERVIEW
-# worker will hide in the mound, if it has one, otherwise will run to the forest
+# hide in the mound or run to the forest
 
 @export var SPEED_MULTIPLIER: float = 1.5
 @export var CHECKOUT_PRECISION: float = 1
