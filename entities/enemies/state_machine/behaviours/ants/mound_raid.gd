@@ -17,10 +17,10 @@ func on_creation() -> void:
 func exit():
 	for child in get_puppet().ants.get_children():
 		if child.has_method("take_damage"):
-			if child.type == 0:
+			if child.type == Ant.AntType.WORKER:
 				child.brain.force_transition("WorkerScout")
 				child.brain.current_state.target_point = puppet.target.global_position
-			if child.type == 1:
+			if child.type == Ant.AntType.WARRIOR:
 				child.brain.force_transition("WarriorEscort")
 	if get_puppet().brain_ant_killed.is_connected(on_ant_killed):
 		get_puppet().brain_ant_killed.disconnect(on_ant_killed)
@@ -35,8 +35,10 @@ func procces(_delta: float) -> void:
 
 func on_ant_killed(type: Ant.AntType) -> void:
 	if randf() < 0.5:
-		for child in get_puppet().ants.get_children():
-			if child.has_method("take_damage"):
-				if child.type == 0:
-					child.brain.force_transition("Flea")
-		get_puppet().brain.force_transition("MoundDefend")
+		return
+
+	for child in get_puppet().ants.get_children():
+		if child.has_method("take_damage"):
+			if child.type == 0:
+				child.brain.force_transition("Flea")
+	get_puppet().brain.force_transition("MoundDefend")

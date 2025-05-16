@@ -36,10 +36,7 @@ func procces(_delta: float) -> void:
 	if time_next_state > 0:
 		return
 
-	# TODO: peu, why are we doing this? either add comments or refactor
-	if puppet.target != null and puppet.target is Plant:
-		puppet.target = Util.get_closest_node(puppet, Global.main.map_markers.plot_locations)
-	else:
+	if puppet.target == null or not puppet.target is Plant:
 		puppet.target = Global.main.map_markers.plot_locations.pick_random()
 
 	puppet.brain.force_transition("MoundRaid")
