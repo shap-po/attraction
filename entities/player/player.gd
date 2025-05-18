@@ -12,9 +12,7 @@ var direction: Vector2 = Vector2.ZERO
 @onready var interaction_cooldown: Timer = $InteractionCooldownTimer
 @onready var body: Node2D = $Body
 @onready var interaction_area: Area2D = $InteractionArea2D
-
-@onready var inventory_ui: Control = $"../UICanvasLayer/inventory_UI"
-@onready var shop: Control = $"../UICanvasLayer/shop"
+@onready var menu_handler: MenuHandler = $"../UICanvasLayer/MenuHandler"
 var stun: float = 0.0
 
 func _physics_process(_delta: float) -> void:
@@ -27,7 +25,7 @@ func _physics_process(_delta: float) -> void:
 	if velocity != Vector2.ZERO:
 		body.rotation = lerp_angle(body.rotation, velocity.angle(), weight)
 
-	if not is_gui_open():
+	if not menu_handler.is_any_open():
 		if Input.is_action_pressed("lcm") and shooting_cooldown.is_stopped() and inventory.get_selected_item() is ProjectileType:
 			shooting_cooldown.start()
 			var shoot_ang: float = get_local_mouse_position().normalized().angle()
@@ -46,19 +44,6 @@ func _physics_process(_delta: float) -> void:
 	for i in range(inventory.hotbar_size):
 		if Input.is_action_just_released("hotbar_" + str(i+1)):
 			inventory.selected_slot = i
-
-	# toggle inventory
-	if Input.is_action_just_pressed("inventory"):
-		shop.set_visible(false)
-		inventory_ui.toggle()
-
-	if Input.is_action_just_pressed("space"):
-		inventory_ui.set_visible(false)
-		shop.toggle()
-
-	if Input.is_action_just_pressed("close_menu"):
-		inventory_ui.set_visible(false)
-		shop.set_visible(false)
 
 	move_and_slide()
 
@@ -85,16 +70,12 @@ func interact() -> Interactible.InteractionResult:
 
 	return Interactible.InteractionResult.PASS
 
-func is_gui_open() -> bool:
-	return inventory_ui.visible or shop.visible
-
 func take_damage(damage: int) -> void:
 	health.damage(damage)
 
 func apply_stun(time: float):
 	Emote.create_emote(Emote.EmoteType.STUN, self)
 	stun = time
-
 
 func _on_inventory_on_selected_slot_changed() -> void:
 	var item: Item = inventory.get_selected_item()
@@ -103,7 +84,6 @@ func _on_inventory_on_selected_slot_changed() -> void:
 	if item is ProjectileType:
 		shooting_cooldown.wait_time = item.cooldown
 
-
 func _on_health_on_zero() -> void:
 	if not Global.main.endless_mode:
-		Global.main.lose()
+		menu_handler.game_over_menu.open_lost_death()

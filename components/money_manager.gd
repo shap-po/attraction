@@ -9,7 +9,7 @@ var value: int = 0:
 		value = val
 		on_change.emit(previous, val)
 		if value >= Global.money_goal and not Global.main.endless_mode:
-			Global.main.win()
+			Global.main.menu_handler.game_over_menu.open_win()
 
 func add(amount: int) -> void:
 	value += amount

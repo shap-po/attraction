@@ -1,20 +1,9 @@
-extends Control
+extends Menu
 
 @export var inventory_grid: BaseInventoryGrid
 
-func _ready() -> void:
-	visible = false
+func _on_open() -> void:
+	inventory_grid.on_open()
 
-func toggle() -> void:
-	set_open(not visible)
-
-func set_open(value: bool) -> void:
-	if visible == value:
-		return
-
-	if value:
-		inventory_grid.on_open()
-		visible = true
-	else:
-		visible = false
-		inventory_grid.on_close()
+func _on_close() -> void:
+	inventory_grid.on_close()
