@@ -63,8 +63,8 @@ func after_stun() -> void:
 	Emote.create_emote(Emote.EmoteType.WARNING, self)
 	brain.force_transition(unconditional_state)
 
-func take_damage(damage: int) -> void:
-	health.damage(damage)
+func take_damage(incoming_damage: int) -> void:
+	health.damage(incoming_damage)
 	on_damage_effect()
 
 func on_zero_health() -> void:
@@ -77,7 +77,7 @@ func on_death_effect() -> void:
 func on_damage_effect() -> void:
 	pass
 
-func melee(damage: int = self.damage, cooldown: float = 0.75) -> void:
+func melee(outgoing_damage: int = self.damage, cooldown: float = 0.75) -> void:
 	if target == null:
 		return
 	if not can_act:
@@ -86,7 +86,7 @@ func melee(damage: int = self.damage, cooldown: float = 0.75) -> void:
 	can_act = false
 
 	if target.has_method("take_damage"):
-		target.take_damage(damage)
+		target.take_damage(outgoing_damage)
 
 	var pv: Vector2 = Vector2(0, -1).rotated(randf_range(-0.4, 0.4))
 	var pos1: Vector2 = target.global_position - pv * 5

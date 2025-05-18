@@ -13,7 +13,7 @@ func _ready() -> void:
 	menus.append(inventory_ui)
 	menus.append(pause_menu)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# don't process input if on game over screen
 	if game_over_menu.visible:
 		return

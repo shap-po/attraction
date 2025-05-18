@@ -9,9 +9,9 @@ const WORLD_ITEM: PackedScene = preload("res://entities/inventory/world_item/wor
 func _ready() -> void:
 	sprite_2d.texture = item.item_texture
 
-static func create(item: Item) -> WorldItem:
+static func create(new_item: Item) -> WorldItem:
 	var instance: WorldItem = WORLD_ITEM.instantiate()
-	instance.item = item
+	instance.item = new_item
 	return instance
 
 func try_pickup(inventory: EditableInventory) -> bool:

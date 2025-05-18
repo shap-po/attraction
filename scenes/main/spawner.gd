@@ -22,7 +22,7 @@ var enemies_pool: Array[WeightedEnemy] = []
 var enemy_points: int = 0
 var ant_points: int = 0
 
-var wave_location: WeightedEnemy.SpawnArea = 0
+var wave_location: WeightedEnemy.SpawnArea = WeightedEnemy.SpawnArea.TOP
 var wave_enemies: Array[WeightedEnemy] = []
 
 func _ready() -> void:
@@ -35,7 +35,7 @@ func _ready() -> void:
 func pick_and_spawn_enemy() -> void:
 	var pool: Array[WeightedEnemy] = enemies_pool.duplicate()
 	# Add mounds for points
-	@warning_ignore("narrowing_conversion")
+	@warning_ignore("integer_division")
 	for _i in range(ant_points / 10):
 		pool.append(ANT_MOUND_WE)
 
@@ -100,7 +100,7 @@ func _filter_pool_by_area(pool: Array[WeightedEnemy], area: WeightedEnemy.SpawnA
 			i += 1
 
 func _on_next_wave_timer_timeout() -> void:
-	if wave_location == null or wave_enemies.size() == 0:
+	if wave_enemies.size() == 0:
 		prepare_wave()
 		if wave_enemies.size() == 0:
 			print("failed to prepare wave")

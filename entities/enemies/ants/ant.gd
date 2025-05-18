@@ -12,7 +12,6 @@ signal ant_killed(type: AntType)
 signal enter_home(type: AntType)
 
 @export var type: AntType
-
 var jitter: float = 0.05 + randf_range(-0.01, 0.05)
 
 var allience: String = "bug"
@@ -26,10 +25,10 @@ func _physics_process(_delta: float) -> void:
 func additional_to_process(_delta: float):
 	pass
 
-func take_damage(damage: int) -> void:
+func take_damage(incoming_damage: int) -> void:
 	alert_other_ants(self.global_position)
 	ant_damaged.emit(type)
-	health.damage(damage)
+	health.damage(incoming_damage)
 
 func on_zero_health() -> void:
 	ant_killed.emit(type)

@@ -28,21 +28,21 @@ func _physics_process(_delta: float) -> void:
 		choose_from_four_sprites(shell_sprite, SHELL_UP, SHELL_DOWN, SHELL_LEFT, SHELL_RIGHT)
 	move_and_slide()
 
-func take_damage(damage: int) -> void:
+func take_damage(incoming_damage: int) -> void:
 	any_damage.emit()
 	if brain.current_state.name == "SnailHide":
-		damage_shell(damage, 0.95)
+		damage_shell(incoming_damage, 0.95)
 	else:
-		damage_shell(damage, 0.6)
+		damage_shell(incoming_damage, 0.6)
 		if not effects.is_stunned():
 			brain.force_transition("SnailHide")
 			return
 
-func damage_shell(damage: int, penetration_chance: float) -> void:
+func damage_shell(incoming_damage: int, penetration_chance: float) -> void:
 	if not has_shell or randf() >= penetration_chance:
-		health.damage(damage)
+		health.damage(incoming_damage)
 		return
-	health_shell.damage(damage)
+	health_shell.damage(incoming_damage)
 
 func on_zero_health_shell() -> void:
 	has_shell = false

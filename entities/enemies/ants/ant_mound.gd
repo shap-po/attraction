@@ -4,6 +4,7 @@ class_name AntMound
 @export var size: int = 1
 
 signal brain_ant_damaged(type: Ant.AntType)
+@warning_ignore("unused_signal")
 signal brain_ant_killed(type: Ant.AntType)
 
 var allience: String = "bug"

@@ -10,5 +10,6 @@ func _process(_delta: float) -> void:
 
 func time_to_str(seconds: int) -> String:
 	if seconds > 60:
+		@warning_ignore("integer_division")
 		return str(seconds / 60) + " min"
 	return str(seconds) + " sec"
