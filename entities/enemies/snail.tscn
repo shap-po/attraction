@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://xbffllw1i5mo"]
+[gd_scene load_steps=19 format=3 uid="uid://xbffllw1i5mo"]
 
 [ext_resource type="Script" uid="uid://b82g3btto72s1" path="res://entities/enemies/snail.gd" id="1_334tu"]
 [ext_resource type="Script" uid="uid://dcfhd17x78npj" path="res://components/health.gd" id="2_8bnin"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_vxiei"]
 [ext_resource type="PackedScene" uid="uid://sgaf0148k0cx" path="res://components/hit_flash.tscn" id="6_6nt8q"]
 [ext_resource type="Script" uid="uid://ch3cl7t1hn66h" path="res://entities/enemies/state_machine/behaviours/snail/snail_scout_food.gd" id="6_dt2a5"]
+[ext_resource type="Script" uid="uid://dhj272ss4e8ti" path="res://components/status_effects.gd" id="7_6nt8q"]
 [ext_resource type="Script" uid="uid://fscws6o8mc6c" path="res://entities/enemies/state_machine/behaviours/snail/snail_attack_food.gd" id="7_dt2a5"]
 [ext_resource type="Script" uid="uid://b601wghkdyp7l" path="res://entities/enemies/state_machine/behaviours/snail/snail_hide.gd" id="8_juvgg"]
 [ext_resource type="Script" uid="uid://b5v6ejeh35w3c" path="res://entities/enemies/state_machine/behaviours/return_forest.gd" id="10_juvgg"]
@@ -85,6 +86,9 @@ metadata/_custom_type_script = "uid://dcfhd17x78npj"
 
 [node name="HitFlash" parent="HealthShell" node_paths=PackedStringArray("sprite") instance=ExtResource("6_6nt8q")]
 sprite = NodePath("../../rotation_marker/shell_sprite")
+
+[node name="StatusEffects" type="Node" parent="."]
+script = ExtResource("7_6nt8q")
 
 [node name="timer" type="Timer" parent="."]
 

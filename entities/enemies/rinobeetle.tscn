@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dh28jgsc0odwm"]
+[gd_scene load_steps=18 format=3 uid="uid://dh28jgsc0odwm"]
 
 [ext_resource type="Script" uid="uid://da4mtb5ulkpbl" path="res://entities/enemies/rinobeetle.gd" id="1_0e75h"]
 [ext_resource type="Texture2D" uid="uid://bt2s81h2mler4" path="res://assets/textures/enemies/rinobeetle/rinobeetle_left.png" id="1_ubfig"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_qfkxo"]
 [ext_resource type="PackedScene" uid="uid://sgaf0148k0cx" path="res://components/hit_flash.tscn" id="5_sep0c"]
 [ext_resource type="Script" uid="uid://q30codlmf2a8" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_attack_food.gd" id="6_8xu6m"]
+[ext_resource type="Script" uid="uid://dhj272ss4e8ti" path="res://components/status_effects.gd" id="6_sep0c"]
 [ext_resource type="Script" uid="uid://2r4elrvoaq8k" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_attack_player.gd" id="7_nofxu"]
 [ext_resource type="Script" uid="uid://b8jmda7t5uhet" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_idle.gd" id="8_pkghw"]
 [ext_resource type="Script" uid="uid://dnv2f6j17a7ii" path="res://entities/enemies/state_machine/behaviours/rinobeetle/rinobeetle_scout.gd" id="9_nofxu"]
@@ -68,6 +69,9 @@ metadata/_custom_type_script = "uid://dcfhd17x78npj"
 
 [node name="HitFlash" parent="Health" node_paths=PackedStringArray("sprite") instance=ExtResource("5_sep0c")]
 sprite = NodePath("../../rotation_marker/rinobeetle_sprite")
+
+[node name="StatusEffects" type="Node" parent="."]
+script = ExtResource("6_sep0c")
 
 [node name="timer" type="Timer" parent="."]
 

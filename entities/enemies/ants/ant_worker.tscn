@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dsbjxjpcoiv64"]
+[gd_scene load_steps=16 format=3 uid="uid://dsbjxjpcoiv64"]
 
 [ext_resource type="Script" uid="uid://d1uucxgmgkhb4" path="res://entities/enemies/ants/ant_worker.gd" id="1_bi10t"]
 [ext_resource type="Texture2D" uid="uid://cgk6kjl2046js" path="res://assets/textures/enemies/ants/ant_worker.png" id="1_xvnl3"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://igyuims72jk8" path="res://entities/enemies/state_machine/behaviours/ants/worker_attack_food.gd" id="5_u4ed6"]
 [ext_resource type="PackedScene" uid="uid://sgaf0148k0cx" path="res://components/hit_flash.tscn" id="5_ymao7"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="6_asxgm"]
+[ext_resource type="Script" uid="uid://dhj272ss4e8ti" path="res://components/status_effects.gd" id="6_ymao7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_degik"]
 radius = 3.33333
@@ -65,6 +66,9 @@ metadata/_custom_type_script = "uid://dcfhd17x78npj"
 
 [node name="HitFlash" parent="Health" node_paths=PackedStringArray("sprite") instance=ExtResource("5_ymao7")]
 sprite = NodePath("../../rotation_marker/ant_worker_sprite")
+
+[node name="StatusEffects" type="Node" parent="."]
+script = ExtResource("6_ymao7")
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 0.25

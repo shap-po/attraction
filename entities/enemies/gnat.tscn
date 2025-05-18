@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bjsg7mkm5swaq"]
+[gd_scene load_steps=17 format=3 uid="uid://bjsg7mkm5swaq"]
 
 [ext_resource type="Script" uid="uid://dkwf1nly0b2wx" path="res://entities/enemies/gnat.gd" id="1_137j7"]
 [ext_resource type="Texture2D" uid="uid://ccgvaotqf4yil" path="res://assets/textures/enemies/gnat.png" id="2_84y21"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://by1v8sj8wxofy" path="res://entities/enemies/state_machine/behaviours/gnat/gnat_airborne.gd" id="4_137j7"]
 [ext_resource type="Script" uid="uid://6r10twc71dhp" path="res://entities/enemies/state_machine/behaviours/gnat/gnat_idle.gd" id="4_e2xfl"]
 [ext_resource type="PackedScene" uid="uid://sgaf0148k0cx" path="res://components/hit_flash.tscn" id="5_tckyk"]
+[ext_resource type="Script" uid="uid://dhj272ss4e8ti" path="res://components/status_effects.gd" id="6_tckyk"]
 [ext_resource type="Script" uid="uid://dxuabvdjh8ku7" path="res://entities/enemies/state_machine/behaviours/gnat/gnat_travel.gd" id="9_th1rh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qvl3w"]
@@ -68,6 +69,9 @@ metadata/_custom_type_script = "uid://dcfhd17x78npj"
 
 [node name="HitFlash" parent="Health" node_paths=PackedStringArray("sprite") instance=ExtResource("5_tckyk")]
 sprite = NodePath("../../rotation_marker/gnat_sprite")
+
+[node name="StatusEffects" type="Node" parent="."]
+script = ExtResource("6_tckyk")
 
 [node name="timer" type="Timer" parent="."]
 

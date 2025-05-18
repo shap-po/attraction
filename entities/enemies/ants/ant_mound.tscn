@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://n716cs15gjtv"]
+[gd_scene load_steps=15 format=3 uid="uid://n716cs15gjtv"]
 
 [ext_resource type="Script" uid="uid://bepneo4fh82sg" path="res://entities/enemies/ants/ant_mound.gd" id="1_28qug"]
 [ext_resource type="Texture2D" uid="uid://b64q0j1uh6f3q" path="res://assets/textures/enemies/ants/ant_mound_small.png" id="1_44fhl"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://trfpmwnmpqmm" path="res://entities/enemies/state_machine/state_machine.gd" id="3_nv1hj"]
 [ext_resource type="Script" uid="uid://dpx7s4t6yxnwn" path="res://entities/enemies/state_machine/behaviours/ants/mound_scout.gd" id="4_a5aqs"]
 [ext_resource type="Script" uid="uid://cg1q7s1urt42s" path="res://entities/enemies/state_machine/behaviours/no_ai.gd" id="4_bgytr"]
+[ext_resource type="Script" uid="uid://dhj272ss4e8ti" path="res://components/status_effects.gd" id="5_kqpsj"]
 [ext_resource type="Script" uid="uid://c58ojmhyxhn6u" path="res://entities/enemies/state_machine/behaviours/ants/mound_raid.gd" id="7_pja52"]
 [ext_resource type="Script" uid="uid://dwlnmgh6br07s" path="res://entities/enemies/state_machine/behaviours/ants/mound_defend.gd" id="8_2uhk1"]
 [ext_resource type="Script" uid="uid://jm44kicpnkwr" path="res://entities/enemies/state_machine/behaviours/ants/mound_upgrade.gd" id="9_kqpsj"]
@@ -51,6 +52,9 @@ shape = SubResource("CircleShape2D_xog81")
 script = ExtResource("3_a5aqs")
 value = 1
 metadata/_custom_type_script = "uid://dcfhd17x78npj"
+
+[node name="StatusEffects" type="Node" parent="."]
+script = ExtResource("5_kqpsj")
 
 [node name="add_ant_points" type="Timer" parent="."]
 wait_time = 10.0

@@ -20,28 +20,27 @@ enum FindType {
 @onready var brain: StateMachine = $brain
 @onready var timer: Timer = $timer
 @onready var acting_cooldown: Timer = $ShootingCooldownTimer
+@onready var effects: StatusEffects = $StatusEffects
 var melee_cooldown: float = 0.75
 var can_act: bool = true
 
-var effects: Array[float] = [-1]
-
-##                           stun timer,
 func _ready() -> void:
 	acting_cooldown.timeout.connect(on_acting_cooldown_up)
 	health.on_zero.connect(on_zero_health)
+	effects.on_stun_finish.connect(after_stun)
 	fready()
 
 func fready() -> void:
 	pass
 
 func rotate_where_going(jitter: float) -> void:
-	if effects[0] > -1:
+	if effects.is_stunned():
 		return
 	if velocity != Vector2.ZERO:
 		rotation_marker.rotation = lerp_angle(rotation_marker.rotation, velocity.angle(), weight) + pow(-1, randi_range(1, 2)) * jitter * randf()
 
 func choose_from_four_sprites(sprite_node: Sprite2D, texture_up: Texture2D, texture_down: Texture2D, texture_left: Texture2D, texture_right: Texture2D) -> void:
-	if effects[0] > -1:
+	if effects.is_stunned():
 		return
 	var rot: float = rad_to_deg(velocity.angle())
 	if rot < 0:
@@ -57,7 +56,12 @@ func choose_from_four_sprites(sprite_node: Sprite2D, texture_up: Texture2D, text
 
 func apply_stun(ticks: float) -> void:
 	Emote.create_emote(Emote.EmoteType.STUN, self)
-	effects[0] = ticks
+	effects.apply_stun(ticks)
+
+func after_stun() -> void:
+	rotation = 0 # reset rotation "animation"
+	Emote.create_emote(Emote.EmoteType.WARNING, self)
+	brain.force_transition(unconditional_state)
 
 func take_damage(damage: int) -> void:
 	health.damage(damage)
