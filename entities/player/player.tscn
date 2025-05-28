@@ -17,8 +17,8 @@ radius = 5.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_geky7"]
 resource_local_to_scene = true
 shader = ExtResource("3_13wue")
-shader_parameter/Enabled = false
-shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/enabled = false
+shader_parameter/color = Color(1, 1, 1, 1)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 5

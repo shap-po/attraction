@@ -8,8 +8,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rj2vr"]
 resource_local_to_scene = true
 shader = ExtResource("2_kiq7s")
-shader_parameter/Enabled = false
-shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/enabled = false
+shader_parameter/color = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s1anw"]
 radius = 12.0

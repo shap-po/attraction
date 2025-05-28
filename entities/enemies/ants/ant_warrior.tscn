@@ -21,8 +21,8 @@ radius = 6.87184
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0gres"]
 resource_local_to_scene = true
 shader = ExtResource("2_a5qyp")
-shader_parameter/Enabled = false
-shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/enabled = false
+shader_parameter/color = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rq8cp"]
 radius = 150.0

@@ -5,11 +5,11 @@ input_name = "color"
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_povxq"]
 output_port_for_preview = 0
-parameter_name = "Color"
+parameter_name = "color"
 default_value_enabled = true
 
 [sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_m53vi"]
-parameter_name = "Enabled"
+parameter_name = "enabled"
 default_value_enabled = true
 
 [sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_7y45l"]
@@ -19,18 +19,18 @@ default_input_values = [0, 0.0, 1, 1.0, 2, 1e-05, 3, Vector3(0, 0, 0), 4, Vector
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
-uniform bool Enabled = false;
-uniform vec4 Color : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform bool enabled = false;
+uniform vec4 color : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
 
 
 
 void fragment() {
 // BooleanParameter:4
-	bool n_out4p0 = Enabled;
+	bool n_out4p0 = enabled;
 
 
 // ColorParameter:3
-	vec4 n_out3p0 = Color;
+	vec4 n_out3p0 = color;
 
 
 // Input:2
