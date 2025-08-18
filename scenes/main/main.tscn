@@ -314,10 +314,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("27_i7in8")
 
-[node name="GameOverMenu" parent="UICanvasLayer/MenuHandler" instance=ExtResource("25_0bhws")]
-visible = false
-layout_mode = 1
-
 [node name="shop" parent="UICanvasLayer/MenuHandler" node_paths=PackedStringArray("player_inventory") instance=ExtResource("10_hxu8e")]
 layout_mode = 1
 player_inventory = NodePath("../../../Player/Inventory")
@@ -342,6 +338,10 @@ slot_scene = ExtResource("13_hxu8e")
 inventory = NodePath("../../../../../../../../../../Player/Inventory")
 
 [node name="PauseMenu" parent="UICanvasLayer/MenuHandler" instance=ExtResource("28_gkmcc")]
+visible = false
+layout_mode = 1
+
+[node name="GameOverMenu" parent="UICanvasLayer/MenuHandler" instance=ExtResource("25_0bhws")]
 visible = false
 layout_mode = 1
 
